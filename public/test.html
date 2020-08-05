@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3><a target="_blank" href="http://eu.t-cang.net/purchasing">天众云仓系统</a></h3>
+<h3><a target="_blank" href="http://eu.t-cang.net/admin">ADMIN门店系统</a></h3>
+<h3><a target="_blank" href="http://eu.t-cang.net/super">SUPER门店管理系统</a></h3>
+<h3><a target="_blank" href="http://debug.t-cang.com/tzoms/index.php/GoodsDirect/lst.html">ODM系统</a></h3>
+<ul>
+    <h4>料号：</h4>
+    <li>4710474969241</li>
+    <li>4710474968879</li>
+    <li>4710474968886</li>
+</ul>
+<h3><a target="_blank" href="http://db250.easytochina.net">数据库</a></h3>
+<h4>8212dd1c4e</h4>
+<img src="/uploads/9.jpg" />
+<p id="p" style="cursor:pointer; text-decoration: underline;">面单查看</p>
+<img id="img" src="/uploads/single.jpg" style="display: none;" />
+<script>
+    var p=document.getElementById("p");
+    var img=document.getElementById("img");
+    p.onclick=function (){
+        if(img.style.display=='none'){
+            img.style.display='block';
+            this.innerHTML="面单隐藏";
+        }else{
+            img.style.display='none';
+            this.innerHTML="面单查看";
+        }
+    }
+</script>
+</body>
+</html>

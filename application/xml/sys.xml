@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sys>
+    <!--这里是快递生成规则部分-->
+    <express_preg>8#n{9}</express_preg>
+    <express_from>3</express_from>
+    <cardType>
+        <option>
+            <name>身份证</name>
+            <value>1</value>
+        </option>
+        <option>
+            <name>护照</name>
+            <value>2</value>
+        </option>
+    </cardType>
+</sys>
