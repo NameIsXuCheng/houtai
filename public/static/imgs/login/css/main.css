@@ -1,0 +1,122 @@
+body,ul,li{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+body{
+    background:url(../img/bg_1.jpg) no-repeat;
+    /*background-size:cover;*/
+}
+
+.login{
+    text-align:center;
+}
+.login-box{
+    width: 1034px;
+    height: 512px;
+    margin:0 auto;
+    position: absolute;
+    top: 25%;
+    left: 20%;
+    background: url(../img/kuang_1.png) no-repeat top;
+    background-size: auto;
+}
+.login-table-all{
+    width: 900px;
+    margin: 12px auto 0 auto;
+}
+.login-table-all tr{
+    width: 300px;
+    float: left;
+    margin-top: 60px;
+}
+.login-table-all tr td{
+    padding-left: 50px;
+}
+.all-button{
+    height: 45px;
+    line-height: 45px;
+    width: 175px;
+    background: white;
+    border: #0e90d2 solid 2px;
+    font-size: 20px;
+    color: #189acf;
+}
+.user-all{
+    margin-top: 10px
+}
+.user-all span{
+    font-size: 24px;
+    font-weight:bold;
+    color: #0e90d2;
+}
+
+.login-table-info{
+    width: 900px;
+    margin: 12px auto 0 auto;
+}
+.login-table-info tr{
+    width: 300px;
+    float: left;
+}
+.login-table-info tr td{
+    padding-left: 50px;
+}
+
+.user-info{
+    margin-top: 30px
+}
+
+.user-info span{
+    font-size: 22px;
+    font-weight:bold;
+    color: #189acf;
+}
+.form-horizontal{
+    margin-top: 40px;
+    width: 500px;
+    height: 300px;
+}
+.btn{
+    font-size: 20px;
+    width: 400px;
+    height: 55px;
+    color: white;
+    background: #189acf;
+}
+.col{
+    width: 70px;
+    height: 50px;
+    line-height: 50px;
+    float: left;
+    text-align: left;
+    font-size: 18px;
+    color: #189acf;
+    /*display: table-cell;*/
+    /*vertical-align:middle;*/
+}
+.col-sm-9{
+    width: 400px;
+    padding: 0;
+}
+
+.col-sm-9 .input-control{
+    width: 398px;
+    height: 48px;
+    line-height: 50px;
+    float: left;
+    text-align: left;
+    border: #e0e0e0 solid 1px;
+    text-indent:10px
+}
+.verify{
+    width: 135px;
+    float: right;
+    height: 46px;
+    margin-left: 5px;
+}
+a,a:hover{
+    text-decoration: none;
+    float: right;
+    color: #0f0f0f;
+}

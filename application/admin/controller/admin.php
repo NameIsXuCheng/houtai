@@ -7,14 +7,11 @@
  */
 namespace app\admin\controller;
 use think\Controller;
-use think\Db;
 use think\Request;
 
-class Index extends Basic {
+class Admin extends Basic {
     public function index(){
-        //获取所有的权限
-        $this->getAuthority();
-
+        //获取对应的的地址
         return view();
     }
 }
