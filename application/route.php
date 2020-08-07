@@ -11,5 +11,7 @@
 
 use think\Route;
 
-//Route::rule('pay','index.php/openapi/pay/pay');
-//Route::rule('check','index.php/openapi/index/check');
+Route::rule('admin','index.php/admin/admin/index');
+Route::rule('admin/index','index.php/admin/admin/index');
+Route::rule('admin/login','index.php/admin/login/login');
+Route::rule('admin/login_do','index.php/admin/login/login_do');

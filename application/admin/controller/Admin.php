@@ -11,7 +11,7 @@ use think\Request;
 
 class Admin extends Basic {
     public function index(){
-        //获取对应的的地址
+        print_t_new(1111);
         return view();
     }
 }

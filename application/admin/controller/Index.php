@@ -12,9 +12,6 @@ use think\Request;
 
 class Index extends Basic {
     public function index(){
-        //获取所有的权限
-        $this->getAuthority();
-
         return view();
     }
 }
