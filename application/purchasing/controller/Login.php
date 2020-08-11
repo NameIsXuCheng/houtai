@@ -33,7 +33,7 @@ class Login extends Controller {
         $data=$UserMessage->field('role_id,password,salt,user_name,id,parent_id,shipping_default,logo_img')
             ->where(['username|user_name'=>$username])->find();
         if(!$data){
-            return json(['code'=>1,'data'=>lang('c_username_or_password_error')]);
+            return json(['code'=>0,'data'=>'用户名账户或密码错误']);
         }
         if(md5($password.$data['salt'])==$data['password']){
             Session::set('username', $username);

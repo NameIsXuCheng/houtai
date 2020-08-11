@@ -1,0 +1,66 @@
+ {include file="public/header"}
+            <!--sidebar start-->
+            {include file="public/sidebar"}
+            <!--sidebar end-->
+
+            <!--main content start-->
+ <div id="content" class="ui-content ui-content-compact">
+     <div class="ui-content-body">
+         <div class="row">
+             <div class="col-sm-12">
+                 <section class="panel">
+                     <!--<header class="panel-heading">-->
+                         <!--菜单列表-->
+                         <!--<span class="tools pull-right">-->
+                             <!--<a class="refresh-box fa fa-repeat" href="javascript:;"></a>-->
+                             <!--<a class="collapse-box fa fa-chevron-down" href="javascript:;"></a>-->
+                             <!--<a class="close-box fa fa-times" href="javascript:;"></a>-->
+                         <!--</span>-->
+                     <!--</header>-->
+                     <div class="panel-body">
+                         <table class="table  table-hover general-table">
+                             <thead>
+                             <tr>
+                                 <th>菜单名称</th>
+                                 <th>控制器</th>
+                                 <th>方法</th>
+                                 <th>ICON</th>
+                                 <th>状态</th>
+                                 <th>排序</th>
+                                 <th>操作</th>
+                             </tr>
+                             </thead>
+                             <tbody>
+                             {volist name="menu" key="key" id="item"}
+                             <tr><td colspan="7"><h4>{{$key}}</h4></td></tr>
+                             {volist name="item" key="k" id="vo"}
+                             <tr>
+                                 <td colspan="3"><b>&nbsp;--</b>{{$vo.name}}</td>
+                                 <td>{{$vo.icon}}</td>
+                                 <td>{{$vo.is_show}}</td>
+                                 <td>{{$vo.sort}}</td>
+                                 <td></td>
+                             </tr>
+                             {volist name="vo.child" id="child"}
+                             <tr>
+                                 <td><b>&nbsp;&nbsp;&nbsp;--</b>{{$child.name}}</td>
+                                 <td>{{$child.controller}}</td>
+                                 <td>{{$child.action}}</td>
+                                 <td>{{$child.icon}}</td>
+                                 <td>{{$child.is_show}}</td>
+                                 <td>{{$child.sort}}</td>
+                                 <td></td>
+                             </tr>
+                             {/volist}
+                             {/volist}
+                             {/volist}
+                             </tbody>
+                         </table>
+                     </div>
+                 </section>
+             </div>
+         </div>
+     </div>
+ </div>
+            <!--main content end-->
+ {include file="public/footer"}

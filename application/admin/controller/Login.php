@@ -43,7 +43,7 @@ class Login extends Controller {
             //权限获取过来
             Session::set("privilege",$this->privilege($data['role_id']));
             Session::set("role_id",$data['role_id']);
-            return json(['code'=>1,'data'=>'登陆成功','url'=>$_SERVER['SERVER_NAME'].'/admin/index']);
+            return json(['code'=>1,'data'=>'登陆成功','url'=>'/admin/index']);
         }
         return json(['code'=>0,'data'=>'用户名或者密码错误']);
     }
@@ -79,5 +79,10 @@ class Login extends Controller {
             }
         }
         return $tmp;
+    }
+
+    public function logout(){
+        Session::clear();
+        $this->redirect('/admin/login');
     }
 }
