@@ -2,48 +2,45 @@
 <div class="row">
     <div class="col-md-12">
         <div class="panel">
-            <!--<header class="panel-heading">-->
-                <!--Form Elements-->
-                <!--<span class="tools pull-right">-->
-                                            <!--<a class="collapse-box fa fa-chevron-down" href="javascript:;"></a>-->
-                                            <!--<a class="close-box fa fa-times" href="javascript:;"></a>-->
-                                        <!--</span>-->
-            <!--</header>-->
             <div class="panel-body">
                 <form class="form-horizontal form-variance" id="change_message" method="get">
-                    <input type="hidden" value="{{$authority.id}}" name="id">
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">模块</label>
-                        <div class="col-sm-6">
-                            <input class="form-control mb-10" value="{{$authority.model}}" disabled type="text">
-                        </div>
-                    </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label">控制器</label>
                         <div class="col-sm-6">
-                            <select name="controller" class="form-control mb-10">
+                            <select name="model" lay-filter="model" class="form-control mb-10">
                                 {volist name="model" id="item"}
-                                <option value="{{$item.id}}" {if condition="$authority.controller eq $item.controller"}selected{/if}>{{$item.name}}</option>
+                                <optgroup label="{{$item.model}}">
+                                    <option value="{{$item.model}}-0">新增控制器</option>
+                                    {volist name="item.controller" id="vo"}
+                                    <option value="{{$item.model}}-{{$vo.controller}}">{{$vo.name}}</option>
+                                    {/volist}
+                                </optgroup>
                                 {/volist}
                             </select>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">方法名称</label>
+                    <div class="form-group controller">
+                        <label class="col-sm-3 control-label">控制器名称</label>
                         <div class="col-sm-6">
-                            <input class="form-control mb-10" name="action" value="{{$authority.action}}" type="text">
+                            <input class="form-control mb-10" name="controller" value="" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">方法名</label>
+                        <div class="col-sm-6">
+                            <input class="form-control mb-10" name="action" value="" type="text">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label">菜单名称</label>
                         <div class="col-sm-6">
-                            <input class="form-control mb-10" name="name" value="{{$authority.name}}" type="text">
+                            <input class="form-control mb-10" name="name" value="" type="text">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label">排序</label>
                         <div class="col-sm-6">
-                            <input class="form-control mb-10" name="sort" value="{{$authority.sort}}" type="text">
+                            <input class="form-control mb-10" name="sort" value="0" type="text">
                             <span>数值越小越排前</span>
                         </div>
                     </div>
@@ -52,10 +49,10 @@
                         <div class="col-lg-6">
                             <div class="radio">
                                 <label>
-                                    <input name="is_show" value="1" {if condition="$authority.is_show eq '1'"}checked{/if} type="radio">显示
+                                    <input name="is_show" value="1" type="radio" checked>显示
                                 </label>
                                 <label>
-                                    <input name="is_show" value="0" {if condition="$authority.is_show eq '0'"}checked{/if} type="radio">隐藏
+                                    <input name="is_show" value="0" type="radio">隐藏
                                 </label>
                             </div>
 
@@ -64,13 +61,13 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">图标</label>
                         <div class="col-sm-6">
-                            <input class="form-control mb-10" name="icon" value="{{$authority.icon}}" type="text">
+                            <input class="form-control mb-10" name="icon" value="" type="text">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label"></label>
                         <div class="col-sm-6">
-                            <button class="btn btn-info btn-capsul" name="form_do" type="button">更改提交</button>
+                            <button class="btn btn-info btn-capsul" name="form_do" type="button">保存</button>
                         </div>
                     </div>
                 </form>
@@ -81,12 +78,24 @@
 </body>
 
 <script type="text/javascript">
-    layui.use(['layer', 'jquery'], function() {
+    layui.use(['layer', 'jquery', 'form'], function() {
         var layer = layui.layer, //弹层
+            form = layui.form,
             $ = layui.jquery;
+
+        $("select[name=model]").change(function () {
+            var info = $(this).val();
+            var arr = info.split("-");
+            if(arr[1] == 0){
+                $(".controller").show();
+            }else{
+                $(".controller").hide();
+            }
+        });
+
         $('button[name=form_do]').click(function () {
             var post_data = $("#change_message").serializeArray();
-            $.post("{{:url('update/menu_do')}}",post_data,function (msg) {
+            $.post("{{:url('add/menu_do')}}",post_data,function (msg) {
                 if(msg.code == 1){
                     layer.msg(msg.data,{icon:1});
                     setTimeout(function (){
@@ -99,6 +108,5 @@
         });
     });
 </script>
-
 
 </html>
