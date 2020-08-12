@@ -26,8 +26,8 @@ class Basic extends Controller {
         $privilege[$this->model][$controller]['open'] = 1;
         $privilege[$this->model][$controller]['child'][$action]['is_selected'] = 1;
 //        print_t_new($privilege);
-        $this->assign('pri',$privilege[$this->model]);
 
+        $this->assign('pri',$privilege[$this->model]);
         //判断logo
         $logo = Session::get("logo");
         $this->assign('logo',$logo);
@@ -43,14 +43,14 @@ class Basic extends Controller {
 
     private function privilege_listen(){
         $privilege=Session::get("privilege");
-        print_t_new($privilege);
         if(!isset($privilege[$this->model][Request::instance()->controller()])){
+            //exit(json_encode($privilege[$this->model][Request::instance()->controller()]));
             header("Content-type:text/html;charset=utf-8");
             if(Request::instance()->isAjax()){
                 echo json_encode(['code'=>0,'data'=>lang('msg_has_no_privilege')]);
                 exit;
             }else{
-                $this->redirect('login/login');
+                $this->redirect('/admin/login');
                 exit;
             }
         }else{
@@ -67,13 +67,4 @@ class Basic extends Controller {
         }
     }
 
-    public function getAuthority(){
-        //获取对应的的地址
-        $info = Db::name('authority')->where(['model'=>'admin'])->order('sort asc')->select();
-
-//        foreach (){
-//
-//        }
-        return $info;
-    }
 }

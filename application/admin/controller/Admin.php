@@ -11,7 +11,18 @@ use think\Request;
 
 class Admin extends Basic {
     public function index(){
-        print_t_new(1111);
+        return view();
+    }
+
+    public function role_admin(){
+        return view();
+    }
+
+    public function role_purchasing(){
+        return view();
+    }
+
+    public function menu(){
         return view();
     }
 }

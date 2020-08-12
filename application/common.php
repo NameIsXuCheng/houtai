@@ -156,3 +156,12 @@ function print_t_new($info,$exit=true){
         exit();
     }
 }
+
+function alert_json($code=0,$msg='',$data=''){
+    return json(
+        [
+            'code'=>$code,
+            'msg'=>$msg,
+            'data'=>$data
+        ]);
+}

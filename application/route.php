@@ -11,7 +11,8 @@
 
 use think\Route;
 
-Route::rule('admin','index.php/admin/admin/index');
-Route::rule('admin/index','index.php/admin/admin/index');
-Route::rule('admin/login','index.php/admin/login/login');
-Route::rule('admin/login_do','index.php/admin/login/login_do');
+Route::rule('admin$','index.php/admin/admin/index');
+Route::rule('admin/index$','index.php/admin/admin/index');
+Route::rule('admin/login$','index.php/admin/login/login');
+Route::rule('admin/login_do$','index.php/admin/login/login_do');
+Route::rule('admin/logout$','index.php/admin/login/logout');
