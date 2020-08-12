@@ -12,18 +12,13 @@ use think\Request;
 use think\Session;
 
 class Delete extends Controller {
-    protected $beforeActionList = [
-        'get_user'=>['except'=>'']
-    ];
-
-    protected function get_user(){
+    //删除菜单数据
+    public function menu(Request $request){
         $user_id = Session::get('user_id');
         if(empty($user_id)){
             $this->redirect('/admin/login');
         }
-    }
 
-    public function menu(Request $request){
         $param = $request->param();
         $id = $param['id'];
         if(empty($id)){
