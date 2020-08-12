@@ -9,14 +9,14 @@
          <div class="row">
              <div class="col-sm-12">
                  <section class="panel">
-                     <!--<header class="panel-heading">-->
-                         <!--菜单列表-->
+                     <header class="panel-heading">
+                         <a type="button" name="add" class="btn btn-success btn-capsul">新增菜单</a>
                          <!--<span class="tools pull-right">-->
                              <!--<a class="refresh-box fa fa-repeat" href="javascript:;"></a>-->
                              <!--<a class="collapse-box fa fa-chevron-down" href="javascript:;"></a>-->
                              <!--<a class="close-box fa fa-times" href="javascript:;"></a>-->
                          <!--</span>-->
-                     <!--</header>-->
+                     </header>
                      <div class="panel-body">
                          <table class="table  table-hover general-table">
                              <thead>
@@ -27,7 +27,7 @@
                                  <th>ICON</th>
                                  <th>状态</th>
                                  <th>排序</th>
-                                 <th>操作</th>
+                                 <th width="120">操作</th>
                              </tr>
                              </thead>
                              <tbody>
@@ -37,7 +37,12 @@
                              <tr>
                                  <td colspan="3"><b>&nbsp;--</b>{{$vo.name}}</td>
                                  <td>{{$vo.icon}}</td>
-                                 <td>{{$vo.is_show}}</td>
+                                 <td>
+                                     {switch name="vo.is_show"}
+                                     {case value="1"}显示{/case}
+                                     {case value="0"}隐藏{/case}
+                                     {/switch}
+                                 </td>
                                  <td>{{$vo.sort}}</td>
                                  <td></td>
                              </tr>
@@ -47,9 +52,17 @@
                                  <td>{{$child.controller}}</td>
                                  <td>{{$child.action}}</td>
                                  <td>{{$child.icon}}</td>
-                                 <td>{{$child.is_show}}</td>
+                                 <td>
+                                     {switch name="vo.is_show"}
+                                     {case value="1"}显示{/case}
+                                     {case value="0"}隐藏{/case}
+                                     {/switch}
+                                 </td>
                                  <td>{{$child.sort}}</td>
-                                 <td></td>
+                                 <td>
+                                     <a type="button" data-id="{{$child.id}}" name="update" class="btn btn-sm btn-info btn-capsul">修改</a>
+                                     <a type="button" data-id="{{$child.id}}" name="delete" class="btn btn-sm btn-danger btn-capsul">删除</a>
+                                 </td>
                              </tr>
                              {/volist}
                              {/volist}
@@ -62,5 +75,60 @@
          </div>
      </div>
  </div>
+
+ <!--页面JS-->
+ <script type="text/javascript">
+     layui.use(['layer', 'jquery'], function() {
+         var layer = layui.layer, //弹层
+             $ = layui.jquery;
+         /*layer弹出一个示例*/
+         $('a[name=add]').click(function () {
+             layer.open({
+                 type: 2,
+                 title: '更新菜单',
+                 // closeBtn: true, //不显示关闭按钮
+                 // shade: false,
+                 area: ['500px', '70%'],
+                 // time: 2000, //2秒后自动关闭
+                 // anim: 2,
+                 content: "{{:url('Admin/menu_add')}}?id="+id, //iframe的url，no代表不显示滚动条
+             });
+         });
+
+         $('a[name=update]').click(function () {
+             var id = $(this).data('id');
+             layer.open({
+                 type: 2,
+                 title: '更新菜单',
+                 // closeBtn: true, //不显示关闭按钮
+                 // shade: false,
+                 area: ['800px', '70%'],
+                 // time: 2000, //2秒后自动关闭
+                 // anim: 2,
+                 content: "{{:url('update/menu')}}?id="+id, //iframe的url，no代表不显示滚动条
+             });
+         });
+
+         $('a[name=delete]').click(function () {
+             var id = $(this).data('id');
+             layer.confirm('确定要删除该菜单吗?', {
+                 btn: ['是','否'] //按钮
+             }, function(){
+                 $.post("{{:url('delete/menu')}}",{id:id},function (res) {
+                     if(res.code == 1){
+                         layer.msg(res.data,{icon:1});
+                         setTimeout(function (){
+                             parent.location.reload();
+                         },800);
+                     }else{
+                         layer.msg(res.data,{icon:2});
+                     }
+                 });
+             }, function(){
+                 layer.closeAll();
+             });
+         });
+     });
+ </script>
             <!--main content end-->
  {include file="public/footer"}

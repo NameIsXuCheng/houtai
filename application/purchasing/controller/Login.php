@@ -72,7 +72,7 @@ class Login extends Controller {
         foreach($privilege as $k=>$v){
             //查看子级数据
             $privilege_child=Db::name("authority")
-                ->where(['id'=>['in',$privilege_id],'parent_id'=>$v['id'],'is_show'=>1])
+                ->where(['id'=>['in',$privilege_id],'parent_id'=>$v['id']])
                 ->order('sort asc')->select();
             if(!empty($privilege_child)){
                 $tmp[$v['model']][$v['controller']]['name'] = $v['name'];
@@ -87,6 +87,7 @@ class Login extends Controller {
                         'name'=> $value['name'],
                         'sort'=> $value['sort'],
                         'code'=> $value['code'],
+                        'is_show'=> $value['is_show'],
                         'is_selected'=>0,
                     ];
                 }

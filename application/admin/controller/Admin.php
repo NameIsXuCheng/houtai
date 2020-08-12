@@ -42,6 +42,7 @@ class Admin extends Basic {
                 $tmp[$v['model']][$v['controller']]['id'] = $v['id'];
                 foreach ($privilege_child as $j=>$value){
                     $tmp[$v['model']][$v['controller']]['child'][$value['action']]=[
+                        'id'=> $value['id'],
                         'model'=> $value['model'],
                         'controller'=> $value['controller'],
                         'action'=> $value['action'],
@@ -61,4 +62,5 @@ class Admin extends Basic {
         $this->assign('menu',$tmp);
         return view();
     }
+
 }
