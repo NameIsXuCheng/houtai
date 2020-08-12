@@ -40,8 +40,7 @@ class Login extends Controller {
             Session::set('user_id',$data['parent_id']==0?$data['id']:$data['parent_id']);//标记为某个企业的账户
 
             Session::set('child_user_id', $data['id']);
-            //权限获取过来
-            Session::set("privilege",$this->privilege($data['role_id']));
+
             Session::set("role_id",$data['role_id']);
             return json(['code'=>1,'data'=>'登陆成功','url'=>'/admin/index']);
         }
