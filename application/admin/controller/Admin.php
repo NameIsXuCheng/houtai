@@ -12,6 +12,7 @@ use think\Request;
 
 class Admin extends Basic {
     public function index(){
+
         return view();
     }
 

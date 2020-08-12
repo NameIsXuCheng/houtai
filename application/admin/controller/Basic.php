@@ -29,7 +29,6 @@ class Basic extends Controller {
         $controller = Request::instance()->controller();
         $privilege[$this->model][$controller]['open'] = 1;
         $privilege[$this->model][$controller]['child'][$action]['is_selected'] = 1;
-//        print_t_new($privilege[$this->model]);
         $this->assign('pri',$privilege[$this->model]);
         //判断logo
         $logo = Session::get("logo");
@@ -81,6 +80,7 @@ class Basic extends Controller {
     private function privilege_listen($privilege){
 //        $privilege=Session::get("privilege");
         if(!isset($privilege[$this->model][Request::instance()->controller()])){
+            //exit(json_encode($privilege[$this->model][Request::instance()->controller()]));
             header("Content-type:text/html;charset=utf-8");
             if(Request::instance()->isAjax()){
                 echo json_encode(['code'=>0,'data'=>'没有权限']);
