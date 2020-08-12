@@ -165,3 +165,21 @@ function alert_json($code=0,$msg='',$data=''){
             'data'=>$data
         ]);
 }
+function article_category($cate=0){
+    $name = '';
+    switch ($cate){
+        case '1':
+            $name = '欧洲铁路小包';
+            break;
+        case '2':
+            $name = '欧美特快专线';
+            break;
+        case '3':
+            $name = '欧美专线';
+            break;
+        default:
+            $name = '无类目';
+            break;
+    }
+    return $name;
+}

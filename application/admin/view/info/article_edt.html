@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>文章修改</title>
+    <link rel="stylesheet" href="/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/layuiadmin/style/admin.css" media="all">
+</head>
+
+<body>
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-body">
+            <form class="layui-form" action="?" method="post">
+                <input type="hidden" name="article_id" value="{{$article_info.id}}" />
+                <div class="layui-form-item">
+                    <label class="layui-form-label">文章标题</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="title" value="{{$article_info.title}}" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">类型</label>
+                    <div class="layui-input-block">
+                        <select name="type" lay-verify="required">
+                            <option value=""></option>
+                            <option value="1" {if condition="$article_info.type==1"}selected{/if}>产品文章</option>
+                            <option value="2" {if condition="$article_info.type==2"}selected{/if}>其他文章</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">国家</label>
+                    <div class="layui-input-block">
+                        <select name="country" lay-verify="required">
+                            {volist name="country" id="vc"}
+                                <option value="{{$vc.country_code}}" {if condition="$article_info.country==$vc.country_code"}selected{/if}>{{$vc.country_name}}</option>
+                            {/volist}
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">类目</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="category" value="1" title="欧洲铁路小包" {if condition="$article_info.category==1"}checked{/if}>
+                        <input type="radio" name="category" value="2" title="欧美特快专线" {if condition="$article_info.category==2"}checked{/if}>
+                        <input type="radio" name="category" value="3" title="欧美专线" {if condition="$article_info.category==3"}checked{/if}><!--checked-->
+                    </div>
+                </div>
+                <!--<div class="layui-form-item">
+                    <label class="layui-form-label">类目</label>
+                    <div class="layui-input-inline">
+                        <input type="password" name="category" placeholder="请输入类目" autocomplete="off" class="layui-input">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">类目可不填。如果首页需展示请填写产品大类。例：填写“欧美特快专线”，文章将在欧美特快专线类目下展示。</div>
+                </div>-->
+
+                <!--<div class="layui-form-item">
+                    <label class="layui-form-label">展示</label>
+                    <div class="layui-input-block">
+                        <input type="checkbox" name="is_show" lay-skin="switch" checked>
+                    </div>
+                </div>-->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">缩略图</label>
+                    <div class="layui-input-block">
+                        <input name="thumbnail" type="hidden" value="{{$article_info.thumbnail}}">
+                        <button type="button" class="layui-btn" id="thumbnail">
+                            <i class="layui-icon">&#xe67c;</i>上传图片
+                        </button>
+                        <span style="color:red"></span>
+                        <div class="layui-collapse" lay-accordion="" style="width: 112px;text-align: center;vertical-align: center">
+                            <img id="logo" src="{{$article_info.thumbnail}}"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">内容</label>
+                    <div class="layui-input-block">
+                        <textarea id="content" style="display: none;">{{$article_info.content}}}</textarea>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn ajax-post" lay-submit="" lay-filter="buttonSubmit" target-form="form-horizontal">提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="/layuiadmin/layui/layui.js"></script>
+<script>
+    layui.use(['layer','jquery','form','layedit','upload'], function(){
+        var $ = layui.jquery;
+        var form = layui.form;
+        var layedit = layui.layedit;
+        var upload = layui.upload;
+        var edindex = layedit.build('content'); //建立编辑器
+        //执行实例
+        var uploadInst = upload.render({
+            elem: '#thumbnail' //绑定元素
+            ,url: '{{:url("admin/info/pic_upload")}}' //上传接口
+            ,accept:'images'
+            ,size:'5120'//5mb
+            ,number:1
+            ,choose:function(obj){
+
+            }
+            ,done: function(res){
+                //上传完毕回调
+                $('#thumbnail').next("span").html('成功');
+                $('#thumbnail').prev("input").val(res.savename);
+                $('#logo').attr('src',res.savename);
+            }
+            ,error: function(){
+                //请求异常回调
+                layer.msg('上传失败！' + index, {icon: 5});
+            }
+        });
+
+        form.on('submit(buttonSubmit)', function (data) {
+            form.verify({
+                money:function (value,item) {
+                    if(!$.isNumeric(value)){
+                        return '请输入正确金额！'
+                    }
+                },})
+            var id = $("input[name='article_id']").val();
+            var title = $("input[name='title']").val();
+            var type = $("select[name='type']").val();
+            var country = $("select[name='country']").val();
+            var category = $("input[name='category']:checked").val();
+            var thumbnail = $("input[name='thumbnail']").val();
+            var content = layedit.getContent(edindex);
+
+            $.post('{{:url("admin/info/article_edt")}}',
+                {
+                    id:id,
+                    title:title,
+                    is_show:1,
+                    type:type,
+                    country:country,
+                    category:category,
+                    thumbnail:thumbnail,
+                    content:content,
+                },
+                function (result) {
+                if (result.code == 1) {
+                    layer.msg(result.msg,{time:3000},function () {
+                        var index = parent.layer.getFrameIndex(window.name);
+                        parent.layer.close(index);
+                        parent.window.reload();
+                    });
+                } else {
+                    layer.msg(result.msg);
+                }
+            })
+            return false;
+        })
+    })
+</script>
+</body>
+</html>

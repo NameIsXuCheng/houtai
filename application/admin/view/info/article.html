@@ -1,4 +1,5 @@
  {include file="public/header"}
+
             <!--sidebar start-->
             {include file="public/sidebar"}
             <!--sidebar end-->
@@ -28,9 +29,12 @@
              <div class="row">
                  <div class="col-sm-12">
                      <section class="panel">
-                         <header class="panel-heading panel-border">
-                             文章管理
-                             <!--<span class="tools pull-right">
+                         <header class="panel-heading panel-border" >
+                            <!-- 文章管理-->
+
+                                    <button  type="button" class="add btn btn-success btn-capsul">添加文章</button>
+
+                                    <!--<span class="tools pull-right">
                                         <a class="refresh-box fa fa-repeat" href="javascript:;"></a>
                                         <a class="collapse-box fa fa-chevron-down" href="javascript:;"></a>
                                         <a class="close-box fa fa-times" href="javascript:;"></a>
@@ -48,6 +52,9 @@
                                      </th>
                                      <th>
                                          类目
+                                     </th>
+                                     <th>
+                                         国家
                                      </th>
                                      <th>
                                          内容
@@ -79,14 +86,18 @@
                                              {default /}其他
                                              {/switch}
                                          </td>
+
                                          <td>
-                                             {{$vo.category}}
+                                             {{:article_category($vo.category)}}
                                          </td>
                                          <td>
-                                             {{:mb_substr($vo.body,0,20)}}...
+                                             {if condition="empty($vo.country_name)"}无{else/}{{$vo.country_name}}{/if}
                                          </td>
                                          <td>
-                                             {if condition="empty($vo.thumbnail)"}无{else/}<img src="__PUBLIC__/{{$vo.thumbnail}}" width="30px" height="20px">{/if}
+                                             {{:mb_substr($vo.content,0,20)}}...
+                                         </td>
+                                         <td>
+                                             {if condition="empty($vo.thumbnail)"}无{else/}<img src="{{$vo.thumbnail}}" width="60px" height="30px">{/if}
                                          </td>
                                          <td>
                                              {{$vo.created_at}}
@@ -100,10 +111,6 @@
                                          </td>
                                  </tr>
                                  {/volist}
-
-
-
-
                                  </tbody>
                              </table>
                          </div>
@@ -132,9 +139,57 @@
                  //time: 2000, //2秒后自动关闭
                  closeBtn: 1, //不显示关闭按钮
                  maxmin: true, //开启最大化最小化按钮
-                 area: ['80%', '90%'],
+                 area: ['80%', '80%'],
                  content: url//'{:url("finance/detail_product")}' + "?order_no=" + data.order_no
-            })
+             })
+         })
+
+         $('.add').click(function () {
+             var url = "{{:url('Info/article_add')}}";
+             //open_layer('600px','400px','文章修改',url)
+             layer.open({
+                 type: 2,
+                 anim: 3,
+                 title: '文章添加',
+                 shadeClose: true,
+                 shade: [0],
+                 //time: 2000, //2秒后自动关闭
+                 closeBtn: 1, //不显示关闭按钮
+                 maxmin: true, //开启最大化最小化按钮
+                 area: ['80%', '80%'],
+                 content: url//'{:url("finance/detail_product")}' + "?order_no=" + data.order_no
+             })
+         })
+         $('.del').click(function () {
+             var id = $(this).attr('data-id');
+             layer.confirm('确定删除该文章吗？',
+                 {title: '文章删除', btn: ['确认', '取消'],},
+                 function (index) {
+                     $.post({
+                         url: "{{:url('info/article_del')}}",
+                         type: 'post',
+                         // sync:true,
+                         data: {
+                             'id': id
+                         },
+                         error: function (data) {
+                             console.log(data)
+                         },
+                         success: function (result) {
+                             if (result.code == 1) {
+                                 layer.msg(result.msg,{time:3000},function () {
+                                     location.reload();
+                                 });
+                             } else {
+                                 layer.msg(result.msg);
+                             }
+                         },
+                         complete: function () {
+                             // layer.close(this.layerIndex);
+                         },
+                     });
+                 }
+             );
          })
      })
 

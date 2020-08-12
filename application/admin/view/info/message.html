@@ -1,13 +1,206 @@
- {include file="public/header"}
-            <!--sidebar start-->
-            {include file="public/sidebar"}
-            <!--sidebar end-->
+{include file="public/header"}
 
-            <!--main content start-->
-            <div id="content" class="ui-content ui-content-aside-overlay">
-                <div class="ui-content-body">
-                    message
+<!--sidebar start-->
+{include file="public/sidebar"}
+<!--sidebar end-->
+
+<!--main content start-->
+<!--main content start-->
+<div id="content" class="ui-content ui-content-aside-overlay">
+    <!--page header start-->
+    <div class="page-head-wrap">
+        <h4 class="margin0">
+            留言管理
+        </h4>
+        <!-- <div class="breadcrumb-right">
+             <ol class="breadcrumb">
+                 <li><a href="#">Home</a></li>
+                 <li><a href="#">Data Table</a></li>
+                 <li class="active">Dynamic Data Table</li>
+             </ol>
+         </div>-->
+    </div>
+    <!--page header end-->
+
+    <div class="ui-content-body">
+
+        <div class="ui-container">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel">
+                        <header class="panel-heading panel-border" >
+                            <!-- 文章管理-->
+
+                            <button  type="button" class="add btn btn-success btn-capsul">添加文章</button>
+
+                            <!--<span class="tools pull-right">
+                                <a class="refresh-box fa fa-repeat" href="javascript:;"></a>
+                                <a class="collapse-box fa fa-chevron-down" href="javascript:;"></a>
+                                <a class="close-box fa fa-times" href="javascript:;"></a>
+                            </span>-->
+                        </header>
+                        <div class="panel-body table-responsive">
+                            <table class="table convert-data-table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>
+                                        姓名
+                                    </th>
+                                    <th>
+                                        邮箱
+                                    </th>
+                                    <th>
+                                        手机
+                                    </th>
+                                    <th>
+                                        传真
+                                    </th>
+                                    <th>
+                                        内容
+                                    </th>
+                                    <th>
+                                        留言ip
+                                    </th>
+                                    <th>
+                                        留言时间
+                                    </th>
+                                    <th>
+                                        重推时间
+                                    </th>
+                                    <th>
+                                        发送状态
+                                    </th>
+                                    <th>
+                                        操作
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {volist name="message_info" id="vo"}
+                                <tr>
+                                    <td>
+                                        {{$vo.name}}
+                                    </td>
+                                    <td>
+                                        {{$vo.mail}}
+                                    </td>
+                                    <td>
+                                        {{$vo.tel}}
+                                    </td>
+                                    <td>
+                                        {{$vo.fax}}
+                                    </td>
+                                    <td>
+                                        {{:mb_substr($vo.content,0,20)}}...
+                                    </td>
+                                    <td>
+                                        {{$vo.ip}}
+                                    </td>
+                                    <td>
+                                        {{$vo.created_at}}
+                                    </td>
+                                    <td>
+                                        {if condition="empty($vo.updated_at)"}无{else/}{{$vo.updated_at}}{/if}
+                                    </td>
+                                    <td>
+                                        {switch vo.is_send}
+                                        {case 1}<span style="color: green">成功</span>{/case}
+                                        {case 2}<span style="color: red">失败</span>{/case}
+                                        {default/}其他
+                                        {/switch}
+                                    <td>
+                                        <button type="button" data-id="{{$vo.id}}" class="edt btn btn-info btn-capsul">修改</button>
+                                    {if condition="$vo.is_send==2"} <button type="button" data-id="{{$vo.id}}" class="del btn btn-info btn-danger btn-capsul" >重推</button>{else/}{{$vo.updated_at}}{/if}
+
+                                    </td>
+
+
+                                    </td>
+                                </tr>
+                                {/volist}
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
                 </div>
+
             </div>
-            <!--main content end-->
- {include file="public/footer"}
+
+
+        </div>
+
+    </div>
+</div>
+<script>
+    layui.use(['layer', 'jquery'], function() {
+        $('.edt').click(function () {
+            var id = $(this).attr('data-id');
+            var url = "{{:url('Info/article_edt')}}"+"?id="+id;
+            //open_layer('600px','400px','文章修改',url)
+            layer.open({
+                type: 2,
+                anim: 3,
+                title: '文章修改',
+                shadeClose: true,
+                shade: [0],
+                //time: 2000, //2秒后自动关闭
+                closeBtn: 1, //不显示关闭按钮
+                maxmin: true, //开启最大化最小化按钮
+                area: ['80%', '80%'],
+                content: url//'{:url("finance/detail_product")}' + "?order_no=" + data.order_no
+            })
+        })
+
+        $('.add').click(function () {
+            var url = "{{:url('Info/article_add')}}";
+            //open_layer('600px','400px','文章修改',url)
+            layer.open({
+                type: 2,
+                anim: 3,
+                title: '文章添加',
+                shadeClose: true,
+                shade: [0],
+                //time: 2000, //2秒后自动关闭
+                closeBtn: 1, //不显示关闭按钮
+                maxmin: true, //开启最大化最小化按钮
+                area: ['80%', '80%'],
+                content: url//'{:url("finance/detail_product")}' + "?order_no=" + data.order_no
+            })
+        })
+        $('.del').click(function () {
+            var id = $(this).attr('data-id');
+            layer.confirm('确定删除该文章吗？',
+                {title: '文章删除', btn: ['确认', '取消'],},
+                function (index) {
+                    $.post({
+                        url: "{{:url('info/article_del')}}",
+                        type: 'post',
+                        // sync:true,
+                        data: {
+                            'id': id
+                        },
+                        error: function (data) {
+                            console.log(data)
+                        },
+                        success: function (result) {
+                            if (result.code == 1) {
+                                layer.msg(result.msg,{time:3000},function () {
+                                    location.reload();
+                                });
+                            } else {
+                                layer.msg(result.msg);
+                            }
+                        },
+                        complete: function () {
+                            // layer.close(this.layerIndex);
+                        },
+                    });
+                }
+            );
+        })
+    })
+
+</script>
+<!--main content end-->
+{include file="public/footer"}

@@ -24,7 +24,7 @@ class Basic extends Controller {
 //        Session::set("privilege",$this->privilege($role_id));
         $privilege = $this->privilege($role_id);
         //判断是否具有权限  默认有一些是不需要权限的   其他需要权限
-        $this->privilege_listen($privilege);
+        //$this->privilege_listen($privilege);
         $action = Request::instance()->action();
         $controller = Request::instance()->controller();
         $privilege[$this->model][$controller]['open'] = 1;
