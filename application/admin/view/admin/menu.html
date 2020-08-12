@@ -41,8 +41,8 @@
                                  <td>{{$vo.icon}}</td>
                                  <td>
                                      {switch name="vo.is_show"}
-                                     {case value="1"}显示{/case}
                                      {case value="0"}隐藏{/case}
+                                     {case value="1"}显示{/case}
                                      {/switch}
                                  </td>
                                  <td>{{$vo.sort}}</td>
@@ -55,7 +55,7 @@
                                  <td>{{$child.action}}</td>
                                  <td>{{$child.icon}}</td>
                                  <td>
-                                     {switch name="vo.is_show"}
+                                     {switch name="child.is_show"}
                                      {case value="1"}显示{/case}
                                      {case value="0"}隐藏{/case}
                                      {/switch}
