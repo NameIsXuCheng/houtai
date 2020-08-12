@@ -33,7 +33,7 @@ class Login extends Controller {
         $data=$UserMessage->field('role_id,password,salt,user_name,id,parent_id,shipping_default,logo_img')
             ->where(['username|user_name'=>$username])->find();
         if(!$data){
-            return json(['code'=>1,'data'=>lang('c_username_or_password_error')]);
+            return json(['code'=>0,'data'=>'用户名账户或密码错误']);
         }
         if(md5($password.$data['salt'])==$data['password']){
             Session::set('username', $username);
@@ -72,7 +72,7 @@ class Login extends Controller {
         foreach($privilege as $k=>$v){
             //查看子级数据
             $privilege_child=Db::name("authority")
-                ->where(['id'=>['in',$privilege_id],'parent_id'=>$v['id'],'is_show'=>1])
+                ->where(['id'=>['in',$privilege_id],'parent_id'=>$v['id']])
                 ->order('sort asc')->select();
             if(!empty($privilege_child)){
                 $tmp[$v['model']][$v['controller']]['name'] = $v['name'];
@@ -87,6 +87,7 @@ class Login extends Controller {
                         'name'=> $value['name'],
                         'sort'=> $value['sort'],
                         'code'=> $value['code'],
+                        'is_show'=> $value['is_show'],
                         'is_selected'=>0,
                     ];
                 }

@@ -9,7 +9,7 @@
         <ul class="nav nav-sub {if condition="$vo.open eq 1"}nav-sub--open{/if}">
         <li class="nav-sub-header"><a href=""><span>{{$vo.name}}</span></a></li>
         {volist name="vo.child" id="item"}
-        <li {if condition="$item.is_selected eq 1"}class="active"{/if}><a href="{{$item.url}}"><span>{{$item.name}}</span></a></li>
+        <li {if condition="$item.is_selected eq 1"}class="active"{/if} {if condition="$item.is_show eq '0'"}style="display: none" {/if}><a href="{{$item.url}}"><span>{{$item.name}}</span></a></li>
         {/volist}
     </ul>
     </li>

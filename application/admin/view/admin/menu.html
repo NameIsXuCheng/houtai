@@ -10,76 +10,65 @@
              <div class="col-sm-12">
                  <section class="panel">
                      <header class="panel-heading">
-                         菜单列表
-                         <span class="tools pull-right">
-                             <a class="refresh-box fa fa-repeat" href="javascript:;"></a>
-                             <a class="collapse-box fa fa-chevron-down" href="javascript:;"></a>
-                             <a class="close-box fa fa-times" href="javascript:;"></a>
-                         </span>
+
+                         <a type="button" name="add" class="btn btn-success btn-capsul">新增菜单</a>
+                         <!--<span class="tools pull-right">-->
+                             <!--<a class="refresh-box fa fa-repeat" href="javascript:;"></a>-->
+                             <!--<a class="collapse-box fa fa-chevron-down" href="javascript:;"></a>-->
+                             <!--<a class="close-box fa fa-times" href="javascript:;"></a>-->
+                         <!--</span>-->
+
                      </header>
                      <div class="panel-body">
                          <table class="table  table-hover general-table">
                              <thead>
                              <tr>
-                                 <th> Company</th>
-                                 <th class="hidden-phone">Descrition</th>
-                                 <th>Profit</th>
-                                 <th>Status</th>
+                                 <th>菜单名称</th>
+                                 <th>控制器</th>
+                                 <th>方法</th>
+                                 <th>ICON</th>
+                                 <th>状态</th>
+                                 <th>排序</th>
+                                 <th width="120">操作</th>
                              </tr>
                              </thead>
                              <tbody>
+                             {volist name="menu" key="key" id="item"}
+                             <tr><td colspan="7"><h4>{{$key}}</h4></td></tr>
+                             {volist name="item" key="k" id="vo"}
                              <tr>
-                                 <td><a href="#">Graphics</a></td>
-                                 <td class="hidden-phone">Lorem Ipsum dorolo imit</td>
-                                 <td>1320.00$ </td>
-                                 <td><span class="label label-info label-mini">Due</span></td>
-                             </tr>
-                             <tr>
+                                 <td colspan="3"><b>&nbsp;--</b>{{$vo.name}}</td>
+                                 <td>{{$vo.icon}}</td>
                                  <td>
-                                     <a href="#">
-                                         ThemeBucket
-                                     </a>
+                                     {switch name="vo.is_show"}
+                                     {case value="1"}显示{/case}
+                                     {case value="0"}隐藏{/case}
+                                     {/switch}
                                  </td>
-                                 <td class="hidden-phone">Lorem Ipsum dorolo</td>
-                                 <td>556.00$ </td>
-                                 <td><span class="label label-warning label-mini">Due</span></td>
+                                 <td>{{$vo.sort}}</td>
+                                 <td></td>
                              </tr>
+                             {volist name="vo.child" id="child"}
                              <tr>
+                                 <td><b>&nbsp;&nbsp;&nbsp;--</b>{{$child.name}}</td>
+                                 <td>{{$child.controller}}</td>
+                                 <td>{{$child.action}}</td>
+                                 <td>{{$child.icon}}</td>
                                  <td>
-                                     <a href="#">
-                                         XYZ
-                                     </a>
+                                     {switch name="vo.is_show"}
+                                     {case value="1"}显示{/case}
+                                     {case value="0"}隐藏{/case}
+                                     {/switch}
                                  </td>
-                                 <td class="hidden-phone">Lorem Ipsum dorolo</td>
-                                 <td>13240.00$ </td>
-                                 <td><span class="label label-success label-mini">Paid</span></td>
-                             </tr>
-                             <tr>
+                                 <td>{{$child.sort}}</td>
                                  <td>
-                                     <a href="#">
-                                         BCSE
-                                     </a>
+                                     <a type="button" data-id="{{$child.id}}" name="update" class="btn btn-sm btn-info btn-capsul">修改</a>
+                                     <a type="button" data-id="{{$child.id}}" name="delete" class="btn btn-sm btn-danger btn-capsul">删除</a>
                                  </td>
-                                 <td class="hidden-phone">Lorem Ipsum dorolo</td>
-                                 <td>3455.50$ </td>
-                                 <td><span class="label label-danger label-mini">Paid</span></td>
                              </tr>
-                             <tr>
-                                 <td><a href="#">AVC Ltd</a></td>
-                                 <td class="hidden-phone">Lorem Ipsum dorolo imit</td>
-                                 <td>110.00$ </td>
-                                 <td><span class="label label-primary label-mini">Due</span></td>
-                             </tr>
-                             <tr>
-                                 <td>
-                                     <a href="#">
-                                         Themeforest
-                                     </a>
-                                 </td>
-                                 <td class="hidden-phone">Lorem Ipsum dorolo</td>
-                                 <td>456.00$ </td>
-                                 <td><span class="label label-warning label-mini">Due</span></td>
-                             </tr>
+                             {/volist}
+                             {/volist}
+                             {/volist}
                              </tbody>
                          </table>
                      </div>
@@ -88,5 +77,60 @@
          </div>
      </div>
  </div>
+
+ <!--页面JS-->
+ <script type="text/javascript">
+     layui.use(['layer', 'jquery'], function() {
+         var layer = layui.layer, //弹层
+             $ = layui.jquery;
+         /*layer弹出一个示例*/
+         $('a[name=add]').click(function () {
+             layer.open({
+                 type: 2,
+                 title: '更新菜单',
+                 // closeBtn: true, //不显示关闭按钮
+                 // shade: false,
+                 area: ['500px', '70%'],
+                 // time: 2000, //2秒后自动关闭
+                 // anim: 2,
+                 content: "{{:url('Admin/menu_add')}}?id="+id, //iframe的url，no代表不显示滚动条
+             });
+         });
+
+         $('a[name=update]').click(function () {
+             var id = $(this).data('id');
+             layer.open({
+                 type: 2,
+                 title: '更新菜单',
+                 // closeBtn: true, //不显示关闭按钮
+                 // shade: false,
+                 area: ['800px', '70%'],
+                 // time: 2000, //2秒后自动关闭
+                 // anim: 2,
+                 content: "{{:url('update/menu')}}?id="+id, //iframe的url，no代表不显示滚动条
+             });
+         });
+
+         $('a[name=delete]').click(function () {
+             var id = $(this).data('id');
+             layer.confirm('确定要删除该菜单吗?', {
+                 btn: ['是','否'] //按钮
+             }, function(){
+                 $.post("{{:url('delete/menu')}}",{id:id},function (res) {
+                     if(res.code == 1){
+                         layer.msg(res.data,{icon:1});
+                         setTimeout(function (){
+                             parent.location.reload();
+                         },800);
+                     }else{
+                         layer.msg(res.data,{icon:2});
+                     }
+                 });
+             }, function(){
+                 layer.closeAll();
+             });
+         });
+     });
+ </script>
             <!--main content end-->
  {include file="public/footer"}

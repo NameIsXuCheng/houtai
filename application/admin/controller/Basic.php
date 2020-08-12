@@ -25,8 +25,6 @@ class Basic extends Controller {
         $controller = Request::instance()->controller();
         $privilege[$this->model][$controller]['open'] = 1;
         $privilege[$this->model][$controller]['child'][$action]['is_selected'] = 1;
-//        print_t_new($privilege);
-
         $this->assign('pri',$privilege[$this->model]);
         //判断logo
         $logo = Session::get("logo");
