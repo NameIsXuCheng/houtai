@@ -1,0 +1,205 @@
+{include file="public/header"}
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/theme.css">
+<link href="__PUBLIC__/home/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__PUBLIC__/home/js/jquery-1.11.2.min.js"></script>
+<title>天众国际-欧美特快专线_英国快线</title>
+
+</head>
+<body>
+
+<div id="wrap" class="main">
+  <div id="dvContainer">
+
+	  {include file="public/navbar"}<!--header结束-->
+    
+    <div class="bann"><img src="__PUBLIC__/home/images/exit_banner.jpg" width="100%" /></div>
+
+    <div id="layerarea">
+
+<!-- Main -->
+
+ <div class="warpper">
+
+
+	<div class="service_liu visible-xs">
+	  <ul>
+		<li><i class="fa fa-home"></i>首页</li>
+		<li><i class="fa fa-angle-double-right"></i>出口服务</li>
+		<li class="service_lac"><i class="fa fa-angle-double-right"></i>欧美快线</li>
+	  </ul>
+	</div> 
+
+	 
+<div class="exit_xq_wrap">
+	<div class="container">
+	  <div class="exit_xq_main">
+		  
+
+		<div class="navContent">
+			<a class="navContent_title" href="{{:url('exit_one')}}">欧美特快专线</a>
+
+			{volist name="article_info" id="vo"}
+			<a class="navContent_title2 {if condition="$vo.id eq $now_id"}navContent_title_active{/if}" href="?id={{$vo.id}}">{{$vo.title}}</a>
+			{/volist}
+
+
+		</div> 
+		  
+	    <div class="rightContent">
+		  <div class="exit_xq_main_title">
+			 <div class="exit_xq_main_title_top">  
+				<img src="{{$article.thumbnail}}" width="58px">
+				<span>{{$article.title}}</span>
+			  </div>	
+			<div class="clear"></div>  
+	      </div>
+		  
+		  <div class="rightContent_main">
+
+			  {{$article.content}}
+			  <!--文章主体-->
+
+		    <!--<div class="rightContent_main1">
+				<h4>服务介绍</h4>
+				<p class="rightContent_main1_p">商家把打包好的商品包裹送至国内仓库，包裹分拨完成后由天众负责国内报关，经海关审核后放行，进入国际运输阶段，直飞目的国，6h快速清关，时效快至4天可完成妥投，继而在英国完成当地清关与末端配送，发送至收货人手中，完成全链路的出口服务。</p>
+			</div>
+			<div class="rightContent_main1">
+				<h4>寄件须知</h4>
+				<div class="rightContent_main_table">
+				  <table class="tbl_basic tbl_rwd">
+					<colgroup>
+					  <col style="width:10%;">
+					  <col style="width:20%;">
+					  <col style="width:20%;">
+					  <col style="width:25%;">
+					  <col style="width:25%;">
+					</colgroup>
+					<thead>
+					  <tr>
+						<th scope="col"></th>
+						<th scope="col">时效</th>
+						<th scope="col">重量限制</th>
+						<th scope="col">体积</th>
+						<th scope="col">可发</th>
+					  </tr>
+					</thead>
+					<tbody>
+					  <tr>
+						<th scope="row">含电</th>
+						<td>4~6工作日</td>
+						<td>0~30kg</td>
+						<td>长<50cm<br/>长+宽<80cm<br/>体积<0.031m³</td>
+						<td>带电产品、普货</td>
+					  </tr>
+					  <tr>
+						<th scope="row">普货</th>
+						<td>4~6工作日</td>
+						<td>0~15kg</td>
+						<td>61cm*46cm*46cm</td>
+						<td>普货</td>
+					  </tr>
+
+					</tbody>
+				  </table>
+				</div>
+				<div class="rightContent_main_wen">
+					<h5>1.泡重计费标准</h5>
+					<p>包裹实重范围：0~30kg</p>
+					<p>材积计算标准：长*宽*高/5000</p>
+					<p>计费标准：取实重和体积重中较大值计费；</p>
+					<p>不接受不规则凹凸等产品，如有发货会造成退件。</p>
+				</div>
+				<div class="rightContent_main_wen">
+					<h5>2.服务说明</h5>
+					<p>15kg内可提供偏远服务。</p>
+				</div>
+				<div class="rightContent_main_wen">
+					<h5>3.申报限制</h5>
+					<p>a.申报价值不超过165$商品；</p>
+					<p>b.不接受B2B货物；</p>
+					<p>c.为了保证快速通关，此服务只接受税费预付额（DDP）。</p>
+				</div>
+				<div class="rightContent_main_wen">
+					<h5>4.申报标准</h5>
+					<table class="tbl_basic tbl_rwd">
+					<colgroup>
+					  <col style="width:20%;">
+					  <col style="width:20%;">
+					  <col style="width:20%;">
+					  <col style="width:20%;">
+					  <col style="width:20%;">
+					</colgroup>
+					<tbody>
+					  <tr>
+						<th scope="row">重量</th>
+						<td>2.5-4kg</td>
+						<td>4-10kg</td>
+						<td>10-20kg</td>
+						<td>20-30kg</td>
+					  </tr>
+					  <tr>
+						<th scope="row">申报价值要求</th>
+						<td>18$以上</td>
+						<td>40$以上</td>
+						<td>100$以上</td>
+						<td>150$以上</td>
+					  </tr>
+					  <tr>
+						<th scope="row">税收标准</th>
+						<td colspan="4">申报价值*%20</td>
+					  </tr>	
+
+					</tbody>
+				  </table>
+				  <div class="rightContent_main_note">注：此申报要求不适用于高价值产品，如手机、平板等，若实际价值未达到申报要求，系统会自动提示，需提供产品的实际销售链接。</div>	
+				</div>
+				<div class="rightContent_main_wen">
+					<h5>5.退件说明</h5>
+					<p>a.因地址错误，收件人拒收或其他原因，最终未能成功派送，默认退回我司海外仓库；</p>
+					<p>b.包裹退回后需在15天内给处理方案，超过15天默认销毁；</p>
+					<p>c.此服务所有退件不提供退回香港或深圳业务；</p>
+					<p>d.请自行确保包裹数据的准确性；因下单时数据原因导致包裹配送失败，我司概不负责；</p>
+					<p>e.如因下单数据原因产生额外费用，另行补收，补收权限为3个月。</p>
+				</div>
+				<div class="rightContent_main_wen">
+					<h5>6.不可发产品</h5>
+					<p>a.液体，粉末，仿牌，纯电池、移动电源等产品；</p>
+					<p>不接受任何带品牌产品，以海关知识产权保护网上记载为准。</p>
+				</div>
+				<div class="rightContent_main_wen">
+					<h5>7.操作要求</h5>
+					<p>a.需根据我司模板填写发货信息，以便及时安排转运;</p>
+					<p>b.为提高清关时效，物品描述请不要使用Sample，Accessories，Gift，Parts，Tools等笼统字符；如因申报不符，造成清关延误或退件，扣关等，所有后果由发件人自行承担；</p>
+					<p>c.请正确贴好标签，方便扫描及准确派送。</p>
+				</div>
+				<div class="rightContent_main_wen">
+					<h5>8.赔偿标准</h5>
+					<p>a.包裹上网前丢失赔偿额以申报价值为准，最高不超过人民币300rmb;上网后当地服务商核定丢失，赔偿额以申报价值为准，最高不超过人民币300rmb，不退运费；</p>
+					<p>b.派送时间延误以及包裹破损不设赔偿。</p>
+				</div>
+				<div class="rightContent_main_note2">
+				  <h6>温馨提示</h6>
+				  <p>亲爱的顾客，现疫情期间，国外受疫情影响程度较为严重，因此我们无法向您保证时效，收货时间可能延长，感谢您的理解。</p>
+				</div>	
+				
+				<a class="rightContent_main_button" href="http://erpexport.mttlm.com/purchasing/base/login.html" target="_blank">我要寄件</a>
+				
+		   </div>-->
+			
+		</div>
+		
+		  
+	  </div>	
+		
+	</div>
+</div>
+
+
+
+</div>
+
+<!-- /Main -->
+
+	 {include file="public/footer"}
+</html>

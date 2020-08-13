@@ -1,0 +1,2043 @@
+{include file="public/header"}
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/theme.css">
+<link href="__PUBLIC__/home/css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet"  type="text/css" href="__PUBLIC__/home/css/lrtk.css"/>
+<script type="text/javascript" src="__PUBLIC__/home/js/Common.js"></script>
+    <title>天众国际-运费查询</title>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".fblist a").on("click", function () {
+                var text = $(this).text();
+                var title = $(this).attr("title");
+                var condition = $(this).attr("condition");
+                if (condition == "CommonCountry") {
+                    $(".showfb").val(text);
+                    $("#HiValue").val(title);
+                    $(".fb_1").fadeOut();
+                }
+                if (condition == "CommonCountry1") {
+                    $(".showfb1").val(text);
+                    $("#HiValue1").val(title);
+                    $(".fb_3").fadeOut();
+                }
+            });
+            GetCountry();
+            $("#StartCountry").val("中国");
+            $("#TargetCountry").val("法国");
+            $("#txtStage").val("1");
+        });
+    </script>
+    <script type="text/javascript">
+        function GetCountry() {
+            $.ajax({
+                type: "POST",
+                async: true,
+                url: "__BASE__/Index/api/getContries",
+               // data: { Flag: "GetCounrty", Condition: "" },
+                dataType: "json",
+                success: function (result) {
+                    if (result.Error == false) {
+                        var con = result.Counrty.length;
+                        for (var i = 0; i < con; i++) {
+                            var CountryId = result.Counrty[i].CountryId;
+                            var CnName = result.Counrty[i].CnName;
+                            var EnName = result.Counrty[i].EnName;
+                            var ShortName = result.Counrty[i].ShortName;
+                            var Common = result.Counrty[i].Common
+                            var FirstLetter = EnName.substr(0, 1);
+                            if (Common == "1") {
+                                $("#CommonCountry").append("<li><a href=\"javascript:;\" title=\"" + CountryId + "\" condition=\"CommonCountry\">" + CnName + "(" + EnName + ")</a></li>");
+                                $("#CommonCountry1").append("<li><a  href=\"javascript:;\" title=\"" + CountryId + "\" condition=\"CommonCountry1\">" + CnName + "(" + EnName + ") </a></li>");
+                            }
+                            if ($("#" + FirstLetter).length > 0) {
+                                $("#" + FirstLetter).append("<li><a href=\"javascript:;\" title=\"" + CountryId + "\" condition=\"CommonCountry\">" + CnName + "-" + EnName + "</a></li>");
+                            }
+                            if ($("#" + FirstLetter+"0").length > 0) {
+                                $("#" + FirstLetter + "0").append("<li><a href=\"javascript:;\" title=\"" + CountryId + "\" condition=\"CommonCountry1\">" + CnName + "-" + EnName + "</a></li>");
+                            }
+                        }
+                    }
+                    else {
+                        alert("无国家信息!");
+                    }
+                },
+                error: function () {
+                    alert("加载国家信息失败!");
+
+                }
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        function Checkinput()
+        {
+            if($.trim($("#StartCountry").val())=='')
+            {
+                alert("请选择出发地");
+                return false;
+            }
+            if($.trim($("#TargetCountry").val())=='')
+            {
+                alert("请选择目的地");
+                return false;
+            }
+            if($.trim($("#txtStage").val())=='')
+            {
+                alert("请填写重量");
+                return false;
+            }
+            return true;
+
+
+        }
+
+        function SearchCountry(condition) {
+            var txt = "";
+            if (condition == "start") {
+                txt = $.trim($("#Content1").val());
+            } else {
+                txt = $.trim($("#Content").val());
+            }
+            if (txt != "") {
+                $.ajax({
+                    type: "POST",
+                    async: true,
+                    url: "__BASE__/Index/api/getContries",
+                    data: { Flag: "SearchCountry", Condition: txt },
+                    dataType: "json",
+                    success: function (result) {
+                        if (condition == "start") {
+                            $("#SearchRes1").html("");
+                        }
+                        else {
+                            $("#SearchRes").html("");
+                        }
+                        if (result.Error == false) {
+                            var con = result.Counrty.length;
+
+                            for (var i = 0; i < con; i++) {
+                                var CountryId = result.Counrty[i].CountryId;
+                                var CnName = result.Counrty[i].CnName;
+                                var EnName = result.Counrty[i].EnName;
+                                //var ShortName = result.Counrty[i].ShortName;
+                                //var Common = result.Counrty[i].Common
+                                //var FirstLetter = EnName.substr(0, 1);
+                                if (condition == "start") {
+                                    $("#SearchRes1").append("<li><a href=\"javascript:;\" title=\"" + CountryId + "\" condition=\"CommonCountry1\">" + CnName + "-" + EnName + "</a></li>");
+                                } else {
+                                    $("#SearchRes").append("<li><a href=\"javascript:;\" title=\"" + CountryId + "\" condition=\"CommonCountry\">" + CnName + "-" + EnName + "</a></li>");
+                                } 
+                            }
+                        }
+                        if (condition == "start") {
+                            $("#Search1").css("display", "block"); $("#SearchRes1").css("display", "block");
+                        } else {
+                            $("#Search").css("display", "block"); $("#SearchRes").css("display", "block");
+                        }
+                    },
+                    error: function () {
+                        alert("加载国家信息失败!");
+                    }
+                });
+            } else {
+                if (condition == "start") {
+                    $("#SearchRes1").html("");
+                } else {
+                    $("#SearchRes").html("");
+                }
+            }
+        }
+        function Conversion(){
+            if(parseFloat($("#txtStagelbs").val())>0){
+                $("#txtStage").val(Math.round((parseFloat($("#txtStagelbs").val())* parseFloat(0.45))*100)/100);
+            }
+        }
+    </script>
+    </head>
+    <body>
+    <div id="wrap" class="main">
+      <div id="dvContainer">
+
+        {include file="public/navbar"}
+      <!--header结束-->
+ 
+        <div class="counttop">
+          <div class="wrap">
+            <div class="countbox">
+              <div class="countltbox">
+                <div class="countrow inpu1"> 出发地：
+                  <input name="StartCountry" type="text" id="StartCountry" class="showfb1" width="130px" onfocus="this.blur()" />
+                  <br/>
+                  目的地：
+                  <input name="TargetCountry" type="text" id="TargetCountry" class="showfb" width="130px" onfocus="this.blur()" />
+                </div>
+                <br/>
+                <div class="countrow inpu1"> 重量：
+                  <input name="txtStage" type="text" id="txtStage" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" style="width:80px;" />
+                  kg
+                  <input name="txtStagelbs" type="text" id="txtStagelbs" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)" onblur="Conversion()" style="width:80px;" />
+                  磅(lbs) </div>
+                <div class="countrow inpu2"> 体积：
+                  <input name="txtLong" type="text" id="txtLong" onfocus="if(this.value == this.defaultValue) this.value = &#39;&#39;;" onBlur="if(this.value == &#39;&#39;) this.value = this.defaultValue;" value="10" />
+                  <input name="txtWidth" type="text" id="txtWidth" onfocus="if(this.value == this.defaultValue) this.value = &#39;&#39;;" onBlur="if(this.value == &#39;&#39;) this.value = this.defaultValue;" value="10" />
+                  <input name="txtHeight" type="text" id="txtHeight" onfocus="if(this.value == this.defaultValue) this.value = &#39;&#39;;" onBlur="if(this.value == &#39;&#39;) this.value = this.defaultValue;" value="10" />
+                  cm </div>
+                <div class="countrow"> 币种：
+                  <select>
+                    <option>人民币</option>
+                  </select>
+                  <input type="submit" name="btnSubmit" value="运费预算" onclick="return Checkinput();" id="btnSubmit" class="countbt" />
+                </div>
+              </div>
+              <img class="countpic" src="__PUBLIC__/home/images/countpic.png" alt="" /> </div>
+            <div class="counttitle"> <span>查询条件：<span id="lbWEhere">从 中国 到 法国</span></span> <span>重量：<span id="lbStage">1</span>kg</span> <span>体积：<span id="lbVolume">1x1x1</span>cm</span> <span>币种：人民币</span> <a class="sm" href="javascript:;">费用说明</a> </div>
+            <input type="hidden" name="HiValue" id="HiValue" value="84" />
+            <input type="hidden" name="HiValue1" id="HiValue1" />
+            <!--floatbox begin-->
+            <div class="fbt fbt1 fb_1">
+              <div class="fbtitle">请选择目的地国家<a class="boxcolse" href="javascript:;">关闭</a></div>
+              <div class="search_bt">
+                <input id="Content" class="sstext" type="text" value="" />
+                <input class="ssbt" type="button" value="搜索" onclick="SearchCountry();" />
+              </div>
+              <div class="fbbox clearfix">
+                <div class="fbtitle1"> <a href="javascript:;">A</a> <a href="javascript:;">B</a> <a href="javascript:;">C</a> <a href="javascript:;">D</a> <a href="javascript:;">E</a> <a href="javascript:;">F</a> <a href="javascript:;">G</a> <a href="javascript:;">H</a> <a href="javascript:;">I</a> <a href="javascript:;">J</a> <a href="javascript:;">K</a> <a href="javascript:;">L</a> <a href="javascript:;">M</a> <a href="javascript:;">N</a> <a href="javascript:;">O</a> <a href="javascript:;">P</a> <a href="javascript:;">Q</a> <a href="javascript:;">R</a> <a href="javascript:;">S</a> <a href="javascript:;">T</a> <a href="javascript:;">U</a> <a href="javascript:;">V</a> <a href="javascript:;">W</a> <a href="javascript:;">X</a> <a href="javascript:;">Y</a> <a href="javascript:;">Z</a> </div>
+                <div class="fbcontent">
+                  <div class="fbctitle" id="Search" style="display: none;">查询结果</div>
+                  <ul class="fblist clearfix" id="SearchRes" style="display: none;">
+                  </ul>
+                  <div class="fbctitle">常用国家</div>
+                  <ul class="fblist clearfix" id="CommonCountry">
+                  </ul>
+                  <div class="tabcon clearfix">
+                    <div class="clearfix">
+                      <div class="fbctitle1">A</div>
+                      <ul class="fblist clearfix" id="A">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">B</div>
+                      <ul class="fblist clearfix" id="B">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">C</div>
+                      <ul class="fblist clearfix" id="C">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">D</div>
+                      <ul class="fblist clearfix" id="D">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">E</div>
+                      <ul class="fblist clearfix" id="E">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">F</div>
+                      <ul class="fblist clearfix" id="F">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">G</div>
+                      <ul class="fblist clearfix" id="G">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">H</div>
+                      <ul class="fblist clearfix" id="H">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">I</div>
+                      <ul class="fblist clearfix" id="I">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">J</div>
+                      <ul class="fblist clearfix" id="J">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">K</div>
+                      <ul class="fblist clearfix" id="K">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">L</div>
+                      <ul class="fblist clearfix" id="L">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">M</div>
+                      <ul class="fblist clearfix" id="M">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">N</div>
+                      <ul class="fblist clearfix" id="N">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">O</div>
+                      <ul class="fblist clearfix" id="O">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">P</div>
+                      <ul class="fblist clearfix" id="P">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">Q</div>
+                      <ul class="fblist clearfix" id="Q">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">R</div>
+                      <ul class="fblist clearfix" id="R">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">S</div>
+                      <ul class="fblist clearfix" id="S">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">T</div>
+                      <ul class="fblist clearfix" id="T">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">U</div>
+                      <ul class="fblist clearfix" id="U">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">V</div>
+                      <ul class="fblist clearfix" id="V">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">W</div>
+                      <ul class="fblist clearfix" id="W">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">X</div>
+                      <ul class="fblist clearfix" id="X">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">Y</div>
+                      <ul class="fblist clearfix" id="Y">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">Z</div>
+                      <ul class="fblist clearfix" id="Z">
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="fbt fb_3">
+              <div class="fbtitle">请选择出发地国家<a class="boxcolse" href="javascript:;">关闭</a></div>
+              <div class="search_bt">
+                <input id="Content1" class="sstext" type="text" value="" />
+                <input class="ssbt" type="button" value="搜索" onclick="SearchCountry('start');" />
+              </div>
+              <div class="fbbox clearfix">
+                <div class="fbtitle1"> <a href="javascript:;">A</a> <a href="javascript:;">B</a> <a href="javascript:;">C</a> <a href="javascript:;">D</a> <a href="javascript:;">E</a> <a href="javascript:;">F</a> <a href="javascript:;">G</a> <a href="javascript:;">H</a> <a href="javascript:;">I</a> <a href="javascript:;">J</a> <a href="javascript:;">K</a> <a href="javascript:;">L</a> <a href="javascript:;">M</a> <a href="javascript:;">N</a> <a href="javascript:;">O</a> <a href="javascript:;">P</a> <a href="javascript:;">Q</a> <a href="javascript:;">R</a> <a href="javascript:;">S</a> <a href="javascript:;">T</a> <a href="javascript:;">U</a> <a href="javascript:;">V</a> <a href="javascript:;">W</a> <a href="javascript:;">X</a> <a href="javascript:;">Y</a> <a href="javascript:;">Z</a> </div>
+                <div class="fbcontent">
+                  <div class="fbctitle" id="Search1" style="display: none;">查询结果</div>
+                  <ul class="fblist clearfix" id="SearchRes1" style="display: none;">
+                  </ul>
+                  <div class="fbctitle">常用国家</div>
+                  <ul class="fblist clearfix" id="CommonCountry1">
+                  </ul>
+                  <div class="tabcon clearfix">
+                    <div class="clearfix">
+                      <div class="fbctitle1">A</div>
+                      <ul class="fblist clearfix" id="A0">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">B</div>
+                      <ul class="fblist clearfix" id="B0">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">C</div>
+                      <ul class="fblist clearfix" id="C0">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">D</div>
+                      <ul class="fblist clearfix" id="D0">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">E</div>
+                      <ul class="fblist clearfix" id="E0">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">F</div>
+                      <ul class="fblist clearfix" id="F0">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">G</div>
+                      <ul class="fblist clearfix" id="G0">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">H</div>
+                      <ul class="fblist clearfix" id="H0">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">I</div>
+                      <ul class="fblist clearfix" id="I0">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">J</div>
+                      <ul class="fblist clearfix" id="J0">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">K</div>
+                      <ul class="fblist clearfix" id="K0">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">L</div>
+                      <ul class="fblist clearfix" id="L0">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">M</div>
+                      <ul class="fblist clearfix" id="M0">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">N</div>
+                      <ul class="fblist clearfix" id="N0">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">O</div>
+                      <ul class="fblist clearfix" id="O0">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">P</div>
+                      <ul class="fblist clearfix" id="P0">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">Q</div>
+                      <ul class="fblist clearfix" id="Q0">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">R</div>
+                      <ul class="fblist clearfix" id="R0">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">S</div>
+                      <ul class="fblist clearfix" id="S0">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">T</div>
+                      <ul class="fblist clearfix" id="T0">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">U</div>
+                      <ul class="fblist clearfix" id="U0">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">V</div>
+                      <ul class="fblist clearfix" id="V0">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">W</div>
+                      <ul class="fblist clearfix" id="W0">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">X</div>
+                      <ul class="fblist clearfix" id="X0">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">Y</div>
+                      <ul class="fblist clearfix" id="Y0">
+                      </ul>
+                    </div>
+                    <div class="clearfix">
+                      <div class="fbctitle1">Z</div>
+                      <ul class="fblist clearfix" id="Z0">
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--floatbox end--> 
+            <!--floatbox begin-->
+            <div class="fb fb_XQ" style="width: 700px; margin-left: -400px; max-height: 600px; min-width: 540px; overflow-y: auto; left: 50%; position: fixed; top: 100px; background: #f3f3f3 none repeat scroll 0 0; border: 5px solid #68676a;">
+              <div class="floatboxtitle">备注详细<a class="boxcolse" href="javascript:;">关闭</a></div>
+              <div class="xgxxrow" style="height: 300px; overflow: hidden; overflow-y: scroll;">
+                <div id="RemberDIV"></div>
+              </div>
+              <div class="boxbtn"><a class="colsebox" href="javascript:;">关闭</a></div>
+            </div>
+            <div class="fb fb_2" style="width: 700px;">
+              <div class="floatboxtitle">费用说明<a class="boxcolse" href="javascript:;">关闭</a></div>
+              <div class="xgxxrow" style="height: 300px; overflow: hidden; overflow-y: scroll;">
+                <p> A.以下价格仅供参考，计费按实际计费重量计算；<br />
+                  B.部分服务计算体积重量，当体积重量大于实际重量取较大者；<br />
+                  体积重量=（长X宽X高）/体积参数（体积参数是6000或5000，各快递公司不同，长宽高单位均为厘米）<br />
+                  C.查询结果中基本运费包含基本费用及挂号费；<br />
+                  D.查询结果中不包含关税、偏远附加费、退件费及其他费用；<br />
+                  E.查询结果中时效是该服务正常情况派送时效（不包含取件及包裹处理时间），派送时效受天气、节假日等因素影响；<br />
+                  F.查询结果中官方公布价是直接通过各运输方式官方寄件的价格，（价格包含燃油附加费和基本运费，不包含偏远等费用），官方公布价仅供参考；<br />
+                  G.查询结果未含税；<br />
+                  H.禁运物品列表： </p>
+                <p style="padding-left: 10px;"> 1. 易爆品： 烟花、爆竹、军火、弹药、雷管、黑火药、闪光粉、照明弹、警示照明弹、硝酸甘油、火箭发动机、点火剂等；<br />
+                  2. 军用产品：枪支、武器、子弹、刀具、尖锐利器等；<br />
+                  3. 支票及传单：现金、支票、假钞、与非法行业有关的广告及传单等、赌博广告、算命广告、高利贷广告等；<br />
+                  4. 压缩气体：丁烷气打火机燃料、潜水用氧气瓶、露营汽灯、丁烷气、丙烷气、雾化剂、气溶胶、灭火器、高压气瓶、芥子气等；<br />
+                  5. 易燃液体：打火机、打火机液体燃料、油漆油料、脱漆剂、釉质、染料、胶水、粘合剂、丙酮、醇类物质、汽油、汽油添加剂、稀释剂、松节油、石油分馏物、石脑油、香水、修脸润肤露等；<br />
+                  6. 易燃物体：钙粉、油浸面料、点火器、火柴、木炭、镁、钠、石棉、樟脑球、硝基产品、油性废棉等；<br />
+                  7. 氧化性物质：生氧罐等所需的化学制剂、过氧化物、漂白粉等；<br />
+                  8. 有毒物质、放射性物质、传染性物质：农药、杀虫剂、农业化学制剂、汞制剂、有害病菌等；<br />
+                  9. 腐蚀性物质：湿电池、水银、盐酸等；<br />
+                  10. 其他禁运危险品：磁性物质、发动机、干冰、喷雾器、指甲油、潜水呼吸器、遗体或骨灰、仿牌、假牌、侵权产品、毒品、麻醉剂、精神类药品、活物（包括但不局限于哺乳类动物、爬行类动物、鱼类、鸟类、幼虫、昆虫等）、临床或生物标本（包括但不局限于体液、组织样本）、易腐烂及需要温度控制的物品（包括但不局限于食物、花等）、色情光碟、烟草等； 及国际航空条款规定的不能邮寄或限制邮寄的所有货物。 </p>
+              </div>
+              <div class="boxbtn"><a class="colsebox" href="javascript:;">关闭</a></div>
+            </div>
+            <!--floatbox end--> 
+          </div>
+        </div>
+        <!--counttop end-->
+        
+        <div class="wrap1 fees clearfix"  >
+          <div id="UpdatePanel1">
+            <div class="counttips"> <strong> <span id="RpPrice_ctl00_lbCHStyleFullName">国际专线</span>&nbsp;&nbsp;</strong><span id="RpPrice_ctl00_lbRemark">[时效快 安全高 门到门服务]</span> </div>
+            <div class="counttip">
+             <span class="spn1" style="width:17%; padding-left: 10px">运输方式</span>
+             <span class="spn20" style="width: 7%; padding-left: 10px; text-align: center;">计费重量</span>
+             <a class="an1" onclick="orderManage(1,'ETK')" style="width: 8%; padding-left: 10px; text-align: center;">基本运费</a>
+             <a class="an2" onclick="orderManage(2,'ETK')" style="width: 10%; padding-left: 10px; text-align: center;">燃油费</a>
+             <span class="spn3" style="width: 10%; padding-left: 10px; text-align: center;">时效(工作日)</span>
+             <a class="an3" onclick="orderManage(3,'ETK')" style="width: 5%; padding-left: 10px; text-align: center;">追踪</a>
+             <span class="spn2" style="width: 8%; padding-left: 10px; text-align: center;">是否带电</span>
+             <a class="spn2 sppad" onclick="orderManage(4,'ETK')" style="width:10%; padding-left: 10px; text-align: center;">总费用</a>
+             <span class="spn2" style="width: 10%; padding-left: 10px; text-align: center;">备注</span> 
+              <span class="spn2" style="width: 10%; padding-left: 10px; text-align: center;">下单</span>
+              <input type="hidden" name="RpPrice$ctl00$HiCCode" id="RpPrice_ctl00_HiCCode" value="ETK" />
+            </div>
+            <div class="countcon clearfix">
+              <div class="countcon clearfix" id='EUEXP2-PFC-FR'>
+                <div class="conrow">
+                  <div class="spn1" style="width:17%;"> <img id="RpPrice_ctl00_RpPrice1_ctl00_ImgChnanel" src="__PUBLIC__/home/images/p15.jpg" style="height:40px;width:40px;border-width:0px;" />欧洲专线<br />
+                    <code>EUEXP2</code> </div>
+                  <div class="spn20" style="width: 7%; padding-left: 10px; text-align: center;">1.000</div>
+                  <div class="spn3" style="width: 8%; padding-left: 25px; text-align: center;"> <span id="RpPrice_ctl00_RpPrice1_ctl00_lbSymbol"></span> 92.00 </div>
+                  <div class="spn4" style="width: 10%; padding-left: 35px; text-align: center;"> <span id="RpPrice_ctl00_RpPrice1_ctl00_lbSymbol1"></span>0.00 </div>
+                  <div class="spn5" style="width: 10%; padding-left: 35px; text-align: center;">8 - 10</div>
+                  <div class="spn6" style="width: 5%; text-align: center; padding-left: 53px;">是</div>
+                  <div class="spn6" style="width: 8%; text-align: center; padding-left: 53px;">是</div>
+                  <div class="spn2" style="width: 10%; padding-left: 86px; text-align: center;"> <span id="RpPrice_ctl00_RpPrice1_ctl00_lbSymbol2"></span>92.00 </div>
+                  <div class="last1" id="La_Remarkdiv" style="padding-left: 110px;">
+                    <input type="button" style="width: 80px; height: 30px; margin-right: -30px; margin-top: 5px; float: right; border-radius: 3px;"
+                                                        value="发货须知" onclick='xiangqing(420)' />
+                    <span id="RpPrice_ctl00_RpPrice1_ctl00_La_Remark" style="display: none;">
+                    <p> <span class="neirongbbb"><strong>欧洲专线服务介绍</strong></span>&nbsp; </p>
+                    <p> <span style="color:#0f0f0f;font-size:10.5pt;"><span style="font-size:12px;"><a href="http://www.pfcexpress.com/" target="_blank">中欧专线</a>服务，是为跨境电商卖家立足欧洲市场销售较高价值的商品而量身定制的优质高效物流服务，</span></span><span style="line-height:1.5;color:#0f0f0f;">该服务利用香港充足的空运资源与英国清关的优势，两者结合，打造出时效快、清关强跨境电商专线服务。特别适合运送高价值、要求时效的的轻小物品。</span><span style="color:#0f0f0f;font-size:10.5pt;"><span style="font-size:12px;"><br />
+                    </span><span style="font-size:12px;">。本服务有保证，安全性更高，性价比好，是客户递送欧洲包裹的又一个保障选择。</span></span> </p>
+                    <p> <br />
+                    </p>
+                    <p> <span class="neirongbbb"><strong>货物限制</strong></span>&nbsp; <span style="font-family:Microsoft YaHei;">该渠道接收内置及配套电池，不接纯电池及仿牌，违禁品之类的货。</span> </p>
+                    <p> <span class="neirongbbb"><strong>服务标准</strong></span>&nbsp;：<span style="font-family:Microsoft YaHei;">按照分区收费，包裹重量30公斤以内，不接收一票多件。体积与实重哪个大取哪个。</span><br />
+                      <span style="font-family:Microsoft YaHei;">&nbsp;&nbsp;&nbsp; 最大尺寸为：</span><span style="line-height:1.5;color:#0f0f0f;">最长边不能超过120cm，包裹最大体积0.17立方米。</span> </p>
+                    <p> <span style="line-height:1.5;color:#0f0f0f;">材积重计算标准：（长*宽*高）/6000。</span> </p>
+                    <span style="line-height:1.5;" class="neirongbbb"><strong>跟踪网址</strong></span><span style="line-height:1.5;">&nbsp;：<span style="font-family:Microsoft YaHei;">登录跟踪官网进行跟踪查询&nbsp;</span></span><a href="http://www.parcelforce.com/track-trace"><span style="font-family:Microsoft YaHei;">www.pfcexpress.com</span></a>
+                    <p> <br />
+                    </p>
+                    <p> <span style="font-family:Microsoft YaHei;">3. 前端操作时效：</span> </p>
+                    <p> <span style="font-family:Microsoft YaHei;">① 当天早上过港，下午交空运公司</span> </p>
+                    <p> <span style="font-family:Microsoft YaHei;">② 交货当晚直飞，13小时飞行时间</span> </p>
+                    <p> <span style="font-family:Microsoft YaHei;">③ 次日到达，当天清关，安排交付欧洲各大快递承运商</span> </p>
+                    <p> <span style="font-family:Microsoft YaHei;">4. 整体妥投时效</span><span style="font-family:Microsoft YaHei;">：6-8工作日</span> </p>
+                    <p> <span style="line-height:1.5;">5.</span><span style="line-height:1.5;" class="neirongbbb"><strong>关税</strong></span><span style="line-height:1.5;">&nbsp; &nbsp;</span> </p>
+                    <p> <span style="line-height:1.5;color:#0f0f0f;">本渠道是属于</span><span style="line-height:1.5;color:#0f0f0f;">DDP</span><span style="line-height:1.5;color:#0f0f0f;">完税服务，①增值税（</span><span style="line-height:1.5;color:#0f0f0f;">VAT</span><span style="line-height:1.5;color:#0f0f0f;">）征收：</span> </p>
+                    <p style="text-indent:0pt;margin-left:0pt;" class="NewStyle16"> <span style="color:#0f0f0f;">为了保证快速通关，此服务只接受关税预付（DDP）。申报价值≤15GBP时，免征VAT&amp;DUTY；申报价值＞15GBP时，会产生VAT&amp;DUTY。VAT标准为申报价值的25%。（例如：包裹申报价值为30英镑，DUTY为申报价值的10%，即3英镑。 则 VAT=(30+3)*25%=8.25GBP。） &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span> </p>
+                    <span style="line-height:normal;font-family:微软雅黑;color:#0f0f0f;"></span>
+                    <p style="font-family:微软雅黑;color:#0f0f0f;"> <span style="line-height:1.5;">暂时不接受超过135英镑的货物。说明：此申报要求不适用于高价值产品，如手机、平板等！</span> </p>
+                    <p> <strong><span style="font-family:Tahoma;color:#0f0f0f;font-weight:normal;"></span></strong> </p>
+                    <p style="text-indent:0pt;font-family:微软雅黑;color:#0f0f0f;margin-left:0pt;" class="NewStyle16"> <strong><span style="font-family:Microsoft YaHei;">②关税征收：</span></strong> </p>
+                    <span style="line-height:normal;font-family:微软雅黑;color:#0f0f0f;"></span>
+                    <p style="font-family:微软雅黑;color:#0f0f0f;"> <strong><span style="font-family:Tahoma;font-weight:normal;"></span></strong> </p>
+                    <p style="text-indent:0pt;font-family:微软雅黑;color:#0f0f0f;margin-left:0pt;" class="NewStyle16"> <strong><span style="font-family:Microsoft YaHei;">每日发给同一收件人包裹的合计申报价值＞135GBP时，除了要征收VAT外，还有可能产生关税。是否产生关税及产生关税额度视所寄物品与海关相关政策法规而定。</span></strong> </p>
+                    <span style="line-height:normal;font-family:微软雅黑;color:#0f0f0f;"></span>
+                    <p style="font-family:微软雅黑;color:#0f0f0f;"> <strong>税率查询网址：</strong><strong><a href="http://www.dutycalculator.com/">www.dutycalculator.com</a>&nbsp;</strong> </p>
+                    <p style="font-family:微软雅黑;color:#0f0f0f;"> <span style="line-height:1.5;">申报要求：</span> </p>
+                    <p style="font-family:微软雅黑;color:#0f0f0f;"> <span style="line-height:1.5;">申报标准：</span><span style="line-height:1.5;">10</span><span style="line-height:1.5;">英镑</span><span style="line-height:1.5;">/kg</span> </p>
+                    <p style="font-family:微软雅黑;color:#0f0f0f;"> <span style="line-height:1.5;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;手机每台申报不低于</span><span style="line-height:1.5;">50</span><span style="line-height:1.5;">英镑</span> </p>
+                    <p style="text-indent:0pt;font-family:微软雅黑;color:#0f0f0f;margin-left:21pt;" class="NewStyle15"> <span>&nbsp; &nbsp; &nbsp; &nbsp; 平板电脑每台申报不低于</span><span>30</span><span>英镑</span> </p>
+                    <p> <br />
+                    </p>
+                    <span></span>
+                    <p>&nbsp; </p>
+                    </span> </div>
+                  <div class="last1" style=""> <a id="RpPrice_ctl00_RpPrice1_ctl00_lbFee" class="spn9" href="{{:url('register')}}" target="_blank" target="_blank"></a> </div>
+                  <input type="hidden" name="RpPrice$ctl00$RpPrice1$ctl00$HiChannelCode" id="RpPrice_ctl00_RpPrice1_ctl00_HiChannelCode" value="EUEXP2" />
+                </div>
+              </div>
+              <div class="countcon clearfix" id='ETK-SZPOST'>
+                <div class="conrow">
+                  <div class="spn1" style="width: 17%;"> <img id="RpPrice_ctl00_RpPrice1_ctl01_ImgChnanel" src="__PUBLIC__/home/images/p12.gif" style="height:40px;width:40px;border-width:0px;" />邮政E特快<br />
+                    <code>ETK</code> </div>
+                  <div class="spn20" style="width: 7%; padding-left: 10px; text-align: center;">1.000</div>
+                  <div class="spn3" style="width: 8%; padding-left: 25px; text-align: center;"> <span id="RpPrice_ctl00_RpPrice1_ctl01_lbSymbol"></span> 143.00 </div>
+                  <div class="spn4" style="width: 10%; padding-left: 35px; text-align: center;"> <span id="RpPrice_ctl00_RpPrice1_ctl01_lbSymbol1"></span>0.00 </div>
+                  <div class="spn5" style="width: 10%; padding-left: 35px; text-align: center;">5 - 8</div>
+                  <div class="spn6" style="width: 5%; text-align: center; padding-left: 53px;">是</div>
+                  <div class="spn6" style="width: 8%; text-align: center; padding-left: 53px;">否</div>
+                  <div class="spn2" style="width: 10%; padding-left: 86px; text-align: center;"> <span id="RpPrice_ctl00_RpPrice1_ctl01_lbSymbol2"></span>143.00 </div>
+                  <div class="last1" id="La_Remarkdiv" style="padding-left: 110px;">
+                    <input type="button" style="width: 80px; height: 30px; margin-right: -30px; margin-top: 5px; float: right; border-radius: 3px;"
+                                                        value="发货须知" onclick='xiangqing(162)' />
+                    <span id="RpPrice_ctl00_RpPrice1_ctl01_La_Remark" style="display: none;">
+                    <p> <span class="neirongbbb"><a name="1"></a>与邮政成功对接，系统下单即出单号及标签，可提供邮政API对接。邮政清关，全程时效7 - 10工作日！</span> </p>
+                    <p> <b><br />
+                      </b> </p>
+                    <p> <span class="neirongbbb"><a name="1"></a>货物限制</span> </p>
+                    <p> 只接普通货物，暂不接收任何带电产品及违禁品。如查到违禁品及电池所产生的费用发件人承担！ </p>
+                    <p> <br />
+                    </p>
+                    <p> <span class="neirongbbb"><strong>e特快参考时效</strong></span><br />
+                      日本、韩国、香港、新加坡、台湾：2-4个工作日<br />
+                      英国、法国、加拿大、澳大利亚、西班牙、荷兰：5-7个工作日 <br />
+                      俄罗斯、巴西、乌克兰、白俄罗斯：7-10个工作日 </p>
+                    <p> <br />
+                    </p>
+                    <p> <span class="neirongbbb"><strong>体积和重量限制 </strong></span><br />
+                      1、重量限制：国际特快邮件除寄达邮政另有规定外，每件限重30千克。内装易碎物品或流质物品的邮件，每件限重10千克。 </p>
+                    <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 西班牙，乌克兰，白俄罗斯的最高限重是20千克。<br />
+                      2、物品最大尺寸：长度不超过1050毫米，长度和长度以外紧大横周合计不超过2000毫米。<br />
+                      3、物品最小尺寸：包装箱、盒至少有一个面的长度不小于215毫米，宽度不小于130毫米，该面应平整，瓦楞纸板表面不得出现露楞现象。<br />
+                      4、圆卷形包装：最小尺寸为：长度300毫米，直径60毫）；<br />
+                      最大尺寸：直径的2倍和长度合计不超过1040毫米，长度不超过900毫米。<br />
+                      5、在寄达国邮政对国际特快邮件的重量、尺寸限制另有规定时，应按寄达国邮政的有关规定办理。<br />
+                      6、体积重量测算：<br />
+                      a）仅对长、宽、高三边中任一单边达到60CM或以上的包裹进行计算体积重。<br />
+                      b） 测量外箱尺寸，按外包装自然外廓的最长、最宽、最高部位尺寸计算，测量采用厘米为计算基本单位,不足1厘米长按1厘米计算。<br />
+                      c）体积重量计算公式：<br />
+                      体积重量(KG)=长（CM）*宽（CM）*高（CM）/8000（CM3/KG）<br />
+                      d） 包裹的计费重量取包裹的实际重量与体积重量较大者计算。<br />
+                      &nbsp; </p>
+                    <hr />
+                    <p> <br />
+                    </p>
+                    <p> <span class="neirongbbb"><strong>禁限寄物品</strong></span><br />
+                      1）国家法律法规禁止流通或者寄递的物品；<br />
+                      2）爆炸性、易燃性、腐蚀性、放射性和毒性等危险物品；<br />
+                      3）反动报刊、书籍、窗口或者淫秽物品；<br />
+                      4）各种货币；<br />
+                      5）妨害公共卫生的物品；<br />
+                      6）容易腐烂的物品；<br />
+                      7）活的动物（包装能确保寄递和工作人员安全的蜜蜂、蚕、水蛭除外）；<br />
+                      8）包装不妥，可能危害人身安全、污染或损毁其它邮件设备的物品；<br />
+                      9）其它不适合邮递条件的物品。 </p>
+                    <p> <br />
+                    </p>
+                    </span> </div>
+                  <div class="last1" style=""> <a id="RpPrice_ctl00_RpPrice1_ctl01_lbFee" class="spn9" href="{{:url('register')}}" target="_blank"></a> </div>
+                  <input type="hidden" name="RpPrice$ctl00$RpPrice1$ctl01$HiChannelCode" id="RpPrice_ctl00_RpPrice1_ctl01_HiChannelCode" value="ETK" />
+                </div>
+              </div>
+            </div>
+            <div class="counttips"> <strong> <span id="RpPrice_ctl01_lbCHStyleFullName">国际快递</span>&nbsp;&nbsp;</strong><span id="RpPrice_ctl01_lbRemark">[灵活，易清关，价格实惠]</span> </div>
+            <div class="counttip">
+             <span class="spn1" style="width:17%; padding-left: 10px">运输方式</span> 
+             <span class="spn20" style="width: 7%; padding-left: 10px; text-align: center;">计费重量</span> 
+             <a class="an1" onclick="orderManage(1,'HKFEDIP')" style="width: 8%; padding-left: 10px; text-align: center;">基本运费</a> 
+             <a class="an2" onclick="orderManage(2,'HKFEDIP')" style="width: 10%; padding-left: 10px; text-align: center;">燃油费</a> 
+             <span class="spn3" style="width: 10%; padding-left: 10px; text-align: center;">时效(工作日)</span> 
+             <a class="an3" onclick="orderManage(3,'HKFEDIP')" style="width: 5%; padding-left: 10px; text-align: center;">追踪</a> 
+             <span class="spn2" style="width: 8%; padding-left: 10px; text-align: center;">是否带电</span> 
+             <a class="spn2 sppad" onclick="orderManage(4,'HKFEDIP')" style="width:10%; padding-left: 10px; text-align: center;">总费用</a> 
+             <span class="spn2" style="width: 10%; padding-left: 10px; text-align: center;">备注</span>
+             <span class="spn2" style="width: 10%; padding-left: 10px; text-align: center;">下单</span>
+              <input type="hidden" name="RpPrice$ctl01$HiCCode" id="RpPrice_ctl01_HiCCode" value="HKFEDIP" />
+            </div>
+            <div class="countcon clearfix">
+              <div class="countcon clearfix" id='HKDHL-C-DHLCX'>
+                <div class="conrow">
+                  <div class="spn1" style="width: 17%;"> <img id="RpPrice_ctl01_RpPrice1_ctl00_ImgChnanel" src="__PUBLIC__/home/images/p1.gif" style="height:40px;width:40px;border-width:0px;" />香港DHL促销价<br />
+                    <code>HKDHL-C</code> </div>
+                  <div class="spn20" style="width: 7%; padding-left: 10px; text-align: center;">1.000</div>
+                  <div class="spn3" style="width: 8%; padding-left: 25px; text-align: center;"> <span id="RpPrice_ctl01_RpPrice1_ctl00_lbSymbol"></span> 102.92 </div>
+                  <div class="spn4" style="width: 10%; padding-left: 35px; text-align: center;"> <span id="RpPrice_ctl01_RpPrice1_ctl00_lbSymbol1"></span>12.15 </div>
+                  <div class="spn5" style="width: 10%; padding-left: 35px; text-align: center;">4 - 5</div>
+                  <div class="spn6" style="width: 5%; text-align: center; padding-left: 53px;">是</div>
+                  <div class="spn6" style="width: 8%; text-align: center; padding-left: 53px;">是</div>
+                  <div class="spn2" style="width: 10%; padding-left: 86px; text-align: center;"> <span id="RpPrice_ctl01_RpPrice1_ctl00_lbSymbol2"></span>115.07 </div>
+                  <div class="last1" id="La_Remarkdiv" style="padding-left: 110px;">
+                    <input type="button" style="width: 80px; height: 30px; margin-right: -30px; margin-top: 5px; float: right; border-radius: 3px;"
+                                                        value="发货须知" onclick='xiangqing(168)' />
+                    <span id="RpPrice_ctl01_RpPrice1_ctl00_La_Remark" style="display: none;">
+                    <p> <span class="neirongbbb"><a name="1"></a>自主账号，价格相对于DHL代理价便宜。时效好，清关优！</span> </p>
+                    <p> <span style="color:#E53333;font-family:Tahoma;"><strong><br />
+                    </strong></span> </p>
+                    <p> <span class="neirongbbb"><a name="1"></a>货物限制</span> </p>
+                    <p> 可接收内置电池，暂不接收配套电池及仿牌违禁品之类的货物，如查到仿牌及违禁品之类的货物一律不退运费！ </p>
+                    <p> <br />
+                    </p>
+                    <p> <span class="neirongbbb"><a name="2"></a><strong>香港DHL国际快递价格、附加费、关税</strong></span> <br />
+                      HKDHL价格可在网站上直接查询：http://www.PFCexpress.com<br />
+                      HKDHL体积重量计算公式为：长cm X 宽cm X 高cm /5000，如果货物体积重量大于实际重量，则按体积重量计费，二者取较大者。 </p>
+                    <p> <span class="neirongbbb"><a name="1"></a>香港DHL国际快递附加费</span> </p>
+                    <p> 偏远附加费：去往偏远地区的快件需加收偏远地区附加费，标准为：RMB3.6/kg*(1+当月燃油)，每票最低消费为RMB 180*(1+当月燃油)；DHL查询偏远网址为：<a href="http://raslist.dhl.com/jsp/first.jsp">http://raslist.dhl.com/jsp/first.jsp</a>我司操作人员会按照邮编或城市名查询是否偏远，网站查询并非百分百清准，但最终均以DHL帐单为准。如DHL帐单显示为偏远需要加收偏远费用，我司将自动收取此件偏远费用。纺织品费用：纺织品免收转口证费用（需注意尼日利亚不接纺织品） </p>
+                    <p> 燃油附加费：HKDHL的燃油附加费已经包括在运费中了 </p>
+                    <p> <span class="neirongbbb"><a name="1"></a>DHL国际快递关税</span> </p>
+                    <p> 以具体清关费用为准(一般是申报价值高的产生的关税比较高，如果申报的价值比实际价值过于低，也会产生比较高的关税）如果收件人拒绝支付关税，关税将自动由发件人承担。 </p>
+                    <p> <span class="neirongbbb"><a name="1"></a>注意事项</span> </p>
+                    <p> a.轻泡货物重量的计算方式：长cm X&nbsp;宽cm X&nbsp;高cm /5000 </p>
+                    <p> b.快件重量在21kg以上的，如有不足1kg的小数部分，需进位到上一整数公斤数计费。 </p>
+                    <p> c.特别提示：安哥拉、伊拉克、俄罗斯、乌克兰、厄瓜多尔,沙特阿拉伯，巴拉圭、乌拉圭、阿根廷、无服务 </p>
+                    <p> <br />
+                    </p>
+                    <p> <span class="neirongbbb"><strong>香港DHL国际快递查询</strong></span><br />
+                      货物离开皇家物流处理中心后过港顺利当天可以在HKDHL查询网站看到收件记录 ，在HKDHL网站上可以查询到全程跟踪信息，并可以查到签收时间和人名。<br />
+                      对于DHL的件我司处理发货后会产生跟踪号，正常从我司发货后2个工作日内上网。上网后我司提供的跟踪号可作为参考信息进行实时跟踪，查询方法如下：<br />
+                      1）请登录DHL国际快递查询网站：http://www.cn.dhl.com/publish/cn/zh/eshipping/track/sref.high.html；<br />
+                      2）点击按发件人参考信息跟踪；<br />
+                      3）填入发件人参考信息栏即我司提供的跟踪号，再填写快件日期范围从那一栏，点击跟踪按钮下拉即可，此栏的日期请注意填写的要比发货时间早。 </p>
+                    <hr />
+                    <br />
+                    <p> <span class="neirongbbb"><a name="5"></a><strong>体积重量限制</strong></span><br />
+                      单件最长边不超1.2米，单件不超70KG，对于超长超重的单件包裹请于发货前咨询我司客服人员。<br />
+                      1.寄往尼日利亚的货，单件重量不能超50KG，单票不超50KG，建议拆分为多票，每票重量不超过50KG；<br />
+                      2.寄往安哥拉的快件，单件重量不能超50KG，单票不超250KG；<br />
+                      3.寄往突尼斯的单件重量不能超30KG，单票不超40KG；<br />
+                      4.寄往阿尔及利亚的快件，单件不能超40KG。<br />
+                      超长超重附加费的计算方法如下：<br />
+                      a）1个单号（即一票货），不论有多少件，只要有其中一件或多件一边的长度超过120CM或重量超过70KG，HKDHL就会收取220*（1+当月燃油）RMB/票的附加费；<br />
+                      b）1个单号（即一票货），不论有多少件，如果有一件的一边长度超过120CM，而另一件重量超过了70KG，HKDHL也只收176*（1+当月燃油）RMB/票的附加费，即：1个单号（即一票货）最多只会收取一次176*（1+当月燃油）RMB/票的附加费。 </p>
+                    <br />
+                    <hr />
+                    <br />
+                    <p> <span class="neirongbbb"><strong>禁寄物品</strong></span><br />
+                      1.航空禁运的危险物品、液体，粉末等。国家明令禁止出口货物，如古董，货币及其它侵权产品。<br />
+                      2.需要额外提供资料的物品<br />
+                      寄送电池及含电池的物品时，需提供MSDS证明和电池信（需提供正本）（如有需要请联系客服人员）<br />
+                      邮寄名牌产品需提供正规购买发票或授权书。<br />
+                      3.不能寄马达、发动机之类的产品。 </p>
+                    <br />
+                    <hr />
+                    <p> <span class="neirongbbb"><strong>香港DHL国际快递保险与理赔</strong></span><br />
+                      1.购买保险了的包裹，保险收费与赔偿按皇家物流“保险服务”介绍条款执行。<br />
+                      2.没有投保的包裹按以下条款理赔：<br />
+                      a）对于少件、缺货、破损的邮包<br />
+                      如收件人收到的邮包重量、数量、件数不符、破损的邮包，请收件人收到包裹24小时内向目的地DHL的反馈丢失或破损情况。并在7个工作日内将收件人在当地登记的备案号提供给我司，以便向DHL的调查索赔。如经DHL核实后，最高赔偿为免运费，赔偿包裹的申报价值，最高不超过100USD，部分破损或丢失需按实际丢失数量占总数的百分比赔偿，但最高赔偿不超过USD100。<br />
+                      b）由于海关抽查造成的邮包丢失<br />
+                      邮包在经过海关时，海关打开邮包检查，可能导致邮包丢失、邮包内物品（全部或部分）丢失、或被海关扣押。皇家物流不承担由此带来的任何责任。 </p>
+                    <p> <br />
+                    </p>
+                    <p> <br />
+                    </p>
+                    </span> </div>
+                  <div class="last1" style=""> <a id="RpPrice_ctl01_RpPrice1_ctl00_lbFee" class="spn9" href="{{:url('register')}}" target="_blank"></a> </div>
+                  <input type="hidden" name="RpPrice$ctl01$RpPrice1$ctl00$HiChannelCode" id="RpPrice_ctl01_RpPrice1_ctl00_HiChannelCode" value="HKDHL-C" />
+                </div>
+              </div>
+              <div class="countcon clearfix" id='HKDHL-DC-HTTX'>
+                <div class="conrow">
+                  <div class="spn1" style="width: 17%;"> <img id="RpPrice_ctl01_RpPrice1_ctl01_ImgChnanel" src="__PUBLIC__/home/images/p1.gif" style="height:40px;width:40px;border-width:0px;" />香港DHL带电价<br />
+                    <code>HKDHL-DC</code> </div>
+                  <div class="spn20" style="width: 7%; padding-left: 10px; text-align: center;">1.000</div>
+                  <div class="spn3" style="width: 8%; padding-left: 25px; text-align: center;"> <span id="RpPrice_ctl01_RpPrice1_ctl01_lbSymbol"></span> 105.11 </div>
+                  <div class="spn4" style="width: 10%; padding-left: 35px; text-align: center;"> <span id="RpPrice_ctl01_RpPrice1_ctl01_lbSymbol1"></span>12.40 </div>
+                  <div class="spn5" style="width: 10%; padding-left: 35px; text-align: center;">3 - 7</div>
+                  <div class="spn6" style="width: 5%; text-align: center; padding-left: 53px;">是</div>
+                  <div class="spn6" style="width: 8%; text-align: center; padding-left: 53px;">是</div>
+                  <div class="spn2" style="width: 10%; padding-left: 86px; text-align: center;"> <span id="RpPrice_ctl01_RpPrice1_ctl01_lbSymbol2"></span>117.51 </div>
+                  <div class="last1" id="La_Remarkdiv" style="padding-left: 110px;">
+                    <input type="button" style="width: 80px; height: 30px; margin-right: -30px; margin-top: 5px; float: right; border-radius: 3px;"
+                                                        value="发货须知" onclick='xiangqing(179)' />
+                    <span id="RpPrice_ctl01_RpPrice1_ctl01_La_Remark" style="display: none;"><span class="neirongbbb"><a name="1"></a>香港DHL带电，可接任何内置，配套电池产品及牌子货。且此渠道较稳定，全年排仓少！旺季首选！</span>
+                    <p> <span class="neirongbbb"><a name="1"></a>货物限制</span> </p>
+                    <p> 可接内置电池，配套电池及仿牌（仿牌需加收附加费，详细可问业务经理）。不接违禁品！如查到违禁品之类的货物一律不退运费。 </p>
+                    <p> <span style="color:#FF3300;line-height:24px;font-size:14px;font-weight:bold;background-color:#F3F3F3;">国家注意事项</span> </p>
+                    <p> <span class="neirongbbb"><span style="color:#0F0F0F;line-height:24px;font-family:微软雅黑;background-color:#F3F3F3;">葡萄牙 巴西 厄瓜多尔 黎巴嫩 土耳其 危地马拉 保加利亚，印度联邦，科威特（以上国家需要提供正本发票）</span><br />
+                      </span> </p>
+                    <p> <span class="neirongbbb">体积重量限制</span><br />
+                      单件最长边不超1.2米，单件不超70KG，对于超长超重的单件包裹请于发货前咨询我司客服人员。 </p>
+                    <p> <br />
+                    </p>
+                    <p> <span class="neirongbbb">禁寄物品</span><br />
+                      1.航空禁运的危险物品、液体，粉末等。国家明令禁止出口货物，如古董，货币及其它侵权产品。<br />
+                      2.不能寄马达、发动机之类的产品。 </p>
+                    <p> <br />
+                    </p>
+                    <p> <span class="neirongbbb">DHL国际快递保险与理赔</span><br />
+                      1.没有投保的包裹按以下条款理赔：<br />
+                      a）对于少件、缺货、破损的邮包<br />
+                      如收件人收到的邮包重量、数量、件数不符、破损的邮包，请收件人收到包裹24小时内向目的地DHL的反馈丢失或破损情况。并在7个工作日内将收件人在当地登记的备案号提供给我司，以便向DHL的调查索赔。如经DHL核实后，最高赔偿为免运费，赔偿包裹的申报价值，最高不超过100USD，部分破损或丢失需按实际丢失数量占总数的百分比赔偿，但最高赔偿不超过USD100。<br />
+                      b）由于海关抽查造成的邮包丢失<br />
+                      邮包在经过海关时，海关打开邮包检查，可能导致邮包丢失、邮包内物品（全部或部分）丢失、或被海关扣押。皇家物流不承担由此带来的任何责任。 </p>
+                    </span> </div>
+                  <div class="last1" style=""> <a id="RpPrice_ctl01_RpPrice1_ctl01_lbFee" class="spn9" href="{{:url('register')}}" target="_blank"></a> </div>
+                  <input type="hidden" name="RpPrice$ctl01$RpPrice1$ctl01$HiChannelCode" id="RpPrice_ctl01_RpPrice1_ctl01_HiChannelCode" value="HKDHL-DC" />
+                </div>
+              </div>
+              <div class="countcon clearfix" id='HKDHL-HKDHL'>
+                <div class="conrow">
+                  <div class="spn1" style="width: 17%;"> <img id="RpPrice_ctl01_RpPrice1_ctl02_ImgChnanel" src="__PUBLIC__/home/images/p1.gif" style="height:40px;width:40px;border-width:0px;" />香港DHL代理价<br />
+                    <code>HKDHL</code> </div>
+                  <div class="spn20" style="width: 7%; padding-left: 10px; text-align: center;">1.000</div>
+                  <div class="spn3" style="width: 8%; padding-left: 25px; text-align: center;"> <span id="RpPrice_ctl01_RpPrice1_ctl02_lbSymbol"></span> 107.64 </div>
+                  <div class="spn4" style="width: 10%; padding-left: 35px; text-align: center;"> <span id="RpPrice_ctl01_RpPrice1_ctl02_lbSymbol1"></span>12.70 </div>
+                  <div class="spn5" style="width: 10%; padding-left: 35px; text-align: center;">3 - 4</div>
+                  <div class="spn6" style="width: 5%; text-align: center; padding-left: 53px;">是</div>
+                  <div class="spn6" style="width: 8%; text-align: center; padding-left: 53px;">是</div>
+                  <div class="spn2" style="width: 10%; padding-left: 86px; text-align: center;"> <span id="RpPrice_ctl01_RpPrice1_ctl02_lbSymbol2"></span>120.34 </div>
+                  <div class="last1" id="La_Remarkdiv" style="padding-left: 110px;">
+                    <input type="button" style="width: 80px; height: 30px; margin-right: -30px; margin-top: 5px; float: right; border-radius: 3px;"
+                                                        value="发货须知" onclick='xiangqing(160)' />
+                    <span id="RpPrice_ctl01_RpPrice1_ctl02_La_Remark" style="display: none;">
+                    <p> <span class="neirongbbb"></span> </p>
+                    <p> <span class="neirongbbb">香港DHL国际快递服务介绍</span><br />
+                      DHL国际快递是全球快递行业的市场领导者。可寄达220个国家及地区、涵盖超过120,000个目的地（主要邮递区码地区）的网络，向企业及私人顾客提供专递及速递服务。DHL国际快递不论是文件或包裹，不论是即日、限时或限日送达，DHL国际快递皆可提供满足您需求的服务，皇家物流是香港DHL快递在国内的一级代理，价格合理，递送快捷，是您优先选择的国际快递服务。 &nbsp; </p>
+                    <br />
+                    <p> <br />
+                    </p>
+                    <p> <span class="neirongbbb"><a name="1"></a>香港DHL自主账号，成功对接DHL系统，系统下单一单到底，无需换单。时效好，清关优！</span> </p>
+                    <p> <b><br />
+                      </b> </p>
+                    <p> <span class="neirongbbb"><a name="1"></a>货物限制</span> </p>
+                    <p> 只接收内置电池，不接配套电池，纯电池以及仿牌，违禁品之类。如查到违禁品及仿牌之类一律不退运费。 </p>
+                    <p> <br />
+                    </p>
+                    <p> <span class="neirongbbb">国家注意事项</span><br />
+                      葡萄牙 巴西 厄瓜多尔 黎巴嫩 土耳其 危地马拉 保加利亚，印度联邦，科威特（以上国家需要提供正本发票） </p>
+                    <p> &nbsp;<span class="neirongbbb"><strong>体积重量限制</strong></span><br />
+                      单件最长边不超1.2米，单件不超70KG，对于超长超重的单件包裹请于发货前咨询我司客服人员。<br />
+                      1.寄往尼日利亚的货，单件重量不能超50KG，单票不超50KG，建议拆分为多票，每票重量不超过50KG；<br />
+                      2.寄往安哥拉的快件，单件重量不能超50KG，单票不超250KG；<br />
+                      3.寄往突尼斯的单件重量不能超30KG，单票不超40KG；<br />
+                      4.寄往阿尔及利亚的快件，单件不能超40KG。 </p>
+                    <p> 超长超重附加费的计算方法如下：<br />
+                      a）1个单号（即一票货），不论有多少件，只要有其中一件或多件一边的长度超过120CM或重量超过70KG，HKDHL就会收取220*（1+当月燃油）RMB/票的附加费；<br />
+                      b）1个单号（即一票货），不论有多少件，如果有一件的一边长度超过120CM，而另一件重量超过了70KG，HKDHL也只收176*（1+当月燃油）RMB/票的附加费，即：1个单号（即一票货）最多只会收取一次176*（1+当月燃油）RMB/票的附加费。 </p>
+                    <hr />
+                    <br />
+                    <p> <span class="neirongbbb"><strong>禁寄物品</strong></span><br />
+                      1.航空禁运的危险物品、液体，粉末等。国家明令禁止出口货物，如古董，货币及其它侵权产品。<br />
+                      2.需要额外提供资料的物品<br />
+                      寄送电池及含电池的物品时，需提供MSDS证明和电池信（需提供正本）（如有需要请联系客服人员）<br />
+                      邮寄名牌产品需提供正规购买发票或授权书。<br />
+                      3.不能寄马达、发动机之类的产品。 </p>
+                    <p> <br />
+                    </p>
+                    </span> </div>
+                  <div class="last1" style=""> <a id="RpPrice_ctl01_RpPrice1_ctl02_lbFee" class="spn9" href="{{:url('register')}}" target="_blank"></a> </div>
+                  <input type="hidden" name="RpPrice$ctl01$RpPrice1$ctl02$HiChannelCode" id="RpPrice_ctl01_RpPrice1_ctl02_HiChannelCode" value="HKDHL" />
+                </div>
+              </div>
+              <div class="countcon clearfix" id='MYDHL-PFCQQYX-DHL'>
+                <div class="conrow">
+                  <div class="spn1" style="width: 17%;"> <img id="RpPrice_ctl01_RpPrice1_ctl03_ImgChnanel" src="__PUBLIC__/home/images/p1.gif" style="height:40px;width:40px;border-width:0px;" />马来西亚DHL<br />
+                    <code>MYDHL</code> </div>
+                  <div class="spn20" style="width: 7%; padding-left: 10px; text-align: center;">1.000</div>
+                  <div class="spn3" style="width: 8%; padding-left: 25px; text-align: center;"> <span id="RpPrice_ctl01_RpPrice1_ctl03_lbSymbol"></span> 113.16 </div>
+                  <div class="spn4" style="width: 10%; padding-left: 35px; text-align: center;"> <span id="RpPrice_ctl01_RpPrice1_ctl03_lbSymbol1"></span>13.35 </div>
+                  <div class="spn5" style="width: 10%; padding-left: 35px; text-align: center;">5 - 7</div>
+                  <div class="spn6" style="width: 5%; text-align: center; padding-left: 53px;">是</div>
+                  <div class="spn6" style="width: 8%; text-align: center; padding-left: 53px;">否</div>
+                  <div class="spn2" style="width: 10%; padding-left: 86px; text-align: center;"> <span id="RpPrice_ctl01_RpPrice1_ctl03_lbSymbol2"></span>126.51 </div>
+                  <div class="last1" id="La_Remarkdiv" style="padding-left: 110px;">
+                    <input type="button" style="width: 80px; height: 30px; margin-right: -30px; margin-top: 5px; float: right; border-radius: 3px;"
+                                                        value="发货须知" onclick='xiangqing(389)' />
+                    <span id="RpPrice_ctl01_RpPrice1_ctl03_La_Remark" style="display: none;">
+                    <p> <span class="neirongbbb" style="color:#FF3300;font-size:14px;font-weight:bold;">自主账号，成功对接马来DHL系统，系统下单一单到底，深圳直飞马来西亚DHL提取。</span> </p>
+                    <p> <span class="neirongbbb" style="color:#FF3300;font-size:14px;font-weight:bold;">货物限制</span> </p>
+                    <p> <span style="color:#0F0F0F;line-height:1.5;font-family:微软雅黑;background-color:#F3F3F3;">只接收普货，不接任何带电，纯电池以及仿牌，违禁品之类。如查到违禁品及仿牌之类一律不退运费。</span> </p>
+                    <p style="color:#0F0F0F;font-family:微软雅黑;background-color:#F3F3F3;"> <span class="neirongbbb" style="color:#FF3300;font-size:14px;font-weight:bold;"><br />
+                      </span> </p>
+                    <p style="color:#0F0F0F;font-family:微软雅黑;background-color:#F3F3F3;"> <span class="neirongbbb" style="color:#FF3300;font-size:14px;font-weight:bold;">体积重量限制</span><br />
+                      单件最长边不超1.2米，单件不超70KG，对于超长超重的单件包裹请于发货前咨询我司客服人员。 </p>
+                    <hr />
+                    <br />
+                    <p style="color:#0F0F0F;font-family:微软雅黑;background-color:#F3F3F3;"> <span class="neirongbbb" style="color:#FF3300;font-size:14px;font-weight:bold;">禁寄物品</span><br />
+                      1.航空禁运的危险物品、液体，粉末等。国家明令禁止出口货物，如古董，货币及其它侵权产品。<br />
+                      2.需要额外提供资料的物品<br />
+                      寄送电池及含电池的物品时，需提供MSDS证明和电池信（需提供正本）（如有需要请联系客服人员）<br />
+                      邮寄名牌产品需提供正规购买发票或授权书。<br />
+                      3.不能寄马达、发动机之类的产品。 </p>
+                    <br />
+                    <hr />
+                    <br />
+                    <p style="color:#0F0F0F;font-family:微软雅黑;background-color:#F3F3F3;"> <span class="neirongbbb" style="color:#FF3300;font-size:14px;font-weight:bold;">马来西亚DHL国际快递保险与理赔</span><br />
+                      1.没有投保的包裹按以下条款理赔：<br />
+                      a）对于少件、缺货、破损的邮包<br />
+                      如收件人收到的邮包重量、数量、件数不符、破损的邮包，请收件人收到包裹24小时内向目的地DHL的反馈丢失或破损情况。并在7个工作日内将收件人在当地登记的备案号提供给我司，以便向DHL的调查索赔。如经DHL核实后，最高赔偿为免运费，赔偿包裹的申报价值，最高不超过100USD，部分破损或丢失需按实际丢失数量占总数的百分比赔偿，但最高赔偿不超过USD100。<br />
+                      b）由于海关抽查造成的邮包丢失<br />
+                      邮包在经过海关时，海关打开邮包检查，可能导致邮包丢失、邮包内物品（全部或部分）丢失、或被海关扣押。皇家物流不承担由此带来的任何责任。 </p>
+                    <div> <br />
+                    </div>
+                    </span> </div>
+                  <div class="last1" style=""> <a id="RpPrice_ctl01_RpPrice1_ctl03_lbFee" class="spn9" href="{{:url('register')}}" target="_blank"></a> </div>
+                  <input type="hidden" name="RpPrice$ctl01$RpPrice1$ctl03$HiChannelCode" id="RpPrice_ctl01_RpPrice1_ctl03_HiChannelCode" value="MYDHL" />
+                </div>
+              </div>
+              <div class="countcon clearfix" id='ARAMEX-HKARAMEX'>
+                <div class="conrow">
+                  <div class="spn1" style="width: 17%;"> <img id="RpPrice_ctl01_RpPrice1_ctl04_ImgChnanel" src="__PUBLIC__/home/images/p4.gif" style="height:40px;width:40px;border-width:0px;" />ARAMEX普货价<br />
+                    <code>ARAMEX</code> </div>
+                  <div class="spn20" style="width: 7%; padding-left: 10px; text-align: center;">1.000</div>
+                  <div class="spn3" style="width: 8%; padding-left: 25px; text-align: center;"> <span id="RpPrice_ctl01_RpPrice1_ctl04_lbSymbol"></span> 140.72 </div>
+                  <div class="spn4" style="width: 10%; padding-left: 35px; text-align: center;"> <span id="RpPrice_ctl01_RpPrice1_ctl04_lbSymbol1"></span>16.89 </div>
+                  <div class="spn5" style="width: 10%; padding-left: 35px; text-align: center;">4 - 7</div>
+                  <div class="spn6" style="width: 5%; text-align: center; padding-left: 53px;">是</div>
+                  <div class="spn6" style="width: 8%; text-align: center; padding-left: 53px;">否</div>
+                  <div class="spn2" style="width: 10%; padding-left: 86px; text-align: center;"> <span id="RpPrice_ctl01_RpPrice1_ctl04_lbSymbol2"></span>157.61 </div>
+                  <div class="last1" id="La_Remarkdiv" style="padding-left: 110px;">
+                    <input type="button" style="width: 80px; height: 30px; margin-right: -30px; margin-top: 5px; float: right; border-radius: 3px;"
+                                                        value="发货须知" onclick='xiangqing(90)' />
+                    <span id="RpPrice_ctl01_RpPrice1_ctl04_La_Remark" style="display: none;">
+                    <p> <span class="neirongbbb"> </span> </p>
+                    <p> <span class="neirongbbb"><a name="1"></a>自主ARAMEX账号，系统下单自动生成单号，一单到底。当天晚上安排过港，第二天下午ARAMEX操作提取！全程时效3 - 5工作日！</span> </p>
+                    <p> <span class="neirongbbb"><a name="1"></a>货物限制</span> </p>
+                    <p> 只接收普通货物，暂不接任何带电产品及仿牌，违禁品。如查到电池及违禁品所产生的费用发件人承担！ </p>
+                    <p> <br />
+                      <span class="neirongbbb"><a name="1"></a>体积重量</span> </p>
+                    <p> <span class="neirongbbb"></span>&nbsp;1.中东专线邮包的体积常规限制在120*50*50立方厘米以内 <br />
+                      2.中东专线邮包体积重量计算公式为：长*宽*高CM/5000，如果邮包体积重量大于实际重量，则按体积重量计费 <br />
+                      3.重量：如重量超过30KG请提前咨询皇家物流客服 </p>
+                    <p> <span class="neirongbbb"><a name="1"></a>理赔相关</span> </p>
+                    <p> 1.Aramex一般是发货两天内可以上网，为对客户保证安全性，皇家物流收取货物及操作开单收取运费后，上网前快件丢件，皇家物流将按照申报价值赔偿客户损失（上限为100美金），最高不超过3倍运费。 <br />
+                      2.Aramex包裹上网后，在寄递过程中因非客户过失而发生丢失、短少、损毁和延误，皇家物流会协助客户向ARAMEX快递公司申请赔偿。快件损坏或丢失，ARAMEX将按申报价值赔偿，最高不超过100美金。但对间接损失和未实现的利益不承担赔偿责任。<br />
+                      3.属于下列情况的，ARAMEX快递公司不承担赔偿责任：<br />
+                      一、 由于不可抗力造成的。<br />
+                      二、 寄递的物品违反禁寄或限寄规定的，经主管机关没收或依照有关法规处理的。<br />
+                      三、 送交包裹封装完好，无拆动痕迹，且收件人已按规定手续签收，事后收件人发现内件短少或损毁的。<br />
+                      四、 由于客户的责任或所寄物品本身的原因造成包裹损失或延误的。<br />
+                      五、 客户自交寄包裹之日起至查询期满未查询又未提出赔偿要求的。<br />
+                      六、 国际包裹被寄达国按其国内法令扣留、没收或销毁的。<span class="neirongbbb"><strong> </strong></span> </p>
+                    </span> </div>
+                  <div class="last1" style=""> <a id="RpPrice_ctl01_RpPrice1_ctl04_lbFee" class="spn9" href="{{:url('register')}}" target="_blank"></a> </div>
+                  <input type="hidden" name="RpPrice$ctl01$RpPrice1$ctl04$HiChannelCode" id="RpPrice_ctl01_RpPrice1_ctl04_HiChannelCode" value="ARAMEX" />
+                </div>
+              </div>
+              <div class="countcon clearfix" id='CNPOST-SAL-OYY-SAL'>
+                <div class="conrow">
+                  <div class="spn1" style="width: 17%;"> <img id="RpPrice_ctl01_RpPrice1_ctl05_ImgChnanel" src="__PUBLIC__/home/images/p12.gif" style="height:40px;width:40px;border-width:0px;" />中邮航空SAL大包<br />
+                    <code>CNPOST-SAL</code> </div>
+                  <div class="spn20" style="width: 7%; padding-left: 10px; text-align: center;">1.000</div>
+                  <div class="spn3" style="width: 8%; padding-left: 25px; text-align: center;"> <span id="RpPrice_ctl01_RpPrice1_ctl05_lbSymbol"></span> 163.59 </div>
+                  <div class="spn4" style="width: 10%; padding-left: 35px; text-align: center;"> <span id="RpPrice_ctl01_RpPrice1_ctl05_lbSymbol1"></span>0.00 </div>
+                  <div class="spn5" style="width: 10%; padding-left: 35px; text-align: center;">20 - 40</div>
+                  <div class="spn6" style="width: 5%; text-align: center; padding-left: 53px;">是</div>
+                  <div class="spn6" style="width: 8%; text-align: center; padding-left: 53px;">否</div>
+                  <div class="spn2" style="width: 10%; padding-left: 86px; text-align: center;"> <span id="RpPrice_ctl01_RpPrice1_ctl05_lbSymbol2"></span>163.59 </div>
+                  <div class="last1" id="La_Remarkdiv" style="padding-left: 110px;">
+                    <input type="button" style="width: 80px; height: 30px; margin-right: -30px; margin-top: 5px; float: right; border-radius: 3px;"
+                                                        value="发货须知" onclick='xiangqing(241)' />
+                    <span id="RpPrice_ctl01_RpPrice1_ctl05_La_Remark" style="display: none;">
+                    <p> <span class="neirongbbb"><a name="1"></a>深圳邮政账号，全区不计材积，不计偏远，今天交货，明天邮局扫描上网。</span> </p>
+                    <p> <span class="neirongbbb"><a name="1"></a>货物限制</span> </p>
+                    <p> 只接普货，不接任何带电及违禁品！如查到违禁品或电池之类的货物一律不退运费。 </p>
+                    <p> <br />
+                    </p>
+                    <p> <span class="neirongbbb"><span class="neirongbbb">体积限制</span></span><br />
+                      此渠道不计材积，最大边长1.05米、长度和长度以外最大横周合计不超2米,最小边长不小于0.24米、宽不小于0.16米. </p>
+                    <p> <br />
+                    </p>
+                    <p> <span class="neirongbbb">禁寄物品</span><br />
+                      1.航空禁运的危险物品、液体，粉末等。国家明令禁止出口货物，如古董，货币及其它侵权产品。<br />
+                      2.需要额外提供资料的物品<br />
+                      寄送电池及含电池的物品时，需提供MSDS证明和电池信（需提供正本）（如有需要请联系客服人员）<br />
+                      邮寄名牌产品需提供正规购买发票或授权书。<br />
+                      3.不能寄马达、发动机之类的产品。 </p>
+                    <p> <br />
+                    </p>
+                    </span> </div>
+                  <div class="last1" style=""> <a id="RpPrice_ctl01_RpPrice1_ctl05_lbFee" class="spn9" href="{{:url('register')}}" target="_blank"></a> </div>
+                  <input type="hidden" name="RpPrice$ctl01$RpPrice1$ctl05$HiChannelCode" id="RpPrice_ctl01_RpPrice1_ctl05_HiChannelCode" value="CNPOST-SAL" />
+                </div>
+              </div>
+              <div class="countcon clearfix" id='CNDHL-PFCEU-DHL'>
+                <div class="conrow">
+                  <div class="spn1" style="width: 17%;"> <img id="RpPrice_ctl01_RpPrice1_ctl06_ImgChnanel" src="__PUBLIC__/home/images/p1.gif" style="height:40px;width:40px;border-width:0px;" />大陆DHL普货价<br />
+                    <code>CNDHL</code> </div>
+                  <div class="spn20" style="width: 7%; padding-left: 10px; text-align: center;">1.000</div>
+                  <div class="spn3" style="width: 8%; padding-left: 25px; text-align: center;"> <span id="RpPrice_ctl01_RpPrice1_ctl06_lbSymbol"></span> 151.80 </div>
+                  <div class="spn4" style="width: 10%; padding-left: 35px; text-align: center;"> <span id="RpPrice_ctl01_RpPrice1_ctl06_lbSymbol1"></span>17.91 </div>
+                  <div class="spn5" style="width: 10%; padding-left: 35px; text-align: center;">2 - 4</div>
+                  <div class="spn6" style="width: 5%; text-align: center; padding-left: 53px;">是</div>
+                  <div class="spn6" style="width: 8%; text-align: center; padding-left: 53px;">是</div>
+                  <div class="spn2" style="width: 10%; padding-left: 86px; text-align: center;"> <span id="RpPrice_ctl01_RpPrice1_ctl06_lbSymbol2"></span>169.71 </div>
+                  <div class="last1" id="La_Remarkdiv" style="padding-left: 110px;">
+                    <input type="button" style="width: 80px; height: 30px; margin-right: -30px; margin-top: 5px; float: right; border-radius: 3px;"
+                                                        value="发货须知" onclick='xiangqing(150)' />
+                    <span id="RpPrice_ctl01_RpPrice1_ctl06_La_Remark" style="display: none;">
+                    <p> <span class="neirongbbb">大陆DHL自主账号，我司操作出单，今交明提取，全程时效3 - 6工作日！ </span> </p>
+                    <p> <span style="color:#E53333;"><br />
+                      </span> </p>
+                    <p> <span class="neirongbbb">货物限制 </span> </p>
+                    <p> <span style="color:#000000;">暂只接收普货，除了美加墨这三个国家可接内置电池，其他区域不接任何带电产品以及仿牌，违禁品之类。如查到违禁品及仿牌之类一律不退运费。</span> </p>
+                    <p> <span class="neirongbbb"><br />
+                      </span> </p>
+                    <p> <span class="neirongbbb">体积重量限制</span><br />
+                      单件最长边不超1.2米，单件不超70KG，对于超长超重的单件包裹请于发货前咨询我司客服人员。 </p>
+                    <p> 材积计算方式：长*宽*高/5000 </p>
+                    <hr />
+                    <br />
+                    <p> <span class="neirongbbb">禁寄物品</span><br />
+                      1.航空禁运的危险物品、液体，粉末等。国家明令禁止出口货物，如古董，货币及其它侵权产品。<br />
+                      2.需要额外提供资料的物品<br />
+                      寄送电池及含电池的物品时，需提供MSDS证明和电池信（需提供正本）（如有需要请联系客服人员）<br />
+                      邮寄名牌产品需提供正规购买发票或授权书。<br />
+                      3.不能寄马达、发动机之类的产品。 </p>
+                    <br />
+                    <hr />
+                    <br />
+                    <p> <span class="neirongbbb">中国DHL国际快递保险与理赔</span><br />
+                      1.没有投保的包裹按以下条款理赔：<br />
+                      a）对于少件、缺货、破损的邮包<br />
+                      如收件人收到的邮包重量、数量、件数不符、破损的邮包，请收件人收到包裹24小时内向目的地DHL的反馈丢失或破损情况。并在7个工作日内将收件人在当地登记的备案号提供给我司，以便向DHL的调查索赔。如经DHL核实后，最高赔偿为免运费，赔偿包裹的申报价值，最高不超过100USD，部分破损或丢失需按实际丢失数量占总数的百分比赔偿，但最高赔偿不超过USD100。<br />
+                      b）由于海关抽查造成的邮包丢失<br />
+                      邮包在经过海关时，海关打开邮包检查，可能导致邮包丢失、邮包内物品（全部或部分）丢失、或被海关扣押。皇家物流不承担由此带来的任何责任。 </p>
+                    <p> <br />
+                    </p>
+                    </span> </div>
+                  <div class="last1" style=""> <a id="RpPrice_ctl01_RpPrice1_ctl06_lbFee" class="spn9" href="{{:url('register')}}" target="_blank"></a> </div>
+                  <input type="hidden" name="RpPrice$ctl01$RpPrice1$ctl06$HiChannelCode" id="RpPrice_ctl01_RpPrice1_ctl06_HiChannelCode" value="CNDHL" />
+                </div>
+              </div>
+              <div class="countcon clearfix" id='HKFEDIE-HKFEDEX-IE'>
+                <div class="conrow">
+                  <div class="spn1" style="width: 17%;"> <img id="RpPrice_ctl01_RpPrice1_ctl07_ImgChnanel" src="__PUBLIC__/home/images/p2.gif" style="height:40px;width:40px;border-width:0px;" />香港联邦IE<br />
+                    <code>HKFEDIE</code> </div>
+                  <div class="spn20" style="width: 7%; padding-left: 10px; text-align: center;">1.000</div>
+                  <div class="spn3" style="width: 8%; padding-left: 25px; text-align: center;"> <span id="RpPrice_ctl01_RpPrice1_ctl07_lbSymbol"></span> 154.22 </div>
+                  <div class="spn4" style="width: 10%; padding-left: 35px; text-align: center;"> <span id="RpPrice_ctl01_RpPrice1_ctl07_lbSymbol1"></span>16.96 </div>
+                  <div class="spn5" style="width: 10%; padding-left: 35px; text-align: center;">4 - 7</div>
+                  <div class="spn6" style="width: 5%; text-align: center; padding-left: 53px;">是</div>
+                  <div class="spn6" style="width: 8%; text-align: center; padding-left: 53px;">是</div>
+                  <div class="spn2" style="width: 10%; padding-left: 86px; text-align: center;"> <span id="RpPrice_ctl01_RpPrice1_ctl07_lbSymbol2"></span>171.18 </div>
+                  <div class="last1" id="La_Remarkdiv" style="padding-left: 110px;">
+                    <input type="button" style="width: 80px; height: 30px; margin-right: -30px; margin-top: 5px; float: right; border-radius: 3px;"
+                                                        value="发货须知" onclick='xiangqing(78)' />
+                    <span id="RpPrice_ctl01_RpPrice1_ctl07_La_Remark" style="display: none;">
+                    <p> <span class="neirongbbb"><a name="1"></a>自主账号，成功对接联邦系统，系统下单一单到底，无需换单。时效好，清关优！</span><br />
+                      <span style="font-family:Tahoma;"></span><br />
+                      <span class="neirongbbb"><a name="1"></a>货物限制</span><br />
+                      <span>只接收内置电池，不接内置纽扣及配套电池，纯电池以及仿牌，违禁品之类。如查到违禁品及仿牌之类一律不退运费！</span> </p>
+                    <p> <span>带电池货物请在下单时申报出来，否则由于未申报导致FEDEX扣件所产生的费用发件人承担！</span> </p>
+                    <p> <span><span class="neirongbbb" style="color:#FF3300;line-height:24px;font-size:14px;font-weight:bold;background-color:#F3F3F3;">国家注意事项</span><br />
+                      <span style="color:#0F0F0F;line-height:24px;background-color:#F3F3F3;">巴西 厄瓜多尔 黎巴嫩 土耳其 &nbsp;危地马拉 保加利亚，印度联邦（以上国家需要正本发票）</span><br />
+                      </span><br />
+                      <span class="neirongbbb"><a name="1"></a>体积重量限制</span> </p>
+                    <p> <span>单件最大重量为 68 公斤；单件最大长度为 270 CM；单件最大尺寸：长+ 2×宽 + 2× 高＝327 CM，如有超过，请咨询皇家客服中心后发货。</span><br />
+                      <br />
+                      <span class="neirongbbb"><a name="1"></a>香港FedEx国际快递附加费</span><br />
+                      <span>1.偏远附加费：</span><br />
+                      <span>-去往偏远地区的包裹需加收偏远地区附加费，参考费用：4.2RMB/KG*(1+当月燃油)或者183RMB*(1+当月燃油)，两者取较高者计费。</span><br />
+                      <span>-最终的偏远附加费我司将以香港联邦的账单为准；因香港联邦账单有时出的较晚，账单有效期为一年。</span><br />
+                      <span>2.偏远地区可在香港联邦官方网站上查询：</span><br />
+                      <span>http://images.fedex.com/us/services/pdf/Zipcodes_OPA_ODA.pdf</span><br />
+                      <span>3.燃油附加费：</span><br />
+                      <span>-香港联邦的燃油费率以香港联邦官方公布的费率为准；皇家物流会在每个月的月底公布下个月香港联邦快递官方的燃油费率以及下个月燃油费率的具体生效时间。</span><br />
+                      <span>4.更改地址费用更改为：100RMB/票*（1+当月燃油）</span><br />
+                      <span>-由于香港联邦会把收件人更改派送地址的费用也Bill到寄件人，所以最终的更改地址费用将会以联邦账单为准。</span><br />
+                      <span>5.住宅交付附加费：28RMB/票*（1+当月燃油）。</span><br />
+                      <span>-对于美国及加拿大的寄件需要收取住宅附加费用（由2011年1月17日起生效）皇家物流会以香港联邦快递账单为准向客户收取费用。</span><br />
+                      <span>-若已收取偏远地区派送附加费，则不需要再收取此住宅附加费。</span><br />
+                      <br />
+                      <span class="neirongbbb"><a name="1"></a>理赔相关</span><br />
+                      <span>&nbsp;1、易碎品请自行包装好，否则破碎我们概不负责，货物运转中若发生丢失、破碎、赔偿，以寄件人随货提供的商业发票（或者形式发票）上载明的申报价值作为赔偿价值的参考依据,对实际遗失或损毁部分进行赔偿，但每票货最高赔偿额不超过100美金，我司不承担任何因快件遗失、损坏或延误引起的连带损失。若客户有额外要求可自行购买货物保险。</span><br />
+                      <span>2、在遗失或损毁事件发生后，发货人提供的任何与原随货商业发票（或者形式发票）上载明的申报价值不相同的货物价值，我们都将不予承认。</span><br />
+                      <span>3、请在事发之日起10天内向我司反映并出具书面索赔函,否则不予受理。同时我们不承担国际快件因航班延误或航班舱位问题所导致的一切责任及费用。</span><br />
+                      <span style="font-family:Tahoma;"></span> </p>
+                    </span> </div>
+                  <div class="last1" style=""> <a id="RpPrice_ctl01_RpPrice1_ctl07_lbFee" class="spn9" href="{{:url('register')}}" target="_blank"></a> </div>
+                  <input type="hidden" name="RpPrice$ctl01$RpPrice1$ctl07$HiChannelCode" id="RpPrice_ctl01_RpPrice1_ctl07_HiChannelCode" value="HKFEDIE" />
+                </div>
+              </div>
+              <div class="countcon clearfix" id='SZ-EMS-SZPOST'>
+                <div class="conrow">
+                  <div class="spn1" style="width: 17%;"> <img id="RpPrice_ctl01_RpPrice1_ctl08_ImgChnanel" src="__PUBLIC__/home/images/p14.png" style="height:40px;width:40px;border-width:0px;" />深圳EMS<br />
+                    <code>SZ-EMS</code> </div>
+                  <div class="spn20" style="width: 7%; padding-left: 10px; text-align: center;">1.000</div>
+                  <div class="spn3" style="width: 8%; padding-left: 25px; text-align: center;"> <span id="RpPrice_ctl01_RpPrice1_ctl08_lbSymbol"></span> 174.40 </div>
+                  <div class="spn4" style="width: 10%; padding-left: 35px; text-align: center;"> <span id="RpPrice_ctl01_RpPrice1_ctl08_lbSymbol1"></span>0.00 </div>
+                  <div class="spn5" style="width: 10%; padding-left: 35px; text-align: center;">4 - 8</div>
+                  <div class="spn6" style="width: 5%; text-align: center; padding-left: 53px;">是</div>
+                  <div class="spn6" style="width: 8%; text-align: center; padding-left: 53px;">否</div>
+                  <div class="spn2" style="width: 10%; padding-left: 86px; text-align: center;"> <span id="RpPrice_ctl01_RpPrice1_ctl08_lbSymbol2"></span>174.40 </div>
+                  <div class="last1" id="La_Remarkdiv" style="padding-left: 110px;">
+                    <input type="button" style="width: 80px; height: 30px; margin-right: -30px; margin-top: 5px; float: right; border-radius: 3px;"
+                                                        value="发货须知" onclick='xiangqing(307)' />
+                    <span id="RpPrice_ctl01_RpPrice1_ctl08_La_Remark" style="display: none;">
+                    <p> <span class="neirongbbb"><a name="1"></a>深圳邮政账号，通关能力强，由邮政统一清关。全区无偏远，且不计算材积！全程时效7 - 10个工作日！</span> </p>
+                    <p> <span class="neirongbbb"><a name="1"></a>服务优势</span><br />
+                      计费简便 — 
+                      国际EMS快递计费简单，价格为中国邮政EMS的公布价乘以折扣，以人民币结算;<br />
+                      时效稳定 — 
+                      当天收货发货，当天交接深圳邮局，次日上网跟踪，节省了快件在国内运输的时间。签收时效有保障，东南亚南亚地区3天内可以妥投，澳洲4天可以妥投，欧美国家5天能妥投。 </p>
+                    <p> 通关能力 — 国际EMS快递通关能力强，由邮政统一清关。<br />
+                      货物限制 — 只能走普货，货物不计体积，适合发体积大重量小的货物。 </p>
+                    <p> 服务范围 — 
+                      EMS国际快递可到达全球210个目的地，但有些国家不通邮如：荷兰、智利、巴巴多斯、厄瓜多尔、危地马拉。<br />
+                      深圳EMS国际快递包裹由深圳发往全球。 </p>
+                    <p> <br />
+                    </p>
+                    <p> <span class="neirongbbb">体积和重量限制 </span><br />
+                      1、重量限制：国际特快邮件除寄达邮政另有规定外，每件限重20千克。内装易碎物品或流质物品的邮件，每件限重10千克。<br />
+                      2、物品最大尺寸：长度不超过1050毫米，长度和长度以外紧大横周合计不超过2000毫米。<br />
+                      3、物品最小尺寸：包装箱、盒至少有一个面的长度不小于215毫米，宽度不小于130毫米，该面应平整，瓦楞纸板表面不得出现露楞现象。<br />
+                      4、圆卷形包装：最小尺寸为：长度300毫米，直径60毫）；<br />
+                      最大尺寸：直径的2倍和长度合计不超过1040毫米，长度不超过900毫米。<br />
+                      5、在寄达国邮政对国际特快邮件的重量、尺寸限制另有规定时，应按寄达国邮政的有关规定办理。<br />
+                      6、体积重量测算：<br />
+                      a）仅对长、宽、高三边中任一单边达到60CM或以上的包裹进行计算体积重。<br />
+                      b） 
+                      测量外箱尺寸，按外包装自然外廓的最长、最宽、最高部位尺寸计算，测量采用厘米为计算基本单位,不足1厘米长按1厘米计算。<br />
+                      c）体积重量计算公式：<br />
+                      体积重量(KG)=长（CM）*宽（CM）*高（CM）/8000（CM3/KG）<br />
+                      d） 
+                      包裹的计费重量取包裹的实际重量与体积重量较大者计算。 </p>
+                    <hr />
+                    <p> <span class="neirongbbb">禁限寄物品</span><br />
+                      1）国家法律法规禁止流通或者寄递的物品；<br />
+                      2）爆炸性、易燃性、腐蚀性、放射性和毒性等危险物品；<br />
+                      3）反动报刊、书籍、窗口或者淫秽物品；<br />
+                      4）各种货币；<br />
+                      5）妨害公共卫生的物品；<br />
+                      6）容易腐烂的物品；<br />
+                      7）活的动物（包装能确保寄递和工作人员安全的蜜蜂、蚕、水蛭除外）；<br />
+                      8）包装不妥，可能危害人身安全、污染或损毁其它邮件设备的物品；<br />
+                      9）其它不适合邮递条件的物品。 </p>
+                    <p> <br />
+                    </p>
+                    <p> <br />
+                    </p>
+                    </span> </div>
+                  <div class="last1" style=""> <a id="RpPrice_ctl01_RpPrice1_ctl08_lbFee" class="spn9" href="{{:url('register')}}" target="_blank"></a> </div>
+                  <input type="hidden" name="RpPrice$ctl01$RpPrice1$ctl08$HiChannelCode" id="RpPrice_ctl01_RpPrice1_ctl08_HiChannelCode" value="SZ-EMS" />
+                </div>
+              </div>
+              <div class="countcon clearfix" id='HKFEDIP-HKFEDEX-IP'>
+                <div class="conrow">
+                  <div class="spn1" style="width: 17%;"> <img id="RpPrice_ctl01_RpPrice1_ctl09_ImgChnanel" src="__PUBLIC__/home/images/p2.gif" style="height:40px;width:40px;border-width:0px;" />香港联邦IP<br />
+                    <code>HKFEDIP</code> </div>
+                  <div class="spn20" style="width: 7%; padding-left: 10px; text-align: center;">1.000</div>
+                  <div class="spn3" style="width: 8%; padding-left: 25px; text-align: center;"> <span id="RpPrice_ctl01_RpPrice1_ctl09_lbSymbol"></span> 180.32 </div>
+                  <div class="spn4" style="width: 10%; padding-left: 35px; text-align: center;"> <span id="RpPrice_ctl01_RpPrice1_ctl09_lbSymbol1"></span>19.84 </div>
+                  <div class="spn5" style="width: 10%; padding-left: 35px; text-align: center;">4 - 5</div>
+                  <div class="spn6" style="width: 5%; text-align: center; padding-left: 53px;">是</div>
+                  <div class="spn6" style="width: 8%; text-align: center; padding-left: 53px;">是</div>
+                  <div class="spn2" style="width: 10%; padding-left: 86px; text-align: center;"> <span id="RpPrice_ctl01_RpPrice1_ctl09_lbSymbol2"></span>200.16 </div>
+                  <div class="last1" id="La_Remarkdiv" style="padding-left: 110px;">
+                    <input type="button" style="width: 80px; height: 30px; margin-right: -30px; margin-top: 5px; float: right; border-radius: 3px;"
+                                                        value="发货须知" onclick='xiangqing(104)' />
+                    <span id="RpPrice_ctl01_RpPrice1_ctl09_La_Remark" style="display: none;"><span class="neirongbbb">
+                    <p> <span class="neirongbbb"><a name="1"></a>自主账号，成功对接联邦系统，系统下单一单到底，无需换单。时效好，清关优！IP相对IE时效快2-3工作日！</span><br />
+                      <br />
+                      <span class="neirongbbb"><a name="1"></a>货物限制</span><br />
+                      <span style="font-family:Tahoma;"><span style="font-family:Microsoft YaHei;">只接收内置电池，不接收内置纽扣电池及配套电池，纯电池及仿牌，违禁品之类的货物。如查到违禁品及仿牌之类的货物一律不退运费</span>！</span> </p>
+                    <p> <span style="font-family:Tahoma;"><span>带电池货物请在下单时申报出来，否则由于未申报导致FEDEX扣件所产生的费用发件人承担！</span><br />
+                      </span> </p>
+                    <p> <span><span class="neirongbbb" style="color:#FF3300;line-height:24px;font-size:14px;font-weight:bold;background-color:#F3F3F3;">国家注意事项</span><br />
+                      <span style="color:#0F0F0F;line-height:24px;background-color:#F3F3F3;">巴西 厄瓜多尔 黎巴嫩 土耳其 &nbsp;危地马拉 保加利亚，印度联邦（以上国家需要正本发票）</span><br />
+                      </span><br />
+                      <span class="neirongbbb"><a name="1"></a>体积重量限制</span><br />
+                      <span>单件最大重量为 68 公斤；单件最大长度为 270 CM；单件最大尺寸：长+ 2×宽 + 2× 高＝327 CM，如有超过，请咨询皇家客服中心后发货。</span><br />
+                      <br />
+                      <span class="neirongbbb"><a name="1"></a>香港FedEx国际快递附加费</span><br />
+                      <span>1.偏远附加费：</span><br />
+                      <span>-去往偏远地区的包裹需加收偏远地区附加费，参考费用：4RMB/KG*(1+当月燃油)或者180RMB*(1+当月燃油)，两者取较高者计费。</span><br />
+                      <span>-最终的偏远附加费我司将以香港联邦的账单为准；因香港联邦账单有时出的较晚，账单有效期为一年。</span><br />
+                      <span>2.偏远地区可在香港联邦官方网站上查询：</span><br />
+                      <span>http://images.fedex.com/us/services/pdf/Zipcodes_OPA_ODA.pdf</span><br />
+                      <span>3.燃油附加费：</span><br />
+                      <span>-香港联邦的燃油费率以香港联邦官方公布的费率为准；皇家物流会在每个月的月底公布下个月香港联邦快递官方的燃油费率以及下个月燃油费率的具体生效时间。</span><br />
+                      <span>4.更改地址费用更改为：100RMB/票*（1+当月燃油）</span><br />
+                      <span>-由于香港联邦会把收件人更改派送地址的费用也Bill到寄件人，所以最终的更改地址费用将会以联邦账单为准。</span><br />
+                      <span>5.住宅交付附加费：25RMB/票*（1+当月燃油）。</span><br />
+                      <span>-对于美国及加拿大的寄件需要收取住宅附加费用（由2011年1月17日起生效）皇家物流会以香港联邦快递账单为准向客户收取费用。</span><br />
+                      <span>-若已收取偏远地区派送附加费，则不需要再收取此住宅附加费。</span><br />
+                      <br />
+                      <br />
+                      <span style="font-family:Tahoma;"></span> </p>
+                    </span></span> </div>
+                  <div class="last1" style=""> <a id="RpPrice_ctl01_RpPrice1_ctl09_lbFee" class="spn9" href="{{:url('register')}}" target="_blank"></a> </div>
+                  <input type="hidden" name="RpPrice$ctl01$RpPrice1$ctl09$HiChannelCode" id="RpPrice_ctl01_RpPrice1_ctl09_HiChannelCode" value="HKFEDIP" />
+                </div>
+              </div>
+            </div>
+            <div class="counttips"> <strong> <span id="RpPrice_ctl02_lbCHStyleFullName">国际小包</span>&nbsp;&nbsp;</strong><span id="RpPrice_ctl02_lbRemark">[时效快 安全高 门到门服务]</span> </div>
+            <div class="counttip">
+             <span class="spn1" style="width:17%; padding-left: 10px">运输方式</span> 
+             <span class="spn20" style="width: 7%; padding-left: 10px; text-align: center;">计费重量</span> 
+             <a class="an1" onclick="orderManage(1,'NLRPOST')" style="width: 8%; padding-left: 10px; text-align: center;">基本运费</a> 
+             <a class="an2" onclick="orderManage(2,'NLRPOST')" style="width: 10%; padding-left: 10px; text-align: center;">燃油费</a> 
+             <span class="spn3" style="width: 10%; padding-left: 10px; text-align: center;">时效(工作日)</span> 
+             <a class="an3" onclick="orderManage(3,'NLRPOST')" style="width: 5%; padding-left: 10px; text-align: center;">追踪</a>
+              <span class="spn2" style="width: 8%; padding-left: 10px; text-align: center;">是否带电</span>
+               <a class="spn2 sppad" onclick="orderManage(4,'NLRPOST')" style="width:10%; padding-left: 10px; text-align: center;">总费用</a> 
+               <span class="spn2" style="width: 10%; padding-left: 10px; text-align: center;">备注</span> 
+              <span class="spn2" style="width: 10%; padding-left: 10px; text-align: center;">下单</span>
+              <input type="hidden" name="RpPrice$ctl02$HiCCode" id="RpPrice_ctl02_HiCCode" value="NLRPOST" />
+            </div>
+            <div class="countcon clearfix">
+              <div class="countcon clearfix" id='BPOST-GZ-bpost'>
+                <div class="conrow">
+                  <div class="spn1" style="width: 17%;"> <img id="RpPrice_ctl02_RpPrice1_ctl00_ImgChnanel" src="__PUBLIC__/home/images/p22.jpg" style="height:40px;width:40px;border-width:0px;" />比利时特快小包<br />
+                    <code>BPOST</code> </div>
+                  <div class="spn20" style="width: 7%; padding-left: 10px; text-align: center;">1.000</div>
+                  <div class="spn3" style="width: 8%; padding-left: 25px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl00_lbSymbol"></span> 72.90 </div>
+                  <div class="spn4" style="width: 10%; padding-left: 35px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl00_lbSymbol1"></span>0.00 </div>
+                  <div class="spn5" style="width: 10%; padding-left: 35px; text-align: center;">7 - 15</div>
+                  <div class="spn6" style="width: 5%; text-align: center; padding-left: 53px;">否</div>
+                  <div class="spn6" style="width: 8%; text-align: center; padding-left: 53px;">是</div>
+                  <div class="spn2" style="width: 10%; padding-left: 86px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl00_lbSymbol2"></span>72.90 </div>
+                  <div class="last1" id="La_Remarkdiv" style="padding-left: 110px;">
+                    <input type="button" style="width: 80px; height: 30px; margin-right: -30px; margin-top: 5px; float: right; border-radius: 3px;"
+                                                        value="发货须知" onclick='xiangqing(85)' />
+                    <span id="RpPrice_ctl02_RpPrice1_ctl00_La_Remark" style="display: none;">
+                    <p> <strong></strong> </p>
+                    <p> <strong><span class="neirongbbb" style="font-size:14px;font-weight:bold;">比利时特快小包服务介绍</span>&nbsp;</strong> </p>
+                    <p> 比利时小包是皇家物流与比利时邮政<span style="line-height:24px;color:#0f0f0f;">合作的一项为中国外贸电子商务卖家提供经济型邮寄服务。</span> </p>
+                    <p> <span style="line-height:24px;color:#0f0f0f;"><span style="color:#E53333;font-family:微软雅黑, ''''Microsoft Yahei'''', Arial, Helvetica, sans-serif, 宋体;line-height:24px;"><strong>此渠道只可查到半程追踪，无法提供签收信息。</strong></span><span style="color:#E53333;"><strong></strong></span></span> </p>
+                    <p> <strong><br />
+                      </strong> </p>
+                    <p> <strong><span class="neirongbbb" style="font-size:14px;font-weight:bold;">比利时特快小包产品优势</span>&nbsp;</strong> </p>
+                    <p> <strong><span style="line-height:24px;font-family:微软雅黑;color:#0f0f0f;">费用-费用是国际快递的20%，节约物流成本</span><br />
+                      <span style="line-height:24px;font-family:微软雅黑;color:#0f0f0f;">高效-门到门端配送，详细的追踪服务</span><br />
+                      <span style="line-height:24px;font-family:微软雅黑;color:#0f0f0f;">清关-英国统一清关，欧洲中转无需二次清关</span><br />
+                      <span style="line-height:24px;font-family:微软雅黑;color:#0f0f0f;">稳定-派送时效稳定</span> </strong> </p>
+                    <p> <strong><span class="neirongbbb" style="font-size:14px;font-weight:bold;">货物限制</span> </strong> </p>
+                    <p> 可走内置电池，不接配套，纯电池及违禁品。 </p>
+                    <p> <strong><span class="neirongbbb" style="font-size:14px;font-weight:bold;"><br />
+                    </span></strong> </p>
+                    <p> <strong><span class="neirongbbb" style="font-size:14px;font-weight:bold;">体积和重量限制</span> </strong> </p>
+                    <p> 1）重量限制：<br />
+                      ? 小邮包限重2KG；<br />
+                      2）体积限制：<br />
+                      ? 非圆筒货物：长+宽+高≤90CM，单边长度≤60CM，长度≥14CM，宽度≥9CM；<br />
+                      ? 圆筒形货物：直径的两倍+长度≤104CM，单边长度≤90CM ，直径的两倍+长度≥17CM，长度≥10CM。<br />
+                      包裹价值限制：<br />
+                      只有低价值包裹可以进行运输。“低价值”是指货物的申报价值低于22 欧元。这是货物不包含运费的价值。 </p>
+                    <hr />
+                    <p> <strong><span class="neirongbbb" style="font-size:14px;font-weight:bold;">限制物品</span>&nbsp;?</strong> </p>
+                    <p> 根据国际航空条款规定的不能邮寄或限制邮寄的所有货物，比如品、粉末、液体、易燃易爆物品等危险品以及烟酒、现金及有价证券、侵权产品等。 </p>
+                    <strong><br />
+                    <hr />
+                    <p> <span class="neirongbbb" style="font-size:14px;font-weight:bold;">赔偿/保险</span> </p>
+                    <p> 平邮无赔偿服务。 </p>
+                    <div> <br />
+                    </div>
+                    </strong>
+                    <p> <br />
+                    </p>
+                    <p> <br />
+                    </p>
+                    </span> </div>
+                  <div class="last1" style=""> <a id="RpPrice_ctl02_RpPrice1_ctl00_lbFee" class="spn9" href="{{:url('register')}}" target="_blank"></a> </div>
+                  <input type="hidden" name="RpPrice$ctl02$RpPrice1$ctl00$HiChannelCode" id="RpPrice_ctl02_RpPrice1_ctl00_HiChannelCode" value="BPOST" />
+                </div>
+              </div>
+              <div class="countcon clearfix" id='BERPOST-BPOST'>
+                <div class="conrow">
+                  <div class="spn1" style="width: 17%;"> <img id="RpPrice_ctl02_RpPrice1_ctl01_ImgChnanel" src="__PUBLIC__/home/images/p22.jpg" style="height:40px;width:40px;border-width:0px;" />比利时挂号小包<br />
+                    <code>BERPOST</code> </div>
+                  <div class="spn20" style="width: 7%; padding-left: 10px; text-align: center;">1.000</div>
+                  <div class="spn3" style="width: 8%; padding-left: 25px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl01_lbSymbol"></span> 75.20 </div>
+                  <div class="spn4" style="width: 10%; padding-left: 35px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl01_lbSymbol1"></span>0.00 </div>
+                  <div class="spn5" style="width: 10%; padding-left: 35px; text-align: center;">7 - 15</div>
+                  <div class="spn6" style="width: 5%; text-align: center; padding-left: 53px;">是</div>
+                  <div class="spn6" style="width: 8%; text-align: center; padding-left: 53px;">是</div>
+                  <div class="spn2" style="width: 10%; padding-left: 86px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl01_lbSymbol2"></span>75.20 </div>
+                  <div class="last1" id="La_Remarkdiv" style="padding-left: 110px;">
+                    <input type="button" style="width: 80px; height: 30px; margin-right: -30px; margin-top: 5px; float: right; border-radius: 3px;"
+                                                        value="发货须知" onclick='xiangqing(154)' />
+                    <span id="RpPrice_ctl02_RpPrice1_ctl01_La_Remark" style="display: none;">
+                    <p> <span style="font-size:14px;font-weight:bold;" class="neirongbbb">比利时挂号小包服务介绍</span>&nbsp; </p>
+                    <p> <span style="line-height:24px;color:#0f0f0f;">比利时挂号小包是皇家物流与比利时邮政合作的一项为中国外贸电子商务卖家提供可寄达欧盟19国及瑞士，北美，南美，亚太国家的经济型邮寄服务。比利时邮政是欧洲最完善的邮政机构之一，拥有强大的包裹处理能力和递送时效，英国统一清关，欧洲中转无需二次清关，是低成本欧洲派送首选服务。</span> </p>
+                    <p> <br />
+                    </p>
+                    <p> <span style="font-size:14px;font-weight:bold;" class="neirongbbb">比利时挂号小包服务优势</span>&nbsp; </p>
+                    <p> <span style="line-height:24px;font-family:微软雅黑;color:#0f0f0f;">费用-费用是国际快递的20%，节约物流成本</span><br />
+                      <span style="line-height:24px;font-family:微软雅黑;color:#0f0f0f;">高效-欧盟19国及瑞士，北美，南美，亚太国家终端配送，有五次扫描点（含妥投），详细的追踪服务</span><br />
+                      <span style="line-height:24px;font-family:微软雅黑;color:#0f0f0f;">清关-英国统一清关，欧洲中转无需二次清关清关-英国统一清关，欧洲中转无需二次清关</span><br />
+                      <span style="line-height:24px;font-family:微软雅黑;color:#0f0f0f;">货物-可走内置电池，派送时效稳定，7 - 14个工作日。</span> </p>
+                    <p> <span style="font-size:14px;font-weight:bold;" class="neirongbbb">货物限制</span> </p>
+                    <p> 可走内置电池，不接配套，纯电池及违禁品。 </p>
+                    <p> <span style="font-size:14px;font-weight:bold;" class="neirongbbb"><br />
+                      </span> </p>
+                    <p> <span style="font-size:14px;font-weight:bold;" class="neirongbbb">体积和重量限制</span> </p>
+                    <p> 1）重量限制：<br />
+                      ? 小邮包限重2KG；<br />
+                      2）体积限制：<br />
+                      ? 非圆筒货物：长+宽+高≤90CM，单边长度≤60CM，长度≥14CM，宽度≥9CM；<br />
+                      ? 圆筒形货物：直径的两倍+长度≤104CM，单边长度≤90CM ，直径的两倍+长度≥17CM，长度≥10CM。<br />
+                      包裹价值限制：<br />
+                      只有低价值包裹可以进行运输。“低价值”是指货物的申报价值低于22 欧元。这是货物不包含运费的价值。 </p>
+                    <hr />
+                    <p> <span style="font-size:14px;font-weight:bold;" class="neirongbbb">限制物品</span> ? </p>
+                    <p> 根据国际航空条款规定的不能邮寄或限制邮寄的所有货物，比如品、粉末、液体、易燃易爆物品等危险品以及烟酒、现金及有价证券、侵权产品等。 </p>
+                    <br />
+                    <hr />
+                    <p> <span style="font-size:14px;font-weight:bold;" class="neirongbbb">赔偿/保险</span> </p>
+                    <p> 按包裹申报价值予以赔偿，每票最高赔偿金额为100RMB；挂号费不赔偿。 </p>
+                    <br />
+                    </span> </div>
+                  <div class="last1" style=""> <a id="RpPrice_ctl02_RpPrice1_ctl01_lbFee" class="spn9" href="{{:url('register')}}" target="_blank"></a> </div>
+                  <input type="hidden" name="RpPrice$ctl02$RpPrice1$ctl01$HiChannelCode" id="RpPrice_ctl02_RpPrice1_ctl01_HiChannelCode" value="BERPOST" />
+                </div>
+              </div>
+              <div class="countcon clearfix" id='FSPOST-PFCZSYJ'>
+                <div class="conrow">
+                  <div class="spn1" style="width: 17%;"> <img id="RpPrice_ctl02_RpPrice1_ctl02_ImgChnanel" src="__PUBLIC__/home/images/p12.gif" style="height:40px;width:40px;border-width:0px;" />速卖通线上佛山小包平邮<br />
+                    <code>FSPOST</code> </div>
+                  <div class="spn20" style="width: 7%; padding-left: 10px; text-align: center;">1.000</div>
+                  <div class="spn3" style="width: 8%; padding-left: 25px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl02_lbSymbol"></span> 76.95 </div>
+                  <div class="spn4" style="width: 10%; padding-left: 35px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl02_lbSymbol1"></span>0.00 </div>
+                  <div class="spn5" style="width: 10%; padding-left: 35px; text-align: center;">20 - 30</div>
+                  <div class="spn6" style="width: 5%; text-align: center; padding-left: 53px;">否</div>
+                  <div class="spn6" style="width: 8%; text-align: center; padding-left: 53px;">否</div>
+                  <div class="spn2" style="width: 10%; padding-left: 86px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl02_lbSymbol2"></span>76.95 </div>
+                  <div class="last1" id="La_Remarkdiv" style="padding-left: 110px;">
+                    <input type="button" style="width: 80px; height: 30px; margin-right: -30px; margin-top: 5px; float: right; border-radius: 3px;"
+                                                        value="发货须知" onclick='xiangqing(473)' />
+                    <span id="RpPrice_ctl02_RpPrice1_ctl02_La_Remark" style="display: none;">
+                    <p class="MsoNormal" align="center" style="text-align:center;"> <b><span><strong><span class="neirongbbb" style="font-size:14px;">速卖通线上中山仓收寄说明</span>&nbsp;</strong></span></b><b><span></span></b><b></b> </p>
+                    <p class="MsoNormal"> <span>注意事项：<strong><span style="color:#E53333;">（只接受速卖通线上发货，不接收线下发货！）</span></strong><span style="color:#E53333;"></span></span> </p>
+                    <p class="MsoNormal"> <span>1，客户在线创建物流订单，申请单号，选择物流方案为中国邮政平常小包+或者中国邮政挂号（中国邮政平常小包对应PFC速卖通线上中山小包平邮，中国邮政挂号对应PFC速卖通线上中山小包挂号）</span> </p>
+                    <p class="MsoNormal"> <span>2，</span><b><span>仓库必须选择中山仓。</span></b><b></b> </p>
+                    <p class="MsoNormal"> <b><span>线上交寄地址更改为：广东省中山市南区银潭二路</span><span>1号邮政南区电商产业园BH（英文：No.1,Southern Post District, YinTan &nbsp;Second &nbsp;Road, Zhongshan City, Guangdong Province）</span></b><b></b> </p>
+                    <p class="MsoNormal"> <b><span>（更改方式：登录全球速卖通账号，交易</span></b><b><span>----管理订单--地址管理----默认发货地址修改</span></b><b><span>）</span></b><b></b> </p>
+                    <p class="MsoNormal"> <span>3，上网时效：我司取件后次日上网</span> </p>
+                    <p class="MsoNormal"> <span>4，线上小包只收寄普货，拒收一切带电产品及各种航空禁寄品，如枪支弹药、毒品、液体，易燃易爆危险品等。客户如冲货，造成邮件被扣留，我司不对此类邮件进行赔偿。</span> </p>
+                    <p class="MsoNormal"> <span>5，赔偿标准：上网前丢件，我司按照申报价值赔尝最高不超过100元/票，如邮件已正常上网中转，我司只协助查询，不受理索赔服务。</span> </p>
+                    <p class="MsoNormal"> <span>&nbsp;</span> </p>
+                    <p class="MsoNormal"> <span>客户交货注意事项：</span> </p>
+                    <p class="MsoNormal"> <span>1，为方便我司操作更加快速准确的收寄您的包裹，请广大客户在交货当天在我司系统新建订单或者新建批量订单上传订单，且提交到确认，以免引起包裹处理延误。</span> </p>
+                    </span> </div>
+                  <div class="last1" style=""> <a id="RpPrice_ctl02_RpPrice1_ctl02_lbFee" class="spn9" href="{{:url('register')}}" target="_blank"></a> </div>
+                  <input type="hidden" name="RpPrice$ctl02$RpPrice1$ctl02$HiChannelCode" id="RpPrice_ctl02_RpPrice1_ctl02_HiChannelCode" value="FSPOST" />
+                </div>
+              </div>
+              <div class="countcon clearfix" id='FREUB-PFCFR-EUB'>
+                <div class="conrow">
+                  <div class="spn1" style="width: 17%;"> <img id="RpPrice_ctl02_RpPrice1_ctl03_ImgChnanel" src="__PUBLIC__/home/images/p12.gif" style="height:40px;width:40px;border-width:0px;" />法国E邮宝<br />
+                    <code>FREUB</code> </div>
+                  <div class="spn20" style="width: 7%; padding-left: 10px; text-align: center;">1.000</div>
+                  <div class="spn3" style="width: 8%; padding-left: 25px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl03_lbSymbol"></span> 80.00 </div>
+                  <div class="spn4" style="width: 10%; padding-left: 35px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl03_lbSymbol1"></span>0.00 </div>
+                  <div class="spn5" style="width: 10%; padding-left: 35px; text-align: center;">7 - 15</div>
+                  <div class="spn6" style="width: 5%; text-align: center; padding-left: 53px;">是</div>
+                  <div class="spn6" style="width: 8%; text-align: center; padding-left: 53px;">否</div>
+                  <div class="spn2" style="width: 10%; padding-left: 86px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl03_lbSymbol2"></span>80.00 </div>
+                  <div class="last1" id="La_Remarkdiv" style="padding-left: 110px;">
+                    <input type="button" style="width: 80px; height: 30px; margin-right: -30px; margin-top: 5px; float: right; border-radius: 3px;"
+                                                        value="发货须知" onclick='xiangqing(354)' />
+                    <span id="RpPrice_ctl02_RpPrice1_ctl03_La_Remark" style="display: none;">
+                    <p>&nbsp; </p>
+                    <p> <span class="neirongbbb" style="color:#FF3300;">国际e邮宝介绍<span class="Apple-converted-space"> </span></span><br />
+                      <span style="color:#0F0F0F;">国际e邮宝是中国邮政为适应国际电子商务寄递市场的需要，为中国电商卖家量身定制的一款全新经济型国际邮递产品。国际e邮宝是针对轻小件物品的空邮产品。目前我司已开通到美国、</span><span style="color:#0F0F0F;">澳大利亚、英国、加拿大、法国、俄罗斯路向</span><span style="color:#0F0F0F;">。</span> </p>
+                    <p> <span class="neirongbbb" style="color:#FF3300;">国际e邮宝优势</span><br />
+                      <span style="color:#0F0F0F;">经济实惠——70克首重，续重按照每克计算；比中国邮政小包便宜。</span><br />
+                      <span style="color:#0F0F0F;">时效快捷——邮局收寄当天上网，7-10个工作日即可妥投，</span><span style="color:#0F0F0F;">比中国邮政小包递送速度快。</span><br />
+                      <span style="color:#0F0F0F;">方便快捷——我司已成功跟中国邮政对接，在皇家物流系统下单，自动生成单号，一单到底。</span> </p>
+                    <p> <span class="neirongbbb" style="color:#FF3300;">体积重量限制</span><br />
+                      <span style="color:#0F0F0F;">1. 重量限制</span><br />
+                      <span style="color:#0F0F0F;">单件最高限重2公斤。</span><br />
+                      <span style="color:#0F0F0F;">2. 体积限制</span><br />
+                      <span style="color:#0F0F0F;">单件最大尺寸：长、宽、厚合计不超过90厘米，最长一边不超过60厘米。圆卷邮件直径的两倍和长度合计不超过104厘米，长度不得超过90厘米。单件最小尺寸：长度不小于14厘米，宽度不小于11厘米。圆卷邮件直径的两倍和长度合计不小于17厘米，长度不小于11厘米。</span> </p>
+                    <p> <span class="neirongbbb" style="color:#FF3300;">国际e邮宝查询</span> </p>
+                    <p> <span style="color:#0F0F0F;">跟踪查询网站为：</span><a href="http://eyoubao.183post.com/">http://eyoubao.183post.com/</a> </p>
+                    <p> <span>暂不提供邮件的丢失，延误，损毁，补偿，查验等附加服务。</span> </p>
+                    <p> <br />
+                    </p>
+                    <p> <span style="color:#0F0F0F;"><span class="neirongbbb" style="color:#FF3300;">国际e邮宝理赔相关</span><br />
+                      <span style="color:#0F0F0F;">1.未上网的件按皇家物流的赔偿标准：申报价值+运费，最高100人民币<span class="Apple-converted-space"> </span></span><br />
+                      <span style="color:#0F0F0F;">2.已上网的件不予于赔偿 。</span></span> </p>
+                    <p> <span class="neirongbbb" style="color:#FF3300;">禁限寄物品</span><br />
+                      <span style="color:#0F0F0F;">国际航空禁运的危险物品及国家明令禁止出口货物等。</span> </p>
+                    <p> <span style="color:#0F0F0F;"><span style="color:#0F0F0F;"></span></span><span style="color:#0F0F0F;"></span> </p>
+                    </span> </div>
+                  <div class="last1" style=""> <a id="RpPrice_ctl02_RpPrice1_ctl03_lbFee" class="spn9" href="{{:url('register')}}" target="_blank"></a> </div>
+                  <input type="hidden" name="RpPrice$ctl02$RpPrice1$ctl03$HiChannelCode" id="RpPrice_ctl02_RpPrice1_ctl03_HiChannelCode" value="FREUB" />
+                </div>
+              </div>
+              <div class="countcon clearfix" id='SWRPOST-ZHONGJI-SWRPOST'>
+                <div class="conrow">
+                  <div class="spn1" style="width: 17%;"> <img id="RpPrice_ctl02_RpPrice1_ctl04_ImgChnanel" src="__PUBLIC__/home/images/p7.jpg" style="height:40px;width:40px;border-width:0px;" />瑞士邮政小包挂号<br />
+                    <code>SWRPOST</code> </div>
+                  <div class="spn20" style="width: 7%; padding-left: 10px; text-align: center;">1.000</div>
+                  <div class="spn3" style="width: 8%; padding-left: 25px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl04_lbSymbol"></span> 81.50 </div>
+                  <div class="spn4" style="width: 10%; padding-left: 35px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl04_lbSymbol1"></span>0.00 </div>
+                  <div class="spn5" style="width: 10%; padding-left: 35px; text-align: center;">7 - 14</div>
+                  <div class="spn6" style="width: 5%; text-align: center; padding-left: 53px;">是</div>
+                  <div class="spn6" style="width: 8%; text-align: center; padding-left: 53px;">是</div>
+                  <div class="spn2" style="width: 10%; padding-left: 86px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl04_lbSymbol2"></span>81.50 </div>
+                  <div class="last1" id="La_Remarkdiv" style="padding-left: 110px;">
+                    <input type="button" style="width: 80px; height: 30px; margin-right: -30px; margin-top: 5px; float: right; border-radius: 3px;"
+                                                        value="发货须知" onclick='xiangqing(80)' />
+                    <span id="RpPrice_ctl02_RpPrice1_ctl04_La_Remark" style="display: none;">
+                    <p> <span class="neirongbbb" style="font-size:14px;font-weight:bold;">瑞士邮政小包服务介绍</span>&nbsp; </p>
+                    <p> 瑞士邮政小包业务是皇家物流（PFC）与瑞士邮政合作，开展的一项可寄达全球200多个邮政网点的邮政小包服务，是一项经济实惠型国际邮件运输服务项目。它包含瑞士邮政挂号，瑞士邮政平邮两种服务。瑞士邮政是欧洲最发达的邮政机构，几乎在每一个国家设立有分支机构，拥有强大的邮件处理能力。 </p>
+                    <p> <br />
+                    </p>
+                    <p> <span class="neirongbbb" style="font-size:14px;font-weight:bold;">产品优势</span>&nbsp; </p>
+                    <p> 时效-8-18个工作日妥投，英国、德国、法国最具优势<br />
+                      清关-邮政渠道清关能力强，欧洲派送无需二次清关<br />
+                      高效-多个分拨中心，灵活分配线路资源，避免爆仓，提高周转<br />
+                      价格-节约成本，是国际快递服务价格的30%<br />
+                      查询-瑞士挂号查询方便完整等同快递 </p>
+                    <p> <br />
+                    </p>
+                    <p> <span class="neirongbbb" style="font-size:14px;font-weight:bold;">货物限制</span> </p>
+                    <p> 可走内置电池，不接收配套电池及移动电源，纯电池及违禁品之类的货物。 </p>
+                    <p> <span class="neirongbbb" style="font-size:14px;font-weight:bold;"><br />
+                      </span> </p>
+                    <p> <span class="neirongbbb" style="font-size:14px;font-weight:bold;">体积和重量限制</span> </p>
+                    <p> 1）重量限制：<br />
+                      ? 小邮包限重2KG；<br />
+                      2）体积限制：<br />
+                      ? 非圆筒货物：长+宽+高≤90CM，单边长度≤60CM，长度≥14CM，宽度≥9CM；<br />
+                      ? 圆筒形货物：直径的两倍+长度≤104CM，单边长度≤90CM ，直径的两倍+长度≥17CM，长度≥10CM。 </p>
+                    <hr />
+                    <p> <span class="neirongbbb" style="font-size:14px;font-weight:bold;">限制物品</span> ? </p>
+                    <p> 根据国际航空条款规定的不能邮寄或限制邮寄的所有货物，比如品、粉末、液体、易燃易爆物品等危险品以及烟酒、现金及有价证券、侵权产品等。 </p>
+                    <br />
+                    <hr />
+                    <p> <span class="neirongbbb" style="font-size:14px;font-weight:bold;">赔偿/保险</span> </p>
+                    <p> 按包裹申报价值予以赔偿，每票最高赔偿金额为100RMB. </p>
+                    </span> </div>
+                  <div class="last1" style=""> <a id="RpPrice_ctl02_RpPrice1_ctl04_lbFee" class="spn9" href="{{:url('register')}}" target="_blank"></a> </div>
+                  <input type="hidden" name="RpPrice$ctl02$RpPrice1$ctl04$HiChannelCode" id="RpPrice_ctl02_RpPrice1_ctl04_HiChannelCode" value="SWRPOST" />
+                </div>
+              </div>
+              <div class="countcon clearfix" id='CNAPOST-SZYJ'>
+                <div class="conrow">
+                  <div class="spn1" style="width: 17%;"> <img id="RpPrice_ctl02_RpPrice1_ctl05_ImgChnanel" src="__PUBLIC__/home/images/p12.gif" style="height:40px;width:40px;border-width:0px;" />中国邮政平邮(深圳)<br />
+                    <code>CNAPOST</code> </div>
+                  <div class="spn20" style="width: 7%; padding-left: 10px; text-align: center;">1.000</div>
+                  <div class="spn3" style="width: 8%; padding-left: 25px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl05_lbSymbol"></span> 85.00 </div>
+                  <div class="spn4" style="width: 10%; padding-left: 35px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl05_lbSymbol1"></span>0.00 </div>
+                  <div class="spn5" style="width: 10%; padding-left: 35px; text-align: center;">10 - 20</div>
+                  <div class="spn6" style="width: 5%; text-align: center; padding-left: 53px;">否</div>
+                  <div class="spn6" style="width: 8%; text-align: center; padding-left: 53px;">否</div>
+                  <div class="spn2" style="width: 10%; padding-left: 86px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl05_lbSymbol2"></span>85.00 </div>
+                  <div class="last1" id="La_Remarkdiv" style="padding-left: 110px;">
+                    <input type="button" style="width: 80px; height: 30px; margin-right: -30px; margin-top: 5px; float: right; border-radius: 3px;"
+                                                        value="发货须知" onclick='xiangqing(195)' />
+                    <span id="RpPrice_ctl02_RpPrice1_ctl05_La_Remark" style="display: none;"><span class="neirongbbb">自主深圳邮局账号，今天交货，明天上网，量大价优。可向业务申请！</span><br />
+                    <p> <br />
+                    </p>
+                    <p> <span class="neirongbbb">货物限制</span> </p>
+                    只接普货及仿牌，暂不接任何带电产品及违禁品。<br />
+                    <hr />
+                    <br />
+                    <p> <span class="neirongbbb">体积和重量限制</span><br />
+                      1）重量限制：<br />
+                      ? 邮包限重2KG；<br />
+                      2）体积限制：<br />
+                      ? 非圆筒货物：长+宽+高≤90CM，单边长度≤60CM，长度≥14CM，宽度≥9CM；<br />
+                      ? 圆筒形货物：直径的两倍+长度≤104CM，单边长度≤90CM ，直径的两倍+长度≥17CM，长度≥10CM。 </p>
+                    <br />
+                    <hr />
+                    <p> <span class="neirongbbb">限制物品</span><br />
+                      ? 
+                      根据国际航空条款规定的不能邮寄或限制邮寄的所有货物，比如品、粉末、液体、易燃易爆物品等危险品以及烟酒、现金及有价证券、侵权产品等。 </p>
+                    <br />
+                    <hr />
+                    <p> <span class="neirongbbb">赔偿/保险</span><br />
+                      1.平邮如丢失将不能获得赔偿；如意大利，尼日利亚等国，邮包丢包率极高，请最好选用挂号或快递方式；<br />
+                      2.挂号小包根据申报价值与运费来赔偿，但最高（运费与申报价值之和）不超过100RMB； </p>
+                    <br />
+                    </span> </div>
+                  <div class="last1" style=""> <a id="RpPrice_ctl02_RpPrice1_ctl05_lbFee" class="spn9" href="{{:url('register')}}" target="_blank"></a> </div>
+                  <input type="hidden" name="RpPrice$ctl02$RpPrice1$ctl05$HiChannelCode" id="RpPrice_ctl02_RpPrice1_ctl05_HiChannelCode" value="CNAPOST" />
+                </div>
+              </div>
+              <div class="countcon clearfix" id='NLRPOST-NLPG'>
+                <div class="conrow">
+                  <div class="spn1" style="width: 17%;"> <img id="RpPrice_ctl02_RpPrice1_ctl06_ImgChnanel" src="__PUBLIC__/home/images/p11.png" style="height:40px;width:40px;border-width:0px;" />荷兰邮政小包挂号<br />
+                    <code>NLRPOST</code> </div>
+                  <div class="spn20" style="width: 7%; padding-left: 10px; text-align: center;">1.000</div>
+                  <div class="spn3" style="width: 8%; padding-left: 25px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl06_lbSymbol"></span> 86.00 </div>
+                  <div class="spn4" style="width: 10%; padding-left: 35px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl06_lbSymbol1"></span>0.00 </div>
+                  <div class="spn5" style="width: 10%; padding-left: 35px; text-align: center;">7 - 14</div>
+                  <div class="spn6" style="width: 5%; text-align: center; padding-left: 53px;">是</div>
+                  <div class="spn6" style="width: 8%; text-align: center; padding-left: 53px;">是</div>
+                  <div class="spn2" style="width: 10%; padding-left: 86px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl06_lbSymbol2"></span>86.00 </div>
+                  <div class="last1" id="La_Remarkdiv" style="padding-left: 110px;">
+                    <input type="button" style="width: 80px; height: 30px; margin-right: -30px; margin-top: 5px; float: right; border-radius: 3px;"
+                                                        value="发货须知" onclick='xiangqing(121)' />
+                    <span id="RpPrice_ctl02_RpPrice1_ctl06_La_Remark" style="display: none;">
+                    <p> <span class="neirongbbb" style="font-size:14px;font-weight:bold;">荷兰邮政小包服务介绍</span> </p>
+                    <p> 荷兰小包，是荷兰邮政（TNT POST）专门为电子商务卖家推出的一项欧洲快捷小包业务。该服务立足于荷兰，辐射整个欧洲，依托荷兰邮政的网络和清关系统，打造高品质区域性小包服务：清关好，派送快，查询优。最主要的优势是它可走电池件。&nbsp;<span style="color:#0F0F0F;line-height:24px;font-family:微软雅黑;">清关 - 一般的专线服务是由当地清关代理清关，稳定性较差。该服务由荷兰邮政负责清关，属于邮政清关通道，稳定性较好。</span> </p>
+                    <span style="color:#0F0F0F;line-height:24px;font-family:微软雅黑;">优势 - 欧洲主要国家，500g以上的货物相对于市场上主要的小包有一定的价格优势。</span><br />
+                    <p> <span style="color:#0F0F0F;line-height:24px;font-family:微软雅黑;">时效 - 市场上主流的小包服务的时效一般是7-15个工作日，荷兰小包到欧洲主要国家只需5-10个工作日。</span> </p>
+                    <p> <span class="neirongbbb" style="font-size:14px;font-weight:bold;">我司分为俩个渠道，分别为荷兰邮政小包（NLRPOST）跟荷兰电池小包（NLRPOST-B）区别就在于电池小包可以走纯电池，而邮政小包不能走。</span> </p>
+                    <p> <span class="neirongbbb" style="font-size:14px;font-weight:bold;">货物限制</span> </p>
+                    <p> 可走内置电池，配套电池。不接收移动电源，纯电池及违禁品之类的货物。 </p>
+                    <p> <span class="neirongbbb" style="font-size:14px;font-weight:bold;"><br />
+                      </span> </p>
+                    <p> <span class="neirongbbb" style="font-size:14px;font-weight:bold;">体积和重量限制</span> </p>
+                    <p> 1）重量限制：<br />
+                      ? 小邮包限重2KG；<br />
+                      2）体积限制：<br />
+                      ? 非圆筒货物：长+宽+高≤90CM，单边长度≤60CM，长度≥14CM，宽度≥9CM；<br />
+                      ? 圆筒形货物：直径的两倍+长度≤104CM，单边长度≤90CM ，直径的两倍+长度≥17CM，长度≥10CM。 </p>
+                    <hr />
+                    <p> <span class="neirongbbb" style="font-size:14px;font-weight:bold;">限制物品</span> ? </p>
+                    <p> 根据国际航空条款规定的不能邮寄或限制邮寄的所有货物，比如品、粉末、液体、易燃易爆物品等危险品以及烟酒、现金及有价证券、侵权产品等。 </p>
+                    <br />
+                    <hr />
+                    <p> <span class="neirongbbb" style="font-size:14px;font-weight:bold;">赔偿/保险</span> </p>
+                    <p> 按包裹申报价值予以赔偿，每票最高赔偿金额为100RMB. </p>
+                    <p> <br />
+                    </p>
+                    <p> <br />
+                    </p>
+                    <br />
+                    </span> </div>
+                  <div class="last1" style=""> <a id="RpPrice_ctl02_RpPrice1_ctl06_lbFee" class="spn9" href="{{:url('register')}}" target="_blank"></a> </div>
+                  <input type="hidden" name="RpPrice$ctl02$RpPrice1$ctl06$HiChannelCode" id="RpPrice_ctl02_RpPrice1_ctl06_HiChannelCode" value="NLRPOST" />
+                </div>
+              </div>
+              <div class="countcon clearfix" id='DGM Packet-HK-DGM'>
+                <div class="conrow">
+                  <div class="spn1" style="width: 17%;"> <img id="RpPrice_ctl02_RpPrice1_ctl07_ImgChnanel" src="__PUBLIC__/home/images/p1.gif" style="height:40px;width:40px;border-width:0px;" />DHL小包平邮<br />
+                    <code>DGM Packet</code> </div>
+                  <div class="spn20" style="width: 7%; padding-left: 10px; text-align: center;">1.000</div>
+                  <div class="spn3" style="width: 8%; padding-left: 25px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl07_lbSymbol"></span> 90.40 </div>
+                  <div class="spn4" style="width: 10%; padding-left: 35px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl07_lbSymbol1"></span>0.00 </div>
+                  <div class="spn5" style="width: 10%; padding-left: 35px; text-align: center;">7 - 15</div>
+                  <div class="spn6" style="width: 5%; text-align: center; padding-left: 53px;">否</div>
+                  <div class="spn6" style="width: 8%; text-align: center; padding-left: 53px;">是</div>
+                  <div class="spn2" style="width: 10%; padding-left: 86px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl07_lbSymbol2"></span>90.40 </div>
+                  <div class="last1" id="La_Remarkdiv" style="padding-left: 110px;">
+                    <input type="button" style="width: 80px; height: 30px; margin-right: -30px; margin-top: 5px; float: right; border-radius: 3px;"
+                                                        value="发货须知" onclick='xiangqing(256)' />
+                    <span id="RpPrice_ctl02_RpPrice1_ctl07_La_Remark" style="display: none;"><span class="neirongbbb" style="color:#FF3300;line-height:24px;font-size:14px;">DHL小包服务介绍</span>
+                    <p> <strong><span style="color:#0F0F0F;line-height:24px;">DHL小包也叫DHL国际小包，是由DHL GLOBAL MAIL新近开发的空邮小包渠道！DHL GLOBAL MAIL是DHL的国际邮递专家，业务遍及全球200多个国家，具有价格优惠，排仓周期短，时效稳定，安全度高等渠道优势，是一款性价比极高的小包产品。 适合Ebay、Dhgate、速卖通（Aliexpress）等网商卖家邮寄重量轻、体积较小的商品。&nbsp;</span></strong> </p>
+                    <p> <strong><span style="color:#0F0F0F;line-height:24px;">DGM为保证DHL小包的时效快捷稳定以及价格的优惠，整合多家邮政资源（目前有香港邮政、台湾邮政、德国邮政、澳大利亚邮政），综合重量段和国家分区选择最优邮政渠道！</span><br />
+                      </strong> </p>
+                    <p> <span class="neirongbbb" style="color:#FF3300;line-height:24px;font-size:14px;">DHL小包平邮无法查询跟踪</span> </p>
+                    <p> <span class="neirongbbb" style="color:#FF3300;line-height:24px;font-size:14px;">货物限制</span> </p>
+                    <p> <span style="font-family:Microsoft YaHei;"><strong><span>欧洲16国（奥地利，瑞士，捷克，德国，丹麦，西班牙，芬兰，克罗地亚，匈牙利，爱尔兰，英国，荷兰，挪威，葡萄牙，波兰，斯洛文尼亚）可走内置电池，其他国家只接普货，不接任何带电及移动电源，纯电池及违禁品之类的货物。</span> </strong></span> </p>
+                    <p> <span class="neirongbbb" style="color:#FF3300;line-height:24px;font-size:14px;">体积和重量限制</span> </p>
+                    <p> <span style="font-family:Microsoft YaHei;">1）重量限制：</span><br />
+                      <span style="font-family:Microsoft YaHei;">? 小邮包限重2KG；</span><br />
+                      <span style="font-family:Microsoft YaHei;">2）体积限制：</span><br />
+                      <span style="font-family:Microsoft YaHei;">? 非圆筒货物：长+宽+高≤90CM，单边长度≤60CM，长度≥14CM，宽度≥9CM；</span><br />
+                      <span style="font-family:Microsoft YaHei;">? 圆筒形货物：直径的两倍+长度≤104CM，单边长度≤90CM ，直径的两倍+长度≥17CM，长度≥10CM。</span> </p>
+                    <hr />
+                    <p> <span class="neirongbbb" style="color:#FF3300;line-height:24px;font-size:14px;">限制物品</span> </p>
+                    <p> <span style="font-family:Microsoft YaHei;">根据国际航空条款规定的不能邮寄或限制邮寄的所有货物，比如品、粉末、液体、易燃易爆物品等危险品以及烟酒、现金及有价证券、侵权产品等。</span> </p>
+                    <br />
+                    <hr />
+                    <p> <span class="neirongbbb" style="color:#FF3300;line-height:24px;font-size:14px;">赔偿/保险</span> </p>
+                    <p> <span style="font-family:Microsoft YaHei;">按包裹申报价值予以赔偿，每票最高赔偿金额为100RMB.</span> </p>
+                    <p> <br />
+                    </p>
+                    <p> <br />
+                    </p>
+                    <br />
+                    </span> </div>
+                  <div class="last1" style=""> <a id="RpPrice_ctl02_RpPrice1_ctl07_lbFee" class="spn9" href="{{:url('register')}}" target="_blank"></a> </div>
+                  <input type="hidden" name="RpPrice$ctl02$RpPrice1$ctl07$HiChannelCode" id="RpPrice_ctl02_RpPrice1_ctl07_HiChannelCode" value="DGM Packet" />
+                </div>
+              </div>
+              <div class="countcon clearfix" id='FSRPOST-ZSRPOST'>
+                <div class="conrow">
+                  <div class="spn1" style="width: 17%;"> <img id="RpPrice_ctl02_RpPrice1_ctl08_ImgChnanel" src="__PUBLIC__/home/images/p12.gif" style="height:40px;width:40px;border-width:0px;" />速卖通线上佛山小包挂号<br />
+                    <code>FSRPOST</code> </div>
+                  <div class="spn20" style="width: 7%; padding-left: 10px; text-align: center;">1.000</div>
+                  <div class="spn3" style="width: 8%; padding-left: 25px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl08_lbSymbol"></span> 95.50 </div>
+                  <div class="spn4" style="width: 10%; padding-left: 35px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl08_lbSymbol1"></span>0.00 </div>
+                  <div class="spn5" style="width: 10%; padding-left: 35px; text-align: center;">15 - 30</div>
+                  <div class="spn6" style="width: 5%; text-align: center; padding-left: 53px;">是</div>
+                  <div class="spn6" style="width: 8%; text-align: center; padding-left: 53px;">否</div>
+                  <div class="spn2" style="width: 10%; padding-left: 86px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl08_lbSymbol2"></span>95.50 </div>
+                  <div class="last1" id="La_Remarkdiv" style="padding-left: 110px;">
+                    <input type="button" style="width: 80px; height: 30px; margin-right: -30px; margin-top: 5px; float: right; border-radius: 3px;"
+                                                        value="发货须知" onclick='xiangqing(472)' />
+                    <span id="RpPrice_ctl02_RpPrice1_ctl08_La_Remark" style="display: none;">
+                    <p class="MsoNormal" align="center" style="text-align:center;"> <strong><span style="font-size:14px;font-weight:bold;" class="neirongbbb">速卖通线上中山仓收寄说明</span>&nbsp;</strong> <b></b> </p>
+                    <p class="MsoNormal"> <span style="font-family:Microsoft YaHei;">注意事项：<span style="color:#E53333;"><strong>（只接受速卖通线上发货，不接收线下发货！）</strong></span></span> </p>
+                    <p class="MsoNormal"> <span style="font-family:Microsoft YaHei;">1，客户在线创建物流订单，申请单号，选择物流方案为中国邮政平常小包+或者中国邮政挂号（中国邮政平常小包对应PFC速卖通线上中山小包平邮，中国邮政挂号对应PFC速卖通线上中山小包挂号）</span> </p>
+                    <p class="MsoNormal"> <span style="font-family:Microsoft YaHei;">2，</span><b><span style="font-family:Microsoft YaHei;">仓库必须选择中山仓。</span></b><b></b> </p>
+                    <p class="MsoNormal"> <b><span style="font-family:''''''''''''''''''''''''''''''''Microsoft YaHei'''''''''''''''''''''''''''''''';">线上交寄地址更改为：广东省中山市南区银潭二路</span><span style="font-family:Microsoft YaHei;">1号邮政南区电商产业园BH（英文：No.1,Southern Post District, YinTan &nbsp;Second &nbsp;Road, Zhongshan City, Guangdong Province）</span></b><b></b> </p>
+                    <p class="MsoNormal"> <b><span style="font-family:Microsoft YaHei;">（更改方式：登录全球速卖通账号，交易</span></b><b><span style="font-family:Microsoft YaHei;">----管理订单--地址管理----默认发货地址修改</span></b><b><span style="font-family:Microsoft YaHei;">）</span></b><b></b> </p>
+                    <p class="MsoNormal"> <span style="font-family:Microsoft YaHei;">3，上网时效：我司取件后次日上网</span> </p>
+                    <p class="MsoNormal"> <span style="font-family:Microsoft YaHei;">4，线上小包只收寄普货，拒收一切带电产品及各种航空禁寄品，如枪支弹药、毒品、液体，易燃易爆危险品等。客户如冲货，造成邮件被扣留，我司不对此类邮件进行赔偿。</span> </p>
+                    <p class="MsoNormal"> <span style="font-family:Microsoft YaHei;">5，赔偿标准：上网前丢件，我司按照申报价值赔尝最高不超过100元/票，如邮件已正常上网中转，我司只协助查询，不受理索赔服务。</span> </p>
+                    <p class="MsoNormal"> <span style="font-family:Microsoft YaHei;">&nbsp;</span> </p>
+                    <p class="MsoNormal"> <span style="font-family:Microsoft YaHei;">客户交货注意事项：</span> </p>
+                    <p class="MsoNormal"> <span style="font-family:Microsoft YaHei;">1，为方便我司操作更加快速准确的收寄您的包裹，请广大客户在交货当天在我司系统新建订单或者新建批量订单上传订单，且提交到确认，以免引起包裹处理延误。</span> </p>
+                    </span> </div>
+                  <div class="last1" style=""> <a id="RpPrice_ctl02_RpPrice1_ctl08_lbFee" class="spn9" href="{{:url('register')}}" target="_blank"></a> </div>
+                  <input type="hidden" name="RpPrice$ctl02$RpPrice1$ctl08$HiChannelCode" id="RpPrice_ctl02_RpPrice1_ctl08_HiChannelCode" value="FSRPOST" />
+                </div>
+              </div>
+              <div class="countcon clearfix" id='DGMRPOST-HK-DGMUS'>
+                <div class="conrow">
+                  <div class="spn1" style="width: 17%;"> <img id="RpPrice_ctl02_RpPrice1_ctl09_ImgChnanel" src="__PUBLIC__/home/images/p1.gif" style="height:40px;width:40px;border-width:0px;" />DGM小包挂号<br />
+                    <code>DGMRPOST</code> </div>
+                  <div class="spn20" style="width: 7%; padding-left: 10px; text-align: center;">1.000</div>
+                  <div class="spn3" style="width: 8%; padding-left: 25px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl09_lbSymbol"></span> 98.40 </div>
+                  <div class="spn4" style="width: 10%; padding-left: 35px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl09_lbSymbol1"></span>0.00 </div>
+                  <div class="spn5" style="width: 10%; padding-left: 35px; text-align: center;">7 - 15</div>
+                  <div class="spn6" style="width: 5%; text-align: center; padding-left: 53px;">是</div>
+                  <div class="spn6" style="width: 8%; text-align: center; padding-left: 53px;">是</div>
+                  <div class="spn2" style="width: 10%; padding-left: 86px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl09_lbSymbol2"></span>98.40 </div>
+                  <div class="last1" id="La_Remarkdiv" style="padding-left: 110px;">
+                    <input type="button" style="width: 80px; height: 30px; margin-right: -30px; margin-top: 5px; float: right; border-radius: 3px;"
+                                                        value="发货须知" onclick='xiangqing(395)' />
+                    <span id="RpPrice_ctl02_RpPrice1_ctl09_La_Remark" style="display: none;">
+                    <div class="xgxxrow">
+                      <div id="RemberDIV">
+                        <p> <strong><span style="line-height:24px;color:#ff3300;font-size:14px;" class="neirongbbb">DGM美国小包服务介绍</span><span></span> </strong> </p>
+                        <p> <strong><strong><span style="line-height:24px;color:#0f0f0f;">DGM美国小包也叫DHL国际小包，是由DHL GLOBAL MAIL新近开发的空邮小包渠道！DHL GLOBAL MAIL是DHL的国际邮递专家，业务遍及全球200多个国家，具有价格优惠，排仓周期短，时效稳定，安全度高等渠道优势，是一款性价比极高的小包产品。 适合Ebay、Dhgate、速卖通（Aliexpress）等网商卖家邮寄重量轻、体积较小的商品。&nbsp;</span></strong> </strong> </p>
+                        <p> <strong><strong><span style="line-height:24px;color:#0f0f0f;">DGM为保证DHL小包的时效快捷稳定以及价格的优惠，整合多家邮政资源（目前有香港邮政、台湾邮政、德国邮政、澳大利亚邮政），综合重量段和国家分区选择最优邮政渠道！</span><br />
+                        </strong> </strong> </p>
+                        <p> <strong><br />
+                          </strong> </p>
+                        <p> <strong><span style="line-height:24px;color:#ff3300;font-size:14px;" class="neirongbbb">货物限制</span> </strong> </p>
+                        <p> <span><span style="color:#0F0F0F;"><strong>欧洲16国（奥地利，瑞士，捷克，德国，丹麦，西班牙，芬兰，克罗地亚，匈牙利，爱尔兰，英国，荷兰，挪威，葡萄牙，波兰，斯洛文尼亚）可走内置电池，其他国家只接普货，不接任何带电及移动电源，纯电池及违禁品之类的货物。</strong></span></span> </p>
+                        <p> <strong><span style="line-height:24px;color:#ff3300;font-size:14px;" class="neirongbbb">体积和重量限制</span> </strong> </p>
+                        <p> <strong><span>1）重量限制：</span><br />
+                          <span>? 小邮包限重2KG；</span><br />
+                          <span>2）体积限制：</span><br />
+                          <span>? 非圆筒货物：长+宽+高≤90CM，单边长度≤60CM，长度≥14CM，宽度≥9CM；</span><br />
+                          <span>? 圆筒形货物：直径的两倍+长度≤104CM，单边长度≤90CM ，直径的两倍+长度≥17CM，长度≥10CM。</span> </strong> </p>
+                        <hr />
+                        <p> <strong><span style="line-height:24px;color:#ff3300;font-size:14px;" class="neirongbbb">限制物品</span> </strong> </p>
+                        <p> <strong><span>根据国际航空条款规定的不能邮寄或限制邮寄的所有货物，比如品、粉末、液体、易燃易爆物品等危险品以及烟酒、现金及有价证券、侵权产品等。</span> </strong> </p>
+                        <strong><br />
+                        <hr />
+                        <p> <span style="line-height:24px;color:#ff3300;font-size:14px;" class="neirongbbb">赔偿/保险</span> </p>
+                        <p> <span>按包裹申报价值予以赔偿，每票最高赔偿金额为100RMB.</span> </p>
+                        <p> <br />
+                        </p>
+                        <p> <br />
+                        </p>
+                        </strong>
+                        <p> <br />
+                        </p>
+                      </div>
+                    </div>
+                    <br />
+                    </span> </div>
+                  <div class="last1" style=""> <a id="RpPrice_ctl02_RpPrice1_ctl09_lbFee" class="spn9" href="{{:url('register')}}" target="_blank"></a> </div>
+                  <input type="hidden" name="RpPrice$ctl02$RpPrice1$ctl09$HiChannelCode" id="RpPrice_ctl02_RpPrice1_ctl09_HiChannelCode" value="DGMRPOST" />
+                </div>
+              </div>
+              <div class="countcon clearfix" id='CNRPOST-CNRPOST-FR'>
+                <div class="conrow">
+                  <div class="spn1" style="width: 17%;"> <img id="RpPrice_ctl02_RpPrice1_ctl10_ImgChnanel" src="__PUBLIC__/home/images/p12.gif" style="height:40px;width:40px;border-width:0px;" />中国邮政挂号（深圳）<br />
+                    <code>CNRPOST</code> </div>
+                  <div class="spn20" style="width: 7%; padding-left: 10px; text-align: center;">1.000</div>
+                  <div class="spn3" style="width: 8%; padding-left: 25px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl10_lbSymbol"></span> 98.50 </div>
+                  <div class="spn4" style="width: 10%; padding-left: 35px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl10_lbSymbol1"></span>0.00 </div>
+                  <div class="spn5" style="width: 10%; padding-left: 35px; text-align: center;">10 - 20</div>
+                  <div class="spn6" style="width: 5%; text-align: center; padding-left: 53px;">是</div>
+                  <div class="spn6" style="width: 8%; text-align: center; padding-left: 53px;">否</div>
+                  <div class="spn2" style="width: 10%; padding-left: 86px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl10_lbSymbol2"></span>98.50 </div>
+                  <div class="last1" id="La_Remarkdiv" style="padding-left: 110px;">
+                    <input type="button" style="width: 80px; height: 30px; margin-right: -30px; margin-top: 5px; float: right; border-radius: 3px;"
+                                                        value="发货须知" onclick='xiangqing(511)' />
+                    <span id="RpPrice_ctl02_RpPrice1_ctl10_La_Remark" style="display: none;">
+                    <div class="xgxxrow">
+                      <div id="RemberDIV">
+                        <p> <span class="neirongbbb">自主深圳邮局账号，今天交货，明天上网，量大价优。可向业务申请！</span> </p>
+                        <p> <br />
+                        </p>
+                        <p> <span class="neirongbbb">货物限制</span> </p>
+                        <span>只接普货及仿牌，暂不接任何带电产品及违禁品。</span><br />
+                        <hr />
+                        <br />
+                        <p> <span class="neirongbbb">体积和重量限制</span><br />
+                          1）重量限制：<br />
+                          ? 邮包限重2KG；<br />
+                          2）体积限制：<br />
+                          ? 非圆筒货物：长+宽+高≤90CM，单边长度≤60CM，长度≥14CM，宽度≥9CM；<br />
+                          ? 圆筒形货物：直径的两倍+长度≤104CM，单边长度≤90CM ，直径的两倍+长度≥17CM，长度≥10CM。 </p>
+                        <br />
+                        <hr />
+                        <p> <span class="neirongbbb">限制物品</span><br />
+                          ? 根据国际航空条款规定的不能邮寄或限制邮寄的所有货物，比如品、粉末、液体、易燃易爆物品等危险品以及烟酒、现金及有价证券、侵权产品等。 </p>
+                        <br />
+                        <hr />
+                        <p> <span class="neirongbbb">赔偿/保险</span><br />
+                          1.平邮如丢失将不能获得赔偿；如意大利，尼日利亚等国，邮包丢包率极高，请最好选用挂号或快递方式；<br />
+                          2.挂号小包根据申报价值与运费来赔偿，但最高（运费与申报价值之和）不超过100RMB； </p>
+                        <div> <br />
+                        </div>
+                        <p> <br />
+                        </p>
+                      </div>
+                    </div>
+                    <br />
+                    </span> </div>
+                  <div class="last1" style=""> <a id="RpPrice_ctl02_RpPrice1_ctl10_lbFee" class="spn9" href="{{:url('register')}}" target="_blank"></a> </div>
+                  <input type="hidden" name="RpPrice$ctl02$RpPrice1$ctl10$HiChannelCode" id="RpPrice_ctl02_RpPrice1_ctl10_HiChannelCode" value="CNRPOST" />
+                </div>
+              </div>
+              <div class="countcon clearfix" id='HKAPOST-XOP-HKAPOST'>
+                <div class="conrow">
+                  <div class="spn1" style="width: 17%;"> <img id="RpPrice_ctl02_RpPrice1_ctl11_ImgChnanel" src="__PUBLIC__/home/images/p8.gif" style="height:40px;width:40px;border-width:0px;" />香港邮政小包平邮<br />
+                    <code>HKAPOST</code> </div>
+                  <div class="spn20" style="width: 7%; padding-left: 10px; text-align: center;">1.000</div>
+                  <div class="spn3" style="width: 8%; padding-left: 25px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl11_lbSymbol"></span> 115.00 </div>
+                  <div class="spn4" style="width: 10%; padding-left: 35px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl11_lbSymbol1"></span>0.00 </div>
+                  <div class="spn5" style="width: 10%; padding-left: 35px; text-align: center;">7 - 14</div>
+                  <div class="spn6" style="width: 5%; text-align: center; padding-left: 53px;">否</div>
+                  <div class="spn6" style="width:8%; text-align: center; padding-left: 53px;">否</div>
+                  <div class="spn2" style="width: 10%; padding-left: 86px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl11_lbSymbol2"></span>115.00 </div>
+                  <div class="last1" id="La_Remarkdiv" style="padding-left: 110px;">
+                    <input type="button" style="width: 80px; height: 30px; margin-right: -30px; margin-top: 5px; float: right; border-radius: 3px;"
+                                                        value="发货须知" onclick='xiangqing(247)' />
+                    <span id="RpPrice_ctl02_RpPrice1_ctl11_La_Remark" style="display: none;">
+                    <p> <span class="neirongbbb" style="font-size:14px;font-weight:bold;">香港邮政小包服务介绍</span>&nbsp; </p>
+                    <p> 香港邮政小包（又称香港小包、香港邮政国际航空小包）是香港邮政针对小件物品而设计的空邮产品，又称“易网邮”。其前身为“大量投寄挂号空邮服务”，是皇家物流（PFC）为电子商务卖家提供的又一个国际邮寄方案。香港邮政小包包含挂号和平邮两种服务产品，特别适合网上卖家邮寄重量轻，体积较小的物品。目前大陆的eBay卖家很多选择通过香港邮政小包发货。 香港邮政官方网站：www.hongkongpost.com </p>
+                    <p> <br />
+                    </p>
+                    <p> <span class="neirongbbb" style="font-size:14px;font-weight:bold;">产品优势</span>&nbsp; </p>
+                    <p> 1、资费低。相对于其它运输方式（如EMS、DHL、UPS、Fedex、TNT等）来说，香港邮政小包(香港小包)服务有绝对的价格优势。采用此种发货方式可最大限度地降低成本，提升价格竞争力。 2、简便性。香港邮政小包(香港小包)交寄方便，且计费方式全球统一，以重量“克”计算费用，不计首重和续重，大大简化了运费核算与成本控制。 3、全球化。香港邮政小包(香港小包)可以将产品送达全球几乎任何一个国家或地区的客户手中，只要有邮局的地方都可以到达，大大扩展了外贸卖家的市场空间。 4、通关效率高。我公司提前分拣后直接送进AMC安排航班发往目的国家，由于香港是自由港，从没有发生扣关的情况。 5、敏感产品服务。根据公司的业务状况，可以为客户提供敏感产品的邮递。 6、适用的货物范围广。一般无特别的限制，除了国际违禁品以外。 </p>
+                    <p> <span class="neirongbbb" style="font-size:14px;font-weight:bold;">香港小包平邮无法查询到跟踪信息</span>&nbsp; </p>
+                    <p> <span class="neirongbbb" style="font-size:14px;font-weight:bold;">货物限制</span>&nbsp; </p>
+                    <p> 只接受普货及仿牌，不接受任何带电产品。 </p>
+                    <p> <span class="neirongbbb" style="font-size:14px;font-weight:bold;"><br />
+                      </span> </p>
+                    <p> <span class="neirongbbb" style="font-size:14px;font-weight:bold;">体积和重量限制</span>&nbsp; </p>
+                    <p> 1）重量限制：<br />
+                      ? 小邮包限重2KG；<br />
+                      2）体积限制：<br />
+                      ? 非圆筒货物：长+宽+高≤90CM，单边长度≤60CM，长度≥14CM，宽度≥9CM；<br />
+                      ? 圆筒形货物：直径的两倍+长度≤104CM，单边长度≤90CM ，直径的两倍+长度≥17CM，长度≥10CM。 </p>
+                    <hr />
+                    <p> <span class="neirongbbb" style="font-size:14px;font-weight:bold;">限制物品</span>&nbsp; </p>
+                    <p> 根据国际航空条款规定的不能邮寄或限制邮寄的所有货物，比如品、粉末、液体、易燃易爆物品等危险品以及烟酒、现金及有价证券、侵权产品等。 </p>
+                    <br />
+                    <hr />
+                    <p> <span class="neirongbbb" style="font-size:14px;font-weight:bold;">赔偿/保险</span>&nbsp; </p>
+                    <p> 按包裹申报价值予以赔偿，每票最高赔偿金额为100RMB. </p>
+                    <p> 平邮无赔偿服务。 </p>
+                    <br />
+                    </span> </div>
+                  <div class="last1" style=""> <a id="RpPrice_ctl02_RpPrice1_ctl11_lbFee" class="spn9" href="{{:url('register')}}" target="_blank"></a> </div>
+                  <input type="hidden" name="RpPrice$ctl02$RpPrice1$ctl11$HiChannelCode" id="RpPrice_ctl02_RpPrice1_ctl11_HiChannelCode" value="HKAPOST" />
+                </div>
+              </div>
+              <div class="countcon clearfix" id='SGRPOST-4PXSGRPOST'>
+                <div class="conrow">
+                  <div class="spn1" style="width: 17%;"> <img id="RpPrice_ctl02_RpPrice1_ctl12_ImgChnanel" src="__PUBLIC__/home/images/p23.jpg" style="height:40px;width:40px;border-width:0px;" />新加坡邮政小包挂号<br />
+                    <code>SGRPOST</code> </div>
+                  <div class="spn20" style="width: 7%; padding-left: 10px; text-align: center;">1.000</div>
+                  <div class="spn3" style="width: 8%; padding-left: 25px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl12_lbSymbol"></span> 120.00 </div>
+                  <div class="spn4" style="width: 10%; padding-left: 35px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl12_lbSymbol1"></span>0.00 </div>
+                  <div class="spn5" style="width: 10%; padding-left: 35px; text-align: center;">7 - 14</div>
+                  <div class="spn6" style="width: 5%; text-align: center; padding-left: 53px;">是</div>
+                  <div class="spn6" style="width:8%; text-align: center; padding-left: 53px;">是</div>
+                  <div class="spn2" style="width: 10%; padding-left: 86px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl12_lbSymbol2"></span>120.00 </div>
+                  <div class="last1" id="La_Remarkdiv" style="padding-left: 110px;">
+                    <input type="button" style="width: 80px; height: 30px; margin-right: -30px; margin-top: 5px; float: right; border-radius: 3px;"
+                                                        value="发货须知" onclick='xiangqing(254)' />
+                    <span id="RpPrice_ctl02_RpPrice1_ctl12_La_Remark" style="display: none;">
+                    <p> <span style="font-size:14px;font-weight:bold;" class="neirongbbb">新加坡邮政小包服务介绍</span>&nbsp; </p>
+                    <p> <span style="line-height:24px;font-family:微软雅黑;color:#0f0f0f;">新加坡邮政小包（又称新加坡小包）服务是皇家物流速递（PFC）联合新加坡邮政开展的又一项全球邮政小包业务服务，它包含新加坡邮政国际小包挂号，新加坡邮政国际小包平邮两种新加坡邮政服务产品。新加坡邮政国际小包和香港国际小包服务一样是针对小件物品的空邮产品，可寄达全球各个邮政网点。是皇家物流速递作为专业的跨国电子商务物流供应商为电子商务卖家提供的又一个服务全面、价格合理的邮递方案。</span> </p>
+                    <span style="line-height:24px;font-family:微软雅黑;color:#0f0f0f;">附：新加坡邮政官方查询</span><a>网址：</a><span style="line-height:24px;font-family:微软雅黑;color:#0f0f0f;">http://www.singpost.com/index.htm</span>
+                    <p> <br />
+                    </p>
+                    <p> <span style="font-size:14px;font-weight:bold;" class="neirongbbb">新加坡邮政小包服务优势</span>&nbsp; </p>
+                    <p> <span style="line-height:24px;font-family:微软雅黑;color:#0f0f0f;">费用-价格低至国际快递的20%，节约物流成本</span><br />
+                      <span style="line-height:24px;font-family:微软雅黑;color:#0f0f0f;">安全-丢包率低，提供额外保险服务</span><br />
+                      <span style="line-height:24px;font-family:微软雅黑;color:#0f0f0f;">查询-发货后1-2个工作日可在线查询包裹详细派送信息</span><br />
+                      <span style="line-height:24px;font-family:微软雅黑;color:#0f0f0f;">PFC-当日收件处理，次日过港发往目的地</span> </p>
+                    <p> <span style="font-size:14px;font-weight:bold;" class="neirongbbb">货物限制</span> </p>
+                    <p> 可走内置电池，配套电池。不接收纯电池及违禁品之类的货物。 </p>
+                    <p> <span style="font-size:14px;font-weight:bold;" class="neirongbbb"><br />
+                      </span> </p>
+                    <p> <span style="font-size:14px;font-weight:bold;" class="neirongbbb">体积和重量限制</span> </p>
+                    <p> 1）重量限制：<br />
+                      ? 小邮包限重2KG；<br />
+                      2）体积限制：<br />
+                      ? 非圆筒货物：长+宽+高≤90CM，单边长度≤60CM，长度≥14CM，宽度≥9CM；<br />
+                      ? 圆筒形货物：直径的两倍+长度≤104CM，单边长度≤90CM ，直径的两倍+长度≥17CM，长度≥10CM。 </p>
+                    <hr />
+                    <p> <span style="font-size:14px;font-weight:bold;" class="neirongbbb">限制物品</span> ? </p>
+                    <p> 根据国际航空条款规定的不能邮寄或限制邮寄的所有货物，比如品、粉末、液体、易燃易爆物品等危险品以及烟酒、现金及有价证券、侵权产品等。 </p>
+                    <br />
+                    <hr />
+                    <p> <span style="font-size:14px;font-weight:bold;" class="neirongbbb">赔偿/保险</span> </p>
+                    <p> 按包裹申报价值予以赔偿，每票最高赔偿金额为100RMB. </p>
+                    <p> <br />
+                    </p>
+                    <p> <br />
+                    </p>
+                    <br />
+                    </span> </div>
+                  <div class="last1" style=""> <a id="RpPrice_ctl02_RpPrice1_ctl12_lbFee" class="spn9" href="{{:url('register')}}" target="_blank"></a> </div>
+                  <input type="hidden" name="RpPrice$ctl02$RpPrice1$ctl12$HiChannelCode" id="RpPrice_ctl02_RpPrice1_ctl12_HiChannelCode" value="SGRPOST" />
+                </div>
+              </div>
+              <div class="countcon clearfix" id='HKRPOST-HKRPOST'>
+                <div class="conrow">
+                  <div class="spn1" style="width: 17%;"> <img id="RpPrice_ctl02_RpPrice1_ctl13_ImgChnanel" src="__PUBLIC__/home/images/p8.gif" style="height:40px;width:40px;border-width:0px;" />香港邮政小包挂号<br />
+                    <code>HKRPOST</code> </div>
+                  <div class="spn20" style="width: 7%; padding-left: 10px; text-align: center;">1.000</div>
+                  <div class="spn3" style="width: 8%; padding-left: 25px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl13_lbSymbol"></span> 124.50 </div>
+                  <div class="spn4" style="width: 10%; padding-left: 35px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl13_lbSymbol1"></span>0.00 </div>
+                  <div class="spn5" style="width: 10%; padding-left: 35px; text-align: center;">15 - 25</div>
+                  <div class="spn6" style="width: 5%; text-align: center; padding-left: 53px;">是</div>
+                  <div class="spn6" style="width:8%; text-align: center; padding-left: 53px;">否</div>
+                  <div class="spn2" style="width: 10%; padding-left: 86px; text-align: center;"> <span id="RpPrice_ctl02_RpPrice1_ctl13_lbSymbol2"></span>124.50 </div>
+                  <div class="last1" id="La_Remarkdiv" style="padding-left: 110px;">
+                    <input type="button" style="width: 80px; height: 30px; margin-right: -30px; margin-top: 5px; float: right; border-radius: 3px;"
+                                                        value="发货须知" onclick='xiangqing(187)' />
+                    <span id="RpPrice_ctl02_RpPrice1_ctl13_La_Remark" style="display: none;">
+                    <p> <span class="neirongbbb" style="font-size:14px;font-weight:bold;">香港邮政小包服务介绍</span>&nbsp; </p>
+                    <p> 香港邮政小包（又称香港小包、香港邮政国际航空小包）是香港邮政针对小件物品而设计的空邮产品，又称“易网邮”。其前身为“大量投寄挂号空邮服务”，是皇家物流（PFC）为电子商务卖家提供的又一个国际邮寄方案。香港邮政小包包含挂号和平邮两种服务产品，特别适合网上卖家邮寄重量轻，体积较小的物品。目前大陆的eBay卖家很多选择通过香港邮政小包发货。
+                      香港邮政官方网站：www.hongkongpost.com </p>
+                    <p> <br />
+                    </p>
+                    <p> <span class="neirongbbb" style="font-size:14px;font-weight:bold;">产品优势</span>&nbsp; </p>
+                    <p> 1、资费低。相对于其它运输方式（如EMS、DHL、UPS、Fedex、TNT等）来说，香港邮政小包(香港小包)服务有绝对的价格优势。采用此种发货方式可最大限度地降低成本，提升价格竞争力。
+                      2、简便性。香港邮政小包(香港小包)交寄方便，且计费方式全球统一，以重量“克”计算费用，不计首重和续重，大大简化了运费核算与成本控制。
+                      3、全球化。香港邮政小包(香港小包)可以将产品送达全球几乎任何一个国家或地区的客户手中，只要有邮局的地方都可以到达，大大扩展了外贸卖家的市场空间。
+                      4、通关效率高。我公司提前分拣后直接送进AMC安排航班发往目的国家，由于香港是自由港，从没有发生扣关的情况。
+                      5、敏感产品服务。根据公司的业务状况，可以为客户提供敏感产品的邮递。
+                      6、适用的货物范围广。一般无特别的限制，除了国际违禁品以外。 </p>
+                    <p> <span class="neirongbbb" style="font-size:14px;font-weight:bold;">香港小包平邮无法查询到跟踪信息</span>&nbsp; </p>
+                    <p> <span class="neirongbbb" style="font-size:14px;font-weight:bold;">货物限制</span>&nbsp; </p>
+                    <p> 只接受普货及仿牌，不接受任何带电产品。 </p>
+                    <p> <span class="neirongbbb" style="font-size:14px;font-weight:bold;"><br />
+                      </span> </p>
+                    <p> <span class="neirongbbb" style="font-size:14px;font-weight:bold;">体积和重量限制</span>&nbsp; </p>
+                    <p> 1）重量限制：<br />
+                      ? 小邮包限重2KG；<br />
+                      2）体积限制：<br />
+                      ? 非圆筒货物：长+宽+高≤90CM，单边长度≤60CM，长度≥14CM，宽度≥9CM；<br />
+                      ? 圆筒形货物：直径的两倍+长度≤104CM，单边长度≤90CM ，直径的两倍+长度≥17CM，长度≥10CM。 </p>
+                    <hr />
+                    <p> <span class="neirongbbb" style="font-size:14px;font-weight:bold;">限制物品</span>&nbsp; </p>
+                    <p> 根据国际航空条款规定的不能邮寄或限制邮寄的所有货物，比如品、粉末、液体、易燃易爆物品等危险品以及烟酒、现金及有价证券、侵权产品等。 </p>
+                    <br />
+                    <hr />
+                    <p> <span class="neirongbbb" style="font-size:14px;font-weight:bold;">赔偿/保险</span>&nbsp; </p>
+                    <p> 按包裹申报价值予以赔偿，每票最高赔偿金额为100RMB. </p>
+                    </span> </div>
+                  <div class="last1" style=""> <a id="RpPrice_ctl02_RpPrice1_ctl13_lbFee" class="spn9" href="{{:url('register')}}" target="_blank"></a> </div>
+                  <input type="hidden" name="RpPrice$ctl02$RpPrice1$ctl13$HiChannelCode" id="RpPrice_ctl02_RpPrice1_ctl13_HiChannelCode" value="HKRPOST" />
+                </div>
+              </div>
+            </div>
+            <div class="counttips"> <strong> <span id="RpPrice_ctl03_lbCHStyleFullName">国际空运</span>&nbsp;&nbsp;</strong><span id="RpPrice_ctl03_lbRemark">[灵活，易清关，价格实惠]</span> </div>
+            <div class="counttip">
+             <span class="spn1" style="width:17%; padding-left: 10px">运输方式</span> 
+             <span class="spn20" style="width: 7%; padding-left: 10px; text-align: center;">计费重量</span> 
+             <a class="an1" onclick="orderManage(1,'EUFBA-F')" style="width: 8%; padding-left: 10px; text-align: center;">基本运费</a> 
+             <a class="an2" onclick="orderManage(2,'EUFBA-F')" style="width: 10%; padding-left: 10px; text-align: center;">燃油费</a> 
+             <span class="spn3" style="width: 10%; padding-left: 10px; text-align: center;">时效(工作日)</span> 
+             <a class="an3" onclick="orderManage(3,'EUFBA-F')" style="width: 5%; padding-left: 10px; text-align: center;">追踪</a> 
+             <span class="spn2" style="width: 8%; padding-left: 10px; text-align: center;">是否带电</span> 
+             <a class="spn2 sppad" onclick="orderManage(4,'EUFBA-F')" style="width:10%; padding-left: 10px; text-align: center;">总费用</a> 
+             <span class="spn2" style="width: 10%; padding-left: 10px; text-align: center;">备注</span> 
+              <span class="spn2" style="width: 10%; padding-left: 10px; text-align: center;">下单</span>
+              <input type="hidden" name="RpPrice$ctl03$HiCCode" id="RpPrice_ctl03_HiCCode" value="EUFBA-F" />
+            </div>
+            <div class="countcon clearfix">
+              <div class="countcon clearfix" id='EUFBA-F-PFCEU-FBA'>
+                <div class="conrow">
+                  <div class="spn1" style="width: 17%;"> <img id="RpPrice_ctl03_RpPrice1_ctl00_ImgChnanel" src="__PUBLIC__/home/images/p15.jpg" style="height:40px;width:40px;border-width:0px;" />欧洲FBA包税价<br />
+                    <code>EUFBA-F</code> </div>
+                  <div class="spn20" style="width: 7%; padding-left: 10px; text-align: center;">1.000</div>
+                  <div class="spn3" style="width: 8%; padding-left: 25px; text-align: center;"> <span id="RpPrice_ctl03_RpPrice1_ctl00_lbSymbol"></span> 205.25 </div>
+                  <div class="spn4" style="width: 10%; padding-left: 35px; text-align: center;"> <span id="RpPrice_ctl03_RpPrice1_ctl00_lbSymbol1"></span>0.00 </div>
+                  <div class="spn5" style="width: 10%; padding-left: 35px; text-align: center;">6 - 8</div>
+                  <div class="spn6" style="width: 5%; text-align: center; padding-left: 53px;">是</div>
+                  <div class="spn6" style="width: 8%; text-align: center; padding-left: 53px;">是</div>
+                  <div class="spn2" style="width: 10%; padding-left: 86px; text-align: center;"> <span id="RpPrice_ctl03_RpPrice1_ctl00_lbSymbol2"></span>205.25 </div>
+                  <div class="last1" id="La_Remarkdiv" style="padding-left: 110px;">
+                    <input type="button" style="width: 80px; height: 30px; margin-right: -30px; margin-top: 5px; float: right; border-radius: 3px;"
+                                                        value="发货须知" onclick='xiangqing(400)' />
+                    <span id="RpPrice_ctl03_RpPrice1_ctl00_La_Remark" style="display: none;">
+                    <p> <span class="neirongbbb"><a name="undefined"></a>包清关，包税派送FBA专线，头程自主航空，直飞至荷兰AMS清关，再抵达欧洲各国仓储（此渠道无需提供EORI号，清关能力强）。通关快，渠道，时效8-10个工作日</span> </p>
+                    <p> <span class="neirongbbb"></span><span class="neirongbbb"><a name="undefined"></a>服务优势</span> </p>
+                    <p> 可接内置，配套电池产品，需下<strong></strong>单时候备注出来！不接收任何纯电池及仿牌违禁品之类的产品。如查到仿牌及违禁品之类货物一律不退运费。 </p>
+                    <p> 注意事项：无牌手机加1RMB/台 鞋子类加3RMB/KG 手表类倾销税加2RMB/个 不含烟油电子烟2RMB/KG 自行车类倾销税加50% 纯电池加4RMB/KG 移动电源加3RMB/KG ，纯电池和移动电源附加费最低消费50RMB/票. </p>
+                    <p> <span class="neirongbbb"><strong>附加费、关税</strong></span> </p>
+                    <p> 1：包关税。 </p>
+                    <p> 2：单件货物重量限制30公斤以内。单件实重量请控制在10KG以上，如未达到，我司将按照10KG起收。如单件超过15公斤，请按照Amazon FBA的规定贴上“Team Lift"标签 </p>
+                    <p> 3：UPS征收偏远地区附加费派送费：产生偏远地区附加费按照UPS账单收取费用.(欲知您所发货物目的地是否属偏远地区请上UPS网查询,我司出货时不另行通知，以UPS帐单为准,3个月有效。) </p>
+                    <p> <span class="neirongbbb"><strong>体积重量限制</strong></span><br />
+                      1：计费重量取货物的体积重量和实际重量中数值较大的一方。体积重量计算方式为：长CMX宽CMX高CM/6000=体积重（KG）。 </p>
+                    <p> 2：单件货物重量限制30公斤以内。单件实重量请控制在10KG以上，如未达到，我司将按照10KG起收。如单件超过15公斤，请按照Amazon FBA的规定贴上“Team Lift"标签 </p>
+                    <p> <span class="neirongbbb"><strong>禁止、限制投寄物品</strong></span><br />
+                      禁寄物品：仿牌假牌物品、 喷雾容器、酒精类液体、石棉、丁烷打火机、医疗废品、毒性物品、腐蚀物品、假钞、药品、干冰、易燃易爆品、淫秽物品、超过标准的磁性物品、氧化物和有机过氧化物、武器弹药、溶解性油漆涂料、和其他当地法律禁止邮寄的物品。<br />
+                      限制投寄的物品：电池、含电池的物品、紧急用于医疗或科研的药品、体育用的枪支、活动物、未超标准的磁性物品、易腐品、放射性物品、疫苗等。 </p>
+                    <p> <br />
+                    </p>
+                    <span class="neirongbbb"><strong>理赔相关</strong></span><br />
+                    包裹按UPS国际快递服务条款理赔，但每票货最高赔偿不超过100美元。
+                    <p> <br />
+                    </p>
+                    <br />
+                    </span> </div>
+                  <div class="last1" style=""> <a id="RpPrice_ctl03_RpPrice1_ctl00_lbFee" class="spn9" href="{{:url('register')}}" target="_blank"></a> </div>
+                  <input type="hidden" name="RpPrice$ctl03$RpPrice1$ctl00$HiChannelCode" id="RpPrice_ctl03_RpPrice1_ctl00_HiChannelCode" value="EUFBA-F" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--center end--> 
+        
+        <a class="noheight" name="gobottom">&nbsp;</a>
+        <input type="hidden" name="HiFiled" id="HiFiled" />
+        <input type="hidden" name="HiLanWei" id="HiLanWei" />
+        <input type="hidden" name="HiOrder" id="HiOrder" />
+        <input type="hidden" name="HiFullNames" id="HiFullNames" />
+        <div style="display: none;">
+          <input type="submit" name="btnOrders" value="排序" id="btnOrders" />
+        </div>
+      </form>
+      <script type="text/javascript">
+        function xiangqing(xuliehao)
+        {
+            $.ajax({
+                url: "",
+                type: "post",
+                contentType: "application/json",
+                data: "{ subChannelInfoID: '" + xuliehao + "'}",
+                dataType: "json",
+                success: function (result) {
+                    document.getElementById("RemberDIV").innerHTML=result.d;
+                },
+            });
+            if(xuliehao==undefined)
+            {
+                xuliehao="";
+            }
+            document.getElementById("RemberDIV").innerHTML=xuliehao;
+            $(".fb_XQ").fadeIn();
+        }
+        $(document).ready(function () {
+            $(".counttip a").click(function () {
+                $(this).addClass("current").siblings("a").removeClass("current");
+            })
+            $(".sm").click(function () {
+                $(".fb_2").fadeIn();
+            })
+            $(".showfb").click(function () {
+                $(".fb_1").fadeIn();
+            })
+            $(".showfb1").click(function () {
+                $(".fb_3").fadeIn();
+            })
+            $(".boxcolse,.colsebox").click(function () {
+                $(".floatbox,.floatbox1,.fb_2,.fb_1,.fb_XQ").fadeOut();
+                $(".floatbox,.floatbox1,.fb_2,.fb_3,.fb_XQ").fadeOut();
+            })
+            $(".fbtitle1 a").each(function (i) {
+                $(this).click(function () {
+                    $(".tabcon >div").eq(i).show().siblings().hide();
+                })
+            })
+            $(".fbtitle1 a").each(function (i) {
+                $(this).click(function () {
+                    $(".tabcon >div").eq(i).show().siblings().hide();
+                })
+            })
+        })
+    </script> 
+      <script type="text/javascript">
+        function orderManage(flags, RouteName) {
+            if (flags == "1") {
+                document.getElementById("HiLanWei").value = "1"
+                var vSort = document.getElementById("HiOrder").value;
+                if (vSort == "") {
+                    document.getElementById("HiOrder").value = "1";
+                }
+                if (vSort == "1") {
+                    document.getElementById("HiOrder").value = "0";
+                }
+                if (vSort == "0") {
+                    document.getElementById("HiOrder").value = "1"
+                }
+
+
+            }
+            if (flags == "2") {
+                document.getElementById("HiLanWei").value = "2"
+                var vSort = document.getElementById("HiOrder").value;
+                if (vSort == "") {
+                    document.getElementById("HiOrder").value = "1";
+                }
+                if (vSort == "1") {
+                    document.getElementById("HiOrder").value = "0";
+                }
+                if (vSort == "0") {
+                    document.getElementById("HiOrder").value = "1"
+                }
+            }
+            if (flags == "3") {
+                document.getElementById("HiLanWei").value = "3"
+                var vSort = document.getElementById("HiOrder").value;
+                if (vSort == "") {
+                    document.getElementById("HiOrder").value = "1";
+                }
+                if (vSort == "1") {
+                    document.getElementById("HiOrder").value = "0";
+                }
+                if (vSort == "0") {
+                    document.getElementById("HiOrder").value = "1"
+                }
+            }
+            if (flags == "4") {
+                document.getElementById("HiLanWei").value = "4"
+                var vSort = document.getElementById("HiOrder").value;
+                if (vSort == "") {
+                    document.getElementById("HiOrder").value = "1";
+                }
+                if (vSort == "1") {
+                    document.getElementById("HiOrder").value = "0";
+                }
+                if (vSort == "0") {
+                    document.getElementById("HiOrder").value = "1"
+                }
+            }
+            document.getElementById("HiFullNames").value = RouteName;
+            document.getElementById("btnOrders").click();
+
+        }
+    </script>
+
+        {include file="public/footer"}
+</html>

@@ -1,0 +1,641 @@
+{include file="public/header"}
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/theme.css">
+<link href="__PUBLIC__/home/css/style.css" rel="stylesheet" type="text/css" />
+    <title>天众国际-跨境进口</title>
+</head>
+<body>
+
+<div id="wrap" class="main">
+  <div id="dvContainer">
+
+      {include file="public/navbar"}<!--header结束-->
+    
+    <div class="bann"><img src="__PUBLIC__/home/images/ser01.jpg" width="100%" /></div>
+
+    <div id="layerarea">
+<!-- Main -->
+<main class="main-container">
+  <div class="container serbox">
+    <div class="suppbox">
+
+      <div class="row">
+  	    <div class="col-md-6 col-md-offset-3">
+      		<header class="text-center">
+      		 <h2 class="section-title">渠道<span class="text-theme">价格</span></h2>
+      		 <p class="section-subtitle">The channel prices</p>
+      		</header>
+  	    </div>
+      </div>
+    
+    <!--价格查询-->
+     <div id="pricing">
+                <div class="containers">
+                    <div class="rows">
+                           
+            	<div class="pricing-table col-md-3 col-sm-6 col-xs-12">
+                	<div class="inner-box wow fadeIn">
+                    	<div class="table-header">
+                            <div class="icon-right"><span class="flaticon-badge"></span></div>
+                        	<h3 class="price">价格查询平台</h3>
+                            <h4 class="title">安全稳定，价格透明</h4>
+                        </div>
+                        
+                        <div class="table-contents">
+                        	
+                     
+                          <div class="form-horizontal">
+
+                                            <div class="form-group" >
+
+                                                <label class="col-lg-3 control-label" for="inputEmail1" style=" width:42px; float:left;">从:</label>
+                                                <div class="col-lg-4" style="width:67px; float:left;">
+                                                   
+                                                        <input name="txtStartCount" type="text" value="中 国" id="txtStartCount" disabled="disabled" class="form-control" style="width:67px;" />
+                                                </div>
+                                                <label class="col-lg-3 control-label" for="inputEmail1"  style=" width:42px;float:left;">到：</label>
+                                                <div class="col-lg-4" style="width: 112px;float:left;">
+                                                    <input name="TargetCountry" type="text" id="TargetCountry" onfocus="this.blur()" value="请选择" class="form-control" />
+                                                       
+                                                </div>
+
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-lg-4 control-label" for="inputEmail1" style="width:42px; float:left; padding: 7px 0 0;">重量：</label>
+                                                <div class="col-lg-4" style="width:115px; float:left;">
+                                                  
+                                                    <input name="txtStage" type="text" id="txtStage" value="1" class="form-control" />
+                                                </div>
+                                                <div class="col-lg-3 control-label" style=" width:42px; float:left;">kg</div>
+
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-lg-4 control-label" for="inputEmail1" style="width:42px; float:left;  padding: 7px 0 0;">体积：</label>
+                                                <div class="col-lg-2 pfc_input" style="float:left; width:50px;">
+                                                  
+                                                        <input name="txtLong" type="text" id="txtLong" onfocus="if(this.value == this.defaultValue) this.value = &#39;&#39;;" onBlur="if(this.value == &#39;&#39;) this.value = this.defaultValue;" value="1" class="form-control" />
+                                                </div>
+                                                <div class="col-lg-2 pfc_input" style="float:left; width:50px;">
+                                                  
+                                                         <input name="txtWidth" type="text" id="txtWidth" onfocus="if(this.value == this.defaultValue) this.value = &#39;&#39;;" onBlur="if(this.value == &#39;&#39;) this.value = this.defaultValue;" value="1" class="form-control" />
+                                                </div>
+                                                <div class="col-lg-2 pfc_input" style="float:left; width:50px;">
+                                                   
+                                                          <input name="txtHeight" type="text" id="txtHeight" onfocus="if(this.value == this.defaultValue) this.value = &#39;&#39;;" onBlur="if(this.value == &#39;&#39;) this.value = this.defaultValue;" value="1" class="form-control" /> 
+                                                </div>
+                                                <div class="col-lg-3 control-label" style="margin-left: -5px;width:42px; float:left;">cm</div>
+
+                                            </div>
+                                            <div class="form-group">
+
+                                                <label class="col-lg-4 control-label" for="inputEmail1" style="width:42px; float:left;padding: 7px 0 0;">币种：</label>
+                                                <div class="col-lg-4" style="float:left; width:115px;">
+                                                    <select class="form-control">
+                                                        <option>人民币</option>
+
+                                                    </select>
+                                                </div>
+
+                                            </div>
+
+                                          
+
+                                        </div>
+                        </div>
+                        
+                        <div class="table-footer">
+                            <input type="submit" name="btnSubmit" value="我要查价格" onclick="return Check_price();" id="btnSubmit" class="theme-btn btn-style-three rounded-btn" style="background-color:#fd3c00;" />
+                        	
+                        </div>
+                        
+                    </div>
+                </div>
+                
+               
+            	<div class="pricing-table col-md-3 col-sm-6 col-xs-12">
+                	<div class="inner-box wow fadeIn">
+                    	<div class="table-header">
+                        	<h3 class="price">包裹追踪</h3>
+                            <h4 class="title">清关便利，全程追踪</h4>
+                        </div>
+                        
+                        <div class="table-content">
+                        	
+                            <textarea name="txtOrderNo" id="txtOrderNo" class="baoguo-input form-control" style="text-align:left;" onblur="LFocus();" onfocus="GetFocus();" rows="6" placeholder="请输入订单号或追踪号，注：每行输入一个单号。"></textarea>
+                        </div>
+                        
+                        <div class="table-footer">
+                              <input type="submit" name="BtnSearch" value="我要查件" onclick="return Check();" id="BtnSearch" class="theme-btn btn-style-three rounded-btn" />
+
+                        </div>
+                        
+                    </div>
+                </div>
+                
+              
+            	<div class="pricing-table col-md-3 col-sm-6 col-xs-12">
+                	<div class="inner-box wow fadeIn">
+                    	<div class="table-header">
+                        	<h3 class="price">寄件下单</h3>
+                            <h4 class="title">价格优惠，时效稳定</h4>
+                        </div>
+                        
+                        <div class="table-content">
+                         
+                             <img src="__PUBLIC__/home/images/serach-fee.png" />
+                        </div>
+                        
+                        <div class="table-footer">
+                        	<a href="#" class="theme-btn btn-style-three rounded-btn">我要发货</a>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+              
+            	<div class="pricing-table col-md-3 col-sm-6 col-xs-12">
+                	<div class="inner-box wow fadeIn">
+                    	<div class="table-header">
+                            <div class="icon-right"><span class="flaticon-medal"></span></div>
+                        	<h3 class="price">仓储服务</h3>
+                            <h4 class="title">方便快捷，一站式服务</h4>
+                        </div>
+                        
+                        <div class="table-content">
+                        	 <img src="__PUBLIC__/home/images/storage.png" />
+                        </div>
+                        
+                        <div class="table-footer">
+                        	<a id="alink" href="#"  class="theme-btn btn-style-three rounded-btn">免费仓储</a>
+                        </div>
+                        
+                    </div>
+                </div>
+                    </div>
+                </div>
+            </div>
+    <!--价格查询-->
+    <input type="hidden" name="HiValue" id="HiValue" />
+        <!--floatbox begin-->
+        <div class="fbt fb_1">
+        	<div class="fbtitle">请选择目的地国家<a class="boxcolse" href="javascript:;">关闭</a></div>
+        	<div class="search_bt"><input id="Content" class="sstext" type="text" value="" /><input class="ssbt" type="button" value="搜索" onclick="SearchCountry();" /></div>
+            <div class="fbbox clearfix">
+                <div class="fbtitle1">
+                  <a href="javascript:;">A</a>
+                  <a href="javascript:;">B</a>
+                  <a href="javascript:;">C</a>
+                  <a href="javascript:;">D</a>
+                  <a href="javascript:;">E</a>
+                  <a href="javascript:;">F</a>
+                  <a href="javascript:;">G</a>
+                  <a href="javascript:;">H</a>
+                  <a href="javascript:;">I</a>
+                  <a href="javascript:;">J</a>
+                  <a href="javascript:;">K</a>
+                  <a href="javascript:;">L</a>
+                  <a href="javascript:;">M</a>
+                  <a href="javascript:;">N</a>
+                  <a href="javascript:;">O</a>
+                  <a href="javascript:;">P</a>
+                  <a href="javascript:;">Q</a>
+                  <a href="javascript:;">R</a>
+                  <a href="javascript:;">S</a>
+                  <a href="javascript:;">T</a>
+                  <a href="javascript:;">U</a>
+                  <a href="javascript:;">V</a>
+                  <a href="javascript:;">W</a>
+                  <a href="javascript:;">X</a>
+                  <a href="javascript:;">Y</a>
+                  <a href="javascript:;">Z</a>
+                </div>
+                <div class="fbcontent">
+                    <div class="fbctitle" id="Search" style="display:none;">查询结果</div>
+                     <ul class="fblist clearfix" id="SearchRes" style="display:none;"></ul>
+                	<div class="fbctitle">常用国家</div>
+                    <ul class="fblist clearfix" id="CommonCountry">
+                    </ul>
+                    <div class="tabcon clearfix">
+                    	<div class="clearfix">
+                            <div class="fbctitle1">A</div>
+                            <ul class="fblist clearfix" id="A">
+                            </ul>
+                        </div>
+                        <div class="clearfix">
+                            <div class="fbctitle1">B</div>
+                            <ul class="fblist clearfix" id="B">
+                            </ul>
+                        </div>
+                        <div class="clearfix">
+                            <div class="fbctitle1">C</div>
+                            <ul class="fblist clearfix" id="C">
+                            </ul>
+                        </div>
+                        <div class="clearfix">
+                            <div class="fbctitle1">D</div>
+                            <ul class="fblist clearfix" id="D">
+                            </ul>
+                        </div>
+                        <div class="clearfix">
+                            <div class="fbctitle1">E</div>
+                            <ul class="fblist clearfix" id="E">
+                            </ul>
+                        </div>
+                        <div class="clearfix">
+                            <div class="fbctitle1">F</div>
+                            <ul class="fblist clearfix" id="F">
+                            </ul>
+                        </div>
+                        <div class="clearfix">
+                            <div class="fbctitle1">G</div>
+                            <ul class="fblist clearfix" id="G">
+                            </ul>
+                        </div>
+                        <div class="clearfix">
+                            <div class="fbctitle1">H</div>
+                            <ul class="fblist clearfix" id="H">
+                            </ul>
+                        </div>
+                        <div class="clearfix">
+                            <div class="fbctitle1">I</div>
+                            <ul class="fblist clearfix" id="I">
+                            </ul>
+                        </div>
+                        <div class="clearfix">
+                            <div class="fbctitle1">J</div>
+                            <ul class="fblist clearfix" id="J">
+                            </ul>
+                        </div>
+                        <div class="clearfix">
+                            <div class="fbctitle1">K</div>
+                            <ul class="fblist clearfix" id="K">
+                            </ul>
+                        </div>
+                        <div class="clearfix">
+                            <div class="fbctitle1">L</div>
+                            <ul class="fblist clearfix" id="L">
+                            </ul>
+                        </div>
+                        <div class="clearfix">
+                            <div class="fbctitle1">M</div>
+                            <ul class="fblist clearfix" id="M">
+                            </ul>
+                        </div>
+                        <div class="clearfix">
+                            <div class="fbctitle1">N</div>
+                            <ul class="fblist clearfix" id="N">
+                            </ul>
+                        </div>
+                        <div class="clearfix">
+                            <div class="fbctitle1">O</div>
+                            <ul class="fblist clearfix" id="O">
+                            </ul>
+                        </div>
+                        <div class="clearfix">
+                            <div class="fbctitle1">P</div>
+                            <ul class="fblist clearfix" id="P">
+                            </ul>
+                        </div>
+                        <div class="clearfix">
+                            <div class="fbctitle1">Q</div>
+                            <ul class="fblist clearfix" id="Q">
+                            </ul>
+                        </div>
+                        <div class="clearfix">
+                            <div class="fbctitle1">R</div>
+                            <ul class="fblist clearfix" id="R">
+                            </ul>
+                        </div>
+                        <div class="clearfix">
+                            <div class="fbctitle1">S</div>
+                            <ul class="fblist clearfix" id="S">
+                            </ul>
+                        </div>
+                        <div class="clearfix">
+                            <div class="fbctitle1">T</div>
+                            <ul class="fblist clearfix" id="T">
+                            </ul>
+                        </div>
+                        <div class="clearfix">
+                            <div class="fbctitle1">U</div>
+                            <ul class="fblist clearfix" id="U">
+                            </ul>
+                        </div>
+                        <div class="clearfix">
+                            <div class="fbctitle1">V</div>
+                            <ul class="fblist clearfix" id="V">
+                            </ul>
+                        </div>
+                        <div class="clearfix">
+                            <div class="fbctitle1">W</div>
+                            <ul class="fblist clearfix" id="W">
+                            </ul>
+                        </div>
+                        <div class="clearfix">
+                            <div class="fbctitle1">X</div>
+                            <ul class="fblist clearfix" id="X">
+                            </ul>
+                        </div>
+                        <div class="clearfix">
+                            <div class="fbctitle1">Y</div>
+                            <ul class="fblist clearfix" id="Y">
+                            </ul>
+                        </div>
+                        <div class="clearfix">
+                            <div class="fbctitle1">Z</div>
+                            <ul class="fblist clearfix" id="Z">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--floatbox end--> 
+    
+      
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="suppbox2">
+      <div class="row">
+	   <div class="col-md-6 col-md-offset-3">
+		<header class="text-center">
+		 <h2 class="section-title">使用<span class="text-theme">流程</span></h2>
+		 <p class="section-subtitle">The use of the process</p>
+		</header>
+	  </div>
+    </div>
+      <div class="serv_pic"><img src="__PUBLIC__/home/images/ser01.png" width="100%" /></div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+	   <div class="col-md-6 col-md-offset-3">
+		<header class="text-center">
+		 <h2 class="section-title">我们的<span class="text-theme">服务</span></h2>
+		 <p class="section-subtitle">The services we provide</p>
+		</header>
+	  </div>
+    </div>
+    <div class="suppbox2 suppbox3">
+      <div class="row">
+        <div class="col-lg-3 col-sm-3 col-md-3">
+          <a href="{{:url('mail')}}"><div class="sup_item">
+            <h4 class="sup_itt">直邮进口</h4>
+            <img src="__PUBLIC__/home/images/ser02.png" />
+            <a href="{{:url('mail')}}" class="sup_itm">了解更多</a>
+          </div></a>
+        </div>
+        
+        <div class="col-lg-3 col-sm-3 col-md-3">
+          <a href="{{:url('bonded')}}"><div class="sup_item">
+            <h4 class="sup_itt">保税进口</h4>
+            <img src="__PUBLIC__/home/images/ser03.png" />
+            <a href="{{:url('bonded')}}" class="sup_itm">了解更多</a>
+          </div></a>
+        </div>
+        
+        <div class="col-lg-3 col-sm-3 col-md-3">
+          <a href="{{:url('express')}}"><div class="sup_item">
+            <h4 class="sup_itt">快件个人进口</h4>
+            <img src="__PUBLIC__/home/images/ser04.png" />
+            <a href="{{:url('express')}}" class="sup_itm">了解更多</a>
+          </div></a>
+        </div>
+        
+        <div class="col-lg-3 col-sm-3 col-md-3">
+          <a href="{{:url('email')}}"><div class="sup_item">
+            <h4 class="sup_itt">邮件个人进口</h4>
+            <img src="__PUBLIC__/home/images/ser05.png" />
+            <a href="{{:url('email')}}" class="sup_itm">了解更多</a>
+          </div></a>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+</main>
+<!-- /Main -->
+
+
+
+        {include file="public/footer"}
+
+<script type="text/javascript">
+    $(document).ready(function() {
+       $(".fbt").css("top", "50%");
+   // $(".fbt").css("left", left);
+        $("#TargetCountry").click(function() {
+            $(".fb_1").fadeIn();
+        })
+        $(".boxcolse,.colsebox").click(function() {
+            $(".floatbox,.floatbox1,.floatbox2,.fb_1").fadeOut();
+        })
+        $(".fbtitle1 a").each(function(i) {
+            //alert("aaa");
+            $(this).click(function() {
+                $(".tabcon >div").eq(i).show().siblings().hide();
+            })
+        })
+    })
+var start=0;
+var currentindex=1;
+$("#flashBg").css("background-color",$("#flash1").attr("name"));
+$("#flash a:eq(0)").show();
+var num=$("#flash a").length;
+function changeflash(i) {	
+currentindex=i;
+for (j=1;j<=num;j++){
+	if (j==i) 
+	{
+	start=1;
+	$("#flash"+j).fadeIn("normal");
+	$("#flash"+j).css("display","block");
+	$("#f"+j).removeClass();
+	$("#f"+j).addClass("dq");
+	$("#flashBg").css("background-color",$("#flash"+j).attr("name"));
+	}
+	else
+	{$("#flash"+j).css("display","none");
+	$("#f"+j).removeClass();
+	$("#f"+j).addClass("no");}
+}}
+function startAm(){
+if(start==0){
+    $("#flashBg").css("background-color",$("#flash1").attr("name"));
+    $("#flash a:eq(0)").show().siblings("a").hide();
+} 
+timerID = setInterval("timer_tick()",3000);
+}
+function stopAm(){
+clearInterval(timerID);
+}
+function timer_tick() {
+
+    currentindex=currentindex>=num?1:currentindex+1;
+	changeflash(currentindex);}
+$(document).ready(function(){
+$(".header").addClass("borderbottom");
+tab.tabControler($(".feeboxtitle >a"),$(".feeboxcon >div"),"current");
+$(".flash_bar div").mouseover(function(){stopAm();}).mouseout(function(){startAm();});
+startAm();
+});
+</script>
+    <script type="text/javascript">
+        function Check() 
+        {
+            var tt = $.trim($("#txtOrderNo").val());
+            var flag = true;
+            if (tt == "" || tt == "请输入订单号或追踪号...") 
+            {
+               // $("#txtOrderNo").val("请输入订单号或追踪号...");
+ window.location.href = "/Manage/WebManage/Inquire.aspx?txtID=No";
+                flag = false;
+            }
+            else 
+            {
+                flag = true;
+            }
+            return flag;
+        }
+ function Check_price()
+        {
+            var TargetCountry = $.trim($("#TargetCountry").val());
+            var txtStage = $.trim($("#txtStage").val());
+             if (TargetCountry == ""||TargetCountry == "请选择") {
+                alert("请输入目的地！");
+                return  false;
+            }
+            if (txtStage == "")
+            {
+                alert("请输入重量！");
+                 return false;
+            }
+            return true;
+        }
+    </script>
+    <script type="text/javascript">
+        function GetFocus() 
+        {
+            var tt = $.trim($("#txtOrderNo").val());
+            if (tt == "请输入订单号或追踪号...") 
+            {
+                $("#txtOrderNo").val("");
+            }
+        }
+        function LFocus() 
+        {
+            var tt = $.trim($("#txtOrderNo").val());
+            if (tt == "请输入订单号或追踪号..." || tt == "") 
+            {
+                $("#txtOrderNo").val("请输入订单号或追踪号...");
+            }
+        }
+</script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".fblist a").live("click", function () {
+                var text = $(this).text();
+                var title = $(this).attr("title");
+                $(".showfb").val(text);
+$("#TargetCountry").val(text);
+                $("#HiValue").val(title);
+                $(".fb_1").fadeOut();
+            });
+            GetCountry();
+        });
+</script>
+    <script type ="text/javascript">
+        function GetCountry() {    
+        $.ajax({
+            type: "POST",
+            async: false,
+            url: "Manage/WebManage/Ashx/GetCountry.ashx",
+            data: { Flag: "GetCounrty", Condition: "" },
+            dataType: "json",
+            success: function(result) {
+                if (result.Error == false) {
+                    var con = result.Counrty.length;
+                    for (var i = 0; i < con; i++) {
+                        var CountryId = result.Counrty[i].CountryId;
+                        var CnName = result.Counrty[i].CnName;
+                        var EnName = result.Counrty[i].EnName;
+                        var ShortName = result.Counrty[i].ShortName;
+                        var Common = result.Counrty[i].Common
+                        var FirstLetter = EnName.substr(0, 1);
+                        if (Common == "1") {
+                            $("#CommonCountry").append("<li><a href=\"javascript:;\" title=\"" + CountryId + "\">" + CnName + "(" + EnName + ")</a></li>");
+                        }
+                        if ($("#" + FirstLetter).length > 0) {
+                            $("#" + FirstLetter).append("<li><a href=\"javascript:;\" title=\"" + CountryId + "\">" + CnName + "-" + EnName + "</a></li>");
+                        }
+                    }
+                }
+                else {
+                    alert("无国家信息!");
+                }
+            },
+  
+            error: function() {
+ document.getElementById("alink").click(); 
+//location.reload();
+               // alert("加载国家信息失败!");
+			
+            }
+        });
+    }
+</script>
+    <script type ="text/javascript">
+        function SearchCountry() {
+            //alert("aaa");
+        var txt = $.trim($("#Content").val());
+        if (txt != "") {
+            $.ajax({
+                type: "POST",
+                async: true,
+                url: "Manage/WebManage/Ashx/GetCountry.ashx",
+                data: { Flag: "SearchCountry", Condition: txt },
+                dataType: "json",
+                success: function(result) {
+                    $("#SearchRes").html("");
+                    if (result.Error == false) {
+                        var con = result.Counrty.length;
+
+                        for (var i = 0; i < con; i++) {
+                            var CountryId = result.Counrty[i].CountryId;
+                            var CnName = result.Counrty[i].CnName;
+                            var EnName = result.Counrty[i].EnName;
+                            //var ShortName = result.Counrty[i].ShortName;
+                            //var Common = result.Counrty[i].Common
+                            //var FirstLetter = EnName.substr(0, 1);
+                            $("#SearchRes").append("<li><a href=\"javascript:;\" title=\"" + CountryId + "\">" + CnName + "-" + EnName + "</a></li>");
+                        }
+                    }
+                    $("#Search").css("display", "block");
+                    $("#SearchRes").css("display", "block");
+                },
+                error: function() {
+                    alert("加载国家信息失败!");
+                }
+            });
+        } else {
+            $("#SearchRes").html("");
+        }
+        }
+        function Lreload(lang) {
+            //document.cookie = "language=" + lang;
+            $("#OrderHeader1_HiddenField1").val(lang);
+            document.getElementById("OrderHeader1_Button1").click();
+            window.location.href = "default.aspx";
+            //this.location.reload();
+            //var strlang = document.cookie;
+            // parent.MainFrame.location.reload();
+        }
+</script>
+</html>

@@ -1,0 +1,635 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="-1" />
+<meta http-equiv="cache-control" content="no-store" />
+<title>Tianzhong International</title>
+<link rel="shortcut icon" href="images/logo.ico" />
+<link type="text/css" rel="stylesheet" href="css/css/General.css">
+<!--jquery js插件-->
+<script src="js/js/jquery-1.8.2.min.js" type="text/javascript"></script>
+<script src="js/js/jquery.cookie.js" type="text/javascript"></script>
+
+<!--jquery 自定义弹出框样式与JS-->
+<link type="text/css" rel="stylesheet" href="css/css/jquery.jgrowl.css"/>
+<script src="js/js/jquery.jgrowl.min.js" type="text/javascript"></script>
+
+<!--ie下placeholder-->
+<script src="js/js/placeholder.min.js" type="text/javascript"></script>
+<link type="text/css" rel="stylesheet" href="css/css/gzhacwindow.css"/>
+
+<!--不支持js提示-->
+<noscript>
+<div class="nojs">Dear User: Your browser does not support javascript scripts or you force the support of javascript scripts to be turned off.</div>
+</noscript>
+
+
+<body>
+
+<!--user start-->
+<div class="background" onclick="layout_cancel()"></div>
+<div class="layout most_box fio">
+    <div class="title_box"></div><div class="clar"></div>
+    <div class="right_close float-right cancel"><a href="javascript:;" onclick="layout_cancel()"><img id="quxiao" src="/images/rigt_colse.png"></a></div>
+    <!--<div class="cancel"><a href="javascript:;" onclick="layout_cancel()">×</a></div>-->
+    <div class="layout_content">
+    </div>
+</div>
+<!--user end-->
+<link type="text/css" rel="stylesheet" href="css/css/Login.css"/>
+<script language="JavaScript" src="js/js/login.js" type="text/javascript"></script>
+<div class="header"> 
+  <span class="color" onclick="window.location='index.html'">Home</span><span class="color">0571-88890244 </span> 
+  <span onclick="window.location='login.html'">Login</span> 
+  <span onclick="window.location='register.html'">Registered</span> 
+</div>
+
+<div class="main_centent">
+    <div class="milosl">
+        <div class="login-title">
+            <ul>
+                <li class="action"><a href="login.html">LOGIN</a></li>
+                <li><a id="re" href="register.html">REGISTERED</a></li>
+                <li class="clar"></li>
+            </ul>
+            <ul class="clar"></ul>
+        </div>
+        <div class="main_text">
+            <div class="login_da cssflase">
+                <div class="coemter"></div>
+                <div class="text">
+                    <input class="" id="txtUserName" name="username" value="" placeholder="Please enter login name" onkeydown="keydown(event, true)"  type="text">
+                </div>
+                <div class="password mar-top-16 input input--minoru">
+                    <input class="" id="txtUserPass" name="password" value="" placeholder="Please enter your password" onkeydown="keydown(event, false)" type="password">
+                    <span class="elss" id="elassOne"></span>
+                </div>
+                <div class="verification vrs mar-top-16">
+                    <input class="" id="textCode" name="chkcode" value="" placeholder="Please enter verification code" onkeydown="keydown(event, false)" type="text">
+                    <span class="mlap">
+                        <img alt="Click to change map" title="Click to change map" width="160" height="46" style="cursor:pointer" id="imgCode" src="images/index.png" />                    </span>
+                    <span class="clar"></span>
+                </div>
+                <div class="verification mar-top-30">
+                    <label><input checked="checked" id="chkRememberPass" onkeydown="keydown(event, false)"  type="checkbox">Remember password</label>
+                </div>
+                <div class="button mar-top-30">
+                    <input class="" id="login_butten" onclick="logobuue()" value="LOGIN" type="button">
+                </div>
+                <div class="clear-pasrd mar-top-30">
+                    <a id="psw" href="javascript:void(0)">Forget password?</a>
+                </div>
+            </div>
+
+            <div class="login_reg cssmofalse">
+                <div class="coemter"></div>
+                <div class="regtitle">
+                    <ul class="ulabe">
+                        <li class="float-left actiber"><label><input type="radio" checked="checked" name="now" id="opa"/>Email registration</label></li>
+                        <li class="float-right"><label><input type="radio" name="now" id="kpa"/>Mobile registration</label></li>
+                        <div class="clar"></div>
+                    </ul>
+                    <div class="clar"></div>
+                </div>
+                <div class="box-faban mar-top-25">
+                    <div class="emalii-centent app" style="display: block">
+                        <div class="text">
+                            <input class="" id="email" name="email" value="" placeholder="Please enter your email address" type="text">
+                        </div>
+                        <div class="password mar-top-16 input input--minoru">
+                            <input class="" id="passwd" name="passwd" value="" placeholder="Please enter your password" type="password">
+                            <span class="elss" id="elassTwo"></span>
+                        </div>
+                        <div class="password lops mar-top-16 input input--minoru">
+                            <input class="" id="repasswd" name="repasswd" value="" placeholder="Please enter your password" type="password">
+                            <span class="elss" id="elassThe"></span>
+                        </div>
+                        <div class="verification mar-top-16">
+                            <input class="" id="chkcode1" name="chkcode1" value="" placeholder="Please enter verification code" type="text">
+                            <span class="mlap">
+                                <!--<img class="colosw logodfe wiods"  id="imgCode1" src="" width="81" height="46">-->
+                                <img class="colosw logodfe wiods" id="imgReflush1" src="images/shuaxin.png" width="19" height="20" style="height: 20px!important;">
+                            </span>
+                            <span class="clar"></span>
+                        </div>
+                        <div class="verification mar-top-30">
+                            <label><input checked="checked" id="tosCheckBox" value="y" type="checkbox" onclick="chobox('nextstep')">I have read and accept&lt;&lt;<a href="/index.php?r=member/register/service" target="_blank">Tianzhong International Platform User Terms of Service</a>&gt;&gt;</label>
+                        </div>
+                        <div class="button mar-top-30">
+                            <input class="" id="nextstep" value="Next Step" type="button">
+                        </div>
+                    </div>
+                    <div class="call-centent app">
+                        <div class="text">
+                            <input class="" id="mobile" name="mobile" value="" placeholder="Please enter the phone number" type="text">
+                        </div>
+                        <div class="verification mar-top-16 input input--minoru">
+                            <input class="" id="chkcode2" name="chkcode2" value="" placeholder="Verification code" type="text">
+                            <span class="mlap">
+                                <!--<img class="colosw logodfe wiods"  id="imgCode2" src="" width="81" height="46">-->
+                                <img class="colosw logodfe wiods" id="imgReflush2" src="images/shuaxin.png" width="19" height="20" style="height: 20px!important;">
+                            </span>
+                            <span class="clar"></span>
+                        </div>
+                        <div class="verification gzhome mar-top-16">
+                            <input class="" id="activeCode" name="activeCode" value="" placeholder="Please enter the verification code" type="text">
+                            <span class="mlap" style="margin-top: -46px;">
+                                <input class="colosw logodfe wiods uisdd" style="width: 162px;cursor: pointer" id="getValidate" type="button" value="Get SMS check code" onclick="return interval_sleep(60, this);"/>
+                            </span>
+                            <span class="clar"></span>
+                        </div>
+                        <div class="password gzhome mar-top-16">
+                            <input class="" id="passwd1" name="passwd1" value="" placeholder="Please enter your password" type="password">
+                            <span class="elss" id="elassfor"></span>
+                        </div>
+                        <div class="password lops mar-top-16">
+                            <input class="" id="repasswd1" name="repasswd1" value="" placeholder="Please confirm your password" type="password">
+                            <span class="elss" id="elassfrew"></span>
+                        </div>
+                        <div class="verification gzhome mar-top-30">
+                            <label><input checked="checked" id="chRememberPas1" onclick="chobox('nextstep1')" type="checkbox">I have read and accept&lt;&lt;<a href="/index.php?r=member/register/service" target="_blank">Tianzhong International Platform User Terms of Service</a>&gt;&gt;</label>
+                        </div>
+                        <div class="button mar-top-30">
+                            <input class="" id="nextstep1" value="Next Step" type="button">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/js/kookie_ligon.js"></script>
+<script type="text/javascript">
+
+    $(function () {
+        $("#chkRememberPass").click(function (even) {
+            even.stopPropagation();
+        });
+    });
+
+
+    function keydown(event, validate){
+        var e = event?event:window.event;
+
+        if (validate && $('#txtUserName').val() == '') return false;
+
+        if(e.keyCode == 13){
+            logobuue();
+        }
+    }
+
+    $(".logo_0 input").focus(function(){
+        $(this).css({
+            "background":"#f2f9ff",
+            "border-color":"#2d98dc"
+        });
+
+    });
+    $(".logo_0 input").blur(function(){
+        $(this).css({
+            "background":"#fff",
+            "border-color":"#E5E5E5"
+        });
+
+    });
+
+    $(function() {
+        $("#imgReflush").bind("click", function(even) {
+            var val = "/index.php?r=member/login/captcha&" + Math.random();
+            $("#imgCode").attr("src", val);
+            even.stopPropagation();
+        });
+    });
+    $(function() {
+        $("#imgReflush1").bind("click", function(even) {
+            var val = "/index.php?r=member/register/captcha&" + Math.random();
+            $("#imgCode1").attr("src", val);
+            even.stopPropagation();
+        });
+    });
+    $(function() {
+        $("#imgReflush2").bind("click", function(even) {
+            var val = "/index.php?r=member/register1/captcha&" + Math.random();
+            $("#imgCode2").attr("src", val);
+            even.stopPropagation();
+        });
+    });
+    //登录
+    function userLogin(){
+        var userName = usname.value;
+        var input_username='请输入登录名';
+        var input_password='请输入密码';
+        var input_chkcode='请输入验证码';
+
+        if(userName == '' ){
+            alert(input_username);
+            return;
+        }
+        var userPass = ispswtd.value;
+        if(userPass == '' ){
+            alert(input_password);
+            return;
+        }
+
+        var   code = document.getElementById("textCode").value;
+        if(code == '' ){
+            alert(input_chkcode);
+            return;
+        }
+        var wrong_chkcode='验证码错误';
+        var wrong_username_mima='用户名或密码错误';
+        var login_sucess='登录成功';
+        var username = $.trim($("input[name=username]").val());
+        var password = $.trim($("input[name=password]").val());
+        var chkcode  = $.trim($("input[name=chkcode]").val());
+        var req = {dataForm: {username: username, password: password, chkcode: chkcode}};
+        var redirecturl = '/index.php?r=member/login/index';
+
+        $.ajax({
+            url: "/index.php?r=member/login/do",
+            type: 'post',
+            data: req,
+            dataType: 'JSON',
+            //dataType: 'text',
+            timeOut: 3000,
+            complete: function() {
+                $("#login_butten").removeClass("disabled");
+            },
+            success: function(data) {
+                if (data.header.status == 301) {
+                    alert(wrong_chkcode);
+                    var val = "/index.php?r=member/login/captcha&" + Math.random();
+                    //$("#imgCode").attr("src", val);
+                    return false;
+                }
+                if (data.header.status == 300) {
+                    alert(wrong_username_mima);
+                    var val = "/index.php?r=member/login/captcha&" + Math.random();
+                    $("#imgCode").attr("src", val);
+                    return false;
+                }
+                if (data.header.status == 200) {
+                    var objChk = document.getElementById("chkRememberPass");
+                    if(objChk.checked){
+                        addCookie("userName",$.trim(userName),7,"/");
+                        addCookie("userPass",$.trim(userPass),7,"/");
+                    }else{
+                        deleteCookie("userName","/");
+                        deleteCookie("userPass","/");
+                    }
+                    alert(login_sucess);
+                    location.href = redirecturl;
+                }
+
+            }
+        });
+    }
+
+    //邮箱注册
+    $(function () {
+        $("#nextstep").bind("click", function () {
+            if ($(this).hasClass('disabled')) {
+                return false;
+            }
+            var input_email_addr="请输入邮箱地址";
+            var wrong_email_format="邮箱格式不正确，请重新输入!";
+            var email = $.trim($("#email").val());
+            if (email == "") {
+                alert(input_email_addr);
+                $(this).removeClass("disabled");
+                return false;
+            }
+            else {
+                var reg =/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+
+                var check_new_var = 'n';
+                var new_email = '';
+                var email_split = email.split("@");
+                if(email_split.length>1){
+                    var email_part_one = email_split[0];
+                    if(email_part_one.indexOf(".") > 0){
+                        var email_part_one_replace = email_part_one.replace(".","-");
+                        new_email = email_part_one_replace+"@"+email_split[1];
+                        check_new_var = 'y';
+                    }
+                }
+                if(check_new_var=='y'){
+                    isok = reg.test(new_email);
+                }else{
+                    isok = reg.test(email);
+                }
+                if (!isok) {
+                    alert(wrong_email_format);
+                    document.getElementById("email").focus();
+                    return false;
+                }
+            }
+
+            var passwd = $.trim($("input[name=passwd]").val());
+            var input_password="请输入密码";
+            var above_six="密码必须6位以上";
+            var input_ack_key="请输入确认密码";
+            var password_not_match="两次输入的密码不一致";
+            var input_chkcode="请输入验证码";
+            if (passwd == "") {
+                alert(input_password);
+
+                $(this).removeClass("disabled");
+                return false;
+            }
+            if (passwd.length < 6) {
+                alert(above_six);
+                return false;
+            }
+            var repasswd = $.trim($("input[name=repasswd]").val());
+            if (repasswd == "") {
+                alert(input_ack_key);
+                $(this).removeClass("disabled");
+                return false;
+            }
+            if (passwd != repasswd) {
+                alert(password_not_match);
+                $(this).removeClass("disabled");
+                var val = "/index.php?r=member/register/captcha&" + Math.random();
+                $("#imgCode1").attr("src", val);
+                return false;
+
+            }
+            var chkcode = $.trim($("input[name=chkcode1]").val());
+            if (chkcode == "") {
+                alert(input_chkcode);
+                $(this).removeClass("disabled");
+                return false;
+            }
+            var level = $.trim($("input[name=level]").val());
+            var username_exists="用户名已存在";
+            var agree_terms_of_service="您是否同意《格之云平台用户服务条款》";
+            var wrong_chkcode="验证码错误";
+            var register_fail="注册失败";
+            var register_success="注册成功";
+            if(document.getElementById("tosCheckBox").checked){
+                var  agree='y';
+            } else{
+                agree='n';
+            }
+            var req = {dataForm: {email: email, passwd: passwd, repasswd: repasswd, chkcode: chkcode,level:level,agree:agree}};
+            $.ajax({
+                url: "/index.php?r=member/register/regEmail",
+                type: 'post',
+                data: req,
+                dataType: 'JSON',
+                timeOut: 3000,
+                complete: function () {
+                    $("#nextstep").removeClass("disabled");
+                },
+                success: function (data) {
+                    if (data == 302) {
+                        alert(username_exists);
+                        var val = "/index.php?r=member/register/captcha&" + Math.random();
+                        $("#imgCode1").attr("src", val);
+                        return false;
+                    }
+                    if (data == 401) {
+                        alert(agree_terms_of_service);
+                        var val = "/index.php?r=member/register/captcha&" + Math.random();
+                        $("#imgCode1").attr("src", val);
+                        return false;
+                    }
+                    if (data.header.status == 301) {
+                        alert(wrong_chkcode);
+                        var val = "/index.php?r=member/register/captcha&" + Math.random();
+                        $("#imgCode1").attr("src", val);
+                        return false;
+                    }
+                    if (data.header.status == 300) {
+                        alert(register_fail);
+                        var val = "/index.php?r=member/login/captcha&" + Math.random();
+                        $("#imgCode1").attr("src", val);
+                        return false;
+                    }
+                    if (data.header.status == 200) {
+                        alert(register_success);
+                        location.href = data.body.returnurl;
+                    }
+                }
+            });
+        });
+    });
+    //获取校验码
+    function interval_sleep(time, obj) {
+        if ($(this).hasClass('disabled')) {
+            return false;
+        }
+        $(this).addClass("disabled");
+        var mobile = $.trim($("#mobile").val());
+        var input_mobile="请输入手机号码";
+        var input_chkcode="请输入验证码";
+        var mobile_invalid="请输入有效的手机号码";
+        var mobile_registered="手机号已被注册";
+        var frequent_operation="不许频繁操作";
+        var wrong_chkcode="验证码错误";
+        if (mobile == "") {
+            alert(input_mobile);
+            $(this).removeClass("disabled");
+            return false;
+        }
+
+        var chkcode = $.trim($("input[name=chkcode2]").val());
+        var check_code_sent_successfully="校验码发送成功";
+        var get_check_code_again="重新获取校验码";
+        var send_again="重新发送";
+        if (chkcode == "") {
+            alert(input_chkcode);
+            $(this).removeClass("disabled");
+            return false;
+        }
+        var req = {dataForm: {mobile: mobile, chkcode: chkcode}};
+        $.ajax({
+            url: "/index.php?r=member/register1/sendSms",
+            type: 'get',
+            data: req,
+            dataType: 'JSON',
+            timeOut: 3000,
+            complete: function() {
+                $("#getValidate").removeClass("disabled");
+            },
+            success: function(data) {
+                if (data == 100) {
+                    alert(mobile_invalid);
+                    var val = "/index.php?r=member/register1/captcha&" + Math.random();
+                    $("#imgCode2").attr("src", val);
+                    return false;
+                }
+                if (data == 301) {
+                    alert(mobile_registered);
+                    var val = "/index.php?r=member/register1/captcha&" + Math.random();
+                    $("#imgCode2").attr("src", val);
+                    return false;
+                }
+                if (data == 501) {
+                    alert(frequent_operation);
+                    var val = "/index.php?r=member/register1/captcha&" + Math.random();
+                    $("#imgCode2").attr("src", val);
+                    return false;
+                }
+                if (data.header.status == 401) {
+                    alert(wrong_chkcode);
+                    var val = "/index.php?r=member/register1/captcha&" + Math.random();
+                    $("#imgCode2").attr("src", val);
+                    return false;
+                }
+
+                if (data.header.status == 200) {
+                    alert(check_code_sent_successfully);
+                    //发送验证码
+                    var interval = null;
+                    obj.disabled = "disabled";
+                    obj.style.cursor = "wait";
+                    $("#getValidate").val(send_again+"(" + time-- + ")");
+
+                    interval = setInterval(function() {
+                            if (time == 0) {
+                                if (!!interval) {
+                                    clearInterval(interval);
+                                    interval = null;
+                                    time = 60;
+                                    obj.style.cursor = "pointer";
+                                    obj.removeAttribute('disabled');
+                                    $("#getValidate").val(get_check_code_again);
+                                    sms_invalid();
+                                }
+                                return false;
+                            }
+                            $("#getValidate").val(send_again+" (" + time-- + ")");
+
+                        }, 1000
+                    );
+                }
+            }
+        });
+    }
+    //手机注册
+    $("#nextstep1").bind("click", function() {
+        if ($(this).hasClass('disabled')) {
+            return false;
+        }
+        $(this).addClass("disabled");
+        var mobile = $.trim($("#mobile").val());
+        var input_mobile="请输入手机号码";
+        var input_activeCode="请输入校验码";
+        var input_password="请输入密码";
+        var above_six="密码必须6位以上";
+        var input_ack_key="请输入确认密码";
+        var password_not_match="两次输入的密码不一致";
+        var input_chkcode="请输入验证码";
+        if (mobile == "") {
+            alert(input_mobile);
+            $(this).removeClass("disabled");
+            return false;
+        }
+        var activeCode = $.trim($("input[name=activeCode]").val());
+        if (activeCode == "") {
+            alert(input_activeCode);
+            $(this).removeClass("disabled");
+            return false;
+        }
+        var passwd = $.trim($("input[name=passwd1]").val());
+        if (passwd == "") {
+            alert(input_password);
+            $(this).removeClass("disabled");
+            return false;
+        }else{
+            if(passwd.length<6){
+                alert(above_six);
+                $(this).removeClass("disabled");
+                return false;
+            }
+        }
+        var repasswd = $.trim($("input[name=repasswd1]").val());
+        if (repasswd == "") {
+            alert(input_ack_key);
+            $(this).removeClass("disabled");
+            return false;
+        }
+        if (passwd != repasswd) {
+            alert(password_not_match);
+            $(this).removeClass("disabled");
+            return false;
+        }
+        var chkcode = $.trim($("input[name=chkcode2]").val());
+        if (chkcode == "") {
+            alert(input_chkcode);
+            $(this).removeClass("disabled");
+            return false;
+        }
+        if(document.getElementById("tosCheckBox").checked){
+            var  agree='y';
+        } else{
+            agree='n';
+        }
+        var agree_terms_of_service="您是否同意《格之云平台用户服务条款》";
+        var check_code_failure="手机校验码失效";
+        var check_code_wrong="手机校验码错误";
+        var register_success="注册成功";
+        var check_code_no_send="手机校验码未发送";
+        var req = {dataForm: {mobile: mobile, activeCode: activeCode, passwd: passwd, repasswd: repasswd, chkcode: chkcode,agree:agree}};
+        $.ajax({
+            url: "/index.php?r=member/register1/regMobile",
+            type: 'post',
+            data: req,
+            dataType: 'JSON',
+            timeOut: 3000,
+            complete: function() {
+                $("#nextstep1").removeClass("disabled");
+            },
+            success: function(data) {
+                if (data == 301) {
+                    alert(check_code_failure);
+                    return false;
+                }
+                if (data == 302) {
+                    alert(check_code_wrong);
+                    return false;
+                }
+                if (data == 303) {
+                    alert(check_code_no_send);
+                    return false;
+                }
+                if (data == 401) {
+                    alert(agree_terms_of_service);
+                    return false;
+                }
+                if (data.header.status == 200) {
+                    alert(register_success);
+                    location.href = data.body.returnurl;
+                }
+            }
+        });
+    });
+    //验证码失效
+    function sms_invalid() {
+        var check_code_failure="手机校验码失效";
+        var req = $("#mobile").val();
+        var url = "/index.php?r=member/register1/ajaxinvalid";
+        $.ajax({
+            url: url,
+            type: 'post',
+            data: {id: req},
+            dataType: 'JSON',
+            error: function(e) {
+                alert('error');
+            },
+            success: function(data) {
+                if (data == '303') {
+                    alert(check_code_failure);
+                }
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

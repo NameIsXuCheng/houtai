@@ -1,0 +1,301 @@
+{include file="public/header"}
+<link href="__PUBLIC__/home/css/style.css" rel="stylesheet" type="text/css" />
+<title>天众国际-跨境出口</title>
+
+
+
+</head>
+<body>
+
+<div id="wrap" class="main">
+  <div id="dvContainer">
+
+      {include file="public/navbar"}<!--header结束-->
+
+      <!--banner-->
+      <div class="bann" id="exit_banner">
+          <div class="c-banner">
+              <div class="banner" id="exit_banner_img">
+                  <ul>
+                      <li><img src="__PUBLIC__/home/images/product/exit_banner.jpg" width="100%"></li>
+                      <li><img src="__PUBLIC__/home/images/product/exit_banner.jpg" width="100%"></li>
+                      <li><img src="__PUBLIC__/home/images/product/exit_banner.jpg" width="100%"></li>
+                  </ul>
+              </div>
+              <div class="nexImg">
+                  <img src="__PUBLIC__/home/images/product/nexImg.png" />
+              </div>
+              <div class="preImg">
+                  <img src="__PUBLIC__/home/images/product/preImg.png" />
+              </div>
+              <div class="jumpBtn">
+                  <ul>
+                      <li jumpImg="0"></li>
+                      <li jumpImg="1"></li>
+                      <li jumpImg="2"></li>
+                  </ul>
+              </div>
+          </div>
+      </div><!--banner结束-->
+
+
+      <div id="layerarea">
+
+
+          <!--渠道专线-->
+          <div class="wrap hzys">
+              <div class="w1190">
+                  <div class="base-info">
+                      <div class="title">
+                          <p class="sta_title"><span class="sta_tcolor">出口</span>服务</p>
+                          <p class="sta_title2">Export services</p>
+                      </div>
+                  </div>
+
+                  <div class="exit_fuwu">
+                      <a href="exit_one.html">
+                          <div class="exit_fuwu_item">
+                              <div class="exit_fuwu_item_icon"></div>
+                              <div class="exit_fuwu_item_main">
+                                  <span>欧美特快专线</span>
+                                  <p>欧洲4-7日&nbsp;&nbsp;美国10-12日</p>
+                              </div>
+                              <div class="exit_fuwu_item_main2">
+                                  {volist name="article[2]" id="vo"}
+                                  <a href="{{:url('exit_xq')}}?id={{$vo.id}}">{{$vo.country_name}}</a>
+                                  {/volist}
+                              </div>
+                          </div>
+                      </a>
+                      <a href="{{:url('exit_two')}}">
+                          <div class="exit_fuwu_item">
+                              <div class="exit_fuwu_item_icon"></div>
+                              <div class="exit_fuwu_item_main">
+                                  <span>欧美专线</span>
+                                  <p>欧洲5-9日&nbsp;&nbsp;美国12-15日</p>
+                              </div>
+                              <div class="exit_fuwu_item_main2">
+                                  {volist name="article[3]" id="vo"}
+                                  <a href="{{:url('exit_two_xq')}}?id={{$vo.id}}">{{$vo.country_name}}</a>
+                                  {/volist}
+                              </div>
+                          </div>
+                      </a>
+                      <div class="exit_fuwu_item">
+                          <div class="exit_fuwu_item_icon"></div>
+                          <div class="exit_fuwu_item_main">
+                              <span>欧洲铁路小包</span>
+                              <p>25-30日</p>
+                          </div>
+                          <div class="exit_fuwu_item_main2">
+                              {volist name="article[3]" id="vo"}
+                              <a href="#">{{$vo.country_name}}</a>
+                              {/volist}
+                          </div>
+                      </div>
+                      <div class="clear"></div>
+                  </div>
+
+              </div>
+          </div>
+
+
+          <!--服务优势-->
+          <div class="wrap hzlc">
+              <div class="w1190">
+                  <div class="base-info">
+                      <div class="title">
+                          <p class="sta_title">服务<span class="sta_tcolor">优势</span></p>
+                          <p class="sta_title2">Service advantages</p>
+                      </div>
+                  </div>
+                  <ul class="pre-intro clearfix">
+                      <li class="type1"> <i class="type-icon"></i>
+                          <h4><span>01</span>时效快</h4>
+                          <div class="des">
+                              <p>闪电清关，更快一步</p>
+                          </div>
+                      </li>
+                      <li class="type2"> <i class="type-icon"></i>
+                          <h4><span>02</span>服务全</h4>
+                          <div class="des">
+                              <p>接收——送达，全权安排</p>
+                          </div>
+                      </li>
+                      <li class="type3"> <i class="type-icon"></i>
+                          <h4><span>03</span>可追踪</h4>
+                          <div class="des">
+                              <p>全程可查询物流状态</p>
+                          </div>
+                      </li>
+                      <li class="type4"> <i class="type-icon"></i>
+                          <h4><span>04</span>价透明</h4>
+                          <div class="des">
+                              <p>先查询，后下单，无不明收费</p>
+                          </div>
+                      </li>
+                      <li class="line"></li>
+                  </ul>
+              </div>
+          </div>
+
+
+
+          <!--地图-->
+          <div class="wrap sjdt">
+              <div class="w1190">
+                  <div class="base-info">
+                      <div class="title">
+                          <p class="sta_title"><span class="sta_tcolor">专线</span>直飞目的国</p>
+                          <p class="sta_title2">Direct flights to destination countries</p>
+                          <p class="sta_title3">全程物流追踪 实时掌握踪迹</p>
+                      </div>
+                  </div>
+
+                  <div class="exit_map"><img src="__PUBLIC__/home/images/product/map.png" width="100%"></div>
+
+              </div>
+          </div><!--地图-->
+
+
+
+          <!--出口流程-->
+          <div class="wrap wklc">
+              <div class="w1190">
+                  <div class="base-info">
+                      <div class="title">
+                          <p class="sta_title"><span class="sta_tcolor">操作</span>流程</p>
+                          <p class="sta_title2">Operation process</p>
+                      </div>
+                  </div>
+
+                  <div class="exit_liuc"><img src="__PUBLIC__/home/images/exit_liuc.png" width="100%"></div>
+
+              </div>
+          </div>
+
+
+
+
+          {include file="public/footer"}
+          <!--banner切换-->
+          <script type="text/javascript">
+              $(document).ready(function(){
+                  $(window).load(function(){
+                      $("#exit_banner").css("height",$("#exit_banner_img ul li img").height());
+                      $(".c-banner").css("height",$("#exit_banner_img ul li img").height());
+                  })
+
+                  $(window).resize(function(){
+
+                      $("#exit_banner").css("height",$("#exit_banner_img ul li img").height());
+                      $(".c-banner").css("height",$("#exit_banner_img ul li img").height());
+
+                  })
+              })
+              //定时器返回值
+              var time=null;
+              //记录当前位子
+              var nexImg = 0;
+              //用于获取轮播图图片个数
+              var imgLength = $(".c-banner .banner ul li").length;
+              //当时动态数据的时候使用,上面那个删除
+              // var imgLength =0;
+              //设置底部第一个按钮样式
+              $(".c-banner .jumpBtn ul li[jumpImg="+nexImg+"]").css("background-color","#fd3c00");
+
+              //页面加载
+              $(document).ready(function(){
+                  // dynamicData();
+                  //启动定时器,设置时间为3秒一次
+                  time =setInterval(intervalImg,3000);
+              });
+
+              //点击上一张
+              $(".preImg").click(function(){
+                  //清楚定时器
+                  clearInterval(time);
+                  var nowImg = nexImg;
+                  nexImg = nexImg-1;
+                  console.log(nexImg);
+                  if(nexImg<0){
+                      nexImg=imgLength-1;
+                  }
+                  //底部按钮样式设置
+                  $(".c-banner .jumpBtn ul li").css("background-color","white");
+                  $(".c-banner .jumpBtn ul li[jumpImg="+nexImg+"]").css("background-color","#fd3c00");
+
+                  //将当前图片试用绝对定位,下一张图片试用相对定位
+                  $(".c-banner .banner ul img").eq(nowImg).css("position","absolute");
+                  $(".c-banner .banner ul img").eq(nexImg).css("position","relative");
+
+                  //轮播淡入淡出
+                  $(".c-banner .banner ul li").eq(nexImg).css("display","block");
+                  $(".c-banner .banner ul li").eq(nexImg).stop().animate({"opacity":1},1000);
+                  $(".c-banner .banner ul li").eq(nowImg).stop().animate({"opacity":0},1000,function(){
+                      $(".c-banner ul li").eq(nowImg).css("display","none");
+                  });
+
+                  //启动定时器,设置时间为3秒一次
+                  time =setInterval(intervalImg,3000);
+              })
+
+              //点击下一张
+              $(".nexImg").click(function(){
+                  clearInterval(time);
+                  intervalImg();
+                  time =setInterval(intervalImg,3000);
+              })
+
+              //轮播图
+              function intervalImg(){
+                  if(nexImg<imgLength-1){
+                      nexImg++;
+                  }else{
+                      nexImg=0;
+                  }
+
+                  //将当前图片试用绝对定位,下一张图片试用相对定位
+                  $(".c-banner .banner ul img").eq(nexImg-1).css("position","absolute");
+                  $(".c-banner .banner ul img").eq(nexImg).css("position","relative");
+
+                  $(".c-banner .banner ul li").eq(nexImg).css("display","block");
+                  $(".c-banner .banner ul li").eq(nexImg).stop().animate({"opacity":1},1000);
+                  $(".c-banner .banner ul li").eq(nexImg-1).stop().animate({"opacity":0},1000,function(){
+                      $(".c-banner .banner ul li").eq(nexImg-1).css("display","none");
+                  });
+                  $(".c-banner .jumpBtn ul li").css("background-color","white");
+                  $(".c-banner .jumpBtn ul li[jumpImg="+nexImg+"]").css("background-color","#fd3c00");
+              }
+
+              //轮播图底下按钮
+              //动态数据加载的试用应放在请求成功后执行该代码,否则按钮无法使用
+              $(".c-banner .jumpBtn ul li").each(function(){
+                  //为每个按钮定义点击事件
+                  $(this).click(function(){
+                      clearInterval(time);
+                      $(".c-banner .jumpBtn ul li").css("background-color","white");
+                      jumpImg = $(this).attr("jumpImg");
+                      if(jumpImg!=nexImg){
+                          var after =$(".c-banner .banner ul li").eq(jumpImg);
+                          var befor =$(".c-banner .banner ul li").eq(nexImg);
+
+                          //将当前图片试用绝对定位,下一张图片试用相对定位
+                          $(".c-banner .banner ul img").eq(nexImg).css("position","absolute");
+                          $(".c-banner .banner ul img").eq(jumpImg).css("position","relative");
+
+                          after.css("display","block");
+                          after.stop().animate({"opacity":1},1000);
+                          befor.stop().animate({"opacity":0},1000,function(){
+                              befor.css("display","none");
+                          });
+                          nexImg=jumpImg;
+                      }
+                      $(this).css("background-color","black");
+                      time =setInterval(intervalImg,3000);
+                  });
+              });
+          </script>
+	
+	
+</html>

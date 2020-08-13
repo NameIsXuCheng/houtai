@@ -1,0 +1,407 @@
+{include file="public/header"}
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/theme.css">
+<link href="__PUBLIC__/home/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__PUBLIC__/home/js/city.js"></script>
+<script type="text/javascript" src="__PUBLIC__/home/js/countryData_v2.js"></script>
+<script type="text/javascript" src="__PUBLIC__/home/js/layer/layer.js"></script>
+<title>天众国际-运费查询</title>
+
+
+</head>
+<body>
+
+<div id="wrap" class="main">
+  <div id="dvContainer">
+
+      {include file="public/navbar"}<!--header结束-->
+   
+   <div class="bann">
+     <img src="__PUBLIC__/home/images/ser_img.jpg" width="100%" />
+     
+   </div>
+   
+    <div id="layerarea">
+     <div class="cloud_warp">
+     
+      <div class="network_twarp">
+         <h3>运费<span>查询</span></h3>
+         <p>Freight inquiries</p>
+       </div>
+       
+       <div class="listbd">
+
+
+    <div class="listcontent price_warp">
+	  <div class="pricequer_search">
+        <ul>
+           <li>
+             <span class="price">始发地：</span>
+           <select class="input1 w200 price_sel" id="StartProvince" name="StartProvince" ></select>
+           <select class="input1 w200 ml10 price_sel" id="StartCity" name="StartCity"> </select>
+		   <select class="input1 w200 ml10 price_sel" id="StartDistrict" name="StartDistrict"> </select>
+               <div id="show"></div>
+
+           </li>
+            <li>
+              <span class="price">目的地：</span>
+                <select class="input1 w200 price_sel" id="TargetCountry" name="TargetCountry">
+                 </select>
+
+                <input class="input1 w200 ml10 price_sel" id="TargetAddress"  name="TargetAddress"  placeholder="详细地址">
+
+            </li>
+			
+			<li><span class="price">邮政编码：</span>
+                <input type="text"  autocomplete="off" id="PostCode" class="input2 w200 price_inp"></li>
+			
+            <li><span class="price">物品重量：</span><input id="weight" type="text" maxlength="3" autocomplete="off" class="input2 w200 price_inp">
+                公斤</li>
+            <li><span class="price">物品体积：</span><input id="length" type="text" maxlength="3" autocomplete="off" class="input2 w100 price_inp">
+                长（CM）<input id="width" type="text" maxlength="3" autocomplete="off" class="input2 w100 ml10 price_inp">
+                宽（CM）<input id="height" type="text" maxlength="3" autocomplete="off" class="input2 w100 ml10 price_inp">
+                高（CM）
+            </li>
+            <li> <input id="priceSearch" type="button" class="orangebutton ml80 price_but" value="开始查询"/></li>
+        </ul>
+		</div>
+		
+		<div class="pricequer_result">
+			<div class="content-has-result"> 已为您查询到以下快递产品： </div>
+			  <div class="e-content">
+				<div class="result-title">
+				  <div style="width:20%;">产品名称</div>
+				  <div style="width:20%;">出发地</div>
+				  <div style="width:20%;">目的地</div>
+				  <div style="width:20%;">预计时效(工作日)</div>
+				  <div style="width:20%;">预估运费(人民币)</div>
+				</div>
+				<div class="result-table-box">
+				 <ul id="result">
+					<li>
+					  <div lass="result-table table-active">
+						<a href="javascript:setResultLi(0)"><div class="e-i-head">
+						  <div style="width:20%;">DHL-Worldwide</div>
+						  <div style="width:20%;">上海</div>
+						  <div style="width:20%;">委内瑞拉</div>
+						  <div style="width:20%;">6-8</div>
+						  <div style="width:20%;">550.82 元</div>
+						</div></a>
+
+						<div class="result-expand">
+						  <h3>计费明细</h3>
+						  <table class="e-payinfo">
+							<thead>
+							  <tr>
+								<th width="20%">重量区间(kg)</th>
+								<th width="15%">首重(kg)</th>
+								<th width="20%">首重费</th>
+								<th width="15%">续重(kg)</th>
+								<th width="15%">续重费(¥)</th>
+								<th width="15%">体积系数</th>
+							  </tr>
+							</thead>
+							<tbody>
+							  <tr>
+								<td>4.5 - 5</td>
+								<td>5</td>
+								<td>550.82</td>
+								<td>0</td>
+								<td>-</td>
+								<td>5000</td>
+							  </tr>
+							  <tr>
+								<td>5 - 5.5</td>
+								<td>5.5</td>
+								<td>590.95</td>
+								<td>0</td>
+								<td>-</td>
+								<td>5000</td>
+							  </tr> 
+							</tbody>
+						  </table>
+						  <table class="e-paynormal">
+							<thead>
+							  <tr>
+								<th width="20%">体积重量(kg)</th>
+								<th width="15%">计费重量(kg)</th>
+								<th><b>基础运费预估</b></th>
+							  </tr>
+							</thead>
+							<tbody>
+							  <tr>
+								<td>(长*宽*高)/6000= <span>0.20</span></td>
+								<td>5</td>
+								<td><b>550.82+0/0*0.00=550.82</b></td>
+							  </tr>
+							</tbody>
+						  </table>
+						  <!---->
+						  <div class="table-inner-tip">注意：实际运费受客户出货量、品类、附加费等相关因素影响，详情欢迎拨打我们的热线电话<span class="red">400 8809976</span>或咨询您当地的销售代表！</div>
+						</div>
+					   </div>
+					</li>
+					<li>
+					  <div class="result-table">
+						<a href="javascript:setResultLi(1)"><div class="e-i-head">
+						  <div style="width:20%;">DHL-Worldwide-重货</div>
+						  <div style="width:20%;">上海</div>
+						  <div style="width:20%;">委内瑞拉</div>
+						  <div style="width:20%;">4-6</div>
+						  <div style="width:20%;">- 元</div>
+						</div></a>
+						<div class="result-expand">
+						  <h3>计费明细</h3>
+						  <table class="e-payinfo">
+							<thead>
+							  <tr>
+								<th width="20%;">重量区间(kg)</th>
+								<th width="15%;">首重(kg)</th>
+								<th width="20%;">首重费</th>
+								<th width="15%;">续重(kg)</th>
+								<th width="15%;">续重费(¥)</th>
+								<th width="15%;">体积系数</th>
+							  </tr>
+							</thead>
+							<tbody>
+							</tbody>
+						  </table>
+						  <table class="e-paynormal">
+							<thead>
+							  <tr>
+								<th width="20%">体积重量(kg)</th>
+								<th width="15%">计费重量(kg)</th>
+								<th><b>基础运费预估</b></th>
+							  </tr>
+							</thead>
+							<tbody>
+							  <tr>
+								<td>(长*宽*高)/6000= <span>0.20</span></td>
+								<td>5</td>
+								<td><b></b></td>
+							  </tr>
+							</tbody>
+						  </table>
+						  <div class="table-inner-tip">注意：实际运费受客户出货量、品类、附加费等相关因素影响，详情欢迎拨打我们的热线电话<span class="red">0571 88890244</span>或咨询您当地的销售代表！</div>
+						</div>
+
+					  </div>
+				    </li>
+					 
+			     </ul>		 
+				</div>
+			  </div>
+
+		</div>
+		
+		<div class="pricequer_tip">
+		 *寄送<span class="blue">大宗货物</span>或<span class="blue">特别要求的货物</span>，请联系客服<span class="red">0571 88890244</span>咨询定制寄送服务。
+		</div>
+		
+    </div>
+
+           <script type="text/javascript">_init_area();</script>
+
+
+
+    <div class="ps textareas">
+        <h3>常见问题</h3>
+        <ul>
+            <li>1.此报价重量是按1进位处理。</li>
+            <li>2.此报价为指导价仅供参考，详细咨询您可登录我司后台网站查询到具体信息，如有疑问也可致电我司热线0571 88890244查询。</li>
+            <li>3.体积重量：如果您不清楚重量，请输入长宽高计算。 
+                ( 注：根据国际航空运输协会（IATA）规定，轻抛货的计费重量按货物长×高×宽（CM）÷6000计算（不规则
+                货物，包括圆锥、圆柱状物体按长方体计算，为长、宽、高三个方向的最大尺寸相乘）。非航空件轻抛货计费
+                重量按同等体积的航空件轻抛重量减半计算。计算结果仅供参考！ )</li>
+        </ul>
+    </div>
+</div>
+
+
+       
+</div>
+
+
+      
+     </div><!--layerarea结束-->
+  </div><!--dvContainer结束-->
+	
+
+	 
+ </div>
+	
+</body>
+
+
+<!--出现查询结果js-->
+<script  type="text/javascript">
+    let TargetCountry = $("#TargetCountry");
+    for(var i=0;i < country_data.length;i++){
+        let str = '<option value="'+country_data[i].code+'">'+country_data[i].name+'</option>';
+        TargetCountry.append(str);
+    }
+
+
+
+	$(document).ready(function(){
+
+	  $(".orangebutton").click(function(){
+	      //获取参数
+
+          var data = {
+              c_country : "CN",
+              c_state :$("#StartProvince").val(),
+              c_city :$("#StartCity").val(),
+              c_area:$("#StartDistrict").val(),
+              m_country:$("#TargetCountry").val(),
+              // m_state:m_state,
+              // m_city:m_city,
+              // m_area:m_area,
+              // amount:amount,
+              // sku:sku,
+              m_address:$("#TargetAddress").val(),
+              post_code:$("#PostCode").val(),
+              length:$("#length").val(),
+              width:$("#width").val(),
+              height:$("#height").val(),
+              weight:$("#weight").val(),
+          };
+
+          for (let i in data) {
+              if(!data[i]) {alert('请填写完整参数后，再进行查询！'); return false;}
+          }
+          // console.log(data);
+
+
+          $("#result").empty();
+
+	      //调用接口
+          $.post('/GetPrice.php', data, function (res) {
+              res = eval('(' + res + ')');
+              console.log(res);
+
+              if(res.data && res.data.length === 0){
+                    alert('未查询到结果');
+                    return false;
+              }
+              str = '';
+
+              for(var i in res.data) {
+                  let list = res.data[i];
+
+                  let type = list.fee_type;
+
+                  if(!list.arrived_time){
+                      list.arrived_time = '-';
+                  }
+                  if(!list.vol_coe){
+                      list.vol_coe = '-';
+                  }
+                  if(type === 1 || type === 3) {
+                      str += '<li>\n' +
+                          '\t\t\t\t\t  <div lass="result-table table-active">\n' +
+                          '\t\t\t\t\t\t<a href="javascript:setResultLi(' + i + ')"><div class="e-i-head">\n' +
+                          '\t\t\t\t\t\t  <div style="width:20%;">' + list.dline_nick_name + '</div>\n' +
+                          '\t\t\t\t\t\t  <div style="width:20%;">' + data.c_state + '</div>\n' +
+                          '\t\t\t\t\t\t  <div style="width:20%;">' + $("#TargetCountry").find('option:selected').text() + '</div>\n' +
+                          '\t\t\t\t\t\t  <div style="width:20%;">'+list.arrived_time+'</div>\n' +
+                          '\t\t\t\t\t\t  <div style="width:20%;">￥' + list.delivery_fee + '</div>\n' +
+                          '\t\t\t\t\t\t</div></a>\n' +
+                          '\n' +
+                          '\t\t\t\t\t\t<div class="result-expand">\n' +
+                          '\t\t\t\t\t\t  <h3>计费明细</h3>\n' +
+                          '\t\t\t\t\t\t  <table class="e-payinfo">\n' +
+                          '\t\t\t\t\t\t\t<thead>\n' +
+                          '\t\t\t\t\t\t\t  <tr>\n' +
+                          '\t\t\t\t\t\t\t\t<th width="15%">首重(kg)</th>\n' +
+                          '\t\t\t\t\t\t\t\t<th width="20%">首重费</th>\n' +
+                          '\t\t\t\t\t\t\t\t<th width="15%">续重(kg)</th>\n' +
+                          '\t\t\t\t\t\t\t\t<th width="15%">续重费(¥)</th>\n' +
+                          '\t\t\t\t\t\t\t\t<th width="15%">体积系数</th>\n' +
+                          '\t\t\t\t\t\t\t  </tr>\n' +
+                          '\t\t\t\t\t\t\t</thead>\n' +
+                          '\t\t\t\t\t\t\t<tbody>\n' +
+                          '\t\t\t\t\t\t\t  <tr>\n' +
+                          '\t\t\t\t\t\t\t\t<td>'+list.first_weight+'</td>\n' +
+                          '\t\t\t\t\t\t\t\t<td>'+list.first_price+'</td>\n' +
+                          '\t\t\t\t\t\t\t\t<td>'+list.step_weight+'</td>\n' +
+                          '\t\t\t\t\t\t\t\t<td>'+list.step_price+'</td>\n' +
+                          '\t\t\t\t\t\t\t\t<td>'+list.vol_coe+'</td>\n' +
+                          '\t\t\t\t\t\t\t  </tr>\n' +
+
+                          '\t\t\t\t\t\t\t</tbody>\n' +
+                          '\t\t\t\t\t\t  </table>\n' +
+
+                          '\t\t\t\t\t\t  <!---->\n' +
+                          '\t\t\t\t\t\t  <div class="table-inner-tip">注意：实际运费受客户出货量、品类、附加费等相关因素影响，详情欢迎拨打我们的热线电话<span class="red">400 8809976</span>或咨询您当地的销售代表！</div>\n' +
+                          '\t\t\t\t\t\t</div>\n' +
+                          '\t\t\t\t\t   </div>\n' +
+                          '\t\t\t\t\t</li>';
+                  }else if(type === 2 || type === 4){
+                      str += '<li>\n' +
+                          '\t\t\t\t\t  <div lass="result-table table-active">\n' +
+                          '\t\t\t\t\t\t<a href="javascript:setResultLi(' + i + ')"><div class="e-i-head">\n' +
+                          '\t\t\t\t\t\t  <div style="width:20%;">' + list.dline_nick_name + '</div>\n' +
+                          '\t\t\t\t\t\t  <div style="width:20%;">' + data.c_state + '</div>\n' +
+                          '\t\t\t\t\t\t  <div style="width:20%;">' + $("#TargetCountry").find('option:selected').text() + '</div>\n' +
+                          '\t\t\t\t\t\t  <div style="width:20%;">'+list.arrived_time+'</div>\n' +
+                          '\t\t\t\t\t\t  <div style="width:20%;">￥' + list.delivery_fee + '</div>\n' +
+                          '\t\t\t\t\t\t</div></a>\n' +
+                          '\n' +
+                          '\t\t\t\t\t\t<div class="result-expand">\n' +
+                          '\t\t\t\t\t\t  <h3>计费明细</h3>\n' +
+                          '\t\t\t\t\t\t  <table class="e-payinfo">\n' +
+                          '\t\t\t\t\t\t\t<thead>\n' +
+                          '\t\t\t\t\t\t\t  <tr>\n' +
+                          '\t\t\t\t\t\t\t\t<th width="15%">重量段(kg)</th>\n' +
+                          '\t\t\t\t\t\t\t\t<th width="20%">重量系数</th>\n' +
+                          '\t\t\t\t\t\t\t\t<th width="15%">处理费</th>\n' +
+                          '\t\t\t\t\t\t\t\t<th width="15%">体积系数</th>\n' +
+                          '\t\t\t\t\t\t\t  </tr>\n' +
+                          '\t\t\t\t\t\t\t</thead>\n' +
+                          '\t\t\t\t\t\t\t<tbody>\n' +
+                          '\t\t\t\t\t\t\t  <tr>\n' +
+                          '\t\t\t\t\t\t\t\t<td>'+list.cost_weight+'</td>\n' +
+                          '\t\t\t\t\t\t\t\t<td>'+list.cost_coe+'</td>\n' +
+                          '\t\t\t\t\t\t\t\t<td>'+list.option_fee+'</td>\n' +
+                          '\t\t\t\t\t\t\t\t<td>'+list.vol_coe+'</td>\n' +
+                          '\t\t\t\t\t\t\t  </tr>\n' +
+                          '\t\t\t\t\t\t\t</tbody>\n' +
+                          '\t\t\t\t\t\t  </table>\n' +
+                          '\t\t\t\t\t\t  <!---->\n' +
+                          '\t\t\t\t\t\t  <div class="table-inner-tip">注意：实际运费受客户出货量、品类、附加费等相关因素影响，详情欢迎拨打我们的热线电话<span class="red">400 8809976</span>或咨询您当地的销售代表！</div>\n' +
+                          '\t\t\t\t\t\t</div>\n' +
+                          '\t\t\t\t\t   </div>\n' +
+                          '\t\t\t\t\t</li>';
+                  }
+
+              }
+              $("#result").append(str);
+              $(".pricequer_result").show(500);
+          });
+          // return false;
+
+
+
+	  });
+	});
+	
+	
+	function setResultLi(n)
+		{
+			$(".result-table-box ul li").find(".result-expand").stop().slideUp()
+			if($(".result-table-box ul li").eq(n).find(".result-expand").css("display") == "none")
+			{
+				$(".result-table-box ul li").eq(n).find(".result-expand").slideDown();
+				$(".result-table-box ul li").eq(n).find(".result-expand").addClass("table-active");
+			}
+			else
+			{
+				$(".result-table-box ul li").eq(n).find(".result-expand").slideUp();
+				$(".result-table-box ul li").eq(n).find(".result-expand").removeClass("table-active");
+			}
+		}
+</script>
+<!--出现查询结果js-->
+{include file="public/footer"}
+</html>

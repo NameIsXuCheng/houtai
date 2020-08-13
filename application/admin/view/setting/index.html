@@ -1,0 +1,112 @@
+{include file="public/header"}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel">
+            <div class="panel-body">
+                <form class="form-horizontal form-variance" id="change_message" method="get">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">控制器</label>
+                        <div class="col-sm-6">
+                            <select name="model" lay-filter="model" class="form-control mb-10">
+                                {volist name="model" id="item"}
+                                <optgroup label="{{$item.model}}">
+                                    <option value="{{$item.model}}-0">新增控制器</option>
+                                    {volist name="item.controller" id="vo"}
+                                    <option value="{{$item.model}}-{{$vo.controller}}">{{$vo.name}}</option>
+                                    {/volist}
+                                </optgroup>
+                                {/volist}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group controller">
+                        <label class="col-sm-3 control-label">控制器名称</label>
+                        <div class="col-sm-6">
+                            <input class="form-control mb-10" name="controller" value="" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">方法名</label>
+                        <div class="col-sm-6">
+                            <input class="form-control mb-10" name="action" value="" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">菜单名称</label>
+                        <div class="col-sm-6">
+                            <input class="form-control mb-10" name="name" value="" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">排序</label>
+                        <div class="col-sm-6">
+                            <input class="form-control mb-10" name="sort" value="0" type="text">
+                            <span>数值越小越排前</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label col-lg-3">是否显示</label>
+                        <div class="col-lg-6">
+                            <div class="radio">
+                                <label>
+                                    <input name="is_show" value="1" type="radio" checked>显示
+                                </label>
+                                <label>
+                                    <input name="is_show" value="0" type="radio">隐藏
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">图标</label>
+                        <div class="col-sm-6">
+                            <input class="form-control mb-10" name="icon" value="" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label"></label>
+                        <div class="col-sm-6">
+                            <button class="btn btn-info btn-capsul" name="form_do" type="button">保存</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<script type="text/javascript">
+    layui.use(['layer', 'jquery', 'form'], function() {
+        var layer = layui.layer, //弹层
+            form = layui.form,
+            $ = layui.jquery;
+
+        $("select[name=model]").change(function () {
+            var info = $(this).val();
+            var arr = info.split("-");
+            if(arr[1] == 0){
+                $(".controller").show();
+            }else{
+                $(".controller").hide();
+            }
+        });
+
+        $('button[name=form_do]').click(function () {
+            var post_data = $("#change_message").serializeArray();
+            $.post("{{:url('add/menu_do')}}",post_data,function (msg) {
+                if(msg.code == 1){
+                    layer.msg(msg.data,{icon:1});
+                    setTimeout(function (){
+                        parent.location.reload();
+                    },800);
+                }else{
+                    layer.msg(msg.data,{icon:2});
+                }
+            },'json');
+        });
+    });
+</script>
+
+</html>

@@ -1,0 +1,318 @@
+body {
+    background: #4987c2;
+}
+
+.header {
+    margin-top: 30px;
+    text-align: right;
+}
+
+.header span {
+    margin: 0 10px;
+    color: #4D7DB9;
+    cursor: pointer;
+}
+
+.header span:last-child {
+    margin-right: 20px
+}
+
+span.color {
+    color: #fff
+}
+
+.milosl {
+    width: 559px;
+    margin: 4% auto 0 auto
+}
+
+.login-title ul {
+    margin-left: 145px
+}
+
+.login-title ul li {
+    float: left;
+    text-align: center;
+    font-weight: bold;
+
+}
+
+.login-title ul li a {
+    color: #6382a9;
+    display: block;
+    padding: 15px 27px;
+    font-size: 16px;
+}
+
+.login-title ul li:not(:first-child) {
+    margin-left: 150px;
+}
+
+.action a {
+    color: #fff !important;
+    border-bottom: 3px solid #6382a9;
+}
+
+.main_centent {
+    min-width: 1100px
+}
+
+.main_text {
+    /*background: red;*/
+    margin-top: 35px;
+    position: relative;
+}
+
+.login_da {
+    margin-left: 0;
+    width: 342px;
+    background: #fff;
+    padding: 40px 30px;
+    position: relative;
+    border-radius: 5px;
+    box-shadow: 7px 9px 32px rgba(0,0,0,0.3);
+    -webkit-transition: all .9s ease 0s;
+    -moz-transition: all .9s ease 0s;
+    -ms-transition: all .9s ease 0s;
+    -o-transition: all .9s ease 0s;
+    transition: all .9s ease 0s;
+}
+
+.login_reg {
+    margin-right: 0;
+    width: 342px;
+    border-radius: 5px;
+    background: #fff;
+    padding: 40px 30px;
+    position: absolute;
+    right: 0;
+    margin-top: -403px;
+    -webkit-transition: all .9s ease 0s;
+    -moz-transition: all .9s ease 0s;
+    -ms-transition: all .9s ease 0s;
+    -o-transition: all .9s ease 0s;
+    transition: all .9s ease 0s;
+}
+
+.coemter {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #dfecf5;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    z-index: 10;
+}
+
+.main_text input {
+    border: solid 1px #e5e5e5;
+    height: 45px;
+    line-height: 45px;
+    width: 97%
+}
+
+.verification input {
+    width: 48%
+}
+
+.mlap {
+    width: 48%;
+    display: block;
+    float: right;
+    line-height: 45px;
+}
+
+.verification input {
+    vertical-align: top;
+}
+
+.verification label {
+    color: #999
+}
+
+.button input {
+    width: 100%;
+    background: #fd3c00;
+    border-radius: 5px !important;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer
+}
+
+.clear-pasrd a {
+    color: #f00
+}
+
+.password {
+    position: relative;
+}
+
+.elss {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    background: url("../../images/icon_eye.png") 0 0;
+    top: 8px;
+    right: 7px;
+    display: none;
+}
+
+.login_reg .mlap {
+    width: 48%;
+    display: block;
+    float: right;
+    margin-top: 1px;
+    line-height: 45px;
+}
+
+/*@-moz-document url-prefix() {*/
+    /*ul.ulabe li {*/
+        /*margin-top: -50%;*/
+    /*}*/
+/*}*/
+/*@media screen and (-webkit-min-device-pixel-ratio:0){*/
+
+    /*ul.ulabe li {*/
+        /*margin-top: -50%;*/
+    /*}*/
+/*}*/
+
+ul.ulabe li {
+    line-height: 45px;
+}
+
+.ulabe label {
+    padding: 12px 8px;
+    cursor: pointer;
+    color: #ccc;
+}
+
+.ulabe input {
+    margin-top: -3px
+}
+/*@-moz-document url-prefix() {*/
+    /*.login_reg .password input {*/
+        /*margin-top: -58px;*/
+    /*}*/
+/*}*/
+
+
+    .login_reg .password input {
+        margin-top:0
+    }
+
+
+
+.login_reg .password {
+    height: 45px
+}
+
+.regtitle {
+    height: 45px
+}
+
+.login_reg .lops input {
+    margin-top: 0
+}
+
+.call-centent .verification {
+    height: 45px
+}
+
+/*@-moz-document url-prefix() {*/
+    /*.call-centent .verification input {*/
+        /*margin-top: -40px*/
+    /*}*/
+
+/*}*/
+/*@media screen and (-webkit-min-device-pixel-ratio:0){*/
+
+    /*.call-centent .verification input {*/
+        /*margin-top: -40px*/
+    /*}*/
+/*}*/
+
+/*.call-centent .verification span {*/
+    /*margin-top: -40px*/
+/*}*/
+
+.call-centent .gzhome input, .call-centent .gzhome span {
+    margin-top: auto
+}
+
+#chRememberPas {
+    margin-top: 4px
+}
+
+.actiber label {
+    color: #666
+}
+
+.app {
+    display: none
+}
+
+.cssflase {
+    z-index: 20;
+}
+
+.coemter {
+    display: none
+}
+
+/*.cssmofalse {*/
+    /*margin-top: -411px*/
+/*}*/
+
+.cssmofalse .coemter {
+    display: block;
+}
+
+.xsdloa {
+    -webkit-transform: perspective(600px) rotateY(110deg) translate3d(343%, 0, 572px);
+    -moz-transform: perspective(600px) rotateY(110deg) translate3d(343%, 0, 572px);
+    -ms-transform: perspective(600px) rotateY(110deg) translate3d(343%, 0, 572px);
+    -o-transform: perspective(600px) rotateY(110deg) translate3d(343%, 0, 572px);
+    transform: perspective(600px) rotateY(110deg) translate3d(343%, 0, 572px);
+
+}
+.kosda {
+    -webkit-transform: perspective(1200px) rotateY(-110deg) translate3d(-343%, 0, 0);
+    -moz-transform: perspective(1200px) rotateY(-110deg) translate3d(-343%, 0, 0);
+    -ms-transform: perspective(1200px) rotateY(-110deg) translate3d(-343%, 0, 0);
+    -o-transform: perspective(1200px) rotateY(-110deg) translate3d(-343%, 0, 0);
+    transform: perspective(1200px) rotateY(-110deg) translate3d(-343%, 0, 0);
+
+}
+.magriwebit{margin-top: -403px}
+@media screen and (-webkit-min-device-pixel-ratio:0){
+
+    .xsdloas {
+        -webkit-transform: perspective(600px) rotateY(110deg) translate3d(343%, 0, 100px);
+        -moz-transform: perspective(600px) rotateY(110deg) translate3d(343%, 0, 100px);
+        -ms-transform: perspective(600px) rotateY(110deg) translate3d(343%, 0, 100px);
+        -o-transform: perspective(600px) rotateY(110deg) translate3d(343%, 0, 100px);
+        transform: perspective(600px) rotateY(110deg) translate3d(343%, 0, 100px);
+
+    }
+    .kosdas {
+        -webkit-transform: perspective(1200px) rotateY(-110deg) translate3d(-343%, 0, 0);
+        -moz-transform: perspective(1200px) rotateY(-110deg) translate3d(-343%, 0, 0);
+        -ms-transform: perspective(1200px) rotateY(-110deg) translate3d(-343%, 0, 0);
+        -o-transform: perspective(1200px) rotateY(-110deg) translate3d(-343%, 0, 0);
+        transform: perspective(1200px) rotateY(-110deg) translate3d(-343%, 0, 0);
+
+    }
+    .claer{
+        transform: perspective(0) rotateY(0deg) translate3d(0, 0px, 0);
+    }
+    /*.magriwebit,.login_reg {*/
+        /*margin-top: -431px;*/
+    /*}*/
+}
+
+/*.xsdloaClear{*/
+    /*transform: no;*/
+    /*transition: transform .9s ease 0s;*/
+/*}*/

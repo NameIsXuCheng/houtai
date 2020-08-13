@@ -1,0 +1,69 @@
+{include file="public/header"}
+<link href="__PUBLIC__/home/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__PUBLIC__/home/js/jquery.fn.TabBox.js"></script>
+<title>天众国际-物流查询</title>
+
+
+
+
+</head>
+<body>
+
+<div id="wrap" class="main">
+  <div id="dvContainer">
+
+      {include file="public/navbar"}<!--header结束-->
+   
+    <div id="layerarea">
+     <div class="query_warp">
+     
+      <div class="network_twarp">
+         <h3>快递<span>查询</span></h3>
+         <p>Express inquiry</p>
+       </div>
+       
+       <div class="query_main">
+		   <div class="query_main_search">
+			 <form>
+               <input type="text" placeholder="输入运单号进行查询，单次最多查询20条。请以逗号、空格或回车键隔开" name="cname">
+               <button type="submit"></button>
+             </form>
+		   </div>
+		   <div class="query_main_content">
+			   <h4>我的包裹</h4>
+			    <div class="query_bt">
+				  <ul>
+					<li class="focus" onClick="fnTabBoxSlide(this,4,1);">我寄的</li>
+					<li onClick="fnTabBoxSlide(this,4,2);">我收的</li>
+					<li onClick="fnTabBoxSlide(this,4,3);">批量订单</li>
+					<div class="clear"></div>
+				  </ul>
+				  
+				</div>
+
+			<div id="TabShow1" class="TabHide4">
+			   <div class="query_btmain">
+				   <img src="__PUBLIC__/home/images/query_img.png">
+				   <p>暂无运单，登录/注册会员可查询更多运单</p>
+				   <button type="button" data-md-name="点击登录/注册">登录/注册</button>
+			   </div>
+			</div>
+
+			<div id="TabShow2" class="TabHide4"  style=" display:none" >
+			   <div class="query_btmain">
+				   <img src="__PUBLIC__/home/images/query_img.png">
+				   <p>暂无运单，登录/注册会员可查询更多运单</p>
+				   <button type="button" data-md-name="点击登录/注册">登录/注册</button>
+			   </div>
+		    </div>
+			    
+		   </div>
+	   </div>
+       
+      </div>
+
+
+        {include file="public/footer"}
+
+
+</html>

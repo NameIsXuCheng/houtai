@@ -1,0 +1,238 @@
+<script type="text/javascript">
+    $(function(){
+        // Focus
+        $(this).on('keydown', '.family_site a:last', function(event){
+            var isShift = window.event.shiftKey ? true : false;
+
+            if( !isShift && event.keyCode == 9){
+                $('.family_site a:first').focus();
+                return false;
+            }
+        });
+
+        $(this).on('keydown', '.family_site a:first', function(event){
+            var isShift = window.event.shiftKey ? true : false;
+            if( isShift && event.keyCode == 9){
+                setTimeout(function(){
+                    $('.family_site a:last').focus();
+                },15);
+                return false;
+            }
+        });
+
+        //
+        $('.footer_info_wrap .btn_layer').on('click', function(e){
+            e.preventDefault();
+            var status = $(this).hasClass('on');
+            if ( !status ){
+                $(this).addClass('on');
+                $(this).next().show();
+            }
+        });
+
+        //
+        $('.family_site .btn_close').on('click', function(e){
+            e.preventDefault();
+
+            $(this).parent().hide();
+            $('.footer_info_wrap .btn_layer').removeClass('on').focus();
+
+        });
+    });
+</script>
+<style>
+    .info_box {position:fixed;right:20px;bottom:-360px;z-index:10;}
+    .info_box * {line-height:20px;}
+    .info_box.logout #info_footer .today {display:none;}
+    #info_wrap {position:relative;width:326px;}
+    #info_wrap .info_close > a {position:absolute;top:24px;right:28px;display:block;width:16px;height:16px;background:url(__PUBLIC__/home/images/ico_close.png) no-repeat;font-size:0;line-height:0;}
+    #info_header {background:url(__PUBLIC__/home/images/img_info_pop01.png) no-repeat;height:59px;}
+    #info_header h3 {padding:23px 28px;font-size:14px;font-weight:bold;color:#fff;}
+    #info_content {padding:30px 0 17px;background:url(__PUBLIC__/home/images/img_info_pop02.png) repeat-y;}
+    #info_content * {text-align:center;}
+    #info_content .info_title {margin:12px 0 7px;font-size:16px;font-weight:bold;color:#222;line-height:24px;}
+    #info_content .info_btn {margin-top:13px;height:27px;}
+    #info_content .info_btn > a {display:inline-block;height:26px;line-height:26px;padding:0px 14px;border:1px solid #bbb;background:#f9f9f9;color:#444;}
+    .msie #info_content .info_btn > a {line-height:30px;}
+    #info_footer {padding:0 9px; background:url(__PUBLIC__/home/images/img_info_pop03.png) 0 bottom no-repeat;min-height:25px;}
+    #info_footer .today {position:relative;padding:10px 20px 20px;border-top:1px solid #ebebeb;}
+    #info_footer .today > a {position:absolute;right:20px;font-weight:bold;color:#444;}
+    #footer .footer_quick_menu .quick_wrap ul.quick_menu2 li.active a {font-weight:bold;color:#0059a6;}
+</style>
+
+<!--include area start -->
+<div id="footerWrap">
+    <div id="footer">
+        <div class="footer_info_wrap">
+            <ul class="footer_info">
+                <li>地址：<span>杭州市西湖区文二西路1号元茂大厦1402</span></li>
+                <li>电话：<span>0571-88890244</span></li>
+                <li>邮箱：<span>business@easytochina.net</span></li>
+            </ul>
+            <ul class="sns_wrap">
+                <!--<li class="facebook"><a href="#" target="_blank">QQ</a></li>-->
+                <li class="twitter">
+                    <a href="#" target="_blank">Weibo</a>
+                    <img src="__PUBLIC__/home/images/weibo.png" class="erweima" />
+                </li>
+                <li class="blog">
+                    <a href="#" target="_blank">Weixin</a>
+                    <img src="__PUBLIC__/home/images/weixin.png" class="erweima2" />
+                </li>
+            </ul>
+            <a href="#" class="btn_layer"><img src="__PUBLIC__/home/images/btn_footer_layer.jpg"/></a>
+            <div class="family_site">
+                <dl>
+                    <dt>合作伙伴</dt>
+                    <dd>
+                        <ul>
+                            <li><a href="#">天猫</a></li>
+                            <li><a href="#">小红书</a></li>
+                            <li><a href="#">有赞</a></li><li>
+                            <li><a href="#">点点多</a></li>
+                            <li><a href="http://www.mttlm.cn/" target="_blank">马淘淘海购</a></li>
+                        </ul>
+                    </dd>
+                </dl>
+                <dl class="half">
+                    <dt>旗下事业</dt>
+                    <dd>
+                        <ul>
+                            <li><a href="http://www.euchina.eu" target="_blank">中欧跨境贸易进出口商会</a></li>
+                            <li><a href="http://www.teams-park.net" target="_blank">Teams park(国际化创业团队孵化器)</a></li>
+                        </ul>
+                    </dd>
+                    <dd>
+                    </dd>
+                </dl>
+
+                <dl>
+                    <dt>商城系统</dt>
+                    <dd>
+                        <ul>
+                            <li><a href="http://www.mttlm.com" target="_blank">马淘淘海购</a></li>
+                            <li><a href="http://www.vixshop.cn" target="_blank">城市电商</a></li>
+                            <li><a href="http://debug.t-cang.com/vixmall/cloudwarehouse" target="_blank">天众云仓</a></li>
+                        </ul>
+                    </dd>
+
+                </dl>
+                <a href="#" class="btn_close">关闭</a> </div>
+        </div>
+        <!-- //footer_info_wrap -->
+
+        <div class="footer_quick_menu">
+            <div class="footer_logo"><img src="__PUBLIC__/home/images/ico_footer_logo.png"/></div>
+            <div class="quick_wrap">
+
+                <ul class="quick_menu2">
+                    <li><a href="{{:url('pfcexpress')}}">跨境进口</a></li>
+                    <li><a href="{{:url('bonded')}}">保税进口</a></li>
+                    <li class="active"><a href="{{:url('pricequery')}}">运费查询</a></li>
+                    <li><a href="{{:url('exitC')}}">跨境出口</a></li>
+                    <li><a href="{{:url('special_xq')}}">美国专线</a></li>
+                    <li class="active"><a href="{{:url('query')}}">物流查询</a></li>
+                    <li><a href="{{:url('cloud')}}">云仓简介</a></li>
+                    <li><a href="{{:url('service')}}">关于天众</a></li>
+                </ul>
+                <p class="copyright">Copyright © 天众 All Rights Reserved&nbsp;&nbsp;杭州天众供应链管理有限公司版权所有&nbsp;&nbsp;浙ICP备15042493号-2</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+
+
+
+<!--右侧浮动样式-->
+<div class="float">
+
+    <div class="float_erweima" style="display: none;">
+        <p>
+            <img src="__PUBLIC__/home/images/float/erweima2.jpg" alt="">
+        </p>
+    </div>
+
+    <ul id="toTopUl">
+        <li><a class="flo_1" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=3507245604&site=qq&menu=yes"><span class="ke_tit">QQ</span></a></li>
+        <li><a class="flo_2" href="javascript:void(0);" style="font-size: 14px; width: 60px; opacity: 1;"><span class="ke_tit">电话</span><span class="ke_info">0571-88890244</span></a>
+        </li>
+
+        <li><a class="flo_w" href="javascript:void(0);" onmouseover="showCode();" onmouseout="hideCode();"><span class="ke_tit">公众号</span></a></li>
+    </ul>
+</div>
+<!--右侧浮动样式-->
+
+</div>
+
+</body>
+<!--右侧浮动js-->
+<script type="text/javascript">
+
+    opentop();
+    function opentop(){
+        var topTop = "<li id = 'addtotop'><a class = 'flo_4' style = 'cursor: pointer;'><span class='ke_tit'>返回</span></a></li>"
+        $(window).bind('scroll' ,function(event){
+            var topHeight = $(document).scrollTop();
+            if(topHeight >= 200){
+                if($("#toTopUl").find("#addtotop").length == 0){
+                    $("#toTopUl").append(topTop);
+                    addtotop();
+                }else{
+                    return;
+                }
+            }else{
+                $("#toTopUl li:eq(3)").remove();
+            }
+        });
+    }
+    function addtotop(){
+        $("#addtotop").bind('click',function(){
+            $("#toTopUl li:eq(3)").remove();
+            $(window).unbind();
+            $('html, body').animate({scrollTop:0}, '1000');
+            setTimeout('opentop()',500);
+        });
+    }
+
+    function showCode(){
+        $(".float_erweima").show();
+
+    }
+    function hideCode(){
+        $(".float_erweima").hide();
+        $(".float_erweima").css("background","");
+    }
+
+    $(function () {
+        $('#toTopUl > li').hover(function () {
+            $(this).find('.flo_2').stop().animate({"width": "180px"}, 200).css({
+                "opacity": "1",
+                "filter": "Alpha(opacity=100)",
+                "background-position": "15px 6px",
+            });
+        }, function () {
+            $(this).find('.flo_2').stop().animate({"width": "60px"}, 200).css({
+                "opacity": "1",
+                "filter": "Alpha(opacity=100)",
+                "background-position": "center 6px",
+            });
+        });
+    });
+</script>
+<!--右侧浮动js-->
+<script language="JavaScript">
+    $(window).load(function(){
+        //二级导航
+        $('.navright>ul>li').hover(function(){
+            $(this).find('ul').stop(true).slideDown(600);
+        },function(){
+            $(this).find('ul').stop(true).slideUp(600);
+        })
+
+    })
+
+</script>

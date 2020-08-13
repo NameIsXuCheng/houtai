@@ -1,0 +1,249 @@
+{include file="public/header"}
+    <link rel="stylesheet" href="__PUBLIC__/home/js/weui/css/weui.min.css?v=3">
+    <script type="text/javascript" src="__PUBLIC__/home/js/weui/js/weui.min.js"></script>
+
+    <link rel="stylesheet" href="__PUBLIC__/home/css/css/track.css">
+
+    <script  type="text/javascript" src="__PUBLIC__/home/js/layer/mobile/layer.js"></script>
+    <!--<link rel="stylesheet" href="js/layer/theme/default/layer.css">-->
+
+    <title>天众轨迹查询</title>
+</head>
+<body>
+
+
+<div class="tz-header">
+    <div>轨迹查询</div>
+</div>
+
+
+
+<div id="main" class="root container">
+
+    <div class="container">
+        <div class="main"><!----> <!----> <!---->
+            <section style="margin-top: 50px">
+                <div class="form" id="chufa">
+                    <!--<div class="ico send"></div>-->
+                    <div class="input"><p></p>
+                        <input type="text"  name="shipNumber" placeholder="输入运单号查询轨迹">
+
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="track-foot">
+        <div class="button" onclick="submitData()">查询</div>
+    </div>
+
+</div>
+
+<div class="order">
+    <p>历史订单</p>
+    <div class="order-box">
+
+
+    </div>
+</div>
+
+
+
+<div id="dialogs">
+    <!--BEGIN dialog1-->
+    <div class="js_dialog" id="iosDialog1" style="display: none;">
+        <div class="weui-mask"></div>
+        <div id="js_half_screen_dialog" class="weui-half-screen-dialog">
+            <div class="weui-half-screen-dialog__hd">
+                <div class="weui-half-screen-dialog__hd__side">
+                    <button id="dialogClose" class="weui-icon-btn">关闭<i class="weui-icon-close-thin"></i></button>
+                </div>
+                <div class="weui-half-screen-dialog__hd__main">
+                    <strong class="weui-half-screen-dialog__title">查询结果</strong>
+                </div>
+            </div>
+            <div class="weui-half-screen-dialog__bd"  style="max-height: 328px;">
+                <div class="weui-panel__bd">
+                <div class="weui-media-box weui-media-box_text" id="dialog_content">
+                    <div class="track-box">
+                        <div>
+                            <span ><img class="track-img" src="__PUBLIC__/home/images/yuanquan.png" ></span>
+                            <span class="track-status">运输中</span>
+                            <span class="track-details">测试信息:正在装车</span>
+                            <span class="track-details">2020-07-03 17:57:25</span>
+                        </div>
+                    </div>
+
+                </div>
+                </div>
+            </div>
+            <br><br>
+        </div>
+    </div>
+    <!--END dialog1-->
+</div>
+
+
+</body>
+
+<script>
+
+    var $halfScreenDialog = $('#js_half_screen_dialog');
+    $('#dialogs').on('click', '.weui-mask', function(){
+        $halfScreenDialog.removeClass('weui-half-screen-dialog_show');
+        $(this).parents('.js_dialog').fadeOut(200);
+    });
+    $('#dialogClose').on('click', function(){
+        $halfScreenDialog.removeClass('weui-half-screen-dialog_show');
+        $(this).parents('.js_dialog').fadeOut(200);
+    });
+
+
+    created();
+
+    function submitData(package_no) {
+
+        $("#dialog_content").empty();
+
+
+
+        if(!package_no){
+            package_no = $("input[name=shipNumber]").val();
+        }
+        if(!package_no){
+            layer.open({
+                content: '输入运单号查询！'
+                ,skin: 'msg'
+                ,time: 2 //2秒后自动关闭
+            });
+            return false;
+        }
+
+        var index = layer.open({type: 2});
+
+        // package_no = 'E6200703175724000001';
+        $.post("/Track.php",{package_no:package_no},function(res){
+            res = eval('(' + res + ')');
+            var html = '';
+
+            if(res.flag === 0){
+                html += '<br>\n' +
+                    '<br>\n' +
+                    '未查询到此运单号相关结果\n' +
+                    '<br>\n' +
+                    '<br>\n' +
+                    '<br>\n' +
+                    '<br>';
+            }else {
+
+                let list = res.data.status_list;
+
+                list = sortKey(list, "time");
+
+                for(let i in list){
+                    let details = list[i].status;
+                    let status = list[i].travel_status;
+                    let time = list[i].time;
+
+                    if(status === "已获取末端跟踪号"){
+                        let arr = details.split(";");
+                        let a = arr[0].split(":")[1];
+                        let b = arr[1].split(":")[1];
+
+                        details = "配送公司为："+ a + "，运单号为：" + b;
+                    }
+
+                    html += '<div class="track-box">\n' +
+                        '                        <div>\n' +
+                        '                            <span ><img class="track-img" src="__PUBLIC__/home/images/yuanquan.png" ></span>\n' +
+                        '                            <span class="track-status">'+status+'</span>\n' +
+                        '                            <span class="track-details">'+details+'</span>\n' +
+                        '                            <div class="track-details" style="margin-left: 30px;">'+time+'</div>\n' +
+                        '                        </div>\n' +
+                        '                    </div>';
+                }
+
+
+
+            }
+
+            $("#dialog_content").append(html);
+
+            var $iosDialog1 = $('#iosDialog1');
+            $iosDialog1.fadeIn(200);
+            var $halfScreenDialog = $('#js_half_screen_dialog');
+            $halfScreenDialog.addClass('weui-half-screen-dialog_show');
+
+
+
+            console.log(res);
+            layer.close(index);
+        })
+
+    }
+
+    function sortKey(array,key){
+        return array.sort(function(a, b) {
+            var x = a[key];
+            var y = b[key];
+            if(key === 'time'){
+                x = new Date(x).getTime();
+                y = new Date(y).getTime();
+            }
+
+            return x > y ? -1 : x < y ? 1 : 0;
+        });
+    }
+
+
+
+    function  getUrlKey(name){//获取url 参数
+        return decodeURIComponent((new RegExp('[?|&]'+name+'='+'([^&;]+?)(&|#|;|$)').exec(location.href)||[,""])[1].replace(/\+/g,'%20'))||null;
+    }
+    function getCodeApi(state){//获取code
+        let urlNow=encodeURIComponent(window.location.href);
+        let scope='snsapi_base';    //snsapi_userinfo   //静默授权 用户无感知
+        let appid='wxa446d747ac3f0fdd';
+        let url=`https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appid}&redirect_uri=${urlNow}&response_type=code&scope=${scope}&state=${state}#wechat_redirect`;
+        window.location.replace(url);
+    }
+    function created(){
+
+        $(".order-box").empty();
+
+        let code= this.getUrlKey("code");
+        if(code){
+            //发送code 向服务器换取 openid 保存到本地。
+            $.post("http://exporttest.mttlm.com/index.php/openapi/WxApi/getOpenid2",{code:code},function (res) {
+
+                let result = res;
+                let html = '';
+                if(result.flag === 1){
+                    if(result.package.length === 0){
+                        html += '<p>暂无订单<p>';
+
+                    }else{
+                        let package_data = result.package;
+                        for(let i in package_data){
+                            html += '<section onclick="submitData(\''+ package_data[i].package_no +'\')">\n' +
+                                '            <img src="__PUBLIC__/home/images/order.png" class="img_wuliu">\n' +
+                                '            <div>运单号：'+ package_data[i].package_no +'</div>\n' +
+                                '            <div>时间：'+ package_data[i].created_at +'</div>\n' +
+                                '        </section>\n';
+                        }
+                    }
+                    $(".order-box").append(html);
+                }
+            })
+        }else{
+            this.getCodeApi(0);
+        }
+    }
+
+
+
+
+</script>
+
+
+</html>

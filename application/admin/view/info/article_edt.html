@@ -68,7 +68,7 @@
                             <i class="layui-icon">&#xe67c;</i>上传图片
                         </button>
                         <span style="color:red"></span>
-                        <div class="layui-collapse" lay-accordion="" style="width: 112px;text-align: center;vertical-align: center">
+                        <div class="layui-collapse" lay-accordion="" style="width: 112px;text-align: center;vertical-align: center;{if condition="empty($article_info.thumbnail)"}display:none;{/if}">
                             <img id="logo" src="{{$article_info.thumbnail}}"/>
                         </div>
                     </div>

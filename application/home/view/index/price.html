@@ -1,0 +1,958 @@
+{include file="public/header"}
+
+<link rel="stylesheet" href="__PUBLIC__/home/js/weui/css/weui.min.css?v=3">
+<script type="text/javascript" src="__PUBLIC__/home/js/weui/js/weui.min.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/home/css/css/select.css">
+<script  type="text/javascript" src="__PUBLIC__/home/js/layer/mobile/layer.js"></script>
+<title>天众国际</title>
+    <style>
+        .weui-picker{
+            z-index: 999999999;
+        }
+
+        .weui-btn_primary{
+            background-color:#317ee7;
+        }
+        .weui-toptips{
+            top:41px;
+        }
+        .layui-m-layer1 .layui-m-layerchild {
+            border: 1px solid;
+            border-radius: 23px;
+        }
+
+        .layui-m-layerbtn span[yes] {
+            color: #317ee7;
+        }
+        .weui-half-screen-dialog{
+            z-index: 999999999;
+        }
+        .weui-search-bar{
+            background-color: white;
+        }
+        .weui-search-bar__label{
+            background-color: #ececec;
+        }
+        .weui-search-bar__input{
+            background: #ececec;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div class="tz-header">
+    <div>费用查询</div>
+</div>
+
+<div class="weui-toptips weui-toptips_warn" id="topTips">错误提示</div>
+
+
+<div id="main" class="root container">
+
+
+
+    <!---->
+    <div class="order-footer">
+        <div class="text"><a onclick="toWx()">点击前往小程序下单
+
+           </a> <!---->
+        </div>
+        <div class="button" onclick="submitData()">查询</div>
+    </div>
+    <div class="container order">
+        <div class="main"><!----> <!----> <!---->
+            <section style="margin-top: 50px">
+                <div class="form" id="chufa">
+                <div class="ico send"></div>
+
+                    <div class="input small"><p></p>
+                        <span tabindex="c_msg">请输入发件人信息(出发地)</span>
+                        <div class="txt-default"></div>
+                    </div> <i class=""></i>
+
+                </div>
+                <div class="form" id="mudi">
+                    <div class="ico rec">
+                    </div>
+                    <div class="input small" id="default_msg">
+                        <p></p> <span>请输入收件人信息(目的地)</span>
+                        <div class="txt-default"></div>
+                    </div>
+
+                    <div class="mudidi" style="display: none" id="mudidi">
+                        <div>
+                            <span tabindex="m_country">美国</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <span tabindex="postcode"></span></div>
+                            <div id="m_address"></div>
+                    </div>
+
+
+                </div>
+            </section>
+            <section>
+                <div class="form arrow" id="package">
+                    <label>包裹信息</label>
+                    <div class="input">
+                        <span tabindex="package_msg">请填写包裹信息</span>
+                    </div></div>
+            </section>
+
+
+        </div>
+    </div>
+</div>
+
+<div id="dialog" class="dialog" style="display: none">
+
+    <div class="dialog-main">
+
+        <section>
+            <div class="form" style="text-align: center">
+                <label style="font-weight: bold;font-size: 18px">出发地</label>
+
+            </div>
+        </section>
+
+        <section>
+            <div class="form arrow">
+                <label>国家</label>
+                <div class="input">
+                    <span style="color: black">中国</span>
+                </div></div>
+        </section>
+
+        <section >
+            <div class="form arrow"  onclick="openPicker()">
+                <label>省份</label>
+                <div class="input">
+                    <span tabindex="c_state" style="color: black">浙江</span>
+                    <input type="hidden" value="浙江" name="c_state">
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="form arrow" onclick="openPicker()">
+                <label>市</label>
+                <div class="input">
+                    <span tabindex="c_city" style="color: black">杭州</span>
+                    <input type="hidden" value="杭州" name="c_city">
+                </div></div>
+        </section>
+
+        <section>
+            <div class="form arrow" onclick="openPicker()">
+                <label>区</label>
+                <div class="input">
+                    <span tabindex="c_area" style="color: black">西湖区</span>
+                    <input type="hidden" value="西湖区" name="c_area">
+                </div></div>
+        </section>
+
+    </div>
+
+</div>
+
+
+
+
+<div id="dialog2" class="dialog" style="display: none">
+
+    <div class="dialog-main">
+
+        <section>
+            <div class="form" style="text-align: center">
+                <label style="font-weight: bold;font-size: 18px">目的地</label>
+
+            </div>
+        </section>
+
+        <section>
+            <div class="form arrow" onclick="openPicker2()">
+                <label>国家</label>
+                <div class="input">
+                    <span tabindex="m_country" style="color: black">美国</span>
+                    <input type="hidden" value="US" name="m_country">
+                </div></div>
+        </section>
+
+        <section >
+            <div class="form arrow" >
+                <label>邮政编码</label>
+                <div class="input">
+                    <input type="text"  placeholder="请输入邮政编码" name="post_code">
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="form arrow">
+                <label>详细地址</label>
+                <div class="input">
+                    <input type="text" placeholder="详细地址" name="m_address">
+                </div>
+            </div>
+        </section>
+
+
+
+    </div>
+
+</div>
+
+
+
+<div id="dialog3" class="dialog" style="display: none">
+
+    <div class="dialog-main">
+
+        <section>
+            <div class="form" style="text-align: center">
+                <label style="font-weight: bold;font-size: 18px">包裹信息</label>
+
+            </div>
+        </section>
+
+        <section >
+            <div class="form arrow" >
+                <label>长度（CM）</label>
+                <div class="input">
+                    <input type="text"  placeholder="请输入长度" name="length">
+                </div>
+            </div>
+        </section>
+
+        <section >
+            <div class="form arrow" >
+                <label>宽度（CM）</label>
+                <div class="input">
+                    <input type="text"  placeholder="请输入宽度" name="width">
+                </div>
+            </div>
+        </section>
+
+        <section >
+            <div class="form arrow" >
+                <label>高度（CM）</label>
+                <div class="input">
+                    <input type="text"  placeholder="请输入高度" name="height">
+                </div>
+            </div>
+        </section>
+
+
+        <section >
+            <div class="form arrow" >
+                <label>重量（KG）</label>
+                <div class="input">
+                    <input type="text"  placeholder="请输入重量" name="weight">
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</div>
+
+
+<div id="dialog5"  style="display: none">
+
+    <div class="dialog-main">
+
+        <section>
+            <div class="form" style="text-align: center;">
+                <label style="font-weight: bold;font-size: 18px">详情内容</label>
+
+            </div>
+        </section>
+
+
+        <section id="details_content">
+
+        </section>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+<div id="dialogs">
+    <!--BEGIN dialog1-->
+    <div class="js_dialog" id="iosDialog1" style="display: none;">
+        <div class="weui-mask"></div>
+        <div id="js_half_screen_dialog" class="weui-half-screen-dialog">
+            <div class="weui-half-screen-dialog__hd">
+                <div class="weui-half-screen-dialog__hd__side">
+                    <button id="dialogClose" class="weui-icon-btn">关闭<i class="weui-icon-close-thin"></i></button>
+                </div>
+                <div class="weui-half-screen-dialog__hd__main">
+                    <strong class="weui-half-screen-dialog__title">查询结果</strong>
+                </div>
+            </div>
+            <div class="weui-half-screen-dialog__bd" id="dialog_content" style="max-height: 328px;">
+
+            </div>
+            <br><br>
+        </div>
+    </div>
+    <!--END dialog1-->
+</div>
+
+
+<div id="dialog4">
+    <!--BEGIN dialog1-->
+    <div class="js_dialog" id="iosDialog2" style="display: none;">
+        <div class="weui-mask"></div>
+        <div id="js_half_screen_dialog2" class="weui-half-screen-dialog" style="height: 500px">
+            <div class="weui-half-screen-dialog__hd" >
+                <div class="weui-half-screen-dialog__hd__side">
+                    <button id="dialogClose2" class="weui-icon-btn">关闭<i class="weui-icon-close-thin"></i></button>
+                </div>
+                <div class="weui-half-screen-dialog__hd__main">
+                    <strong class="weui-half-screen-dialog__title">选择国家</strong>
+                </div>
+            </div>
+            <div class="weui-half-screen-dialog__bd" >
+
+
+                <p>热门国家：</p>
+                <div class="button-group">
+                    <button onclick="clickCountry('美国','US')">美国</button>
+                    <button onclick="clickCountry('英国','GB')">英国</button>
+                    <button onclick="clickCountry('德国','DE')">德国</button>
+                    <button onclick="clickCountry('法国','FR')">法国</button>
+                    <button onclick="clickCountry('芬兰','FI')">芬兰</button>
+                    <button onclick="clickCountry('日本','JP')">日本</button>
+                    <button onclick="clickCountry('韩国','KR')">韩国</button>
+                    <button onclick="clickCountry('意大利','IT')">意大利</button>
+                </div>
+
+                <div class="weui-search-bar" id="searchBar">
+                    <form class="weui-search-bar__form">
+                        <div class="weui-search-bar__box">
+                            <i class="weui-icon-search"></i>
+                            <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required="">
+
+                            <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+                        </div>
+                        <label class="weui-search-bar__label" id="searchText" style="transform-origin: 0px 0px; opacity: 1; transform: scale(1, 1);">
+                            <i class="weui-icon-search"></i>
+                            <span>搜索</span>
+                        </label>
+                    </form>
+                    <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+                </div>
+
+                <div class="weui-cells searchbar-result" id="searchResult" style="display: none;">
+
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <!--END dialog1-->
+</div>
+
+<div id="pic" style="display: none">
+    <img src="__PUBLIC__/home/images/xiaochengxu.jpg">
+</div>
+
+
+<script type="text/javascript" src="__PUBLIC__/home/js/countryData_v2.js"></script>
+
+<script type="text/javascript" src="__PUBLIC__/home/js/area.js"></script>
+<script>
+
+    $("#chufa").on('click',function () {
+        layer.open({
+            type:1,
+            content:$("#dialog").html()
+            ,btn: ['确定', '取消']
+            ,yes: function(index){
+                var c_state = $("input[name='c_state']").val();
+                var c_city = $("input[name='c_city']").val();
+                var c_area = $("input[name='c_area']").val();
+
+                var str = c_state + ' ' +c_city + ' ' + c_area;
+                $("span[tabindex='c_msg']").each(function () {
+                    $(this).html(str);
+                    $(this).attr('style','color:black;');
+                });
+
+                layer.close(index);
+            }
+        });
+    });
+
+    $("#mudi").on('click',function () {
+        layer.open({
+            type:1,
+            content:$("#dialog2").html()
+            ,btn: ['确定', '取消']
+            ,yes: function(index){
+                var m_country = $("span[tabindex='m_country']").html();
+                var postcode = $("input[name='post_code']").eq(1).val();
+                var m_address = $("input[name='m_address']").eq(1).val();
+
+                $("input[name='post_code']").each(function () {
+                    // $(this).val(postcode);
+                    $(this).attr('value',postcode);
+                });
+
+                $("input[name='m_address']").each(function () {
+                    // $(this).val(m_address);
+                    $(this).attr('value',m_address);
+                });
+
+                $("span[tabindex='m_country']").each(function () {
+                    $(this).html(m_country);
+                });
+
+                $("span[tabindex='postcode']").each(function () {
+                    $(this).html(postcode);
+                });
+
+                $("#m_address").html(m_address);
+
+                $("#default_msg").hide();
+
+                $("#mudidi").show();
+
+                layer.close(index);
+            }
+        });
+    });
+
+
+    $("#package").on('click',function () {
+        layer.open({
+            type:1,
+            content:$("#dialog3").html()
+            ,btn: ['确定', '取消']
+            ,yes: function(index){
+                var length = $("input[name='length']").eq(1).val();
+                var width = $("input[name='width']").eq(1).val();
+                var height = $("input[name='height']").eq(1).val();
+                var weight = $("input[name='weight']").eq(1).val();
+
+                $("input[name='length']").each(function () {
+                    $(this).attr('value',length);
+                });
+                $("input[name='width']").each(function () {
+                    $(this).attr('value',width);
+                });
+                $("input[name='height']").each(function () {
+                    $(this).attr('value',height);
+                });
+                $("input[name='weight']").each(function () {
+                    $(this).attr('value',weight);
+                });
+
+                var str = length + "CM*" + width + "CM*" + height + "CM" + '    '+ weight + "KG";
+                $("span[tabindex='package_msg']").each(function () {
+                    $(this).html(str);
+                    $(this).attr('style','color:black;');
+                });
+
+                layer.close(index);
+            }
+        });
+    });
+
+
+
+
+
+
+    var city = [];
+    for (var s in cityList){
+        var arr = {label:cityList[s].name,value:cityList[s].name,children:[]};
+        for (var c in cityList[s].city) {
+            arr.children.push({label: cityList[s].city[c].name, value: cityList[s].city[c].name, children: []});
+            for (a in cityList[s].city[c].area) {
+                arr.children[c].children.push({
+                    label: cityList[s].city[c].area[a],
+                    value: cityList[s].city[c].area[a]
+                    }
+                )
+            }
+        }
+        city.push(arr)
+    }
+
+    function openPicker() {
+        weui.picker(city, {
+            onChange: function (result) {
+
+            },
+            onConfirm: function (result) {
+                $("input[name='c_state']").val(result[0].value);
+                $("input[name='c_city']").val(result[1].value);
+                $("input[name='c_area']").val(result[2].value);
+
+                $("span[tabindex='c_area']").each(function () {
+                    $(this).html(result[2].value);
+                });
+
+                $("span[tabindex='c_city']").each(function () {
+                    $(this).html(result[1].value);
+                });
+
+                $("span[tabindex='c_state']").each(function () {
+                    $(this).html(result[0].value);
+                });
+            },
+            title: '选择地区',
+            defaultValue: ["北京", "北京"]
+        });
+    }
+
+
+    var label = [];
+
+    for(var i=0;i<country_data.length;i++){
+        if(country_data[i].code){
+            label.push({label:country_data[i].name,value:country_data[i].code});
+        }
+    }
+
+   function openPicker2(){
+
+       var $iosDialog2 = $('#iosDialog2');
+       $iosDialog2.fadeIn(200);
+       var $halfScreenDialog2 = $('#js_half_screen_dialog2');
+       $halfScreenDialog2.addClass('weui-half-screen-dialog_show');
+
+
+        // weui.picker(label, {
+        //     onChange: function (result) {
+        //         // $("#showPicker2").html(result[0].label);
+        //         // $("input[name='m_country']").val(result[0].code);
+        //     },
+        //     onConfirm: function (result) {
+        //
+        //         $("span[tabindex='m_country']").each(function () {
+        //             $(this).html(result[0].label);
+        //         });
+        //         $("input[name='m_country']").val(result[0].value);
+        //     },
+        //     title: '选择国家',
+        //     defaultValue:['US']
+        //
+        // });
+    }
+
+
+
+    function checkData(){
+        var c_country = "CN";
+        var m_country =$("input[name='m_country']").val();
+
+        var c_state = $("input[name='c_state']").val();
+        var c_city = $("input[name='c_city']").val();
+        var c_area = $("input[name='c_area']").val();
+
+        // var m_state = $("input[name='m_state']").val();
+        // var m_city = $("input[name='m_city']").val();
+        // var m_area = $("input[name='m_area']").val();
+
+        // var post_code = $("input[name='postcode']").eq(1).val();
+        // var m_address = $("input[name='m_address']").eq(1).val();
+
+        var post_code = $("input[name='post_code']").eq(0).val();
+        var m_address = $("input[name='m_address']").eq(0).val();
+
+        // var amount = $("input[name='amount']").val();
+        // var sku = $("input[name='sku']").val();
+
+
+
+        var length = $("input[name='length']").eq(0).val();
+        var width = $("input[name='width']").eq(0).val();
+        var height = $("input[name='height']").eq(0).val();
+        var weight = $("input[name='weight']").eq(0).val();
+
+
+
+
+
+
+        var data = {
+            c_country : c_country,
+            c_state :c_state,
+            c_city :c_city,
+            c_area:c_area,
+            m_country:m_country,
+            // m_state:m_state,
+            // m_city:m_city,
+            // m_area:m_area,
+            // amount:amount,
+            // sku:sku,
+            m_address:m_address,
+            post_code:post_code,
+            length:length,
+            width:width,
+            height:height,
+            weight:weight
+        };
+
+
+        for(var k in data){
+            if(!data[k]){
+                var msg = getMsg(k);
+                $("#topTips").html(msg);
+                $('#topTips').fadeIn(200);
+                setTimeout(function () {
+                    $('#topTips').fadeOut(200);
+                },2000);
+
+                return false;
+            }
+        }
+
+        if(length <= 0 || isNaN(length)){
+            $("#topTips").html('请填写正确长度');
+            $('#topTips').fadeIn(200);
+            setTimeout(function () {
+                $('#topTips').fadeOut(200);
+            },2000);
+            return false;
+        }
+
+        if(width <= 0 || isNaN(width)){
+            $("#topTips").html('请填写正确宽度');
+            $('#topTips').fadeIn(200);
+            setTimeout(function () {
+                $('#topTips').fadeOut(200);
+            },2000);
+            return false;
+        }
+
+
+        if(height <= 0 || isNaN(height)){
+            $("#topTips").html('请填写正确高度');
+            $('#topTips').fadeIn(200);
+            setTimeout(function () {
+                $('#topTips').fadeOut(200);
+            },2000);
+            return false;
+        }
+
+        if(weight <= 0 || isNaN(weight)){
+            $("#topTips").html('请填写正确重量');
+            $('#topTips').fadeIn(200);
+            setTimeout(function () {
+                $('#topTips').fadeOut(200);
+            },2000);
+            return false;
+        }
+
+        return data;
+    }
+
+
+
+
+    function getMsg(key){
+        var res_msg = '';
+        switch (key) {
+            case 'c_country': res_msg = '请选择出发国'; break;
+            case 'c_state': res_msg = '请填写出发省/州'; break;
+            case 'c_city': res_msg = '请填写出发城市'; break;
+            case 'c_area': res_msg = '请填写出发区域'; break;
+            case 'm_country': res_msg = '请选择目的国家'; break;
+            case 'm_state': res_msg = '请填写目的省/州'; break;
+            case 'm_city': res_msg = '请填写目的城市'; break;
+            case 'm_area': res_msg = '请填写目的区域'; break;
+            // case 'amount': res_msg = '请填写总金额'; break;
+            // case 'sku': res_msg = '请填写产品个数'; break;
+            case 'length': res_msg = '请填写包裹长度'; break;
+            case 'width': res_msg = '请填写包裹宽度'; break;
+            case 'height': res_msg = '请填写包裹高度'; break;
+            case 'weight': res_msg = '请填写包裹重量'; break;
+            case 'm_address':res_msg = '请填写详细地址';break;
+            case 'post_code':res_msg = '请填写邮政编码';break;
+        }
+        return res_msg;
+    }
+
+
+
+    var $halfScreenDialog = $('#js_half_screen_dialog');
+
+    $('#dialogs').on('click', '.weui-mask', function(){
+        $halfScreenDialog.removeClass('weui-half-screen-dialog_show');
+        $(this).parents('.js_dialog').fadeOut(200);
+    });
+    $('#dialogClose').on('click', function(){
+        $halfScreenDialog.removeClass('weui-half-screen-dialog_show');
+        $(this).parents('.js_dialog').fadeOut(200);
+    });
+
+
+    var $halfScreenDialog2 = $('#js_half_screen_dialog2');
+
+    $('#dialog4').on('click', '.weui-mask', function(){
+        $halfScreenDialog2.removeClass('weui-half-screen-dialog_show');
+        $(this).parents('.js_dialog').fadeOut(200);
+    });
+    $('#dialogClose2').on('click', function(){
+        $halfScreenDialog2.removeClass('weui-half-screen-dialog_show');
+        $(this).parents('.js_dialog').fadeOut(200);
+    });
+
+    weui.searchBar('#searchBar');
+
+    var details;
+    var list;
+    function submitData() {
+
+
+        var data = checkData();
+        if (!data) {
+            return false;
+        }
+        // var data = {
+        //     c_country: "CN",
+        //     c_state: "浙江",
+        //     c_city: "杭州",
+        //     c_area: "西湖区",
+        //     m_country: "US",
+        //     m_address: "10",
+        //     post_code: "10",
+        //     length: "10",
+        //     width: "10",
+        //     height: "10",
+        //     weight:"1"
+        // }
+
+        var loading = layer.open({
+            type: 2
+            ,content: '加载中'
+        });
+
+
+        $.post('/GetPrice.php', data, function (res) {
+            res = eval('(' + res + ')');
+
+            if (res.flag === 1) {
+                layer.close(loading);
+                $("#dialog_content").empty();
+                list = res.data;
+                var html = '';
+                var x = 0; //无效参数
+                if (list) {
+                    for (var i in list) {
+                        if( list[i].fee_detail ){
+                            html += '<div class="weui-panel__bd">\n' +
+                                '<div class="weui-media-box weui-media-box_text">\n' +
+                                '<h4 class="weui-media-box__title">' + list[i].dline_nick_name  +
+                                '<button class="details_btn" onclick="getDetails('+i+')">详情</button>' +  '</h4>\n' +
+                                '<div class="weui-media-box__desc">\n' +
+                                '费用介绍：<p>' + list[i].fee_detail + '</p>\n' +
+                                '</div>' +
+                                '<div class="weui-media-box__desc">金额：￥' +
+                                list[i].delivery_fee +
+                                '</div>' +
+                                '</div>' +
+                                '</div>';
+                        }else{
+                            x ++;
+                        }
+
+                    }
+                } else {
+                    html += '<br>\n' +
+                        '<br>\n' +
+                        '未查询到结果\n' +
+                        '<br>\n' +
+                        '<br>\n' +
+                        '<br>\n' +
+                        '<br>';
+                }
+
+                if(x === list.length){
+                    html += '<br>\n' +
+                        '<br>\n' +
+                        '未查询到结果\n' +
+                        '<br>\n' +
+                        '<br>\n' +
+                        '<br>\n' +
+                        '<br>';
+                }
+
+                $("#dialog_content").append(html);
+
+                var $iosDialog1 = $('#iosDialog1');
+                $iosDialog1.fadeIn(200);
+                var $halfScreenDialog = $('#js_half_screen_dialog');
+                $halfScreenDialog.addClass('weui-half-screen-dialog_show');
+
+                details = [];
+                for (var i in list) {
+                    details[i] = list[i].wx_info;
+                }
+                console.log(details);
+            } else {
+
+                layer.close(loading);
+
+                $("#topTips").html(res.msg);
+                $('#topTips').fadeIn(200);
+                setTimeout(function () {
+                    $('#topTips').fadeOut(200);
+                }, 2000);
+            }
+
+        });
+
+
+    }
+
+    function getDetails(i){
+        var detailsDom = $("#details_content");
+        $("#details_content").empty();
+
+        if(!details[i]) details[i] = '<p>暂时没有详情内容。</p>';
+
+        detailsDom.append(details[i]);
+        $("#js_half_screen_dialog").attr('style','z-index:9999');
+
+
+
+        layer.open({
+            type:1,
+            content:$("#dialog5").html()
+            ,btn: ['确定']
+            ,style: 'overflow-y: auto;max-height: 400px;'
+            ,yes: function(index){
+                $("#js_half_screen_dialog").attr('style','');
+                layer.close(index);
+            }
+        });
+
+    }
+
+
+</script>
+
+<script type="text/javascript" class="searchbar js_show">
+    $(function(){
+        var $searchBar = $('#searchBar'),
+            $searchResult = $('#searchResult'),
+            $searchText = $('#searchText'),
+            $searchInput = $('#searchInput'),
+            $searchClear = $('#searchClear'),
+            $searchCancel = $('#searchCancel');
+
+        function hideSearchResult(){
+            $searchResult.hide();
+            $searchInput.val('');
+        }
+        function cancelSearch(){
+            hideSearchResult();
+            $searchBar.removeClass('weui-search-bar_focusing');
+            $searchText.show();
+        }
+
+        $searchText.on('click', function(){
+            $searchBar.addClass('weui-search-bar_focusing');
+            $searchInput.focus();
+        });
+        $searchInput
+            .on('blur', function () {
+                if(!this.value.length) cancelSearch();
+            })
+            .on('input', function(){
+                if(this.value.length) {
+
+                    var country = this.value;
+                    var html = '';
+                    var count = 0;
+                    for(var i in country_data){
+                        if(count>4){
+                            continue;
+                        }
+                        if(country_data[i].name.indexOf(country) !== -1){
+                            html += '<div class="weui-cell weui-cell_active weui-cell_access" onclick="confirmCountry('+i+')">\n' +
+                                '                        <div class="weui-cell__bd weui-cell_primary">\n' +
+                                '                            <p>'+country_data[i].name+'</p>\n' +
+                                '                        </div>\n' +
+                                '                    </div>';
+                            count++;
+                        }
+                    }
+
+
+                    $searchResult.empty();
+                    $searchResult.append(html);
+
+                    $searchResult.show();
+                } else {
+                    $searchResult.hide();
+                }
+            })
+        ;
+        $searchClear.on('click', function(){
+            hideSearchResult();
+            $searchInput.focus();
+        });
+        $searchCancel.on('click', function(){
+            cancelSearch();
+            $searchInput.blur();
+        });
+    });
+
+    function confirmCountry(i) {
+        var name = country_data[i].name;
+        var code = country_data[i].code;
+        $("input[name=m_country]").val(code);
+        $("span[tabindex='m_country']").each(function () {
+            $(this).html(name);
+        });
+        $("#searchInput").val(name);
+        $("#searchResult").hide();
+
+        var $halfScreenDialog2 = $('#js_half_screen_dialog2');
+        $halfScreenDialog2.removeClass('weui-half-screen-dialog_show');
+        $("#iosDialog2").fadeOut(200);
+
+    }
+
+    function clickCountry(name,code) {
+        name = name.trim();
+        code = code.trim();
+
+        $("input[name=m_country]").val(code);
+        $("span[tabindex='m_country']").each(function () {
+            $(this).html(name);
+        });
+        $("#searchInput").val(name);
+        $("#searchResult").hide();
+
+        var $halfScreenDialog2 = $('#js_half_screen_dialog2');
+        $halfScreenDialog2.removeClass('weui-half-screen-dialog_show');
+        $("#iosDialog2").fadeOut(200);
+
+    }
+
+    function toWx() {
+        layer.open({
+            content: $("#pic").html()
+        });
+    }
+
+</script>
+</body>
+
+</html>

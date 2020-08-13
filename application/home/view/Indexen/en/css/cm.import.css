@@ -1,0 +1,10 @@
+@charset "euc-kr";
+@import url(cm.reset.css);
+@import url(cm.layout.css);
+/*@import url(cm.miraedaewoo.css);*/
+/*@import url(jquery.selectbox.css);*/
+/*@import url(cm.miraedaewoo2.css);*/
+
+span.wordin {margin-right:5px;}
+
+

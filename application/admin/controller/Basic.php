@@ -21,7 +21,7 @@ class Basic extends Controller {
 
         $role_id = Session::get("role_id");
         //权限获取过来
-//        Session::set("privilege",$this->privilege($role_id));
+        Session::set("privilege",$this->privilege($role_id));
         $privilege = $this->privilege($role_id);
         //判断是否具有权限  默认有一些是不需要权限的   其他需要权限
         //$this->privilege_listen($privilege);

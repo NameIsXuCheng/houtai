@@ -1,0 +1,1349 @@
+sup {font-size:11px;}
+
+
+.emph {color:#F36910;}
+.list.square > li em.pointOr{color:#F36910; font-weight:lighter;}
+.list.square > li.button{background-position:0 10px;}
+
+/* table tr color */
+.row_color tbody.odd th,
+.row_color tbody.odd td{background:red;} /* 디자인수급 */
+.col_type tbody.on td{background:#f5faff;}
+td.on a{text-decoration:underline;}
+.col_type td.word_break{word-break:break-all; line-height:14px; text-align:left;}
+
+input.r{padding-right:5px !important;}
+
+/* sub tab */
+.tab_menu.inner > li > a{margin:0 0 0 -1px; font-size:12px; font-weight:100; border:1px solid #ddd; border-bottom:0;}
+.tab_menu.inner > li.on{z-index:2;}
+.tab_menu.inner > li.on a{background:transparent; border-color:#0059a6; color:#222;}
+
+/* radio tab */
+.dispGroup label,
+.dispGroup_none label{margin:0 7px 0 0;}
+.dispGroup label input,
+.dispGroup_none  label input{display:inline-block; margin:0 5px 0 0; vertical-align:-2px;}
+.dispGroup.blockLabel label,
+.dispGroup_none.blockLabel label{display:block;}
+
+.agreeBox .checkbox{float:left; margin-bottom:0;}
+
+.notice_guide + .notice_wrap{margin-top:30px;}
+
+.btn_down{width:40px; height:20px; background:#fff url("https://img.miraeassetdaewoo.com/new2016/ico/ico_interest.png") no-repeat 50%; cursor:pointer; border:0;}
+
+
+/********************
+    ISA CSS START
+********************/
+
+/* ISA - intro */
+.intro_wrap {padding-bottom:40px; margin-bottom:40px; border-bottom:1px solid #e5e5e5;}
+.intro_wrap.account {margin-top:11px;  padding-bottom:47px; background:url("https://img.miraeassetdaewoo.com/new2016/bg/bg_hks6005n01.gif") no-repeat right 3px}
+.intro_wrap.account_info {background:url("https://img.miraeassetdaewoo.com/new2016/bg/bg_hks6005n07.gif") no-repeat right top;}  
+.intro_wrap + .table_wrap {margin-top:-41px;}
+.tit + .desc.aco_guidedes {margin-top:5px;}
+ 
+/* ISA - 일임형 ISA 상품계약 - 모델포트폴리오 유형소개 */
+.model_port_wrap {position:relative; border-top:1px solid #000;}
+.model_port_wrap > h3.tit {background:#f4f4f4; padding:14px 0 14px 18px; margin-bottom:11px; border-bottom:1px solid #e5e5e5; line-height:100%;}
+.model_port_wrap > .model_radio_wrap {position:absolute; top:10px; right:18px;}
+.model_port_wrap > .model_radio_wrap > input {margin-left:17px;}
+.model_port_wrap > .model_radio_wrap > label {color:#444;}
+.msie .model_port_wrap > h3.tit {padding:16px 0 12px 18px}
+.msie .model_port_wrap > .model_radio_wrap {top:13px}
+.msie.ie8 .model_port_wrap > .model_radio_wrap > input {vertical-align:-2px}
+
+.model_port_desc {padding-bottom:9px; margin-bottom:14px; border-bottom:1px solid #e5e5e5;}
+.model_port_desc > span {float:left; margin-left:18px;}
+.model_port_desc > .risky_asset {float:right; background:url("https://img.miraeassetdaewoo.com/new2016/ico/ico_risk_graph.png") no-repeat left center; padding-left:40px; margin-right:17px;}
+.model_port_desc > .risky_asset.stage1 {background-position:0 10px;}
+.model_port_desc > .risky_asset.stage2 {background-position:0 -40px;}
+.model_port_desc > .risky_asset.stage3 {background-position:0 -92px;}
+.model_port_desc > .risky_asset.stage4 {background-position:0 -142px;}
+.model_port_desc > .risky_asset.stage5 {background-position:0 -192px;}
+.model_port_desc > .risky_asset > .value {display:block; font-weight:bold; text-align:center; color:#666;}
+
+.model_chart_wrap {padding-bottom:15px; border-bottom:1px solid #ccc; text-align:center;}
+.model_chart_wrap > div {display:inline-block; vertical-align:middle;}
+.model_chart_wrap > .expected_risk {margin-right:34px;}
+.model_chart_wrap > .expected_risk > span,
+.model_chart_wrap > .expected_risk > em {display:inline-block; vertical-align:middle;}
+.model_chart_wrap > .expected_risk > .value {margin-left:16px; font-size:24px;color:#111;}
+.model_chart_wrap > .chart_wrap {width:142px; height:112px; margin-bottom:0;}
+.model_chart_wrap > .legend {margin-left:35px;}
+.model_chart_wrap > .legend > strong,
+.model_chart_wrap > .legend > ul {width:276px; line-height:100%; text-align:left;}
+.model_chart_wrap > .legend > strong {display:block; padding-bottom:8px; color:#222;}
+.model_chart_wrap > .legend > ul > li {float:left; margin-top:8px;}
+.model_chart_wrap > .legend > ul > li.even {margin-left:30px;}
+.model_chart_wrap > .legend > ul > li > span,
+.model_chart_wrap > .legend > ul > li > em {display:inline-block; vertical-align:middle;}
+.model_chart_wrap > .legend > ul > li > .mark {display:inline-block; font-size:17px;}
+.model_chart_wrap > .legend > ul > li > em {margin-left:7px; width:77px;}
+.model_chart_wrap > .legend > ul > li > em,
+.model_chart_wrap > .legend > ul > li > .value {color:#666;}
+
+.model_port_wrap > .btnWrap {margin:20px 0 0 0;}
+
+.model_merit_list > li {padding-left:100px; margin-top:35px;}
+.model_merit_list > li:first-child {margin-top:0;}
+.model_merit_list > li.merit1 {background:url("https://img.miraeassetdaewoo.com/new2016/ico/ico_model_merit1.png") no-repeat 14px center;}
+.model_merit_list > li.merit2 {background:url("https://img.miraeassetdaewoo.com/new2016/ico/ico_model_merit2.png") no-repeat 18px center;}
+.model_merit_list > li.merit3 {background:url("https://img.miraeassetdaewoo.com/new2016/ico/ico_model_merit3.png") no-repeat 21px center;}
+.model_merit_list > li.merit4 {background:url("https://img.miraeassetdaewoo.com/new2016/ico/ico_model_merit4.png") no-repeat 10px center;}
+.model_merit_list > li > em {display:block; margin-bottom:15px; font-size:14px; font-weight:bold; color:#555;}
+
+/* ISA - 일임형 ISA 상품계약 - 가입절차안내 */
+.basis_account_wrap {margin-bottom:12px;}
+.basis_account_step > dt,
+.basis_account_step > dd {display:inline-block; vertical-align:top;}
+.basis_account_step > dt {width:138px; padding:12px 0; border-right:1px solid #d7e5f1; border-left:1px solid #d7e5f1; font-size:11px; font-weight:bold; color:#043c72; text-align:center;}
+.basis_account_step > dt.step1 {background:url("https://img.miraeassetdaewoo.com/new2016/bg/bg_basis_step1.gif") no-repeat left top; border-top:1px solid #d7e5f1;}
+.basis_account_step > dt.step2 {background:url("https://img.miraeassetdaewoo.com/new2016/bg/bg_basis_step2.gif") no-repeat left top;}
+.basis_account_step > dt.step3 {background:url("https://img.miraeassetdaewoo.com/new2016/bg/bg_basis_step3.gif") no-repeat left top;}
+.basis_account_step > dt.step4 {background:url("https://img.miraeassetdaewoo.com/new2016/bg/bg_basis_step4.gif") no-repeat left top;}
+.basis_account_step > dt.step5 {background:url("https://img.miraeassetdaewoo.com/new2016/bg/bg_basis_step5.gif") no-repeat left top;}
+.basis_account_step > dt.step6 {background:url("https://img.miraeassetdaewoo.com/new2016/bg/bg_basis_step6.gif") no-repeat left top;}
+.basis_account_step > dt.step7 {background:url("https://img.miraeassetdaewoo.com/new2016/bg/bg_basis_step7.gif") no-repeat left top;}
+.basis_account_step > dt.step8 {background:url("https://img.miraeassetdaewoo.com/new2016/bg/bg_basis_step8.gif") no-repeat left top;}
+.basis_account_step > dd {width:563px; padding:12px 0 11px 17px; margin-left:-5px; border-right:1px solid #e5e5e5; border-bottom:1px solid #e5e5e5;}
+.basis_account_step > dt.step1 ~ dd {border-top:1px solid #e5e5e5;}
+
+/* ISA - 일임형 ISA 상품계약 - 중도해지 */
+.col_type.two_line  th {border-bottom:1px solid #e5e5e5; border-left:1px solid #e5e5e5; background:#f4f4f4}
+.col_type.two_line  th:first-child {border-left:0}
+.list_agree_wrap {position:relative; border-top:1px solid #000;}
+.list_agree_wrap > h3.tit {background:#f4f4f4; padding:8px 0 8px 18px; margin-bottom:0; border-bottom:1px solid #e5e5e5;}
+.list_agree_wrap > .agree_all_check {position:absolute; top:10px; right:18px;}
+.list_agree {border-bottom:1px solid #ccc}
+.list_agree > li {padding:12px 18px; border-top:1px solid #e5e5e5;}
+.list_agree > li:first-child {border-top:0;}
+.list_agree > li > p,
+.list_agree > li > span {display:inline-block; vertical-align:middle;}
+.list_agree > li > p {width:84%;}
+.list_agree > li > span {width:16%; text-align:center;}
+.check_wrap {padding:12px 18px; margin-bottom:30px; border-top:1px solid #ccc; border-bottom:1px solid #ccc;}
+.check_wrap > span {float:left; margin-top:3px;}
+.check_wrap > a {float:right;}
+.date_txt {text-align:center;}
+.date_txt > span {margin-left:50px; font-size:16px;}
+.date_txt > span:first-child {margin-left:0;}
+.date_txt > .signature {display:block; margin-top:20px; margin-left:0; text-align:right; font-size:20px; font-weight:bold; color:#000;}
+.list_board.finish > li {font-size:18px; font-weight:bold; text-align:center; color:#000;}
+
+/* ISA - wrap account 안내 */
+.wrap_guide_box {position:relative; height:478px; margin:-40px 0 0 0; background:#f9f9f9 url("https://img.miraeassetdaewoo.com/new2016/temp/temp_bg_hks6005r07_01.png") no-repeat center 33px; border:1px solid #eee; border-top:none; box-sizing:border-box;}
+.wrap_guide_box .tit_character {position:absolute; top:50%; left:50%; margin:-27px 0 0 -34px;}
+.wrap_guide_box .txt_box01 {position:absolute; top:53px; left:44px;}
+.wrap_guide_box .txt_box02 {position:absolute; top:53px; left:478px;}
+.wrap_guide_box .txt_box03 {position:absolute; top:300px; left:44px;}
+.wrap_guide_box .txt_box04 {position:absolute; top:300px; left:478px;}
+.wrap_guide_img {padding:40px 0 20px}
+
+/* ISA - 가입 및 운용  */
+.isa_organize {padding:40px 0 49px; margin-bottom:40px; border:1px solid #dbdbdb; text-align:center;}
+.isa_risk {text-align:center; margin:0 0 45px 0;}
+.in_budget {padding:27px 0 40px; border:1px solid #dbdbdb; text-align:center;}
+
+/* ISA - 가입 및 운용 - 가입절차안내  */
+.basis_account_wrap2 .basis_account_step > dt {height:76px; padding:12px 0 0 0}
+.basis_account_wrap2 .basis_account_step > dt.step1 {background:url("https://img.miraeassetdaewoo.com/new2016/bg/bg_basis_step_09_01.gif") no-repeat left top; border-top:1px solid #d7e5f1;}
+.basis_account_wrap2 .basis_account_step > dt.step2 {background:url("https://img.miraeassetdaewoo.com/new2016/bg/bg_basis_step_09_02.gif") no-repeat left top;}
+.basis_account_wrap2 .basis_account_step > dt.step3 {background:url("https://img.miraeassetdaewoo.com/new2016/bg/bg_basis_step_09_03.gif") no-repeat left top;}
+.basis_account_wrap2 .basis_account_step > dt.step4 {background:url("https://img.miraeassetdaewoo.com/new2016/bg/bg_basis_step_09_04.gif") no-repeat left top;}
+.basis_account_wrap2 .basis_account_step > dt.step5 {background:url("https://img.miraeassetdaewoo.com/new2016/bg/bg_basis_step_09_05.gif") no-repeat left top;}
+.basis_account_wrap2 .basis_account_step dd .txt_dd {padding-top:4px}
+
+/********************
+    ISA CSS END
+********************/
+/* 정보변경 */
+.change_input > div{position:relative; width:160px; margin:0 auto; padding:3px 0;}
+.change_input > div > label{position:absolute; width:96%; height:77%; padding:4px 0 0 6px; box-sizing:border-box;}
+.change_input > div > input{width:100%; padding:5px 4px 6px 4px; box-sizing:border-box; border:1px solid #bbb;}
+.msie .change_input > div > label{padding-top:7px;}
+
+/* 퇴직연금 */
+.pension_progress{padding:0; border-top:1px solid #000; border-bottom:1px solid #bebebe; box-sizing:border-box;}
+.pension_progress div{box-sizing:border-box;}
+.pension_progress h3{padding:20px 0 12px 18px; color:#666; font-size:12px;}
+.pension_progress .pay_wrap{float:left; width:30%; border-right:1px solid #e5e5e5;}
+.pension_progress .pay_wrap h3{margin-top:95px; padding-top:20px; border-top:1px #000 solid;}
+.pension_progress .pay_wrap h3:first-child{padding-top:20px; margin-top:0px; border-top:none;}
+.pension_progress .pay_wrap h3 + strong{display:inline-block; width:100%; padding:0 18px 18px 0; color:#111; font-size:24px; font-weight:100; line-height:24px; text-align:right; border-bottom:1px dotted #e5e5e5; box-sizing:border-box;}
+.pension_progress .pay_wrap table{width:100%;}
+.pension_progress .pay_wrap th{padding:0 0 0 18px; text-align:left;}
+.pension_progress .pay_wrap td{padding:12px 18px 12px 0; text-align:right;}
+.pension_progress .pay_wrap th,
+.pension_progress .pay_wrap td{font-weight:100; border-top:1px dotted #e5e5e5;}
+.pension_progress .pay_wrap tr:first-child th,
+.pension_progress .pay_wrap tr:first-child td{border:0;}
+.pension_progress .pay_wrap .btnWrap{margin:0 18px 20px 0; text-align:right;}
+.pension_progress .chartlist_wrap{float:right; width:70%; padding:0 25px; box-sizing:border-box;}
+.pension_progress .chart_wrap{border:0;}
+.pension_progress .chartlist_wrap h3{padding-left:0;}
+.pension_progress .table_wrap{margin:0 0 20px;}
+.my_retire_rate .row_type.search tbody th{padding:15px 0; font-size:14px; font-weight:600; text-align:right;}
+.my_retire_rate .row_type.search tbody td{color:#f36910; font-size:14px; font-weight:600; text-align:left;}
+
+.pension_progress.hkp1002r01 .pay_wrap h3{margin-top:0px;}
+/* .pension_progress.hkp1002r01 table{border-bottom:1px solid #e5e5e5;} */
+.pension_progress.hkp1002r01 table.last{border-bottom:0;}
+
+/* 퇴직연금 수익률조회 */
+.hkp4001r02{position:relative; text-align:center;}
+.hkp4001r02 span,
+.hkp4001r02  label{position:aboslute; top:-1000px; font-size:0; line-height:0;}
+.hkp4001r02 input{position:absolute; left:166px; top:38px; width:97px; padding-top:2px; background:transparent; font-size:18px; text-align:right; border:0;}
+.hkp4001r02 input#invest2{top:72px;}
+.hkp4001r02 input#invest3{left:493px; top:55px;}
+
+/* 퇴직연금 피트니스 */
+.acco_wrap{margin:30px 0 0; border-bottom:1px solid #bebebe;}
+.acco_wrap > li{position:relative; padding:20px; border-top:1px solid #e5e5e5; box-sizing:border-box;}
+.acco_wrap > li:first-child{border-top:1px solid #000;}
+.acco_wrap > li button{position:absolute; right:20px; top:20px; display:inline-block; width:18px; height:18px; background:url(https://img.miraeassetdaewoo.com/new2016/btn/btn_open.gif) no-repeat center; font-size:0; line-height:0; text-indent:-1000px; border:0;}
+.acco_wrap > li.on button{background-image:url(https://img.miraeassetdaewoo.com/new2016/btn/btn_close.gif);}
+.acco_wrap ol li strong,
+.acco_wrap ol li p{font-size:0; line-height:0; text-indent:-1000px; overflow:hidden;}
+.acco_wrap > li:first-child:before{content:'';}
+.acco_cont{display:none;}
+#fit2{padding:20px 0;}
+#fit3{padding:40px 0 20px;}
+#fit4{padding:40px 0 0;}
+.acco_cont ol,
+.acco_cont ol li{padding:10px 0 0;}
+.acco_cont .col_type thead th{font-weight:600;}
+.acco_cont .col_type thead th,
+.acco_cont .col_type tbody tr > td{padding-left:20px; text-align:left;}
+.acco_cont .col_type .square > li{background:url(https://img.miraeassetdaewoo.com/new2016/ico/ico_list_square.gif) no-repeat 0 6px; padding-left:10px;}
+.acco_cont .table_wrap{margin-bottom:10px;}
+.acco_cont .table_wrap:first-child{margin-bottom:20px;}
+.acco_cont .table_wrap:first-child td li{float:left; width:40%; margin:0;}
+.acco_cont h4{padding:10px 0;}
+
+.fitness_result{margin-top:15px; border-top:1px solid #000;}
+.fitness_result .result_wrap{position:relative; width:100%; box-sizing:border-box;}
+.fitness_result .result_wrap:after{content:'';display:block;clear:both;}
+.fitness_result .result_wrap{padding:15px 0 15px 30px;}
+.fitness_result .result_wrap .table_wrap{float:left; width:480px; margin:0;}
+.fitness_result .result_wrap .estimate{position:relative; float:left; margin:-15px 0 0; width:92px; height:95px; padding:0 15px 0 0;}
+.fitness_result .result_wrap .estimate strong{display:block; width:92px; height:95px; color:#fff; padding:30px 0 0; font-size:18px;text-align:center; box-sizing:border-box;}
+.fitness_result .result_wrap .estimate.green strong{background:url(https://img.miraeassetdaewoo.com/financial/bg_fitness_green.gif) no-repeat;}
+.fitness_result .result_wrap .estimate.yellow strong{background:url(https://img.miraeassetdaewoo.com/financial/bg_fitness_yellow.gif) no-repeat;}
+.fitness_result .result_wrap .estimate.blue strong{background:url(https://img.miraeassetdaewoo.com/financial/bg_fitness_blue.gif) no-repeat;}
+.fitness_result .result_wrap .estimate.red strong{background:url(https://img.miraeassetdaewoo.com/financial/bg_fitness_red.gif) no-repeat;}
+.fitness_result .result_wrap .tooltip_area{display:none; position:absolute; left:90px; top:10px; width:280px; padding:10px; background:#fff; text-align:left; border:1px solid #e5e5e5; z-index:2;}
+.fitness_result .result_wrap .tooltip_area li > span{display:inline-block; padding:2px 2px 0; color:#fff; font-size:11px; line-height:14px;}
+.fitness_result .result_wrap .tooltip_area li > span.blue{background:#2874c8;}
+.fitness_result .result_wrap .tooltip_area li > span.green{background:#009e4d;}
+.fitness_result .result_wrap .tooltip_area li > span.yellow{background:#f26612;}
+.fitness_result .result_wrap .tooltip_area li > span.red{background:#d61920;}
+.fitness_result .result_wrap .btn_fit{position:absolute; right:25px; top:45px;  display:block; width:63px; height:32px; background:url(https://img.miraeassetdaewoo.com/financial/bg_hks4307n10_toggle.gif) no-repeat; text-indent:-9999px; overflow:hidden;}
+.fitness_result .result_wrap .btn_fit.on{background-position:0 bottom;}
+.fitness_result .result_open {display:none; padding:15px 20px; border-top:1px dashed #a8a8a8;}
+.fitness_result .result_open h5{position:relative; width:100%; margin:0 0 -1px; padding:10px 0; background:#f4f4f4; font-size:12px; text-align:center; border-top:2px solid #666; z-index:2;}
+.fitness_result .result_graph{overflow:hidden;margin:0 auto 25px;/*width:420px;font-size:11px;*/color:#777;text-align:center;}
+
+/* 퇴직연금 상품매매 */
+.trade_radio_wrap{display:inline-block; width:100%; padding:10px 0 0;}
+.trade_radio_wrap > a{position:relative; float:right; width:49%; height:220px; background:url(https://img.miraeassetdaewoo.com/new2016/ico/radio.gif) no-repeat 50% 55px; text-align:center; border:1px solid #e5e5e5;}
+.trade_radio_wrap > a:first-child{float:left;}
+.trade_radio_wrap > a .tit{display:block; margin:0; padding:120px 0 0; text-align:center; box-sizing:border-box;}
+.trade_radio_wrap > a.on{background-image:url(https://img.miraeassetdaewoo.com/new2016/ico/radio_on.gif); border:1px solid #f36910;}
+.trade_radio_wrap .desc{display:block; margin:0; padding:18px 0 0;}
+.trade_radio_wrap .desc strong{color:#222;}
+.progress_ok{padding:115px 0 50px; margin:-10px 0 0; background:url(https://img.miraeassetdaewoo.com/new2016/hkp/img_hkp2002v01.gif) no-repeat 50% 50px; text-align:center; border:1px solid #e1e1e1;}
+.progress_ok p:first-child{font-size:16px; font-weight:600;}
+
+input.del{display:inline-block; width:16px; height:16px; background:url(https://img.miraeassetdaewoo.com/new2016/ico/ico_btn_excel.gif) no-repeat 50%; cursor:pointer; border:0;}
+
+/* 퇴직연금 테마검색 */
+.rolling_theme{position:relative; overflow:hidden;}
+.rolling_theme ul{width:9000px;}
+.rolling_theme li{float:left; width:174px; margin:0 0 0 8px;}
+.rolling_theme li:first-child{margin:0;}
+.rolling_theme .btn_group input{position:absolute; top:72px; width:29px; height:60px; background:url(https://img.miraeassetdaewoo.com/new2016/btn/roll_left.png) no-repeat; cursor:pointer; border:0;}
+.rolling_theme .btn_group input.left{left:0;}
+.rolling_theme .btn_group input.right{right:0; background-image:url(https://img.miraeassetdaewoo.com/new2016/btn/roll_right.png);}
+
+/* 퇴직연금상품 irp 운용가이드 */
+.hkp2005v01_table_wrap{position:relative; height:346px; background:url(https://img.miraeassetdaewoo.com/new2016/hkp/img_hkp2005v01.gif) no-repeat;}
+.hkp2005v01_table_wrap .btnWrap{position:absolute; left:452px; top:277px; margin:0;}
+.hkp2005v01_table_wrap .dep02Sec:first-child .btnWrap{left:139px;}
+
+/* 퇴직연금서비스 */
+.table_wrap.table_img_wrap tbody th{background:#fff;}
+.img_wrap .table_img_wrap{padding:0 0 10px;}
+.box_wrap.img{padding:40px 0; text-align:center;}
+.box_wrap.img.sms{padding-bottom:0;}
+.service_list_wrap {margin-bottom:50px;}
+.service_list {overflow:hidden;}
+.service_list_wrap .service_list li {float:left; width:236px; height:208px; margin-top:6px; margin-left:6px;}
+.service_list_wrap .service_list li:first-child {margin-left:0;}
+.service_list_wrap .service_list li a {display:block; height:100%; text-indent:100%; white-space:nowrap; overflow:hidden;  background-repeat:no-repeat; background-position:0 0;}
+.service_list_wrap .service_list li.menu1 a {background-image:url(https://img.miraeassetdaewoo.com/new2016/hkp/bg_hkp2006r01_01_off.gif);}
+.service_list_wrap .service_list li.menu2 a {background-image:url(https://img.miraeassetdaewoo.com/new2016/hkp/bg_hkp2006r01_02_off.gif);}
+.service_list_wrap .service_list li.menu3 a {background-image:url(https://img.miraeassetdaewoo.com/new2016/hkp/bg_hkp2006r01_03_off.gif);}
+.service_list_wrap .service_list li.menu4 a {background-image:url(https://img.miraeassetdaewoo.com/new2016/hkp/bg_hkp2006r01_04_off.gif);}
+.service_list_wrap .service_list li.menu5 a {background-image:url(https://img.miraeassetdaewoo.com/new2016/hkp/bg_hkp2006r01_05_off.gif);}
+.service_list_wrap .service_list li.menu6 a {background-image:url(https://img.miraeassetdaewoo.com/new2016/hkp/bg_hkp2006r01_06_off.gif);}
+.service_list_wrap .service_list li.menu1.on a {background-image:url(https://img.miraeassetdaewoo.com/new2016/hkp/bg_hkp2006r01_01_on.gif);}
+.service_list_wrap .service_list li.menu2.on a {background-image:url(https://img.miraeassetdaewoo.com/new2016/hkp/bg_hkp2006r01_02_on.gif);}
+.service_list_wrap .service_list li.menu3.on a {background-image:url(https://img.miraeassetdaewoo.com/new2016/hkp/bg_hkp2006r01_03_on.gif);}
+.service_list_wrap .service_list li.menu4.on a {background-image:url(https://img.miraeassetdaewoo.com/new2016/hkp/bg_hkp2006r01_04_on.gif);}
+.service_list_wrap .service_list li.menu5.on a {background-image:url(https://img.miraeassetdaewoo.com/new2016/hkp/bg_hkp2006r01_05_on.gif);}
+.service_list_wrap .service_list li.menu6.on a {background-image:url(https://img.miraeassetdaewoo.com/new2016/hkp/bg_hkp2006r01_06_on.gif);}
+.service_list_detail {padding:40px 40px 0; border:1px solid #e1e1e1;}
+.service_list_detail li .table_wrap{margin-top:10px;}
+.service_list_detail .service_ctrl_wrap {position:relative;}
+.service_list_detail .service_ctrl_wrap .btn_prev,
+.service_list_detail .service_ctrl_wrap .btn_next {display:block; position:absolute; width:16px; height:29px; text-indent:100%; white-space:nowrap; overflow:hidden;  background-repeat:no-repeat; background-position:0 0;}
+.service_list_detail .service_ctrl_wrap .btn_prev {left:0; background-image:url(../images/btn_prev_on.gif); }
+.service_list_detail .service_ctrl_wrap .btn_next {right:0; background-image:url(../images/btn_next_on.gif); }
+.service_list_detail .service_ctrl_wrap .btn_prev.on {background-image:url(../images/btn_prev_off.gif); cursor:default;}
+.service_list_detail .service_ctrl_wrap .btn_next.on {background-image:url(../images/btn_next_off.gif); cursor:default;}
+.service_list_detail .service_title li {display:none; text-align:center; padding-bottom:40px; margin-bottom:30px; border-bottom:1px solid #e1e1e1;}
+.service_list_detail .service_title li.on {display:block;}
+.service_list_detail .service_detail .table_wrap td a:hover{color:#0059a6; text-decoration:underline;}
+.service_list_detail .service_detail h4 .btnWrap.middle .btn,
+.service_list_detail .service_detail .desc .btnWrap.middle .btn{padding:2px 7px; line-height:17px; height:16px; background:#fff; font-size:11px; font-weight:normal; border-color:#bbb; color:#444;}
+.msie .service_list_detail .service_detail h4 .btnWrap.middle .btn{line-height:20px;}
+.service_list_detail .service_detail > li {display:none;}
+.service_list_detail .service_detail > li.on {display:block;}
+.hkp2006r01 {position:absolute; top:104px; left:172px;}
+.hkp2006r01_imgBox01 {margin:-5px 0 20px;}
+/* .service_list_wrap .service_list.exception li {height:146px;} */
+.img_orangemall{width:100%; overflow:hidden;}
+.img_orangemall ul {float:right;}
+.img_logo_list{width:100%; margin:0 0 30px; padding:10px 0 5px 64px; border:1px solid #e5e5e5; box-sizing:border-box; overflow:hidden;}
+.img_logo_list li{float:left; width:33.3%; height:33px; padding:10px 0;}
+.service_detail h4{margin:20px 0 15px;}
+.tit_service{padding:0 0 30px; text-align:center;}
+
+.health_promotion > p{padding:10px; margin:0 0 20px; background:#f9f9f9; border:1px solid #e5e5e5;}
+.health_promotion div > .img{float:left; padding:50px 0 0;}
+.health_promotion .list_view{float:right; width:69%;}
+.health_promotion .list_view td .btn{padding:2px 4px;}
+.hkp2006r03_img {margin:-5px 0 20px;}
+.hkp2006r03_imgBox02 {margin:-5px 0 10px;}
+.hkp2006r03_imgBox03 {margin-bottom:10px;}
+.service_list_wrap .service_list.education li {width:357px; height:208px;}
+.borderSt {border:1px dashed #c8c8c8; padding:17px 21px; margin-bottom:30px;}
+.print_coupon{width:629px;}
+.print_coupon .coupon{position:relative;}
+.print_coupon .coupon strong{position:absolute; top:185px; left:177px; width:357px; font-size:16px; font-weight:600;}
+th span.text_indent{display:block; text-indent:12px;}
+.print_guide{width:720px;}
+.print_guide table{width:500px; margin:0 auto;}
+.print_guide table th{font-weight:100; text-align:left;}
+.print_guide table th,
+.print_guide table td{padding:10px;}
+.print_guide table td{font-weight:600;}
+
+/* 퇴직연금 미래에셋대우의 강점 */
+.dws_strong .dep01Sec:first-child{margin:0;}
+.dws_strong .list{padding:40px 0 0;}
+.dws_strong .list dt{font-size:14px; font-weight:600;}
+.dws_strong .list dt strong{color:#3471b2;}
+.dws_strong .list dd{padding:10px 0 15px;}
+
+/* 퇴직연금상담 */
+.retire_counsel{position:relative;}
+.retire_counsel .btn{position:absolute; top:160px; left:0;}
+.retire_counsel_guide{width:100%; overflow:hidden;}
+.retire_counsel_guide li{float:left; width:45%;}
+.retire_counsel_guide li:first-child + li {margin-top:0;}
+
+/* 연금교육서비스 */
+.hkp2008n06{height:366px; padding:0 22px; background:url(https://img.miraeassetdaewoo.com/new2016/hkp/img_hkp2008n06_02.gif) no-repeat; text-align:center;}
+.hkp2008n06 li{padding:290px 0 0;}
+h3.like_check{padding:0 0 5px 22px; background:url(https://img.miraeassetdaewoo.com/new2016/ico/like_check.gif) no-repeat 0 3px;}
+	.msie h3.like_check {background-position:0 0;}
+.guide_books.split.col3 .colSec{width:auto; margin-left:57px;}
+.guide_books.split.col3 .colSec:first-child{margin:0;}
+.study_thum.split.col2{padding:40px 0;}
+.study_thum.split.col2 .colSec{position:relative; width:43%; margin:0 0 0 40px; padding:0 0 0 145px; box-sizing:border-box;}
+.study_thum.split.col2 .colSec:first-child{border-right:1px solid #f4f4f4;}
+.study_thum img{position:absolute; left:0; top:0;}
+.study_thum strong{display:block; padding:0 0 10px; color:#0059a6; font-size:14px;}
+.study_thum.split .colSec ul.list.square {margin-bottom:0;}
+.guide_books img{display:block; margin-bottom:20px;}
+.guide_books strong{color:#000; font-size:14px;}
+.guide_books p{padding:10px 0;}
+
+/* 자산배분 */
+.myportfolio{position:relative; width:100%; height:584px; background:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_img_start.gif") no-repeat; text-align:center;}
+.myportfolio .blind{display:block; height:0;}
+.myportfolio.start .btn{width:220px; height:62px; padding:0; background:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_start.png") no-repeat; font-size:0; line-height:0; white-space:nowrap; border:0; overflow:hidden;}
+.myportfolio.start .form_wrap{padding:357px 0 80px;}
+.myportfolio.start .form_wrap.basic_info > label {margin-left:6px; color:#444;}
+
+.myportfolio.step{height:auto; background:none; text-align:center;}
+.myportfolio.step > div:first-child {height:522px;}
+.myportfolio .step1{background:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_img_step1.gif") no-repeat;}
+.myportfolio .step2{background:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_img_step2.gif") no-repeat;}
+.myportfolio .step3{background:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_img_step3.gif") no-repeat;}
+.myportfolio .step4{background:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_img_step4.gif") no-repeat;}
+.myportfolio .step5{background:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_img_step5.gif") no-repeat;}
+.myportfolio .step6{background:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_img_step6.gif") no-repeat;}
+
+.myportfolio.step ul{display:inline-block; zoom:1; *display:inline; margin:170px auto 0; padding:0 10px 0 0;}
+.myportfolio.step li{display:inline-block; zoom:1; *display:inline; width:144px; height:228px; margin:0 -4px;}
+.myportfolio.step li input{overflow:hidden; position:absolute; left:-9999px; top:-9999px; width:0; height:0;}
+.myportfolio.step li label{display:inline-block; width:100%; height:100%; background:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step1_1.png") no-repeat; font-size:0; line-height:0; overflow:hidden;}
+.myportfolio.step li.on label{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step1_1_over.png");}
+
+.myportfolio.step li label.step1_2{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step1_2.png");}
+.myportfolio.step li.on label.step1_2{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step1_2_over.png");}
+
+.myportfolio.step li label.step2_1{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step2_1.png");}
+.myportfolio.step li.on label.step2_1{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step2_1_over.png");}
+.myportfolio.step li label.step2_2{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step2_2.png");}
+.myportfolio.step li.on label.step2_2{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step2_2_over.png");}
+.myportfolio.step li label.step2_3{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step2_3.png");}
+.myportfolio.step li.on label.step2_3{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step2_3_over.png");}
+.myportfolio.step li label.step2_4{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step2_4.png");}
+.myportfolio.step li.on label.step2_4{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step2_4_over.png");}
+
+.myportfolio.step li label.step3_1{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step3_1.png");}
+.myportfolio.step li.on label.step3_1{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step3_1_over.png");}
+.myportfolio.step li label.step3_2{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step3_2.png");}
+.myportfolio.step li.on label.step3_2{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step3_2_over.png");}
+.myportfolio.step li label.step3_3{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step3_3.png");}
+.myportfolio.step li.on label.step3_3{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step3_3_over.png");}
+.myportfolio.step li label.step3_4{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step3_4.png");}
+.myportfolio.step li.on label.step3_4{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step3_4_over.png");}
+.myportfolio.step li label.step3_5{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step3_5.png");}
+.myportfolio.step li.on label.step3_5{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step3_5_over.png");}
+
+.myportfolio.step li label.step4_1{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step4_1.png");}
+.myportfolio.step li.on label.step4_1{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step4_1_over.png");}
+.myportfolio.step li label.step4_2{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step4_2.png");}
+.myportfolio.step li.on label.step4_2{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step4_2_over.png");}
+.myportfolio.step li label.step4_3{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step4_3.png");}
+.myportfolio.step li.on label.step4_3{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step4_3_over.png");}
+
+.myportfolio.step li label.step5_1{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step5_1.png");}
+.myportfolio.step li.on label.step5_1{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step5_1_over.png");}
+.myportfolio.step li label.step5_2{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step5_2.png");}
+.myportfolio.step li.on label.step5_2{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step5_2_over.png");}
+
+.myportfolio.step li label.step6_1{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step6_1.png");}
+.myportfolio.step li.on label.step6_1{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step6_1_over.png");}
+.myportfolio.step li label.step6_2{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step6_2.png");}
+.myportfolio.step li.on label.step6_2{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step6_2_over.png");}
+.myportfolio.step li label.step6_3{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step6_3.png");}
+.myportfolio.step li.on label.step6_3{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step6_3_over.png");}
+.myportfolio.step li label.step6_4{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step6_4.png");}
+.myportfolio.step li.on label.step6_4{background-image:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_btn_step6_4_over.png");}
+
+/* 자산배분 결과 */
+.myportfolio.result{height:auto; background:#fff;}
+.myportfolio.result > div:first-child{border:1px solid #e5e5e5;}
+.myportfolio.result .result_head{padding:40px 0; background:#f4f4f4; text-align:center; border-bottom:1px solid #e5e5e5;}
+.myportfolio.result .result_head p{padding:15px 0 0;}
+.myportfolio.result .result_head strong{color:#f36910;}
+.myportfolio.result .chart_circle{float:left; width:50%; padding:40px 0 0; text-align:center;}
+.myportfolio.result .chart_circle .chart_wrap{padding:0;border:0;}
+.myportfolio.result .chart_circle .expect_list {display:inline-block;}
+.myportfolio.result .chart_circle .expect_list li{float:left; margin-left:40px;}
+.myportfolio.result .chart_circle .expect_list li:first-child {margin-left:0;}
+.myportfolio.result .chart_circle .expect_list li strong{display:block; padding:3px 0 0; color:#111; font-size:24px;}
+.myportfolio.result .result_dsc{float:right; width:50%; padding:50px 40px 0 0; text-align:left; box-sizing:border-box;}
+.myportfolio.result .result_dsc h3{color:#222; font-size:12px;}
+.myportfolio.result .result_dsc ul{width:100%; padding:15px 0; border-bottom:1px solid #e5e5e5; overflow:hidden;}
+.myportfolio.result .result_dsc li{float:left; width:50%; padding:2px 0 0;}
+.myportfolio.result .result_dsc li span{display:inline-block; width:14px; height:14px; margin:0 5px 0 0; font-size:0; line-height:0; vertical-align:-2px; overflow:hidden;}
+.myportfolio.result .result_dsc li strong{float:left; font-weight:100;}
+.myportfolio.result .result_dsc li em{float:right; padding:0 20px 0 0; text-align:right;}
+.myportfolio.result .result_dsc .under{padding:15px 0 40px;}
+.myportfolio.result .result_dsc .under h3{float:left;}
+.myportfolio.result .result_dsc .under table{float:right; width:80%; text-align:center;}
+.myportfolio.result .result_dsc .under th{font-weight:100;}
+
+/* 자산배분 최종포트폴리오 결과 */
+.chart_list_wrap {margin-bottom:20px; box-sizing:border-box;}
+.chart_list_wrap li {float:left; width:33.3%; height:248px; margin-left:-1px; border:1px solid #e1e1e1; box-sizing:border-box;}
+.chart_list_wrap li.on {position:relative;z-index:9; border:1px solid #f36910}
+.chart_list_wrap p {text-align:center;color:#666;font-weight:bold;}
+.chart_list_wrap p>strong {color:#e4392f;}
+.chart_list_wrap p>span {background:url(https://img.miraeassetdaewoo.com/new2016/ico/ico_bar_tabSub.gif)no-repeat 9px 11px;padding:10px}
+.chart_list_wrap .chart_txt {height:33px;padding-top:16px;background:#fafafa;text-align:center}
+.chart_list_wrap .chart_wrap{border-width:1px 0;}
+
+/* 자산배분 기대위험조정 pop */
+.slider_wrap{position:relative; height:95px; margin-bottom:15px; background:#fafafa; border:1px solid #e1e1e1; box-sizing:border-box; padding:0 20px;}
+.slider_wrap strong{position:absolute; top:20px; z-index:0;}
+.slider_wrap strong.high{right:20px;}
+.slider_wrap strong.low{left:20px;}
+/*
+.slider_wrap .bar{display:block; position:relative; width:598px; height:16px; margin:40px 0 0 20px; background:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_slide_block.png") no-repeat;}
+.slider_wrap input{position:absolute; top:0; left:5px; display:inline-block; height:100%; background:url("https://img.miraeassetdaewoo.com/new2016/hks/mp_slide_ball.png") no-repeat 100% 0; border:0; cursor:default;} 
+*/
+.slider_wrap #slider-range-max {margin-top:42px;}
+
+
+/* 자산배분 펀드 일괄매매 */
+.dep02Sec .navi_guide_wrap{margin-bottom:-20px !important;}
+.fund_box {width:720px;height:auto;padding:45px 0 10px 0;border:1px solid #e1e1e1;text-align:center}
+.fund_box p {margin-top:35px; font-size:16px; font-weight:600;}
+
+/********************
+    EAT CSS START
+********************/
+
+/*  ETF 검색 - 기본검색  */
+.tbl_fin_wrap input[type=checkbox] + label {min-width:50px; display:inline-block; vertical-align:baseline}
+.tbl_fin_wrap input[type=checkbox] {margin-left:0}
+.fin_data .table_wrap + .btnWrap {position:relative;}
+
+/*  ETF 검색 - 기본검색 - 간단히  */
+.list_simple_data  + .btnWrap.more {margin-top:0}
+
+/*  ETF 검색 - 비교검색  */
+.tbl_comparative.table_wrap td .btnWrap.small.group .btn {width:auto; margin-left:4px;}
+.tbl_comparative.table_wrap td .btnWrap.small.group .btn:first-child {margin-left:0;}
+.tbl_comparative table td .btn.small ~ .btn.small,
+.tbl_comparative table td .btnWrap.small .btn ~ .btn {margin-top:0}
+
+/*  ETF 검색 - 관심ETF편집 팝업  */
+.layer_popup_wrap .table_wrap .ctrl {vertical-align:top}
+.layer_popup_wrap .col_type tbody tr > td.border_none {border-left:none}
+
+/* ETF - ETF MARKET - 테마 BEST6 */
+.list_theme_best > li {float:left; margin:0 6px 6px 0;}
+.list_theme_best > li.three_mult {margin-right:0;}
+.list_theme_best > li.three_mult ~ li {margin-bottom:0;}
+.list_theme_best > li > a {display:block; width:174px; height:187px; padding:32px 30px; border:1px solid #e1e1e1; text-align:center;}
+.list_theme_best > li > a > span,
+.list_theme_best > li > a > span > em,
+.list_theme_best > li > a > strong {display:block;}
+.list_theme_best > li > a > .theme > em,
+.list_theme_best > li > a > strong {overflow:hidden; text-indent:-9999px;}
+.list_theme_best > li > a > .theme > em {height:10px;}
+.list_theme_best > li > a > .theme:after {display:block; content:""; width:30px; height:1px; background:#e1e1e1; margin:15px auto 30px;}
+.list_theme_best > li > a > strong {height:21px; margin-bottom:21px;}
+.list_theme_best > li > a > .txt_cate1 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks6001r01_etf_best01_01_off.png") no-repeat center top;}
+.list_theme_best > li > a > .txt_cate2 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks6001r01_etf_best02_01_off.png") no-repeat center top;}
+.list_theme_best > li > a > .txt_cate3 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks6001r01_etf_best03_01_off.png") no-repeat center top;}
+.list_theme_best > li > a > .txt_cate4 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks6001r01_etf_best04_01_off.png") no-repeat center top;}
+.list_theme_best > li > a > .txt_cate5 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks6001r01_etf_best05_01_off.png") no-repeat center top;}
+.list_theme_best > li > a > .txt_cate6 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks6001r01_etf_best06_01_off.png") no-repeat center top;}
+.list_theme_best > li > a > .tit_theme_best1 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks6001r01_etf_best01_02_off.png") no-repeat center top;}
+.list_theme_best > li > a > .tit_theme_best2 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks6001r01_etf_best02_02_off.png") no-repeat center top;}
+.list_theme_best > li > a > .tit_theme_best3 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks6001r01_etf_best03_02_off.png") no-repeat center top;}
+.list_theme_best > li > a > .tit_theme_best4 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks6001r01_etf_best04_02_off.png") no-repeat center top;}
+.list_theme_best > li > a > .tit_theme_best5 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks6001r01_etf_best05_02_off.png") no-repeat center top;}
+.list_theme_best > li > a > .tit_theme_best6 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks6001r01_etf_best06_02_off.png") no-repeat center top;}
+.list_theme_best > li > a > .theme_desc {background:url("https://img.miraeassetdaewoo.com/new2016/btn/btn_check_off.png") no-repeat center bottom; padding-bottom:49px; color:#444;}
+.list_theme_best > li > a:hover {background:#004682; border:1px solid #004682;}
+.list_theme_best > li > a:hover > .theme:after {background:#44759f;}
+.list_theme_best > li > a:hover > .txt_cate1 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks6001r01_etf_best01_01_on.png") no-repeat center top;}
+.list_theme_best > li > a:hover > .txt_cate2 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks6001r01_etf_best02_01_on.png") no-repeat center top;}
+.list_theme_best > li > a:hover > .txt_cate3 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks6001r01_etf_best03_01_on.png") no-repeat center top;}
+.list_theme_best > li > a:hover > .txt_cate4 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks6001r01_etf_best04_01_on.png") no-repeat center top;}
+.list_theme_best > li > a:hover > .txt_cate5 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks6001r01_etf_best05_01_on.png") no-repeat center top;}
+.list_theme_best > li > a:hover > .txt_cate6 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks6001r01_etf_best06_01_on.png") no-repeat center top;}
+.list_theme_best > li > a:hover > .tit_theme_best1 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks6001r01_etf_best01_02_on.png") no-repeat center top;}
+.list_theme_best > li > a:hover > .tit_theme_best2 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks6001r01_etf_best02_02_on.png") no-repeat center top;}
+.list_theme_best > li > a:hover > .tit_theme_best3 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks6001r01_etf_best03_02_on.png") no-repeat center top;}
+.list_theme_best > li > a:hover > .tit_theme_best4 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks6001r01_etf_best04_02_on.png") no-repeat center top;}
+.list_theme_best > li > a:hover > .tit_theme_best5 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks6001r01_etf_best05_02_on.png") no-repeat center top;}
+.list_theme_best > li > a:hover > .tit_theme_best6 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks6001r01_etf_best06_02_on.png") no-repeat center top;}
+.list_theme_best > li > a:hover > .theme_desc {background:url("https://img.miraeassetdaewoo.com/new2016/btn/btn_check_on.png") no-repeat center bottom; color:#fff;}
+
+/* ETF - ETF MARKET - 테마 BEST6 - 간단히  */
+.fin_data > .btnWrap + div {padding-top:27px;}
+.list_simple_data > li {float:left; width:191px; min-height:252px; padding:27px 20px 30px; margin:10px 10px 0 0; border:1px solid #dcdcdc; text-align:center;}
+.list_simple_data > li.three_mult {margin-right:0;}
+.list_simple_data > li > h3 {overflow:hidden; height:65px; line-height:22px; font-size:15px; color:#666; text-align:left;}
+.list_simple_data > li > .market_price {margin:13px 0 18px; padding-top:17px; border-top:1px solid #dcdcdc}
+.list_simple_data > li > .market_price > dt {margin-bottom:10px;}
+.list_simple_data > li > .market_price > .price {margin-bottom:8px; font-size:30px; font-weight:bold; min-height:20px;}
+	.ie8 .list_simple_data > li > .market_price > .price {height:20px;}
+.list_simple_data > li > .market_price > .rate {margin-bottom:6px;}
+.list_simple_data > li > .market_price > .rate > span {font-weight:bold;}
+.list_simple_data > li > .market_price > .rate_inves {margin-top:5px;}
+.list_simple_data > li > .market_price > .rate_inves > em {font-size:16px; font-weight:bold; color:#e07210;}
+.list_simple_data > li > .btnWrap {margin:0;}
+.list_simple_data > li > .btnWrap > a {margin-left:4px;}
+.list_simple_data > li > .btnWrap > a:first-child {margin-left:0;}
+
+/* ETF - ETF MARKET - 수익률 BEST6 */
+.operator_wrap {margin-top:30px;}
+.list_operator {padding-top:5px; margin-bottom:40px;}
+.list_operator > div {display:table; border-right:1px solid #eaeaea; border-bottom:1px solid #eaeaea; text-align:center;}
+.list_operator > div:first-child {border-top:1px solid #eaeaea;}
+.list_operator > div > span {display:table-cell; width:240px; height:65px; border-left:1px solid #eaeaea; vertical-align:middle;}
+
+/* ETF - ETF 상품상세(팝업) - BAR GRAPH */
+.bar_graph {display:block; position:relative; padding-right:80px;}
+.bar_graph > span {overflow:hidden; display:block; height:19px;}
+.bar_graph > .graph_value > em {position:absolute; top:0; right:0; color:#444;}
+.bar_graph.top1 > .graph_value {background:#ac44b7;}
+.bar_graph.top2 > .graph_value {background:#329141;}
+.bar_graph.top3 > .graph_value {background:#216bca;}
+.bar_graph.top4 > .graph_value {background:#2dacb2;}
+.bar_graph.top5 > .graph_value {background:#8bb758;}
+.bar_graph.top6 > .graph_value {background:#ff8100;}
+.bar_graph.top7 > .graph_value {background:#f51500;}
+.bar_graph.top8 > .graph_value {background:#1e3666;}
+.bar_graph.top9 > .graph_value {background:#765c5c;}
+.bar_graph.top10 > .graph_value {background:#f6751d;}
+
+/* 임시 - 기간설정(ETF) */
+.expir {position:relative;}
+.expir_wrap {position:absolute; top:7px; right:0;}
+.expir_wrap > em,
+.expir_wrap > div {display:inline-block; position:relative;}
+.expir_wrap > em {font-size:11px; font-weight:bold;}
+.expir_wrap > .expir_date > input {width:62px; padding:5px 20px 6px 8px;}/* 임시 input style */
+.expir_wrap > .expir_date > .btn_cal {position:absolute; top:6px; right:5px;}
+
+/* ETF란? | ETF 투자정보 */
+.mark_area {position:relative;}
+.mark_area h2.underline {margin:0 0 30px 0; padding-bottom:10px; border-bottom:1px solid #e5e5e5;}
+.mark_area .mark_img {position:absolute;}
+.mark_area .mark_list {display:inline-block; margin:0 30px 38px 149px;}
+.mark_area .mark_list .mark_tit {display:block; margin-top:21px; font-size:14px; color:#666;}
+.mark_area .mark_list .mark_tit:first-child {margin-top:0}
+.mark_area .mark_des {margin-top:12px;}
+.mark_area .mark_list + .table_wrap {margin:-8px 0 40px 0;}
+
+/* 구조 및 제도 | ETF 투자정보 */
+.long_artwork {padding:40px 0; text-align:center}
+.organ_tit {line-height:17px; font-size:14px;}
+.organ_desc {line-height:17px; margin-top:15px;}
+/*
+.tit.depth03 + .organ_desc {margin-top:-7px;} 
+.srch_etf .desc_link > .btnWrap {display:inline-block; margin:0 16px 0 16px;}
+*/
+.organ_desc + .list {margin-top:11px;}	
+.organ_desc + .table_wrap {margin-top:15px;}
+.organ_desc + .organ_tit, .organ_tit.vertical {margin-top:30px;}
+.desc_link > .btnWrap {margin:0 0 0 10px;}
+.desc_link {overflow:hidden; margin:0 0 25px 0; line-height:30px; color:#666; font-size:14px; font-weight:bold;}
+.dep_outer {margin:7px 0 0 0;}
+.organ_tit {display:block; margin:0 0 17px 0; font-size:14px;} 
+
+/* ETF 거래방법 | ETF 투자정보 */
+.hts_steptit.tit {margin-bottom:20px; font-size:14px;}
+.hts_steptit img {vertical-align:top}
+.hts_steptit em {color:#0059a6}
+.num.list {margin:5px 0 0;}
+.num.list li {padding-left:16px; background:url(https://img.miraeassetdaewoo.com/new2016/ico/ico_list_num1.png) no-repeat 0 4px; font-size:11px; line-height:20px}
+.hts_steplist:after {display:block; clear:both; content:""}
+.hts_steplist li {float:left; margin-left:15px; width:230px; text-align:center;}
+.hts_steplist li:first-child {margin-left:0;}
+.hts_steplist li .des {margin-top:13px;}
+.hts_steplist2:after {display:block; clear:both; content:""}
+.hts_steplist2 li {float:left; margin-left:40px; width:340px; text-align:center;}
+.hts_steplist2 li:first-child {margin-left:0;}
+.hts_steplist2 li .des {margin-top:13px;}
+
+/********************
+    EAT CSS END
+********************/
+
+/********************
+    ELS_DLS CSS START
+********************/
+
+/* ELS/DLS/ETN | ELS/DLS상품소개  | 전체상품 */
+.elsdls_data_wrap .list_simple_data li {height:289px; padding:0 20px 30px}
+.elsdls_data_wrap .list_simple_data li .date_closing {height:37px; margin:0 -20px; background:#f5faff; line-height:39px; color:#00427a; border-bottom:1px solid #dcdcdc}
+.elsdls_data_wrap .list_simple_data li .date_closing > strong {color:#f57b2e}
+.elsdls_data_wrap .list_simple_data li .state {padding:20px 0 14px;}
+.elsdls_data_wrap .list_simple_data > li > .market_price > .price {font-family:"tahoma"; color:#f36910;}
+.table_wrap.tbl_elsdls td.l a {display:block;}
+.table_wrap.tbl_elsdls table td .label_state{display:inline-block}
+
+/********************
+    ELS_DLS CSS END
+********************/
+
+
+/********************
+    ELS_ETN CSS START
+********************/
+
+/* 상품정보/전략ETN */
+.etn_product .etn_numlist {margin:-26px 0 12px 15px; text-indent:-15px;}
+.etn_product .etn_numlist > li img {margin-top:7px;}
+.etn_product .etn_indes {padding-left:15px; line-height:1}
+.etn_product .etn_des {margin-top:-28px}
+.etn_product .etn_indes span {display:block; margin-bottom:12px}
+.etn_product .etn_list {margin-bottom:25px}
+.etn_product .etnover_des {margin:12px 0 0}
+.etn_product .wise_pic {width:100%; margin-bottom:30px; border:1px #ddd solid; text-align:center}
+.etn_product .indices_des {margin-top:15px}
+.etn_product .etndanger_notice {overflow-y:scroll; height:500px; padding:20px; margin-bottom:50px; border:1px solid #ccc}
+
+/********************
+    ELS_ETN CSS END
+********************/
+
+/* 상품상세보기  공통 */
+.detailProPop div,
+.detailProPop dl{box-sizing:border-box;}
+.detailProPop .fin_data{position:relative; margin:20px 0 0;}
+.detailProPop .fin_data > .btnWrap .btn{padding-right:35px; background:url("https://img.miraeassetdaewoo.com/new2016/ico/ico_drop.png") no-repeat 90% 50%;}
+.msie.ie8 .detailProPop .fin_data > .btnWrap .btn {padding-right:35px;}
+.result_view > li{float:left; width:15%; text-align:center; border:1px solid #e5e5e5; border-width:1px 0 1px 1px; border-top-color:#000; border-bottom-color:#bebebe;}
+.result_view > li:first-child{border-left:0;}
+.result_view > li strong{display:block; height:40px; padding:15px 0 0; background:#f4f4f4; font-weight:100; line-height:15px; border-bottom:1px solid #e5e5e5;}
+.result_view > li strong span{display:block;}
+.result_view > li .img{display:table; width:100%; height:70px; padding:10px 0 0;}
+.result_view > li .img > span{display:table-cell; vertical-align:middle;}
+.result_view > li .img.set_price {text-align:center;}
+.result_view > li .img.set_price > img {display:inline-block;}
+.result_view > li .img.set_price > span {display:block;}
+/* .result_view > li em{display:block; padding:10px 0; background:#f9f9f9; font-size:16px; font-weight:600;}*/
+.result_view > li.end{width:155px; height:126px;}
+.result_view > li.end li{font-size:11px; line-height:20px;}
+.result_view > li.end strong{margin:0 0 8px; line-height:30px;}
+.result_view > li.end li span{margin:0 0 0 15px;}
+.chart_analysis > div{float:left; width:50%; padding:10px 15px; border:1px solid #e5e5e5; box-sizing:border-box}
+.chart_analysis > div:first-child{border-right:0;}
+.chart_analysis .chart_wrap{padding:0; margin:0; border:0;}
+.chart_analysis > div{height:250px;}
+.chart_analysis h4{margin-bottom:20px; padding-bottom:5px; border-bottom:1px solid #e5e5e5;}
+.chart_analysis.no_line h4{margin-bottom:0; border:0;}
+.chart_analysis .table_info.chk{margin:0; letter-spacing:0;}
+.chart_analysis .no_data{padding-top:88px;}
+.chart_analysis.type2 {border:1px solid #e5e5e5;}
+.chart_analysis.type2 > div {height:auto; border:none; border-left:1px solid #e5e5e5;}
+.chart_analysis.type2 > div:first-child{margin-right:-1px; border-left:none; border-right:1px solid #e5e5e5;}
+.detailProPop .cal_option_wrap{position:absolute; right:0; top:5px;}
+.detailProPop .chart_remark:after {display:block; content:""; clear:both;}
+.detailProPop .chart_remark li{float:left; margin-left:20px}
+.detailProPop .chart_remark li.even {float:right;}
+.detailProPop .chart_remark li:first-child {margin-left:0}
+.detailProPop .chart_remark.both_sides li {width:46%; margin-left:0;}
+.detailProPop .chart_remark.both_sides li.even {width:46%; margin-left:8%;}
+.detailProPop .chart_remark.both_sides li em {float:right;}
+	
+	
+.fund_color td{background:#f9f9f9; color:#orange}
+.no_data{text-align:center;}
+.no_data img{margin:0 0 15px;}
+
+/* IRP 매매 모델포트폴리오 */
+/* .model_portpolio{margin:-30px 0 0;} */
+.model_portpolio li{width:auto; margin-left:6px;}
+.model_portpolio li:first-child{margin:0;}
+.model_portpolio .btn_group input{top:94px;}
+
+/* IRP 입금, 가입 */
+.irp_guide{padding:34px 0; text-align:center; border:1px solid #eaeaea;}
+.security_wrap{position:relative; padding:20px 0; background:url(https://img.miraeassetdaewoo.com/new2016/hkp/img_input_otp.gif) no-repeat 460px 50%; border:1px solid #dbdbdb;}
+.security_wrap.card{background:url(https://img.miraeassetdaewoo.com/new2016/hkp/img_input_card.gif) no-repeat 400px 50%;}
+.security_wrap .row_type{width:322px; margin:0 0 0 40px; border:0;}
+.security_wrap.card .row_type{width:300px;}
+.security_wrap .row_type th,
+.security_wrap .row_type td{padding-right:0; padding-left:0; background:#fff; border:0;}
+.security_wrap .row_type tr:first-child th,
+.security_wrap .row_type tr:first-child td{border-bottom:1px solid #dbdbdb;}
+.security_wrap.only .row_type tr:first-child th,
+.security_wrap.only .row_type tr:first-child td{border:0;}
+.security_wrap .row_type td input{width:99%; border-color:#bbb;}
+.security_wrap.card input{width:160px;}
+.security_wrap.card .input_wrap{display:inline-block; width:120px; height:27px; margin:0 0 0 10px; background:url(https://img.miraeassetdaewoo.com/new2016/hkp/input_num1.gif) no-repeat; vertical-align:2px; box-sizing:border-box;}
+.security_wrap.card .input_wrap input{width:22px; margin:2px 3px 0 2px; background:transparent; text-indent:0; text-align:center; border:0;}
+.security_wrap.card .input_wrap.second{padding:0 0 0 62px; background-image:url(https://img.miraeassetdaewoo.com/new2016/hkp/input_num2.gif);}
+.security_wrap.card td img{position:absolute; top:72px; right:154px;}
+.security_wrap.card td img.flag2{position:absolute; top:86px; right:68px;}
+
+/********************
+    펀드 CSS START
+********************/
+
+/* 펀드 - 펀드검색  */
+.sma_sh_wrap:after {display:block; content:""; clear:both;}
+.sma_sh_wrap > div {float:left; vertical-align:top;}
+.sma_sh_filter {width:180px; margin-right:24px;}
+.sma_filter_list {border-top:1px solid #444;}
+.sma_filter_list > ol > li > a {display:block; background:#fff; border-right:1px solid #e5e5e5; border-left:1px solid #e5e5e5; text-align:left; color:#444;}
+.sma_filter_list > ol > li.on > a {background:#004682; border-right:1px solid #004682; border-left:1px solid #004682; color:#fff;}
+.sma_filter_list > ol > li > a:after {display:block; content:""; width:179px; height:2px; background:#f5f5f5; border-top:1px solid #e5e5e5;}
+.sma_filter_list > ol > li.on > a:after {background:#073863; border-top:1px solid #004682;}
+.sma_filter_list > ol > li > a > span {display:block; padding:13px 0 13px 19px; background:url("https://img.miraeassetdaewoo.com/new2016/ico/ico_fund_accordi_off.png") no-repeat 147px 50%;}
+.msie .sma_filter_list > ol > li > a > span {padding:16px 0 10px 19px;}
+.sma_filter_list > ol > li.on > a > span {background:url("https://img.miraeassetdaewoo.com/new2016/ico/ico_fund_accordi_on.png") no-repeat 147px 50%;}
+.sma_filter_list > ol > li > .def_filter_box {display:none; padding:9px 18px; background:#f9f9f9; border-right:1px solid #e5e5e5; border-left:1px solid #e5e5e5;}
+.sma_filter_list > ol > li:after {display:none; content:""; width:180px; height:2px; background:#f5f5f5; border-top:1px solid #e5e5e5;}
+.sma_filter_list > ol > li.on:after {display:block;}
+.sma_filter_list > ol > li > .def_filter_box > ul {margin-top:10px;}
+.sma_filter_list > ol > li > .def_filter_box > ul:first-child {margin-top:0;}
+.sma_filter_list > ol > li > .def_filter_box ul li {color:#444;}
+.subtit {font-weight:bold;}
+
+.sma_sh_pick {position:relative; width:520px; margin-left:-4px;}
+.sma_result {position:absolute; top:0; right:0;}
+.sma_result > span,
+.sma_result > a {display:inline-block; vertical-align:middle;}
+.sma_result > span {margin-right:16px; color:#555;}
+.sma_result > span > em {font-size:15px; font-weight:bold; color:#0059a6;}
+.filter_wrap {margin-bottom:20px; border-top:1px solid #444;}
+.low_filter_list > li > em {display:block; padding:13px 0 13px 18px; border-right:1px solid #e5e5e5; border-left:1px solid #e5e5e5;}
+.msie .low_filter_list > li > em {padding:16px 0 10px 18px;}
+.filter_desc {padding:70px 0 69px 119px; background:#f9f9f9; border:1px solid #e5e5e5;}
+.filter_desc > ol {margin-bottom:12px;}
+.filter_desc > ol li {margin-top:9px; font-size:14px; font-weight:bold; color:#555;}
+.filter_desc > ol li:first-child {margin-top:0;}
+.filter_desc > ol li em {color:#0059a6;}
+
+.low_filter_list > li {position:relative;}
+.low_filter_list.on > li > em {font-weight:bold;}
+.low_filter_box {width:100%;}
+.low_filter_box:after {display:block; content:""; width:520px; height:2px; background:#f5f5f5;}
+.low_filter_box > dl {box-sizing:border-box;}
+.low_filter_box > dl > dt {background:#f9f9f9; border:1px solid #e5e5e5;}
+.low_filter_box > dl > dt > .btnWrap {display:block; margin:11px 0;}
+.low_filter_box > dl > dd {overflow-y:auto; max-height:140px; padding:14px 18px; border-right:1px solid #e5e5e5; border-bottom:1px solid #e5e5e5; border-left:1px solid #e5e5e5;}
+.low_filter_box > dl > dd > ul {display:none;}
+.low_filter_box > dl > dd > ul:first-child {display:block;}
+.low_filter_box > dl > dd > ul:after {display:block; content:""; clear:both;}
+.low_filter_box > dl > dd > ul > li {float:left; width:33.33%;}
+.low_filter_box > dl > dd > ul > li:first-child {float:none; width:100%;}
+.low_filter_box > dl > dd > span {display:inline-block; width:50%; text-align:center;}
+.low_filter_box > dl > dd > span:first-child {margin-right:-4px;}
+.low_filter_box > .filter_no_data {overflow:hidden; display:block; width:520px; height:0; border-bottom:1px solid #e5e5e5; text-indent:-9999px;}
+.low_filter_box.default > dl > dt {overflow:hidden; display:block; position:absolute; top:-9999px; left:-9999px; width:0; height:0; padding:0; margin:0; font-size:0; line-height:0;}
+.low_filter_box.default > dl > dd {border-top:1px solid #e5e5e5;}
+.low_filter_box.col2 > dl {float:left; width:50%;}
+.low_filter_box.col2 > dl > dt {padding:10px 0 9px 19px; color:#222;}
+.low_filter_box.col2 > dl:first-child > dt {border-right:0;}
+.low_filter_box.col2 > dl:first-child > dd {border-right:0;}
+.low_filter_box.col2 > dl > dd > ul > li {float:none; width:100%;}
+.low_filter_box.star > dl > dd  > ul > li {width:20%;}
+.btn_filter_close {overflow:hidden; display:block; position:absolute; top:18px; right:19px; width:11px; height:11px; background:url("https://img.miraeassetdaewoo.com/new2016/btn/btn_filter_close.png") no-repeat left top; text-indent:-9999px;}
+
+.tbl_merge > .tit_pd {display:inline-block; width:498px; padding-right:7px; vertical-align:middle;}
+.tbl_merge > .btnWrap {display:inline-block; margin:0; vertical-align:middle;}
+.tbl_merge > .btnWrap > a,
+.tbl_merge > .btnWrap > span {vertical-align:middle;}
+.tbl_merge > .btnWrap > span {display:inline-block; width:73px;}
+.tbl_merge > .btnWrap > .btn_fund {margin-top:0;}
+
+/* 관심펀드 그룹편집 - 팝업  */
+.layer_content > div.btnWrap:first-child {margin:0 0 30px 0;}
+.editgroup_wrap .allsel_wrap {position:relative;}
+.editgroup_wrap .allsel_wrap .sel_spot {padding-bottom:7px;}
+.editgroup_wrap .allsel_wrap .sel_spot a {display:inline-block; width:17px; height:17px; text-indent:-9999px;}
+.editgroup_wrap .allsel_wrap .btn {position:absolute; top:-1px; right:0;}
+.editgroup_wrap .sel_spot .up {margin-left:2px; background:url("https://img.miraeassetdaewoo.com/new2016/btn/btn_ctrl_small.gif") 44px 0;}
+.editgroup_wrap .sel_spot .down {margin-left:5px; background:url("https://img.miraeassetdaewoo.com/new2016/btn/btn_ctrl_small.gif");}
+.editgroup_wrap .allsel_wrap .multibtn {padding-left:16px; color:#666; background:url(https://img.miraeassetdaewoo.com/new2016/btn/btn_plus_group.png) no-repeat 7px 50%;}
+
+.editgroup_wrap .dividesel_wrap {position:relative; border-bottom:1px solid #bebebe;}
+.editgroup_wrap .dividesel_wrap .btnWrap {position:absolute; right:0; top:31px; margin:0;}
+.editgroup_wrap .dividesel_wrap .btnWrap a + a {margin-left:5px;}
+.editgroup_wrap .dividesel_wrap.edit .btnWrap {top:30px;}
+.editgroup_wrap .dividesel_wrap.edit .tit {padding:30px 0 10px;} 
+.editgroup_wrap .dividesel_wrap > .tit {padding:30px 0 17px; border-top:1px solid #444; box-sizing:border-box; font-size:12px; color:#444;}
+.editgroup_wrap .dividesel_wrap + .dividesel_wrap > .tit {border-top:0;}
+
+.editgroup_wrap .dividesel_wrap .group_control {position:relative; padding:10px 16px 9px; border-top:1px solid #bebebe; box-sizing:border-box; background:#f9f9f9; color:#222;}
+.editgroup_wrap .dividesel_wrap .group_control strong {font-weight:normal;}
+.editgroup_wrap .dividesel_wrap .group_control a {display:inline-block; text-indent:-9999px;}
+.editgroup_wrap .dividesel_wrap .group_control .close {position:absolute; right:17px; margin:0; width:12px; height:20px; background:url(https://img.miraeassetdaewoo.com/new2016/ico/ico_edit_minus.png) no-repeat 0 50%;}
+.editgroup_wrap .dividesel_wrap .group_control .open {position:absolute; right:17px; width:12px; height:20px; background:url(https://img.miraeassetdaewoo.com/new2016/ico/ico_edit_plus.png) no-repeat 0 50%;}
+.editgroup_wrap .dividesel_wrap .tit label {margin-left:7px;}
+.editgroup_wrap .dividesel_wrap .tit input {vertical-align:middle;}
+.editgroup_wrap .dividesel_wrap .tit input[type="text"] {margin-left:7px;}
+.dividesel_wrap input + .txt {margin-left:9px;}
+.editgroup_wrap .dividesel_wrap .edit_list {overflow-y:auto; display:none; box-sizing:border-box; color:#444;}
+.editgroup_wrap .dividesel_wrap .edit_list li {position:relative; padding:19px 0 17px 16px; border-top:1px solid #e5e5e5; box-sizing:border-box;}
+.editgroup_wrap .dividesel_wrap .edit_list:first-child {border-top:1px solid #e5e5e5;}
+.editgroup_wrap .dividesel_wrap .edit_list li.last {border-bottom:1px solid #e5e5e5;}
+.editgroup_wrap .dividesel_wrap .edit_list li > span {overflow:hidden; display:inline-block; width:460px; vertical-align:middle; text-overflow:ellipsis; white-space:nowrap;}
+.editgroup_wrap .dividesel_wrap .edit_list .control {position:absolute; top:16px; right:17px;}
+.editgroup_wrap .dividesel_wrap .edit_list .control .btn {padding:4px 14px 1px; min-width:20px; vertical-align:top; border-color:#bbb; color:#444; font-weight:normal;}
+.editgroup_wrap .dividesel_wrap .edit_list .control .down,.editgroup_wrap .dividesel_wrap .edit_list .control .up {display:inline-block; width:27px; height:27px; text-indent:-9999px;}
+.editgroup_wrap .dividesel_wrap .edit_list .control .down {margin-left:10px; background:url("https://img.miraeassetdaewoo.com/new2016/btn/btn_ctrl.gif");}
+.editgroup_wrap .dividesel_wrap .edit_list .control .up {margin-left:3px; background:url("https://img.miraeassetdaewoo.com/new2016/btn/btn_ctrl.gif") 58px 0;}
+
+/* 펀드 - 관심펀드 등록팝업  */
+.register_wrap {position:relative;}
+.register_wrap > .btnWrap {margin:0 0 10px}
+.register_wrap > .btnWrap a {height:15px; padding:0px 7px 1px;}
+.register_wrap .group_add {display:none; position:relative; padding:9px 0 10px 15px; border-bottom:1px solid #bebebe}
+.register_wrap .group_add .btn_area {position:absolute; top:10px; right:14px}
+.register_wrap .group_add input {font-weight:bold; color:#444}
+.register_wrap .register_con { max-height:202px; overflow-y:auto; border-top:1px solid #444; border-bottom:1px solid #bebebe; color:#444}
+.register_wrap .register_con li {padding:9px 0 9px 17px}
+.register_wrap .register_con li + li {border-top:1px solid #e5e5e5}
+
+/* 펀드 - 펀드랭킹  */
+.list_theme_best.ranking > li > a {width:236px; height:128px; padding:26px 0 0 0; box-sizing:border-box}
+.list_theme_best.ranking > li > a > .tit_ranking {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks4116n12_01_ranking.png") no-repeat center top;}
+.list_theme_best.ranking > li > a > .theme:after {height:0; background:none; margin-bottom:20px}
+.list_theme_best.ranking > li > a > strong {height:35px}
+.list_theme_best.ranking > li > a > .theme_txt1 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks4116n12_01_01_off.png") no-repeat center top;}
+.list_theme_best.ranking > li > a > .theme_txt2 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks4116n12_01_02_off.png") no-repeat center top;}
+.list_theme_best.ranking > li > a > .theme_txt3 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks4116n12_01_03_off.png") no-repeat center top;}
+.list_theme_best.ranking > li > a > .theme_txt4 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks4116n12_01_04_off.png") no-repeat center top;}
+.list_theme_best.ranking > li > a > .theme_txt5 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks4116n12_01_05_off.png") no-repeat center top;}
+.list_theme_best.ranking > li > a > .theme_txt6 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks4116n12_01_06_off.png") no-repeat center top;}
+.list_theme_best.ranking > li > a:hover {background:none; border:1px solid #e1e1e1}
+.list_theme_best.ranking > li.on {background:#004682}
+.list_theme_best.ranking > li.on a > .theme_txt1 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks4116n12_01_01_on.png") no-repeat center top;}
+.list_theme_best.ranking > li.on a > .theme_txt2 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks4116n12_01_02_on.png") no-repeat center top;}
+.list_theme_best.ranking > li.on a > .theme_txt3 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks4116n12_01_03_on.png") no-repeat center top;}
+.list_theme_best.ranking > li.on a > .theme_txt4 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks4116n12_01_04_on.png") no-repeat center top;}
+.list_theme_best.ranking > li.on a > .theme_txt5 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks4116n12_01_05_on.png") no-repeat center top;}
+.list_theme_best.ranking > li.on a > .theme_txt6 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks4116n12_01_06_on.png") no-repeat center top;}
+/*
+.list_theme_best.ranking > li > a:hover > .theme_txt1 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks4116n12_01_01_on.png") no-repeat center top;}
+.list_theme_best.ranking > li > a:hover > .theme_txt2 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks4116n12_01_02_on.png") no-repeat center top;}
+.list_theme_best.ranking > li > a:hover > .theme_txt3 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks4116n12_01_03_on.png") no-repeat center top;}
+.list_theme_best.ranking > li > a:hover > .theme_txt4 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks4116n12_01_04_on.png") no-repeat center top;}
+.list_theme_best.ranking > li > a:hover > .theme_txt5 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks4116n12_01_05_on.png") no-repeat center top;}
+.list_theme_best.ranking > li > a:hover > .theme_txt6 {background:url("https://img.miraeassetdaewoo.com/new2016/txt/txt_hks4116n12_01_06_on.png") no-repeat center top;}
+*/
+
+/* 펀드 - 분산투자정보 등록 변경  */
+.invest_risk1 {color:#d61919}
+.invest_risk2 {color:#e07210}
+.invest_risk3 {color:#c78321}
+.invest_risk4 {color:#0a8c13}
+.invest_risk5 {color:#1e99c6}
+.invest_risk6 {color:#1b47d5}
+
+/* 펀드 - 상세보기 팝업  */
+.style_map_wrap {width:265px; height:164px; position:relative; margin:15px 0 0 5px}
+.style_map_wrap ul {width:163px; height:127px; position:absolute; top:22px; left:48px}
+.style_map_wrap li {float:left; width:54px; height:42px; text-indent:-99999px; box-sizing:border-box; overflow:hidden;}
+.style_map_wrap.stock {background:url("https://img.miraeassetdaewoo.com/new2016/hks/img_style_map01.gif") no-repeat 0 0}
+.style_map_wrap.stock li.on {background:url("https://img.miraeassetdaewoo.com/new2016/hks/bg_style_map01.gif") no-repeat 0 0}
+.style_map_wrap.bond {background:url("https://img.miraeassetdaewoo.com/new2016/hks/img_style_map02.gif") no-repeat 0 0}
+.style_map_wrap.bond li.on {background:url("https://img.miraeassetdaewoo.com/new2016/hks/bg_style_map02.gif") no-repeat 0 0}
+
+/* 펀드 - 부적합 금융투자상품 거래 확인서 팝업  */
+.layer_content .fin_confirmation strong > em {color:#e11500}
+.layer_content .fin_confirmation strong > span  {color:#0059a6}
+.layer_content .fin_confirmation {padding-bottom:25px; margin-bottom:50px; border-bottom: 1px solid #bebebe;}
+
+/* 펀드 - 펀드자동매수 */
+.agreeWrap {position:relative; padding:25px 30px; background:#f9f9f9; border:1px #ddd solid;}
+.agreeWrap > a.btn {position:absolute; top:21px; right:30px; background:#fff;}
+
+/* 펀드매매 - 투자상품 가입서류 확인  */
+.btnWrap.middle .btn.active {background:#535353; color:#fff; border-color:#535353;}
+.dep02Sec .navi_guide_wrap + .dep03Sec, .dep02Sec .navi_guide_wrap + div.dep03Sec.none + .dep03Sec {margin-top:60px}
+.dep03Sec + .list_agree_type {padding-top:10px}
+.list_agree_type + .btnWrap {margin-top:20px}
+.list_agree_type ul {border-top:1px solid #000; border-bottom:1px solid #bebebe}
+.list_agree_type li {position:relative; background:#f9f9f9; padding:11px 11px 11px 35px; color:#000}
+.list_agree_type li + li {border-top:1px solid #e5e5e5}
+.list_agree_type li input {position:absolute; top:14px; left:17px}
+.list_agree_type li input[type=checkbox] + label {margin-left:0}
+
+.list_simple_data > li.no_data {width:100%; min-height:auto; height:auto; padding:60px 0; margin:10px 0 0 0;}
+
+/********************
+    펀드 CSS END
+********************/
+
+/********************
+    CMA CSS START
+********************/
+
+/* CMA 신청 해제- 약관 */
+/*.terms_board_wrap {border-top:1px solid #000}*/
+.layer_popup_wrap .terms_con_wrap {border-left:1px solid #ccc;}
+.terms.accordion_wrap > li { background:#f9f9f9;}
+.terms.accordion_wrap li .dep02Sec {display:none; background:#fff;}
+.terms.accordion_wrap li .dep02Sec.on {display:block;}
+.terms.accordion_wrap li:first-child .acc_control {border-top:1px solid #000;}
+.terms.accordion_wrap li .acc_control {position:relative; margin-top:-1px; padding:16px 17px 17px; border-top:1px solid #e5e5e5; border-bottom:1px solid #e5e5e5; color:#000;}
+.terms.accordion_wrap li .acc_control .btn {position:absolute; top:11px; right:17px;}
+.terms.accordion_wrap .multi_notice input {vertical-align:top;}
+.terms.accordion_wrap .multi_notice label {display:inline-block; width:660px; margin-top:-2px;}
+.terms_board_wrap .terms_point {padding:25px 0 21px 20px;; font-size:16px; color:#222;}
+.terms_board_wrap .terms_point span {color:#0059a6;}
+.terms_board_wrap .agree_c {text-align:center;}
+.terms_con_wrap + .agree_c + .btnWrap {margin-top:20px;}
+.terms_con_wrap {overflow-y:auto; margin-bottom:30px; height:350px; border-bottom:1px solid #ccc; border-top:1px solid #000;}
+.terms_con_wrap .terms_inner {padding:20px 20px 7px 27px;}
+.terms_tit {font-weight:normal; padding:15px 20px 15px; font-size:12px; background:#f9f9f9; border-bottom:1px solid #e5e5e5; color:#000;}
+	.msie .terms_tit {padding:17px 20px 13px;}
+.terms_inner .tit {font-weight:normal; font-size:12px; color:#222;}
+.terms_inner .des {margin-top:9px; line-height:18px;}
+.terms_inner .tit + .list {margin-top:9px;}
+.terms_inner .des + .table_wrap {margin-top:9px;}
+.terms_inner .list {margin-bottom:0;}
+.terms_inner .list li {margin:0; padding:0; border:0; font-size:12px; color:#666; font-weight:normal;}
+.terms_inner .list .sub {padding-left:17px; margin:2px 0 14px 0;}
+.terms_inner .list .sub.last {margin-bottom:0;}
+.terms_inner .list .sub li {font-size:11px;}
+.terms_inner .addendum {margin-top:6px;}
+.terms_inner .addendum dt:first-child {margin-top:0;}
+.terms_inner .addendum dt {margin-top:6px; color:#222;}
+.terms_inner .addendum dd {margin-top:-1px;}
+
+.terms.accordion_wrap li .dep02Sec.terms_agree {padding-bottom:50px; margin-bottom:20px; border-bottom:1px solid #bebebe;}
+.terms_agree .dep03Sec .box_wrap {padding:25px 30px; margin:30px 0 20px;}
+.terms_agree .dep03Sec .box_wrap:first-child {margin-top:0}
+.terms_agree .dep03Sec + .multi_notice {margin-top:-31px}
+.terms_agree .dep03Sec .box_wrap .tit.depth04 {color:#444}
+.terms_agree .dep03Sec .box_wrap  ol li {margin-top:12px; color:#444}
+.all_agree {padding:17px; border-top:1px solid #e5e5e5; color:#444}
+.agree_notice {padding:0 17px; color:#444;}
+.multi_notice {padding:19px 17px 25px;  border-bottom:1px solid #e5e5e5; color:#000}
+.total_des {margin-top:27px; text-align:center; color:#222}
+.total_des + .btnWrap {margin-top:17px}
+/********************
+    CMA CSS END
+********************/
+
+/* 이체 */
+.delay_service{width:100%; overflow:hidden;}
+.delay_service li{float:left; width:33.3%; padding:25px 10px 10px; text-align:center; border:1px solid #e1e1e1; border-left:0; box-sizing:border-box;}
+.delay_service li:first-child{border-left:1px solid #e1e1e1;}
+.delay_service li h3{height:60px;}
+.delay_service li p{height:72px; padding:44px 0 0;}
+.delay_service li input{width:100%; padding:9px 0 5px; background:#95a1b2; color:#fff; font-weight:600; cursor:pointer; border:0;}
+
+.img_account_wrap{padding:0 0 0 148px; background:url(https://img.miraeassetdaewoo.com/new2016/hku/img_hku4195c01.gif) no-repeat 33px 50%;}
+
+
+
+/*my연금*/
+.ul_scroll {overflow-y:auto;height:120px}
+.mb3 {margin-bottom:3px}
+
+/********************
+    금융상품 CSS START
+********************/
+/* 분기 추천 상품  */
+.recomend_wrap_des {margin-top:29px; padding-bottom:7px; border-bottom:1px solid #e5e5e5; text-align:right;}
+.recomend_h1_des {font-size:11px; color:#a5a5a5 !important;}
+.recomend_practice {position:relative; height:198px; margin-bottom:30px; border-bottom:1px solid #d5d5d5;}
+.recomend_practice .recomend_pic {position:absolute; top:-30px; right:0;}
+
+/* 자동매수 신청  - 팝업 약관동의  */
+.layer .terms_con_wrap {height:148px;}
+.layer .terms .tit.depth02 {margin-bottom:20px;}
+.layer .terms {margin-bottom:45px;}
+.layer .terms + .c  {margin-top:-16px !important;}
+.layer .terms + .c + .btnWrap {margin-top:26px;}
+
+/* 자동매수 신청  - 자동매수 정보입력 입출금기관 팝업 */
+.list_submit {margin-top:-30px; padding:23px 0 22px; border:1px solid #dbdbdb; border-top:0px}
+.list_submit .list_val:after {display:block; content:""; clear:both;}
+.list_submit .list_val li {width:33%; float:left; padding:0 35px; box-sizing:border-box; font-size:13px; line-height:25px;}
+.list_submit .list_val li a {color:#000;}
+.list_submit .list_val li a:hover, .list_submit .list_val li a:focus {text-decoration:underline;}
+/********************
+    금융상품 CSS END
+********************/
+
+/********************
+    연금자산 CSS START
+********************/
+/* DC간편조회 팝업  */
+.dep02Sec.simple_query_box .navi_guide_wrap {margin-bottom:20px!important}
+.dep02Sec.simple_query_box ul.table_guide > li {display:block}
+.simple_query_tit_box {padding:14px 0 0 97px; margin-bottom:40px; background:url(https://img.miraeassetdaewoo.com/new2016/ico/ico_dc_simple.png) no-repeat 30px 6px;}
+.simple_query_tit_box > p > span {display:block; padding-top:10px}
+.simple_q_box ul:after {display:block; clear:both; content:""}
+.simple_q_box li {width:123px; float:left; position:relative; padding-left:60px; margin-left:34px}
+.simple_q_box li:first-child {padding:0; margin:0}
+.simple_q_box li .ico_multiply {position:absolute; top:15px; left:0}
+.simple_q_box li dt {padding-bottom:13px; text-align:center; color:#000}
+.simple_q_box li dd input {font-weight:bold; text-align:right; color:#f37321}
+.dc_acceptance {margin-bottom:30px; border-top:1px solid #000;}
+.dc_acceptance label {vertical-align:top}
+.dc_acceptance dt {position:relative; padding:16px 16px 18px; background:#f9f9f9; color:#222; border-bottom:1px solid #e5e5e5}
+.dc_acceptance dd {position:relative; color:#000;}
+.dc_acceptance dt .agree_area {position:absolute; top:20px; right:17px;}
+.dc_acceptance dd .agree_area {position:absolute; top:17px; right:17px;}
+.dc_acceptance dd .agree_area > a {display:inline-block; width:65px; height:18px; margin-right:13px; background:url(https://img.miraeassetdaewoo.com/new2016/btn/btn_terms2.gif) no-repeat 0 0;}
+.dc_acceptance dd .tit_terms {padding:15px 18px; border-bottom:1px solid #e5e5e5}
+.dc_acceptance dd .tit_terms  input {vertical-align:2px}
+.dc_acceptance dd .con_terms {overflow-y:scroll; display:none; max-height:140px; padding:21px 40px 21px 18px; box-sizing:border-box; border-bottom:1px solid #bebebe;}
+.dc_acceptance dd .con_terms + .con_terms {margin-top:15px; border-top:1px solid #bebebe;}
+.dc_acceptance dd.active .agree_area > a {background:url(https://img.miraeassetdaewoo.com/new2016/btn/btn_terms1.gif) no-repeat 0 0}
+.box_wrap.simple_q_box {padding:21px 40px; margin-bottom:30px}
+
+/* 퇴직연금 상세정보 입력하기 팝업 */
+.layer_popup_wrap .en_amount_wrap:after {display:block; clear:both; content:""}
+.layer_popup_wrap .en_amount_wrap dt {float:left; padding-top:3px; color:#444}
+.layer_popup_wrap .en_amount_wrap dd {float:right; font-size:13px; color:#333;}
+.layer_popup_wrap .en_amount_wrap dd input {width:70px; text-align:center; font-size:inherit; font-weight:bold; color:#333;}
+.layer_popup_wrap .en_amount_wrap dd > span {display:inline-block; width:30px}
+
+/* 퇴직연금 계산하기 팝업 */
+.layer_popup_wrap .dep02Sec.pensions_wrap {margin-bottom:0;}
+.layer_popup_wrap .list_board_wrap.list_calcul_wrap {margin-bottom:0; border-top:1px solid #000; border-bottom:1px solid #b2b2b2}
+.layer_popup_wrap .list_board_wrap.list_calcul_wrap .list_board {overflow-y:auto; max-height:115px; border-top:none; border-bottom:1px solid #e5e5e5}
+.layer_popup_wrap .list_board_wrap.list_calcul_wrap .list_board li {padding:14px 7px 13px 17px}
+.layer_popup_wrap .list_board_wrap.list_calcul_wrap .list_board li:first-child {border:none}
+.layer_popup_wrap .list_board_wrap.list_calcul_wrap .bottom {background:#f9f9f9; padding:14px 7px 13px 17px}
+
+/********************
+    연금자산 CSS END
+********************/
+
+/********************
+    이용안내/문의 CSS START
+********************/
+/* 	고객우대혜택 - 산정기준 자세히 보기 팝업  */
+.estimation_popup .depth03 {color:#004682}
+.estimation_popup .desc {font-size:13px; color:#444}
+
+/********************
+    이용안내/문의 CSS END
+********************/
+
+/********************
+    고객정보관리 CSS START
+********************/
+.result_inquiry_wrap .result_inquiry_inner {border:1px solid #e1e1e1}
+.result_inquiry_wrap .tit {background:#f9f9f9; padding:15px 17px; font-size:14px; color:#555;}
+.result_inquiry_wrap .result_con {padding:15px 17px; border-top:1px solid #e1e1e1}
+.result_inquiry_wrap .result_con .checkbox {margin-left:18px; text-indent:-22px}
+.result_inquiry_wrap .desc {padding:10px 0 0 15px;font-size:15px;}
+/********************
+    고객정보관리 CSS END
+********************/
+
+/********************
+    영업점안내 CSS START
+********************/
+#container.brancheWrap {margin:96px auto 0;}
+#container.brancheWrap #contents {float:none; width:auto}
+.brancheWrap .intro_wrap {padding:60px; margin-bottom:40px; background:url("https://img.miraeassetdaewoo.com/new2016/bg/bg_hki3096r01.gif") no-repeat 675px 38px; border:1px solid #e1e1e1}
+.branches_guide {padding-left:40px}
+.branches_guide .branches_con {padding-top:20px}
+.branches_guide .branches_con:after {display:block; clear:both; content:""}
+.branches_guide .branches_con .branche_search {float:left; width:265px;}
+.branches_guide .branches_con .branche_search .fin_search > fieldset > .fin_search_box {width:174px}
+.branches_guide .branches_con .branche_search .txt_point {margin-top:20px; font-size:11px}
+.branches_guide .branches_con .branche_search .map {width:265px; height:344px; position:relative; background:url("https://img.miraeassetdaewoo.com/new2016/bg/bg_hki3096r01_02.gif") no-repeat 0 0;}
+.branches_guide .branches_con .branche_search .map a {display:inline-block; position:absolute;}
+.branches_guide .branches_con .branche_search .map a.zone_name01 {top:30px; left:152px}
+.branches_guide .branches_con .branche_search .map a.zone_name02 {top:44px; left:40px}
+.branches_guide .branches_con .branche_search .map a.zone_name03 {top:62px; left:102px}
+.branches_guide .branches_con .branche_search .map a.zone_name04 {top:90px; left:33px}
+.branches_guide .branches_con .branche_search .map a.zone_name04 {top:90px; left:33px}
+.branches_guide .branches_con .branche_search .map a.zone_name05 {top:125px; left:44px}
+.branches_guide .branches_con .branche_search .map a.zone_name06 {top:107px; left:133px}
+.branches_guide .branches_con .branche_search .map a.zone_name07 {top:135px; right:29px}
+.branches_guide .branches_con .branche_search .map a.zone_name08 {top:150px; left:62px}
+.branches_guide .branches_con .branche_search .map a.zone_name09 {top:200px; right:29px}
+.branches_guide .branches_con .branche_search .map a.zone_name10 {top:228px; left:30px}
+.branches_guide .branches_con .branche_search .map a.zone_name11 {top:278px; left:77px}
+.branches_guide .branches_con .branche_history {float:right; width:645px}
+.branches_guide .branches_con .branche_history .table_wrap {margin-bottom:20px}
+.branches_guide .branches_con .branche_history .row_type tbody th,
+.branches_guide .branches_con .branche_history .row_type tbody td {padding:10px 17px 8px}
+.branches_guide .branches_con .branche_history .row_type tbody th {background:none; font-weight:bold;}
+.branches_guide .branches_con .branche_history .row_type tbody td {border-left:none}
+.branches_guide .branches_con .branche_history .row_type tbody td .btn.small {min-width:41px}
+.branches_guide .branches_con .branche_history .paging {text-align:center}
+.branches_guide .branches_con .branche_history .paging a {display:inline-block; width:16px; padding:2px 0; vertical-align:middle; font-size:13px; color:#555; line-height:100%; text-align:center;}
+.msie .branches_guide .branches_con .branche_history .paging a {padding:4px 0 0;}
+.branches_guide .branches_con .branche_history .paging a.on {background:#004682; font-weight:bold; color:#fff;}
+.branches_guide .branches_con .branche_history .paging > span {display:inline-block; vertical-align:middle; line-height:100%;}
+.branches_guide .branches_con .branche_history .paging > span > a {background:url("https://img.miraeassetdaewoo.com/new2016/btn/btn_branch.gif") no-repeat; text-indent:-9999px; overflow:hidden}
+.branches_guide .branches_con .branche_history .paging > span > a.first {background-position:0 0}
+.branches_guide .branches_con .branche_history .paging > span > a.prev {background-position:-26px 0; margin-right:6px}
+.branches_guide .branches_con .branche_history .paging > span > a.next {background-position:-52px 0; margin-left:6px}
+.branches_guide .branches_con .branche_history .paging > span > a.last {background-position:-78px 0}
+.layer_popup_wrap.brancheWrap .depth02 {padding-bottom:18px; font-size:20px; font-weight:bold; border-bottom:1px solid #000}
+/********************
+    영업점안내 CSS END
+********************/
+
+/* .dep02Sec + .dep02Sec .navi_guide_wrap{margin-top:-20px;} */
+.sod_wrapper + label{display:inline-block; padding-left:10px;}
+
+.table_wrap.desc thead th{padding:10px 15px; background:#f9f9f9; font-size:14px; font-weight:600; border-bottom-color:#f9f9f9;}
+.table_wrap.desc td{padding:10px 15px;}
+.table_wrap.desc .square{margin:0;}
+
+th .text_indent{display:block; text-indent:12px;}
+@media print{
+	.no_print,
+	.btnWrap{display:none;}
+}
+
+.dispersion_wrap{padding-bottom:40px;}
+.dispersion_wrap .chart_text_invest span{position:absolute; bottom:5px; left:430px; display:block;}
+.dispersion_wrap .chart_text_invest span:first-child{left:155px;}
+.dispersion_wrap .chart_text_invest span strong{display:block; color:#f36910;}
+
+.rules_text h2{padding:20px 0 15px;  font-size:14px;}
+.rules_text h2:first-child{padding-top:0;}
+.rules_text > ol > li > ol > li > ol{padding:10px 0 0 10px;}
+.rules_text > ol > li > ol > li > ol > li > ol{padding-bottom:15px;}
+.rules_text li li li{padding:0 0 0 18px; text-indent:-18px;}
+
+/********************
+ MY연금, 퇴직연금잔고,
+  개인연금잔고 CSS START
+********************/
+.pension_status {margin-bottom:50px;}
+.pension_status > .present_box {float:left; position:relative; width:353px; height:246px; padding:40px 40px; box-sizing:border-box}
+.pension_status > .present_box > .tit > img {display:inline-block; vertical-align:bottom;}
+.pension_status > .present_box > .tit > .unit {overflow:hidden; display:inline-block; margin-bottom:1px; width:40px; height:12px; background:url("https://img.miraeassetdaewoo.com/new2016/hkp/txt_unit.png") no-repeat left top; vertical-align:bottom; text-indent:-9999px;}
+.pension_status > .present_box.asset {background:url("https://img.miraeassetdaewoo.com/new2016/hkp/bg_my_present01.png") no-repeat left top;}
+.pension_status > .present_box.asset > .tit {padding-bottom:40px;}
+
+.pension_status > .present_box > .total_pension > li {padding-top:11px; margin-top:11px; border-top:1px solid #fa7c2b;}
+.pension_status > .present_box.profit > .total_pension > li {border-top:1px solid #5d6a9a;}
+.pension_status > .present_box.profit > .total_pension > li:first-child {height:24px;}
+.pension_status > .present_box.profit > .total_pension > li:first-child span {margin-top:10px;}
+.msie .pension_status > .present_box.profit > .total_pension > li:first-child span {margin-top:12px;}
+.pension_status > .present_box.profit > .total_pension > li:first-child em {margin-top:4px;}
+.pension_status > .present_box > .total_pension > li:first-child {padding-top:0; margin-top:0; margin-bottom:-1px; border-top:0;}
+.pension_status > .present_box > .total_pension > li:after {display:block; content:""; clear:both;}
+.pension_status > .present_box > .total_pension > li > span {float:left; margin-top:6px; color:#fff; line-height:100%;}
+.msie .pension_status > .present_box > .total_pension > li > span {margin-top:8px}
+.pension_status > .present_box > .total_pension > li .all {margin-top:10px;}
+.msie .pension_status > .present_box > .total_pension > li .all {margin-top:12px;}
+.pension_status > .present_box > .total_pension > li > em {float:right; font-family:"Century Gothic"; font-size:21px; color:#fff; line-height:100%;}
+.pension_status > .present_box > .total_pension > li > .total_unit {font-size:24px;}
+
+.pension_status > .present_box.profit {height:246px; padding:40px; margin-left:14px; background:url("https://img.miraeassetdaewoo.com/new2016/hkp/bg_my_present02.png") no-repeat left top; box-sizing:border-box}
+.pension_status > .present_box.profit > .tit {padding-bottom:39px;}
+.pension_status > .present_box.profit > .profit_exp {margin-bottom:19px;}
+.pension_status > .present_box.profit > .profit_exp.this_year {margin-bottom:0;}
+.pension_status > .present_box.profit > .profit_exp > dt {color:#fff;}
+.pension_status > .present_box.profit > .profit_exp > .price {position:relative; font-family:"Century Gothic"; font-size:24px; color:#fff; line-height:100%;}
+.pension_status > .present_box.profit > .profit_exp > .price > .rate {position:absolute; top:-3px; right:0; font-size:16px; line-height:100%;}
+	.msie.ie11 .pension_status > .present_box.profit > .profit_exp > .price > .rate {top:-2px;}
+.pension_status > .present_box.profit > .profit_exp > .price > .rate:before {display:inline-block; content:""; width:10px; height:28px; background:url("https://img.miraeassetdaewoo.com/new2016/hkp/hkp1001r01_pricetag.png") no-repeat left top; vertical-align:middle;}
+.pension_status > .present_box.profit > .profit_exp > .price > .rate:after {display:inline-block; content:""; width:10px; height:28px; background:url("https://img.miraeassetdaewoo.com/new2016/hkp/hkp1001r01_pricetag.png") no-repeat right top; vertical-align:middle;}
+.pension_status > .present_box.profit > .profit_exp > .price > .rate > i,
+.pension_status > .present_box.profit > .profit_exp > .price > .rate > em,
+.pension_status > .present_box.profit > .profit_exp > .price > .rate > span {display:inline-block; min-width:59px; width:auto; padding:6px 0; background:#fff; vertical-align:middle; text-align:center;}
+.pension_status > .present_box.profit > .profit_exp > .price > .rate > i {font-style:normal; color:#ff0000;}
+.pension_status > .present_box.profit > .profit_exp > .price > .rate > em {color:#1e6bc3;}
+.pension_status > .present_box.profit > .profit_exp > .price > .rate > span {color:#000;}
+.pension_cal {position:absolute; top:41px; right:40px; display:inline-block; height:18px; padding:0 11px; background:#fff; line-height:19px; color:#000; font-size:11px;}
+	.msie .pension_cal  {line-height:23px;}
+	.msie.ie8 .pension_cal  {padding-top:1px; padding-bottom:1px; line-height:auto;}
+/********************
+ MY연금, 개인연금잔고 
+ 	CSS END
+********************/
+
+/********************
+            퇴직연금잔고
+      CSS START
+ ********************/
+.retire_pen {margin-bottom:50px;}
+.retire_pen > .present_box {float:left; position:relative; width:353px; height:289px; padding:40px 40px; box-sizing:border-box}
+.retire_pen > .present_box > .tit > img {display:inline-block; vertical-align:bottom;}
+.retire_pen > .present_box > .tit > .unit {overflow:hidden; display:inline-block; margin-bottom:1px; width:40px; height:12px; background:url("https://img.miraeassetdaewoo.com/new2016/hkp/txt_unit.png") no-repeat left top; vertical-align:bottom; text-indent:-9999px;}
+.retire_pen > .present_box.asset {background:url("https://img.miraeassetdaewoo.com/new2016/hkp/bg_my_present01.png") no-repeat left top;}
+.retire_pen > .present_box.asset > .tit {padding-bottom:40px;}
+
+.retire_pen > .present_box > .total_pension > li {padding-top:11px; margin-top:11px; border-top:1px solid #fa7c2b;}
+.retire_pen > .present_box.profit > .total_pension > li {border-top:1px solid #5d6a9a;}
+.retire_pen > .present_box.profit > .total_pension > li:first-child {height:24px;}
+.retire_pen > .present_box.profit > .total_pension > li:first-child span {margin-top:10px;}
+.msie .retire_pen > .present_box.profit > .total_pension > li:first-child span {margin-top:12px;}
+.retire_pen > .present_box.profit > .total_pension > li:first-child em {margin-top:4px;}
+.retire_pen > .present_box > .total_pension > li:first-child {padding-top:0; margin-top:0; margin-bottom:-1px; border-top:0;}
+.retire_pen > .present_box > .total_pension > li:after {display:block; content:""; clear:both;}
+.retire_pen > .present_box > .total_pension > li > span {float:left; margin-top:6px; color:#fff; line-height:100%;}
+.msie .retire_pen > .present_box > .total_pension > li > span {margin-top:8px}
+.retire_pen > .present_box > .total_pension > li .all {margin-top:10px;}
+.msie .retire_pen > .present_box > .total_pension > li .all {margin-top:12px;}
+.retire_pen > .present_box > .total_pension > li > .sum {float:right; font-family:"Century Gothic"; font-size:21px; color:#fff; line-height:100%;}
+.retire_pen > .present_box > .total_pension > li > .total_unit {font-size:24px;}
+.retire_pen > .present_box > .total_pension > li .day_txt {font-size:11px}
+
+.retire_pen > .present_box.profit {height:289px; padding:40px; margin-left:14px; background:url("https://img.miraeassetdaewoo.com/new2016/hkp/bg_my_present02.png") no-repeat left top; box-sizing:border-box}
+.retire_pen > .present_box.profit > .tit {padding-bottom:39px;}
+.retire_pen > .present_box.profit > .profit_exp {margin-bottom:19px;}
+.retire_pen > .present_box.profit > .profit_exp.this_year {margin-bottom:0;}
+.retire_pen > .present_box.profit > .profit_exp > dt {color:#fff;}
+.retire_pen > .present_box.profit > .profit_exp > .price {position:relative; font-family:"Century Gothic"; font-size:24px; color:#fff; line-height:100%;}
+.retire_pen > .present_box.profit > .profit_exp > .price > .rate {position:absolute; top:-3px; right:0; font-size:16px; line-height:100%;}
+.msie.ie11 .retire_pen > .present_box.profit > .profit_exp > .price > .rate {top:-2px;}
+.retire_pen > .present_box.profit > .profit_exp > .price > .rate:before {display:inline-block; content:""; width:10px; height:28px; background:url("https://img.miraeassetdaewoo.com/new2016/hkp/hkp1001r01_pricetag.png") no-repeat left top; vertical-align:middle;}
+.retire_pen > .present_box.profit > .profit_exp > .price > .rate:after {display:inline-block; content:""; width:10px; height:28px; background:url("https://img.miraeassetdaewoo.com/new2016/hkp/hkp1001r01_pricetag.png") no-repeat right top; vertical-align:middle;}
+.retire_pen > .present_box.profit > .profit_exp > .price > .rate > i,
+.retire_pen > .present_box.profit > .profit_exp > .price > .rate > em,
+.retire_pen > .present_box.profit > .profit_exp > .price > .rate > span {display:inline-block; min-width:59px; width:auto; padding:6px 0; background:#fff; vertical-align:middle; text-align:center;}
+.retire_pen > .present_box.profit > .profit_exp > .price > .rate > i {font-style:normal; color:#ff0000;}
+.retire_pen > .present_box.profit > .profit_exp > .price > .rate > em {color:#1e6bc3;}
+.retire_pen .pension_cal {position:absolute; top:41px; right:40px; display:inline-block; height:18px; padding:0 11px; background:#fff; line-height:19px; color:#000; font-size:11px;}
+.msie .retire_pen .pension_cal  {line-height:23px;}
+.msie.ie8 .retire_pen .pension_cal  {padding-top:1px; padding-bottom:1px; line-height:100%;}
+ /********************
+     퇴직연금잔고 CSS END
+ ********************/
+ 
+ /********************
+      금융상품 펀드매매내역
+      레이어 팝업
+ ********************/
+ .split.import_des .dep03Sec {margin-bottom:0}
+ 
+ /********************
+      파생상품계좌설정약관
+      레이어 팝업
+ ********************/
+.agree_wrap h2 {padding:15px 0px 5px 0px;}
+.agree_wrap iframe {width:100%;border:1px solid #dcdcdc;}
+.agree_wrap .agree_check {padding:10px 0px 15px 0px; border-bottom:1px solid #bebebe;}
+.agree_wrap + .txt_info {padding:10px 0px 0px 0px;}
+ 
+  /********************
+   ID통합 CSS
+ ********************/
+.id_merge_sec{border:1px solid #e5e5e5;background-color:#fafafa;padding:30px}
+.id_merge_sec .inner{width:100%;overflow:hidden;}
+.id_merge_sec .dep02Sec{margin:0;padding:0}
+.id_merge_sec .dep02Sec.fl{width:45%}
+.id_merge_sec .dep02Sec.fr{width:45%}
+.id_merge_sec .id_merge_btn{float:left;width:10%;text-align:center}
+.id_merge_sec .id_merge_box{border:1px solid #e5e5e5;overflow:auto;padding:10px 30px;background:#fff}
+.id_merge_sec.step01 .id_merge_btn{padding-top:136px}
+.id_merge_sec.step01 .id_merge_box{height:206px}
+.id_merge_sec.step01 .id_merge_box li{margin:18px 0}
+.id_merge_sec.step01 .id_merge_box input:checked+label{font-weight:bold}
+.id_merge_sec.step02 .id_merge_btn{padding-top:85px}
+.id_merge_sec.step02 .id_merge_box{height:105px;padding:5px 30px}
+.id_merge_sec.step02 .id_merge_box li{margin:12px 0}
+.id_merge_sec.step02 .id_merge_box.form{height:95px;padding-top:10px;padding-bottom:10px;overflow:hidden}
+.id_merge_sec.step02 .id_merge_box.form li{margin:15px 0;overflow:hidden}
+.id_merge_sec.step02 .id_merge_box.form label,
+.id_merge_sec.step02 .id_merge_box.form input{width:110px;float:left}
+.id_merge_sec.step02 .id_merge_box.form label{padding-top:4px}
+
+/* 자가진단표 */
+.self_table + .self_table {margin-top:30px}
+.self_table > dt {margin-bottom:10px;font-weight:bold;color:#222;}
+
+/* form 요소 */
+input + .txt {margin-top:5px;}
+
+/* 개인정보 수집/이용에 관한 안내 및 동의` */
+.term_scroll {overflow-y:auto;padding:30px;height:120px;}
+.term_wrap + .term_wrap {margin-top:30px;}
+.term_wrap > dt {margin-bottom:10px;font-size:13px;font-weight:bold;color:#222;}
+.term_wrap > dd > ol > li + li {margin-top:10px;}
+.term_wrap > dd > ol + ul {margin-top:30px;}
+
+/* 투자트렌드 */
+.trend_view .trend_top_line {padding-top:40px;border-top:1px solid #e6e6e6;}
+.trend_view .txt_01 {color:#555;font-size:14px;font-weight:bold;line-height:24px;}
+.trend_view .txt_02 {line-height:24px;}
+.trend_wrap {float:left;width:50%;}
+.trend_wrap img {margin-bottom:24px;width:360px;height:210px;}
+.trend_wrap > dl {margin-bottom:32px;padding:0 24px;border-bottom:1px solid #e0e0e0;}
+.trend_wrap > dl > dt {height:26px;line-height:26px;}
+.trend_wrap > dl > dt > a {display:block;overflow:hidden;text-overflow:ellipsis;-o-text-overflow:ellipsis;white-space:nowrap;color:#222;font-size:20px;font-weight:bold;height:26px;line-height:26px;}
+.trend_wrap > dl > dt > a:hover {color:#f36910;text-decoration:underline;}
+.trend_wrap > dl > dd {display:block;overflow:hidden;text-overflow:ellipsis;-o-text-overflow:ellipsis;white-space:nowrap;margin:16px 0 32px;color:#222;font-size:12px;height:18px;line-height:18px;}

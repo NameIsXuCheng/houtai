@@ -1,0 +1,92 @@
+.title_box{margin-top: 18px;margin-bottom:18px;font-size: 18px;text-align: center}
+.right_close{margin-top: -40px;}
+.tyab_box{text-align: center}
+.xspx-sec{}
+.boxu_bux{width: 82px;height: 30px;border: solid 1px #ccc;cursor: pointer;-webkit-border-radius: 3px;-moz-border-radius: 3px;-o-border-radius: 3px;-ms-border-radius: 3px;border-radius: 3px;}
+.bule_btn{background: #2d98dd;color: #fff;margin-right: 5px;}
+.hsu_box{background: #f5f5f5;color: #333;margin-left: 5px;}
+.tyab_box input{height:28px;}
+.tyab_box input[type=text]{width: 200px;}
+.tyab_box select{width: 206px;height: 28px}
+.tyab_box td{line-height:40px}
+a.daorus{background: #ff5722;display: block;width: 90px;height: 30px;line-height:30px;-webkit-border-radius: 3px;-moz-border-radius: 3px;-o-border-radius: 3px;-ms-border-radius: 3px;border-radius: 3px;color: #fff}
+.entsqp_bx th,.entsqp_bx td{text-align: center;word-break: break-all;}
+.centenx-boxs{overflow-y: auto;overflow-x:hidden;height: 397px;width: 865px;float: left;display: block}
+.centenx-titlts{float: left;display: block}
+.entsqp_bx th{line-height: 38px}
+.entsqp_bx td{color:#999;padding-left: 6px;padding-right: 6px;border-top: dashed 1px #ccc;padding-top: 12px;
+    padding-bottom: 12px;}
+.entsqp_bx{border: solid #ccc 1px;}
+.clear-align-left{text-align: left!important;}
+.clear-padding-left{padding-left: 0!important;}
+tbody.app tr:hover{background:#f5f5f5 }
+.buontj{background:#ff5722;color: #fff;border:solid 1px #fff;-webkit-border-radius: 3px;-moz-border-radius: 3px;-o-border-radius: 3px;-ms-border-radius: 3px;border-radius: 3px;}
+a.noaunme{background:transparent;border-color:#ccc;color: #fff;}
+span.buon_bo:hover img{ display: none;}
+span.buon_bo:hover a{display: block;color: #fff;}
+span.buon_hia:hover img{ display: none;}
+span.buon_hia:hover a{display: block;color: #333;}
+.border-bottoms{border-bottom: none!important;}
+.border-tops{border-top: none!important;}
+.hidden-none{visibility: hidden;}
+table.zpsxa td{text-align: center;border-top: none;padding: 10px 15px}
+.xiabox td,.xiabox th{}
+.inp_er select,.inp_er input{width: 196px;height: 30px}
+.inp_er label{color:#999999 }
+.mmoda input{background: url("../../images/wisop.png") no-repeat;background-position: right}
+.jbxina {
+    margin-top: 25px;
+    height: 20px;
+    line-height: 18px;
+}
+.suxns {
+    width: 2px;
+    height: 20px;
+    background-color: #2297e1;
+}
+h5.fodnsx {
+    font-size: 18px;
+    font-weight: normal;
+    margin-left: 6px;
+}
+.hexsd {
+    height: 2px;
+    width: 704px;
+    background-color: #e5e5e5;
+    margin-top: 9px;
+    margin-left: 6px;
+}
+.xingmak td{text-align: center;line-height: 35px}
+.xingmak input,.xingmak select{height: 36px;width: 110px;color: #999}
+.thead_tirle td,.centen_cent td input{color: #999}
+.centen_cent td{line-height: 50px}
+.bfzb_width_100{  width: 170!important;}
+.mar_tr img{cursor: pointer}
+.texta{width: 89.9%;resize: none;min-height:74px }
+.width_722{width: 714px;}
+.sollae_cent{overflow-y: auto;height: 400px}
+.botns{background:#2c99dd;border: none;padding: 10px 35px;cursor: pointer;color: #fff }
+.width_696{width: 696px;}
+.tilt_inputs input,.tilt_inputs select{color:#999 }
+textarea{color:#999}
+.mikauo td{border: solid 1px #ccc;}
+.mikauof{border: solid 1px #ccc;border-top: none;margin-left: 0}
+.mauqsa{padding-left: 27px;padding-right:15px}
+.mikauo td{line-height: 35px;padding-left: 6px;}
+.moziss td{padding-top: 0px;padding-bottom: 0px;}
+.moziss{background: #f5f5f5}
+.bor_right-none{border-right:none!important;}
+.bor_left-none{border-left:none!important;}
+.bor_top-none{border-top:none!important;}
+.bor_bottom-none{border-bottom:none!important;}
+.moziss{padding-top: 6px;padding-bottom: 6px;}
+tr.mikauo{cursor: pointer}
+.hide{display: none;  }
+.mikauo td{border-bottom:none}
+.misw td{ text-align: center}
+.misw tbody tr td:nth-child(2){ text-align: left; padding-left: 40px;}
+tbody.kias tr td{line-height: 50px}
+.text-right{text-align: right!important;}
+.pad_right{padding-right: 50px}
+.misw tr.mikauo:hover{cursor: default}
+.misw thead tr td{font-weight: bold}
