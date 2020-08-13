@@ -60,11 +60,11 @@
 				<div class="messagewarp_item">
 					<div class="messagewarp_item_l">
 						<span class="font">姓名：<span class="fill">*</span></span>
-						<input type="text" class="cinput" id="username">
+						<input type="text" class="cinput" id="username" name="name">
 					</div>
 					<div class="messagewarp_item_r">
 						<span class="font">手机：<span class="fill">*</span></span>
-						<input type="text" class="cinput" id="tel">
+						<input type="text" class="cinput" id="tel" name="tel">
 					</div>
 					<div class="clear"></div>
 				</div>
@@ -72,28 +72,84 @@
 				<div class="messagewarp_item">
 					<div class="messagewarp_item_l">
 						<span class="font">邮箱：<span class="fill">*</span></span>
-						<input type="text" class="cinput" id="e-mail">
+						<input type="text" class="cinput" id="e-mail" name="email">
 					</div>
 					<div class="messagewarp_item_r">
 						<span class="font">传真：</span>
-						<input type="text" class="cinput" id="fax">
+						<input type="text" class="cinput" id="fax" name="fax">
 					</div>
 					<div class="clear"></div>
 				</div> 
 				
 				 <div class="messagewarp_item">
 					<span class="font">内容：<span class="fill">*</span>  </span>
-					<textarea name="" cols="" rows="" id="content"></textarea>
-				</div> 
+					<textarea name="content" cols="" rows="" id="content"></textarea>
+				</div>
 
 
-				<button class="messagewarp_tijiao"><i class="fa fa-fw fa-paper-plane-o"></i>发送信息</button>
+				<button class="messagewarp_tijiao" onclick="submitMessage()"><i class="fa fa-fw fa-paper-plane-o"></i>发送信息</button>
 
 			</div>
 		 </div>
      
     </div>
+<script type ="text/javascript">
+	function submitMessage(){
 
+	    var name = $.trim($("input[name='name']").val());
+	    var tel = $.trim($("input[name='tel']").val());
+	    var email = $.trim($("input[name='email']").val());
+	    var fax = $.trim($("input[name='fax']").val());
+	    var content = $("#content").val();
+
+	    if(name.length == 0){
+	        alert('姓名不能为空');
+	        return false;
+		}
+        if(tel.length == 0){
+            alert('手机不能为空');
+            return false;
+        }
+        if(email.length == 0){
+            alert('邮箱不能为空');
+            return false;
+        }
+        if (/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(email) == false) {
+            alert('邮箱格式不正确，请重新填写');
+            return false;
+        }
+        if(content.length == 0){
+            alert('内容不能为空');
+            return false;
+        }
+
+        $.ajax({
+            url: "{{:url('method/get_message')}}",
+            type: 'post',
+            data: {name:name,tel:tel,email:email,fax:fax,content:content},
+            dataType: 'JSON',
+            timeOut: 3000,
+            complete: function () {
+                //$("#nextstep").removeClass("disabled");
+            },
+            success: function (data) {
+                if (data.code == 1) {
+                    $("input[name='name']").val();
+                    $("input[name='tel']").val();
+                    $("input[name='email']").val();
+                    $("input[name='fax']").val();
+                    $("#content").html();
+                    alert('提交成功，请等待客服回复！');
+                    location.reload();
+                }else{
+                    alert(data.msg);
+				}
+            }
+        });
+	}
+
+
+</script>
 
         {include file="public/footer"}
 </html>

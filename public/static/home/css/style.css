@@ -28,8 +28,8 @@
 }
 
 .wrap.hzys {
-	background:url(../images/TB1qKeIMXXXXXbWXFXXXXXXXXXX-1600-162.jpg) center bottom no-repeat #f9f9f9;
-	margin-top: 50px; height: 670px;
+	background:url(../images/TB1qKeIMXXXXXbWXFXXXXXXXXXX-1600-162.jpg) center bottom no-repeat #ffffff;
+	height: 670px;
 }
 
 
@@ -330,7 +330,7 @@
     margin-right: auto;
 }
 .timeline-years__active-line {
-    background-color:#FF9595;
+    background-color:#fd3c00;
     bottom: 0;
     height: 2px;
     left: 0;
@@ -358,7 +358,7 @@
 	margin-right: -5px;
 }
 .timeline-years__year:hover:after, .timeline-years__year.active:after {
-    background-color: #FF9595;
+    background-color: #fd3c00;
     margin-left: -1.5px;
     -webkit-transition: background-color 0.3s;
     transition: background-color 0.3s;
@@ -378,17 +378,16 @@
     width: 1px;
 }
 .timeline-years__year:first-child {
-    color: #FF9595;
-    font-size: 35px;
+    color: #fd3c00;
+    font-size: 22px;
     font-style: normal;
-    font-weight: 200;
-	width:8% !important;
+    font-weight: 600;
 }
 .timeline-years__year:last-child {
-    color: #FF9595;
-    font-size: 35px;
+    color: #fd3c00;
+    font-size: 22px;
     font-style: normal;
-    font-weight: 200;
+    font-weight: 600;
 }
 
 .slider--timeline {
@@ -507,11 +506,12 @@
 }
 #history{ min-height:420px;}
 .slider--timeline .slide__year {
-    font-size: 60px;
-	position:absolute; top:130px; left:44%;
+    font-size: 24px;
+	position:absolute; top:155px; left:45%;
 }
+.history_nianduo{left:42% !important;}
 .orange {
-    color: #FF9595;
+    color: #fd3c00;
 }
 .slider--timeline .slide__title {
     font-size: 30px;
@@ -539,13 +539,13 @@
      color:#fff;
     box-sizing: border-box;
     height:auto;
-    padding: 30px;
+    padding: 10px;
     position: relative;
     vertical-align: top;
     float:left; width:100%;
 }
-.slide__bottom--left h2{color:#333; line-height:24px; font-size:20px; text-align:center; width:70%; margin:0 auto; margin-bottom:20px; }
-.slide__bottom--left p{color:#666; line-height:24px; font-size:14px; width:70%; margin:0 auto; }
+.slide__bottom--left h2{color:#333; line-height:24px; font-size:20px; text-align:center; margin:0 auto; margin-bottom:20px; }
+.slide__bottom--left p{color:#666; line-height:24px; font-size:14px; margin:0 auto; }
 .slider--timeline .slide__53 {
     font-size: 60px; padding-top:20px;
 }
@@ -567,8 +567,8 @@
 
 /********我们的服务*********/
 .suppbox {padding:70px 0px;}
-.suppbox2 {padding-bottom:70px;}
-.suppbox3 {padding-top: 40px;}
+.suppbox2 {padding:70px 0px 20px 0px;}
+.suppbox3 {padding: 30px 0px 70px 0px;}
 .tablelist{}
 .tow .tow1{font-size:14px; background-color:#FFF1F1}
 .tow .tow2{font-size:14px;}
@@ -637,22 +637,26 @@
 .index_fiveliu2{padding-right:0px;}
 .supportbox{padding-top:50px;}
 .mailbox{padding-top:100px;}
-/********服务*******/
+/********进口服务*******/
 .serv_main{padding-top:20px;}
 .sup_item{margin-bottom:15px;}
 
 .sup_item{border:1px solid #d4d4d4; border-radius:8px; -webkit-border-radius:8px; -moz-border-radius:8px; -khtml-border-radius:8px;}
 .sup_itt{font-size:20px; color:#333; position:relative; padding-bottom:10px; margin-top:30px; text-align:center;}
 .sup_itt:after{position:absolute; bottom:0px; left:50%; margin-left:-24px; content:""; width:48px; height:1px; background-color:#666;}
-.sup_item img{display:block; text-align:center; margin:25px auto 35px auto;} 
+.pf_wrap_anm{width: 100%; height: 180px; position:relative;}
+.pf_pic{display:block; text-align:center; margin: 0px auto 35px auto;} 
 .sup_itm{display:block; width:120px; height:32px; line-height:30px; font-size:14px; text-align:center; background-color:#fd3c00;border:1px solid #fd3c00; color:#fff; margin:0px auto 30px auto; border-radius:5px; -webkit-border-radius:5px; -moz-border-radius:5px; -khtml-border-radius:5px;}
-.suppbox2{padding-bottom:80px;}
-.suppbox3{padding-top:40px;}
+.pf_wrap{padding-top: 70px;}
 .sup_item:hover{ background-color:#ff9570; border:1px solid #fd3c00; transition:all .5s linear; -webkit-transition:all .5s linear; -moz-transition:all .5s linear; -ms-transition:all .5s linear; -o-transition:all .5s linear;}
 .sup_item:hover .sup_itt{color:#fff;transition:all .5s linear; -webkit-transition:all .5s linear; -moz-transition:all .5s linear; -ms-transition:all .5s linear; -o-transition:all .5s linear;}
 .sup_item:hover .sup_itt:after{ background-color:#fff;transition:all .5s linear; -webkit-transition:all .5s linear; -moz-transition:all .5s linear; -ms-transition:all .5s linear; -o-transition:all .5s linear;}
 .sup_item:hover .sup_itm{border:1px solid #fff; color:#fff;transition:all .5s linear; -webkit-transition:all .5s linear; -moz-transition:all .5s linear; -ms-transition:all .5s linear; -o-transition:all .5s linear;background-color:#ff9570;}
 
+.pf_fonts{position: absolute; top: 0; left: 15%; width: 70%; height: 180px; overflow: hidden; font-size: 14px; line-height: 26px; text-align: center; color: #fff; display: none;}
+.sup_item:hover .pf_pic{display: none;transition:all .5s linear; -webkit-transition:all .5s linear; -moz-transition:all .5s linear; -ms-transition:all .5s linear; -o-transition:all .5s linear;}
+.sup_item:hover .pf_fonts{display: block;transition:all .5s linear; -webkit-transition:all .5s linear; -moz-transition:all .5s linear; -ms-transition:all .5s linear; -o-transition:all .5s linear;}
+.pf_storage{background: #f9f9f9; padding: 70px 0px;}
 /***查询*******/
 #pricing {
     height: 420px;
@@ -1742,7 +1746,7 @@ li span a{
 
 /*********跨境出口**************/
 /***运费查询版块***/
-.base-info .title .sta_title3{font-size: 18px; color: #666; text-align: center; padding-top: 10px; letter-spacing: 2px;}
+.base-info .title .sta_title3{font-size: 18px; color: #666; text-align: center; padding-top: 10px; letter-spacing: 2px; margin-bottom: 0px;}
 .exit_chaxun{width: 83%; margin: 50px auto 0px auto; background: #f9f9f9; padding: 30px;}
 .exit_cx_warp{border: 1px solid #d8d8d8; background: #ffffff; padding: 30px;}
 .exit_cx_item{margin-bottom: 20px}
@@ -1813,8 +1817,8 @@ li span a{
 /***运费查询版块***/
 
 /***出口流程版块***/
-.wrap.wklc{background: #ffffff; }
-.exit_liuc{width: 1070px; margin: 0 auto;}
+.wrap.wklc{background: #ffffff; padding-bottom: 70px;}
+.exit_liuc{width: 1070px; margin: 40px auto 0px auto;}
 
 /***出口服务版块***/
 .exit_fuwu{width: 100%; height: 420px;float: left; margin-top: 50px;}
@@ -1879,7 +1883,7 @@ li span a{
 
 /***********线路详情**********/
 .exit_xq_wrap{background: #f9f9f9; padding-bottom: 80px;}
-.exit_xq_main{width:100%; background: #ffffff; z-index: 99; position:relative; margin-top: -180px;}
+.exit_xq_main{width:100%; background: #ffffff; z-index: 99; position:relative; margin-top:0px;}
 
 .navContent{float: left; width: 20%;
     min-height: 2054px;
@@ -2380,8 +2384,11 @@ li span a{
 }
 /*********出口服务页面banner切换**********/
 
-
-
+/**********公司介绍*********/
+.ser_tianz_main{padding-bottom: 30px;}
+.ser_tianz_main .title{margin-bottom: 20px;}
+.ser_tianz{font-size: 14px; line-height: 26px; text-indent: 2rem; margin-bottom: 0px;}
+.ser_tianz_pic{padding: 15px; border: 1px solid #fd3c00;}
 
 
 

@@ -32,7 +32,7 @@
                         <header class="panel-heading panel-border" >
                             <!-- 文章管理-->
 
-                            <button  type="button" class="add btn btn-success btn-capsul">添加文章</button>
+                            <button  type="button" class="mail_config btn btn-success btn-capsul">邮箱配置</button>
 
                             <!--<span class="tools pull-right">
                                 <a class="refresh-box fa fa-repeat" href="javascript:;"></a>
@@ -83,13 +83,13 @@
                                         {{$vo.name}}
                                     </td>
                                     <td>
-                                        {{$vo.mail}}
+                                        {{$vo.email}}
                                     </td>
                                     <td>
                                         {{$vo.tel}}
                                     </td>
                                     <td>
-                                        {{$vo.fax}}
+                                        {if condition="empty($vo.fax)"}无{else/}{{$vo.fax}}{/if}
                                     </td>
                                     <td>
                                         {{:mb_substr($vo.content,0,20)}}...
@@ -109,12 +109,11 @@
                                         {case 2}<span style="color: red">失败</span>{/case}
                                         {default/}其他
                                         {/switch}
-                                    <td>
-                                        <!--<button type="button" data-id="{{$vo.id}}" class="edt btn btn-info btn-capsul">修改</button>-->
-                                    {if condition="$vo.is_send==2"} <button type="button" data-id="{{$vo.id}}" class="del btn btn-info btn-danger btn-capsul" >重推</button>{else/}{{$vo.updated_at}}{/if}
-
                                     </td>
-
+                                    <td>
+                                       <!-- <button type="button" data-id="{{$vo.id}}" class="edt btn btn-info btn-capsul">修改</button>-->
+                                        <button type="button" data-id="{{$vo.id}}" class="content_show btn btn-info btn-capsul" onclick="layer.msg('{{:mb_substr($vo.content,0,60)}}')">查看</button>
+                                    {if condition="$vo.is_send==2"} <button type="button" data-id="{{$vo.id}}" class="del btn btn-info btn-danger btn-capsul" >重推</button>{else/}{{$vo.updated_at}}{/if}
 
                                     </td>
                                 </tr>
@@ -170,11 +169,11 @@
         })
         $('.del').click(function () {
             var id = $(this).attr('data-id');
-            layer.confirm('确定删除该文章吗？',
-                {title: '文章删除', btn: ['确认', '取消'],},
+            layer.confirm('确定重推吗？',
+                {title: '留言重推', btn: ['确认', '取消'],},
                 function (index) {
                     $.post({
-                        url: "{{:url('info/article_del')}}",
+                        url: "{{:url('info/message_repush')}}",
                         type: 'post',
                         // sync:true,
                         data: {
@@ -185,7 +184,7 @@
                         },
                         success: function (result) {
                             if (result.code == 1) {
-                                layer.msg(result.msg,{time:3000},function () {
+                                layer.msg(result.msg, {time: 3000}, function () {
                                     location.reload();
                                 });
                             } else {
@@ -196,8 +195,8 @@
                             // layer.close(this.layerIndex);
                         },
                     });
-                }
-            );
+
+                })
         })
     })
 

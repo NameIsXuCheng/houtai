@@ -10,6 +10,7 @@ use think\Controller;
 use think\Request;
 use think\Db;
 use think\Session;
+use app\home\controller\Method;
 
 class Info extends Basic {
     public function index(){
@@ -159,6 +160,40 @@ class Info extends Basic {
         return view();
     }
 
+    public function message_repush(){
+
+        if($this->request->isPost()) {
+            $param = $this->request->param();
+            $id = $param['id'];
+            if(empty($id)){
+                return alert_json(0,'留言不存在！');
+            }
+            $messageModel=Db::name('message');
+            $map = ['id' => $id];
+            $message = $messageModel->where($map)->find();
+            if(empty($message)){
+                return alert_json(0,'留言不存在！');
+            }
+
+            //邮件发送
+            $method = new Method();
+            $ret = $method->push_message($message);
+            if(!$ret['code']){
+                return alert_json(0,'重推失败：推送失败！');
+            }
+            $data = [
+                'is_send'=>1,
+                'updated_at'=>date('Y-m-d H:i:s')
+            ];
+            $ret = $messageModel->where($map)->update($data);
+            if($ret === false ){
+                return alert_json(0,'重推失败：更新失败！');
+            }
+            return alert_json(1,'重推成功！');
+
+            }
+
+    }
 
 
     public function menu(){

@@ -17,9 +17,10 @@
           <div class="c-banner">
               <div class="banner" id="exit_banner_img">
                   <ul>
-                      <li><img src="__PUBLIC__/home/images/product/exit_banner.jpg" width="100%"></li>
-                      <li><img src="__PUBLIC__/home/images/product/exit_banner.jpg" width="100%"></li>
-                      <li><img src="__PUBLIC__/home/images/product/exit_banner.jpg" width="100%"></li>
+                      <li><img src="__PUBLIC__/home/images/product/exit_banner1.jpg" width="100%"></li>
+                      <li><img src="__PUBLIC__/home/images/product/exit_banner2.jpg" width="100%"></li>
+                      <li><img src="__PUBLIC__/home/images/product/exit_banner3.jpg" width="100%"></li>
+                      <li><img src="__PUBLIC__/home/images/product/exit_banner4.jpg" width="100%"></li>
                   </ul>
               </div>
               <div class="nexImg">
@@ -33,6 +34,7 @@
                       <li jumpImg="0"></li>
                       <li jumpImg="1"></li>
                       <li jumpImg="2"></li>
+                      <li jumpImg="3"></li>
                   </ul>
               </div>
           </div>
@@ -61,7 +63,7 @@
                                   <p>欧洲4-7日&nbsp;&nbsp;美国10-12日</p>
                               </div>
                               <div class="exit_fuwu_item_main2">
-                                  {volist name="article[2]" id="vo"}
+                                  {volist name="article[2]" id="vo" offset="1" length='6'}
                                   <a href="{{:url('exit_xq')}}?id={{$vo.id}}">{{$vo.country_name}}</a>
                                   {/volist}
                               </div>
@@ -75,7 +77,7 @@
                                   <p>欧洲5-9日&nbsp;&nbsp;美国12-15日</p>
                               </div>
                               <div class="exit_fuwu_item_main2">
-                                  {volist name="article[3]" id="vo"}
+                                  {volist name="article[3]" id="vo" offset="1" length='6'}
                                   <a href="{{:url('exit_two_xq')}}?id={{$vo.id}}">{{$vo.country_name}}</a>
                                   {/volist}
                               </div>
@@ -88,7 +90,7 @@
                               <p>25-30日</p>
                           </div>
                           <div class="exit_fuwu_item_main2">
-                              {volist name="article[3]" id="vo"}
+                              {volist name="article[3]" id="vo" offset="1" length='6'}
                               <a href="#">{{$vo.country_name}}</a>
                               {/volist}
                           </div>
@@ -152,7 +154,7 @@
                       </div>
                   </div>
 
-                  <div class="exit_map"><img src="__PUBLIC__/home/images/product/map.png" width="100%"></div>
+                  <div class="exit_map"><img src="__PUBLIC__/home/images/product/map.gif" width="100%"></div>
 
               </div>
           </div><!--地图-->

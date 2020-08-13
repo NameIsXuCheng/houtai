@@ -16,367 +16,14 @@
     <div id="layerarea">
 <!-- Main -->
 <main class="main-container">
-  <div class="container serbox">
-    <div class="suppbox">
-
-      <div class="row">
-  	    <div class="col-md-6 col-md-offset-3">
-      		<header class="text-center">
-      		 <h2 class="section-title">渠道<span class="text-theme">价格</span></h2>
-      		 <p class="section-subtitle">The channel prices</p>
-      		</header>
-  	    </div>
-      </div>
-    
-    <!--价格查询-->
-     <div id="pricing">
-                <div class="containers">
-                    <div class="rows">
-                           
-            	<div class="pricing-table col-md-3 col-sm-6 col-xs-12">
-                	<div class="inner-box wow fadeIn">
-                    	<div class="table-header">
-                            <div class="icon-right"><span class="flaticon-badge"></span></div>
-                        	<h3 class="price">价格查询平台</h3>
-                            <h4 class="title">安全稳定，价格透明</h4>
-                        </div>
-                        
-                        <div class="table-contents">
-                        	
-                     
-                          <div class="form-horizontal">
-
-                                            <div class="form-group" >
-
-                                                <label class="col-lg-3 control-label" for="inputEmail1" style=" width:42px; float:left;">从:</label>
-                                                <div class="col-lg-4" style="width:67px; float:left;">
-                                                   
-                                                        <input name="txtStartCount" type="text" value="中 国" id="txtStartCount" disabled="disabled" class="form-control" style="width:67px;" />
-                                                </div>
-                                                <label class="col-lg-3 control-label" for="inputEmail1"  style=" width:42px;float:left;">到：</label>
-                                                <div class="col-lg-4" style="width: 112px;float:left;">
-                                                    <input name="TargetCountry" type="text" id="TargetCountry" onfocus="this.blur()" value="请选择" class="form-control" />
-                                                       
-                                                </div>
-
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="col-lg-4 control-label" for="inputEmail1" style="width:42px; float:left; padding: 7px 0 0;">重量：</label>
-                                                <div class="col-lg-4" style="width:115px; float:left;">
-                                                  
-                                                    <input name="txtStage" type="text" id="txtStage" value="1" class="form-control" />
-                                                </div>
-                                                <div class="col-lg-3 control-label" style=" width:42px; float:left;">kg</div>
 
 
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-lg-4 control-label" for="inputEmail1" style="width:42px; float:left;  padding: 7px 0 0;">体积：</label>
-                                                <div class="col-lg-2 pfc_input" style="float:left; width:50px;">
-                                                  
-                                                        <input name="txtLong" type="text" id="txtLong" onfocus="if(this.value == this.defaultValue) this.value = &#39;&#39;;" onBlur="if(this.value == &#39;&#39;) this.value = this.defaultValue;" value="1" class="form-control" />
-                                                </div>
-                                                <div class="col-lg-2 pfc_input" style="float:left; width:50px;">
-                                                  
-                                                         <input name="txtWidth" type="text" id="txtWidth" onfocus="if(this.value == this.defaultValue) this.value = &#39;&#39;;" onBlur="if(this.value == &#39;&#39;) this.value = this.defaultValue;" value="1" class="form-control" />
-                                                </div>
-                                                <div class="col-lg-2 pfc_input" style="float:left; width:50px;">
-                                                   
-                                                          <input name="txtHeight" type="text" id="txtHeight" onfocus="if(this.value == this.defaultValue) this.value = &#39;&#39;;" onBlur="if(this.value == &#39;&#39;) this.value = this.defaultValue;" value="1" class="form-control" /> 
-                                                </div>
-                                                <div class="col-lg-3 control-label" style="margin-left: -5px;width:42px; float:left;">cm</div>
-
-                                            </div>
-                                            <div class="form-group">
-
-                                                <label class="col-lg-4 control-label" for="inputEmail1" style="width:42px; float:left;padding: 7px 0 0;">币种：</label>
-                                                <div class="col-lg-4" style="float:left; width:115px;">
-                                                    <select class="form-control">
-                                                        <option>人民币</option>
-
-                                                    </select>
-                                                </div>
-
-                                            </div>
-
-                                          
-
-                                        </div>
-                        </div>
-                        
-                        <div class="table-footer">
-                            <input type="submit" name="btnSubmit" value="我要查价格" onclick="return Check_price();" id="btnSubmit" class="theme-btn btn-style-three rounded-btn" style="background-color:#fd3c00;" />
-                        	
-                        </div>
-                        
-                    </div>
-                </div>
-                
-               
-            	<div class="pricing-table col-md-3 col-sm-6 col-xs-12">
-                	<div class="inner-box wow fadeIn">
-                    	<div class="table-header">
-                        	<h3 class="price">包裹追踪</h3>
-                            <h4 class="title">清关便利，全程追踪</h4>
-                        </div>
-                        
-                        <div class="table-content">
-                        	
-                            <textarea name="txtOrderNo" id="txtOrderNo" class="baoguo-input form-control" style="text-align:left;" onblur="LFocus();" onfocus="GetFocus();" rows="6" placeholder="请输入订单号或追踪号，注：每行输入一个单号。"></textarea>
-                        </div>
-                        
-                        <div class="table-footer">
-                              <input type="submit" name="BtnSearch" value="我要查件" onclick="return Check();" id="BtnSearch" class="theme-btn btn-style-three rounded-btn" />
-
-                        </div>
-                        
-                    </div>
-                </div>
-                
-              
-            	<div class="pricing-table col-md-3 col-sm-6 col-xs-12">
-                	<div class="inner-box wow fadeIn">
-                    	<div class="table-header">
-                        	<h3 class="price">寄件下单</h3>
-                            <h4 class="title">价格优惠，时效稳定</h4>
-                        </div>
-                        
-                        <div class="table-content">
-                         
-                             <img src="__PUBLIC__/home/images/serach-fee.png" />
-                        </div>
-                        
-                        <div class="table-footer">
-                        	<a href="#" class="theme-btn btn-style-three rounded-btn">我要发货</a>
-                        </div>
-                        
-                    </div>
-                </div>
-                
-              
-            	<div class="pricing-table col-md-3 col-sm-6 col-xs-12">
-                	<div class="inner-box wow fadeIn">
-                    	<div class="table-header">
-                            <div class="icon-right"><span class="flaticon-medal"></span></div>
-                        	<h3 class="price">仓储服务</h3>
-                            <h4 class="title">方便快捷，一站式服务</h4>
-                        </div>
-                        
-                        <div class="table-content">
-                        	 <img src="__PUBLIC__/home/images/storage.png" />
-                        </div>
-                        
-                        <div class="table-footer">
-                        	<a id="alink" href="#"  class="theme-btn btn-style-three rounded-btn">免费仓储</a>
-                        </div>
-                        
-                    </div>
-                </div>
-                    </div>
-                </div>
-            </div>
-    <!--价格查询-->
-    <input type="hidden" name="HiValue" id="HiValue" />
-        <!--floatbox begin-->
-        <div class="fbt fb_1">
-        	<div class="fbtitle">请选择目的地国家<a class="boxcolse" href="javascript:;">关闭</a></div>
-        	<div class="search_bt"><input id="Content" class="sstext" type="text" value="" /><input class="ssbt" type="button" value="搜索" onclick="SearchCountry();" /></div>
-            <div class="fbbox clearfix">
-                <div class="fbtitle1">
-                  <a href="javascript:;">A</a>
-                  <a href="javascript:;">B</a>
-                  <a href="javascript:;">C</a>
-                  <a href="javascript:;">D</a>
-                  <a href="javascript:;">E</a>
-                  <a href="javascript:;">F</a>
-                  <a href="javascript:;">G</a>
-                  <a href="javascript:;">H</a>
-                  <a href="javascript:;">I</a>
-                  <a href="javascript:;">J</a>
-                  <a href="javascript:;">K</a>
-                  <a href="javascript:;">L</a>
-                  <a href="javascript:;">M</a>
-                  <a href="javascript:;">N</a>
-                  <a href="javascript:;">O</a>
-                  <a href="javascript:;">P</a>
-                  <a href="javascript:;">Q</a>
-                  <a href="javascript:;">R</a>
-                  <a href="javascript:;">S</a>
-                  <a href="javascript:;">T</a>
-                  <a href="javascript:;">U</a>
-                  <a href="javascript:;">V</a>
-                  <a href="javascript:;">W</a>
-                  <a href="javascript:;">X</a>
-                  <a href="javascript:;">Y</a>
-                  <a href="javascript:;">Z</a>
-                </div>
-                <div class="fbcontent">
-                    <div class="fbctitle" id="Search" style="display:none;">查询结果</div>
-                     <ul class="fblist clearfix" id="SearchRes" style="display:none;"></ul>
-                	<div class="fbctitle">常用国家</div>
-                    <ul class="fblist clearfix" id="CommonCountry">
-                    </ul>
-                    <div class="tabcon clearfix">
-                    	<div class="clearfix">
-                            <div class="fbctitle1">A</div>
-                            <ul class="fblist clearfix" id="A">
-                            </ul>
-                        </div>
-                        <div class="clearfix">
-                            <div class="fbctitle1">B</div>
-                            <ul class="fblist clearfix" id="B">
-                            </ul>
-                        </div>
-                        <div class="clearfix">
-                            <div class="fbctitle1">C</div>
-                            <ul class="fblist clearfix" id="C">
-                            </ul>
-                        </div>
-                        <div class="clearfix">
-                            <div class="fbctitle1">D</div>
-                            <ul class="fblist clearfix" id="D">
-                            </ul>
-                        </div>
-                        <div class="clearfix">
-                            <div class="fbctitle1">E</div>
-                            <ul class="fblist clearfix" id="E">
-                            </ul>
-                        </div>
-                        <div class="clearfix">
-                            <div class="fbctitle1">F</div>
-                            <ul class="fblist clearfix" id="F">
-                            </ul>
-                        </div>
-                        <div class="clearfix">
-                            <div class="fbctitle1">G</div>
-                            <ul class="fblist clearfix" id="G">
-                            </ul>
-                        </div>
-                        <div class="clearfix">
-                            <div class="fbctitle1">H</div>
-                            <ul class="fblist clearfix" id="H">
-                            </ul>
-                        </div>
-                        <div class="clearfix">
-                            <div class="fbctitle1">I</div>
-                            <ul class="fblist clearfix" id="I">
-                            </ul>
-                        </div>
-                        <div class="clearfix">
-                            <div class="fbctitle1">J</div>
-                            <ul class="fblist clearfix" id="J">
-                            </ul>
-                        </div>
-                        <div class="clearfix">
-                            <div class="fbctitle1">K</div>
-                            <ul class="fblist clearfix" id="K">
-                            </ul>
-                        </div>
-                        <div class="clearfix">
-                            <div class="fbctitle1">L</div>
-                            <ul class="fblist clearfix" id="L">
-                            </ul>
-                        </div>
-                        <div class="clearfix">
-                            <div class="fbctitle1">M</div>
-                            <ul class="fblist clearfix" id="M">
-                            </ul>
-                        </div>
-                        <div class="clearfix">
-                            <div class="fbctitle1">N</div>
-                            <ul class="fblist clearfix" id="N">
-                            </ul>
-                        </div>
-                        <div class="clearfix">
-                            <div class="fbctitle1">O</div>
-                            <ul class="fblist clearfix" id="O">
-                            </ul>
-                        </div>
-                        <div class="clearfix">
-                            <div class="fbctitle1">P</div>
-                            <ul class="fblist clearfix" id="P">
-                            </ul>
-                        </div>
-                        <div class="clearfix">
-                            <div class="fbctitle1">Q</div>
-                            <ul class="fblist clearfix" id="Q">
-                            </ul>
-                        </div>
-                        <div class="clearfix">
-                            <div class="fbctitle1">R</div>
-                            <ul class="fblist clearfix" id="R">
-                            </ul>
-                        </div>
-                        <div class="clearfix">
-                            <div class="fbctitle1">S</div>
-                            <ul class="fblist clearfix" id="S">
-                            </ul>
-                        </div>
-                        <div class="clearfix">
-                            <div class="fbctitle1">T</div>
-                            <ul class="fblist clearfix" id="T">
-                            </ul>
-                        </div>
-                        <div class="clearfix">
-                            <div class="fbctitle1">U</div>
-                            <ul class="fblist clearfix" id="U">
-                            </ul>
-                        </div>
-                        <div class="clearfix">
-                            <div class="fbctitle1">V</div>
-                            <ul class="fblist clearfix" id="V">
-                            </ul>
-                        </div>
-                        <div class="clearfix">
-                            <div class="fbctitle1">W</div>
-                            <ul class="fblist clearfix" id="W">
-                            </ul>
-                        </div>
-                        <div class="clearfix">
-                            <div class="fbctitle1">X</div>
-                            <ul class="fblist clearfix" id="X">
-                            </ul>
-                        </div>
-                        <div class="clearfix">
-                            <div class="fbctitle1">Y</div>
-                            <ul class="fblist clearfix" id="Y">
-                            </ul>
-                        </div>
-                        <div class="clearfix">
-                            <div class="fbctitle1">Z</div>
-                            <ul class="fblist clearfix" id="Z">
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--floatbox end--> 
-    
-      
-    </div>
-  </div>
-
-  <div class="container">
-    <div class="suppbox2">
-      <div class="row">
-	   <div class="col-md-6 col-md-offset-3">
-		<header class="text-center">
-		 <h2 class="section-title">使用<span class="text-theme">流程</span></h2>
-		 <p class="section-subtitle">The use of the process</p>
-		</header>
-	  </div>
-    </div>
-      <div class="serv_pic"><img src="__PUBLIC__/home/images/ser01.png" width="100%" /></div>
-    </div>
-  </div>
 
   <div class="container">
     <div class="row">
 	   <div class="col-md-6 col-md-offset-3">
 		<header class="text-center">
-		 <h2 class="section-title">我们的<span class="text-theme">服务</span></h2>
+		 <h2 class="section-title">进口<span class="text-theme">服务</span></h2>
 		 <p class="section-subtitle">The services we provide</p>
 		</header>
 	  </div>
@@ -384,42 +31,155 @@
     <div class="suppbox2 suppbox3">
       <div class="row">
         <div class="col-lg-3 col-sm-3 col-md-3">
-          <a href="{{:url('mail')}}"><div class="sup_item">
+          <a href="mail.html"><div class="sup_item">
             <h4 class="sup_itt">直邮进口</h4>
-            <img src="__PUBLIC__/home/images/ser02.png" />
-            <a href="{{:url('mail')}}" class="sup_itm">了解更多</a>
+            <div class="pf_wrap_anm">
+              <img class="pf_pic" src="__PUBLIC__/home/images/ser02.png" />
+              <p class="pf_fonts">为跨境电商企业、平台提供从国外收货、国际运输，国内报关清关，国内派送的一体化服务。</p>
+            </div>
+
+            <a href="mail.html" class="sup_itm">了解更多</a>
           </div></a>
         </div>
-        
+
         <div class="col-lg-3 col-sm-3 col-md-3">
-          <a href="{{:url('bonded')}}"><div class="sup_item">
+          <a href="bonded.html"><div class="sup_item">
             <h4 class="sup_itt">保税进口</h4>
-            <img src="__PUBLIC__/home/images/ser03.png" />
-            <a href="{{:url('bonded')}}" class="sup_itm">了解更多</a>
+            <div class="pf_wrap_anm">
+              <img class="pf_pic" src="__PUBLIC__/home/images/ser03.png" />
+              <p class="pf_fonts">主要为跨进电商平台提供从海外运输，国内保税区备货，保税仓存储、并在订单产生时直接从保税仓通关、分拣包装并发货的一体化服务。</p>
+            </div>
+            <a href="bonded.html" class="sup_itm">了解更多</a>
           </div></a>
         </div>
-        
+
         <div class="col-lg-3 col-sm-3 col-md-3">
-          <a href="{{:url('express')}}"><div class="sup_item">
+          <a href="express.html"><div class="sup_item">
             <h4 class="sup_itt">快件个人进口</h4>
-            <img src="__PUBLIC__/home/images/ser04.png" />
-            <a href="{{:url('express')}}" class="sup_itm">了解更多</a>
+            <div class="pf_wrap_anm">
+              <img class="pf_pic" src="__PUBLIC__/home/images/ser04.png" />
+              <p class="pf_fonts">快件从国外空运到杭州机场，以个人邮递物品的方式向海关申报进口。</p>
+            </div>
+            <a href="express.html" class="sup_itm">了解更多</a>
           </div></a>
         </div>
-        
+
         <div class="col-lg-3 col-sm-3 col-md-3">
-          <a href="{{:url('email')}}"><div class="sup_item">
+          <a href="e-mail.html"><div class="sup_item">
             <h4 class="sup_itt">邮件个人进口</h4>
-            <img src="__PUBLIC__/home/images/ser05.png" />
-            <a href="{{:url('email')}}" class="sup_itm">了解更多</a>
+            <div class="pf_wrap_anm">
+              <img class="pf_pic" src="__PUBLIC__/home/images/ser05.png" />
+              <p class="pf_fonts">从国外空运或陆运到EMS邮关场所，EMS自行在其监管场所内以个人邮递物品的方式向海关申报进口。</p>
+            </div>
+            <a href="e-mail.html" class="sup_itm">了解更多</a>
           </div></a>
         </div>
-        
+
       </div>
     </div>
   </div>
+  <!--我们的仓储-->
+  <div class="pf_storage">
+    <div class="container">
+      <div class="base-info">
+        <div class="title">
+          <p class="sta_title"><span class="sta_tcolor">仓储</span>服务</p>
+          <p class="sta_title2">Warehousing services</p>
+          <p class="sta_title3">云仓储化&nbsp;高效仓配&nbsp;智能分拣&nbsp;精益库管</p>
+        </div>
+      </div>
+      <div class="row mt">
 
+        <div class="col-md-4 col-sm-6 fadeIn wow" data-wow-duration="1.3s">
+          <a href="__PUBLIC__/home/images/project-03.jpg" class="project-item image-popup">
+            <div class="gallery-image">
+              <img src="__PUBLIC__/home/images/project-03.jpg" alt="">
+            </div>
+            <div class="info">
+              <div class="h4 title">仓储地理</div>
 
+            </div>
+          </a>
+        </div>
+
+        <div class="col-md-4 col-sm-6 fadeIn wow" data-wow-duration="1.3s" data-wow-delay="0.2s">
+          <a href="__PUBLIC__/home/images/project-01.jpg" class="project-item image-popup">
+            <div class="gallery-image">
+              <img src="__PUBLIC__/home/images/project-01.jpg" alt="">
+            </div>
+            <div class="info">
+              <div class="h4 title">仓储服务</div>
+
+            </div>
+          </a>
+        </div>
+
+        <div class="col-md-4 col-sm-6 fadeIn wow" data-wow-duration="1.3s" data-wow-delay="0.4s">
+          <a href="__PUBLIC__/home/images/project-02.jpg" class="project-item image-popup">
+            <div class="gallery-image">
+              <img src="__PUBLIC__/home/images/project-02.jpg" alt="">
+            </div>
+            <div class="info">
+              <div class="h4 title">仓储运输</div>
+
+            </div>
+          </a>
+        </div>
+
+        <div class="col-md-4 col-sm-6 fadeIn wow" data-wow-duration="1.3s" data-wow-delay="0.6s">
+          <a href="__PUBLIC__/home/images/project-04.jpg" class="project-item image-popup">
+            <div class="gallery-image">
+              <img src="__PUBLIC__/home/images/project-04.jpg" alt="">
+            </div>
+            <div class="info">
+              <div class="h4 title">保税仓全景</div>
+
+            </div>
+          </a>
+        </div>
+
+        <div class="col-md-4 col-sm-6 fadeIn wow" data-wow-duration="1.3s" data-wow-delay="0.8s">
+          <a href="__PUBLIC__/home/images/project-05.jpg" class="project-item image-popup">
+            <div class="gallery-image">
+              <img src="__PUBLIC__/home/images/project-05.jpg" alt="">
+            </div>
+            <div class="info">
+              <div class="h4 title">产品装箱</div>
+
+            </div>
+          </a>
+        </div>
+
+        <div class="col-md-4 col-sm-6 fadeIn wow" data-wow-duration="1.3s" data-wow-delay="1.0s">
+          <a href="__PUBLIC__/home/images/project-06.jpg" class="project-item image-popup">
+            <div class="gallery-image">
+              <img src="__PUBLIC__/home/images/project-06.jpg" alt="">
+            </div>
+            <div class="info">
+              <div class="h4 title">保税仓产品</div>
+
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!--我们的仓储-->
+  <!--流程-->
+  <div class="container">
+    <div class="suppbox2">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <header class="text-center">
+            <h2 class="section-title">使用<span class="text-theme">流程</span></h2>
+            <p class="section-subtitle">The use of the process</p>
+          </header>
+        </div>
+      </div>
+      <div class="serv_pic"><img src="__PUBLIC__/home/images/ser01.png" width="100%" /></div>
+    </div>
+  </div>
 </main>
 <!-- /Main -->
 
@@ -638,4 +398,12 @@ $("#TargetCountry").val(text);
             // parent.MainFrame.location.reload();
         }
 </script>
+      <!--仓储图片点击放大-->
+      <script src="__PUBLIC__/home/js/jquery-2.2.0.min.js"></script>
+      <script src="__PUBLIC__/home/js/bootstrap.min.js"></script>
+      <script src="__PUBLIC__/home/js/jquery.magnific-popup.min.js"></script>
+      <script src="__PUBLIC__/home/js/jquery.stellar.min.js"></script>
+      <script src="__PUBLIC__/home/js/wow.min.js"></script>
+      <script src="__PUBLIC__/home/js/general.js"></script>
+      <!--仓储图片点击放大-->
 </html>

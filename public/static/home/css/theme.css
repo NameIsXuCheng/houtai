@@ -58,8 +58,8 @@ body {
   padding-bottom: 70px;
 }
 .section-small {
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 70px;
+  padding-bottom: 70px;
 }
 .section-content {
   margin-top: 60px;
@@ -68,7 +68,7 @@ body {
   margin-bottom: 10px;
 }
 .section-subtitle {
-  margin-bottom: 0;font-family:Verdana, Geneva, sans-serif; font-size:15px; color:#BFBFBF;}
+  margin-bottom: 0;font-family:Verdana, Geneva, sans-serif; font-size:15px; color:#BFBFBF;
 }
 .rounded {
   -webkit-border-radius: 50%;
