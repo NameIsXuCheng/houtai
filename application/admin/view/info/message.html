@@ -92,7 +92,7 @@
                                         {if condition="empty($vo.fax)"}无{else/}{{$vo.fax}}{/if}
                                     </td>
                                     <td>
-                                        {{:mb_substr($vo.content,0,20)}}...
+                                        {{:mb_substr(htmlspecialchars($vo.content),0,20)}}...
                                     </td>
                                     <td>
                                         {{$vo.ip}}

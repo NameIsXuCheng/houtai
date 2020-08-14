@@ -23,7 +23,7 @@ class Info extends Basic {
 
         $article_info = $articleModel->alias('a')
             ->field('a.*,c.country_name')
-            ->join('__COUNTRY__ c','a.country = c.country_code','left')->order('id desc')->select();
+            ->join('__COUNTRY__ c','a.country = c.country_code','left')->order('created_at DESC')->select();
         $this->assign('article_info',$article_info);
         return view();
     }

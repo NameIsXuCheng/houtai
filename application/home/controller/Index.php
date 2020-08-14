@@ -125,7 +125,12 @@ class Index extends Controller {
         return $info;
     }
 
+    //欧美特快专线 type=2
     public function exit_one(){
+        $type = 2;
+        $article_info = $this->get_article_category($type);
+        $this->assign('article_info',$article_info[$type]);
+
         return view();
     }
     public function exit_two(){

@@ -94,7 +94,7 @@
                                              {if condition="empty($vo.country_name)"}无{else/}{{$vo.country_name}}{/if}
                                          </td>
                                          <td>
-                                             {{:mb_substr($vo.content,0,20)}}...
+                                             {{:mb_substr(htmlspecialchars($vo.content),0,20)}}...
                                          </td>
                                          <td>
                                              {if condition="empty($vo.thumbnail)"}无{else/}<img src="{{$vo.thumbnail}}" width="60px" height="30px">{/if}
