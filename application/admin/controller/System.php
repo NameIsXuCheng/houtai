@@ -25,19 +25,19 @@ class System extends Basic {
                 $confignames = [];
                 foreach($config as $item)
                 {
-                    $confignames[] = $item['config_name'];
+                    $confignames[] = $item['name'];
                 }
                 $confignames = implode(',',$confignames);
                 $data = $this->request->only($confignames);
                 foreach ($data as $key => $value) {
-                    Db::name('setting')->where(['config_name'=>$key])->update(['config_value'=>$value]);
+                    Db::name('setting')->where(['name'=>$key])->update(['value'=>$value]);
                 }
             }catch (\Exception $e){
                 Db::rollback();
-                $this->error('修改失败','',$data);
+                return alert_json(0,'修改失败！');
             }
             Db::commit();
-            $this->success('修改成功','',$data);
+            return alert_json(1,'修改成功！');
         }
         $this->assign('config',$config);
         return view();

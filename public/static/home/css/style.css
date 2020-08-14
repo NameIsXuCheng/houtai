@@ -2274,7 +2274,7 @@ li span a{
 .contact_box1_r img{ padding:70px 0px 0px 15px;}
 .contact_btop{}
 .contact_btop span{font-size: 18px; color: #0059a6; margin: 0px;}
-.contact_btop h3{font-size: 30px; color: #333; letter-spacing: 1px; padding-top: 8px;}
+.contact_btop h3{font-size: 30px; color: #333; letter-spacing: 1px;/* padding-top: 8px; */margin: 0px;font-weight: bold;}
 .contact_btop_wen{font-size: 16px; color: #555; margin: 0px; line-height: 26px;padding-top: 15px;}
 .contact_bcenter{padding-top: 40px;}
 .contact_bcenter h5{font-size: 16px; color: #333; margin: 0px; line-height: 26px;}

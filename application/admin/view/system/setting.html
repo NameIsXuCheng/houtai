@@ -37,7 +37,7 @@
                                         </span>
                         </header>
                         <div class="panel-body">
-                            <form class="form-horizontal form-variance" method="get">
+                            <form class="form-horizontal form-variance" method="post" id="mail_config">
                                 <!--<div class="form-group">
                                     <label class="col-sm-3 control-label">Default</label>
                                     <div class="col-sm-6">
@@ -48,14 +48,14 @@
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">{{$vo.cname}}</label>
                                     <div class="col-sm-6">
-                                        <input class="form-control u-rounded" type="{{$vo.type}}}" value="{{$vo.value}}">
+                                        <input class="form-control u-rounded" name="{{$vo.name}}" type="{{$vo.type}}" value="{{$vo.value}}">
                                         <span class="help-block">{{$vo.remark}}</span>
                                     </div>
                                 </div>
                                 {/volist}
                                 <div class="form-group">
                                     <div class="col-lg-offset-3 col-lg-9">
-                                        <button type="submit" class="btn btn-info">提交</button>
+                                        <button type="button" class="btn btn-info" id="mail_button">提交</button>
                                     </div>
 
                                 </div>
@@ -72,9 +72,6 @@
 
     </div>
 </div>
-
-
-        <script src="/layuiadmin/layui/layui.js"></script>
         <script>
             layui.use(['jquery','form', 'layedit'], function(){
                 var form = layui.form
@@ -92,31 +89,43 @@
                     }
                 });
 
-                //监听提交
-                form.on('submit(subconfig)', function(data){
-                    var postData = data.field;
-                    $.post({
-                        url:"{:url('system/index')}",
+                $('#mail_button').click(function () {
+                    var postData = {};
+                    var str = '{';
+                    $('#mail_config input').each(function (index,item) {
+                        str +=  '\"'+item.name+'":"'+ item.value+'",';
+                    });
+                    str = str.substr(0,str.length-1)+'}';
+                    str = eval('(' + str + ')');
+                    $.ajax({
+                        url:"{{:url('system/setting')}}",
                         type:'post',
                         // sync:true,
-                        data:postData,
-                        
+                        dataType: 'json',
+                        data:str,
                         error:function(data){
                             console.log(data)
                         },
                         success:function(data){
-                            layer.alert(data.msg, {
-                              title: '{:lang("Tips")}'
-                              ,btn:['{:lang("IMSure")}']
-                            })
-                            if(data.code==0){
+                            if(data.code==1){
+                                layer.msg('修改成功');
                                 location.reload();
+                            }else{
+                                layer.alert(data.msg, {
+                                    title: '提示'
+                                    ,btn:['确认']
+                                })
                             }
                         },
                         complete: function () {
                             // layer.close(this.layerIndex);
                         },
                     });
+                })
+                //监听提交
+                form.on('submit(#mail_config)', function(data){
+                    var postData = data.field;
+
                     // console.log(postData)
                     return false;
                 });
