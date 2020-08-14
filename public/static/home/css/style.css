@@ -1799,7 +1799,7 @@ li span a{
 }
 .exit_cx_other{position: relative; width: 222px; margin: 0 auto;}
 .exit_cx_other_two{ width: 136px;}
-.exit_cx_other li{font-size: 14px;font-weight: 600; letter-spacing: 1px; float: left;}
+.exit_cx_other li{font-size: 14px;font-weight: 600; letter-spacing: 1px; float: left;color:#444}
 .exit_cx_other li:first-child:after{display: block; content: ''; position: absolute; left: 0px; top:20px; width: 60px; height: 1px; background: #333;}
 .exit_cx_other li:nth-child(2):after{display: block; content: ''; position: absolute; left: 76px; top:20px; width: 60px; height: 1px; background: #333;}
 .exit_cx_other li:nth-child(3):after{display: block; content: ''; position: absolute; left: 152px; top:20px; width: 60px; height: 1px; background: #333;}
