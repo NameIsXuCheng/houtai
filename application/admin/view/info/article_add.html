@@ -18,14 +18,14 @@
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">类型</label>
-                    <div class="layui-input-block">
-                        <select name="type" lay-verify="required">
-                            <option value=""></option>
-                            <option value="1" >产品文章</option>
-                            <option value="2" >其他文章</option>
-                        </select>
-                    </div>
+                        <label class="layui-form-label">类型</label>
+                        <div class="layui-input-block">
+                            <select name="type" lay-verify="required">
+                                <option value=""></option>
+                                <option value="1" >产品文章</option>
+                                <option value="2" >其他文章</option>
+                            </select>
+                        </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">国家</label>
@@ -38,11 +38,19 @@
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">类目</label>
-                    <div class="layui-input-block">
-                        <input type="radio" name="category" value="1" checked title="欧洲铁路小包">
-                        <input type="radio" name="category" value="2" title="欧美特快专线">
-                        <input type="radio" name="category" value="3" title="欧美专线"><!--checked-->
+                    <div class="layui-col-xs6">
+                        <label class="layui-form-label">类目</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="category" value="1" checked title="欧洲铁路小包">
+                            <input type="radio" name="category" value="2" title="欧美特快专线">
+                            <input type="radio" name="category" value="3" title="欧美专线"><!--checked-->
+                        </div>
+                    </div>
+                    <div class="layui-col-xs6">
+                        <label class="layui-form-label">时效</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="aging"   placeholder="请输入时效" autocomplete="off" class="layui-input">
+                        </div>
                     </div>
                 </div>
                 <!--<div class="layui-form-item">
@@ -129,6 +137,7 @@
                 },})
             var title = $("input[name='title']").val();
             var type = $("select[name='type']").val();
+            var aging = $("select[name='aging']").val();
             var country = $("select[name='country']").val();
             var category = $("input[name='category']:checked").val();
             var thumbnail = $("input[name='thumbnail']").val();
@@ -139,6 +148,7 @@
                     title:title,
                     is_show:1,
                     type:type,
+                    aging:aging,
                     country:country,
                     category:category,
                     thumbnail:thumbnail,

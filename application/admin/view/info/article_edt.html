@@ -39,11 +39,19 @@
                     </div>
                 </div>
                 <div class="layui-form-item">
+                    <div class="layui-col-xs6">
                     <label class="layui-form-label">类目</label>
                     <div class="layui-input-block">
                         <input type="radio" name="category" value="1" title="欧洲铁路小包" {if condition="$article_info.category==1"}checked{/if}>
                         <input type="radio" name="category" value="2" title="欧美特快专线" {if condition="$article_info.category==2"}checked{/if}>
                         <input type="radio" name="category" value="3" title="欧美专线" {if condition="$article_info.category==3"}checked{/if}><!--checked-->
+                    </div>
+                    </div>
+                    <div class="layui-col-xs6">
+                        <label class="layui-form-label">时效</label>
+                        <div class="layui-input-block">
+                            <input type="text"value="{{$article_info.aging}}"  name="aging"   placeholder="请输入时效" autocomplete="off" class="layui-input">
+                        </div>
                     </div>
                 </div>
                 <!--<div class="layui-form-item">
@@ -129,6 +137,7 @@
                 },})
             var id = $("input[name='article_id']").val();
             var title = $("input[name='title']").val();
+            var aging = $("input[name='aging']").val();
             var type = $("select[name='type']").val();
             var country = $("select[name='country']").val();
             var category = $("input[name='category']:checked").val();
@@ -139,6 +148,7 @@
                 {
                     id:id,
                     title:title,
+                    aging:aging,
                     is_show:1,
                     type:type,
                     country:country,

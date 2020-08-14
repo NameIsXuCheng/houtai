@@ -91,7 +91,7 @@ class Index extends Controller {
     }
 
     /*
-     * 获取文章单个类目下的所有文章基本信息，默认全部
+     * 获取文章单个类目下的所有文章基本信息，默认全部 -- 仅限产品
      * return $info[category][]
     */
     private function get_article_category($category_id=''){
@@ -106,12 +106,12 @@ class Index extends Controller {
         }
         $articleModel = Db::name('article');
         $article = $articleModel->alias('a')
-            ->field('a.id,a.category,a.title,c.country_name')
+            ->field('a.id,a.category,a.title,a.thumbnail,a.aging,c.country_name')
             ->join('__COUNTRY__ c','a.country = c.country_code','left')
             ->where($map)
             ->order('.a.id desc')->select();
 
-        $info = [];
+        $info = ['1'=>[],'2'=>[],'3'=>[]];
         foreach ($article as $k=>$v){
             if($flag){
                 $info[$v['category']][] = $v;
@@ -121,7 +121,6 @@ class Index extends Controller {
                 }
             }
         }
-
         return $info;
     }
 
@@ -133,7 +132,12 @@ class Index extends Controller {
 
         return view();
     }
+    //欧美专线 type=3
     public function exit_two(){
+        $type = 3;
+        $article_info = $this->get_article_category($type);
+        $this->assign('article_info',$article_info[$type]);
+
         return view();
     }
 

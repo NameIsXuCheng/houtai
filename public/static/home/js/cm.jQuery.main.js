@@ -52,8 +52,8 @@ $(function(){
 
 		var $ctrl = '<div class="thumb_btn_control">' +
                         '<div class="thumb_btn_auto">' +
-                            '<button type="button" class="btn_play on">Àç»ý</button>' +
-                            '<button type="button" class="btn_stop off">Á¤Áö</button>' +
+                            '<button type="button" class="btn_play on">ï¿½ï¿½ï¿½</button>' +
+                            '<button type="button" class="btn_stop off">ï¿½ï¿½ï¿½ï¿½</button>' +
                         '</div>' +
                     '</div>';
 
@@ -87,12 +87,12 @@ $(function(){
 
 		$thumbSlide.removeClass('on').eq($num).addClass('on');
 		$('#wrap.main .thumb_layer li').removeClass('on').eq($num).addClass('on');
-		$('#wrap.main .thumb_slide li.on a').css({'opacity' : 0.3}).stop().animate({'opacity':1}, 1500, $easing); // ÆîÃÄÁø ÀÌ¹ÌÁö opacity Àû¿ë
+		$('#wrap.main .thumb_slide li.on a').css({'opacity' : 0.3}).stop().animate({'opacity':1}, 1500, $easing); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ opacity ï¿½ï¿½ï¿½ï¿½
         $thumbSlide.eq($num).find('.event_wrap').children('.timeline').css({'width':'0'}).clearQueue().stop().animate({'width':'467px'}, 3900, $easing, function(){
         });
 	}
 	
-	// ¿¬±ÝÀÚ»ê ¹è³Ê
+	// ï¿½ï¿½ï¿½ï¿½ï¿½Ú»ï¿½ ï¿½ï¿½ï¿½
 	$('.pension_banner dt.menu01_tit > a').on('click', function(e){
 		e.preventDefault();
 		//alert("a");
@@ -234,8 +234,8 @@ $(function(){
 	
 	function movieInsert(){
 		$('#wrap.main .thumb_layer .popup_visual.movie').addClass('active')
-			.html('<iframe width="900" height="500" title="¹Ì·¡¿¡¼Â´ë¿ì ±×·ì¼Ò°³ ¿µ»ó" src="https://www.youtube.com/embed/0LlXTGCjs6I?rel=0" frameborder="0" allowfullscreen></iframe>');
-			// .html('<iframe width="900" height="500" title="¹Ì·¡¿¡¼Â´ë¿ì ±×·ì¼Ò°³ ¿µ»ó" src="https://www.youtube.com/embed/jo5FuvW3iOM" frameBorder="0" allowfullscreen="true" ></iframe>');
+			.html('<iframe width="900" height="500" title="ï¿½Ì·ï¿½ï¿½ï¿½ï¿½Â´ï¿½ï¿½ ï¿½×·ï¿½Ò°ï¿½ ï¿½ï¿½ï¿½ï¿½" src="https://www.youtube.com/embed/0LlXTGCjs6I?rel=0" frameborder="0" allowfullscreen></iframe>');
+			// .html('<iframe width="900" height="500" title="ï¿½Ì·ï¿½ï¿½ï¿½ï¿½Â´ï¿½ï¿½ ï¿½×·ï¿½Ò°ï¿½ ï¿½ï¿½ï¿½ï¿½" src="https://www.youtube.com/embed/jo5FuvW3iOM" frameBorder="0" allowfullscreen="true" ></iframe>');
 					
 	}
 
@@ -518,7 +518,7 @@ $(function(){
 	
 	function setCookie(cname, value, expire) {
 		var todayValue = new Date();
-		// ¿À´Ã ³¯Â¥¸¦ º¯¼ö¿¡ ÀúÀå
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Â¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
 		todayValue.setDate(todayValue.getDate() + expire);
 		document.cookie = cname + "=" + encodeURI(value) + "; expires=" + todayValue.toGMTString() + "; path=/;";

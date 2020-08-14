@@ -1,7 +1,10 @@
 {include file="public/header"}
 
-<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/theme.css">
-<link href="__PUBLIC__/home/css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="__HOME_SC__/css/theme.css">
+<link href="__HOME_SC__/css/style.css" rel="stylesheet" type="text/css" />
+<!--节点切换-->
+
+<!--节点切换-->
 <title>天众国际-关于天众</title>
 
 </head>
@@ -13,7 +16,7 @@
 	  {include file="public/navbar"}<!--header结束-->
    
    <div class="bann">
-     <img src="__PUBLIC__/home/images/bann2.jpg" width="100%" />
+     <img src="__HOME_SC__/images/bann2.jpg" width="100%" />
    </div>
    
 <div id="layerarea">
@@ -312,7 +315,7 @@
 			</div>
 
 			<div class="col-md-6 col-sm-12 fadeIn wow" data-wow-duration="1.3s" data-wow-delay="0.2s">
-				<img class="ser_tianz_pic" src="__PUBLIC__/home/images/product/tianzhong.jpg" width="100%">
+				<img class="ser_tianz_pic" src="__HOME_SC__/images/product/tianzhong.jpg" width="100%">
 			</div>
 
 
@@ -539,7 +542,7 @@
 
 			<!--Section Image-->
 			<div class="col-md-6 hidden-sm hidden-xs bounceInRight wow" data-wow-duration="1.3s">
-				<img src="__PUBLIC__/home/images/devices2.png" class="img-responsive" alt="">
+				<img src="__HOME_SC__/images/devices2.png" class="img-responsive" alt="">
 			</div>
 			<!--/Section Image-->
 
@@ -580,10 +583,10 @@
 						<div class="content">
 							<div class="media">
 								<div class="media-left">
-									<img src="__PUBLIC__/home/images/fir01.jpg">
+									<img src="__HOME_SC__/images/fir01.jpg">
 								</div>
 								<div class="media-body media-middle">
-								    <img src="__PUBLIC__/home/images/fir02.jpg">
+								    <img src="__HOME_SC__/images/fir02.jpg">
 								</div>
                                 <div class="clear"></div>
 							</div>
@@ -597,10 +600,10 @@
 						<div class="content">
 							<div class="media">
 								<div class="media-left">
-									<img src="__PUBLIC__/home/images/fir03.jpg">
+									<img src="__HOME_SC__/images/fir03.jpg">
 								</div>
 								<div class="media-body media-middle">
-									<img src="__PUBLIC__/home/images/fir04.jpg">
+									<img src="__HOME_SC__/images/fir04.jpg">
 								</div>
 							</div>
 						</div>
@@ -613,10 +616,10 @@
 						<div class="content">
 							<div class="media">
 								<div class="media-left">
-									<img src="__PUBLIC__/home/images/fir05.jpg">
+									<img src="__HOME_SC__/images/fir05.jpg">
 								</div>
 								<div class="media-body media-middle">
-									<img src="__PUBLIC__/home/images/fir06.jpg">
+									<img src="__HOME_SC__/images/fir06.jpg">
 								</div>
 							</div>
 						</div>
@@ -629,10 +632,10 @@
 						<div class="content">
 							<div class="media">
 								<div class="media-left">
-									<img src="__PUBLIC__/home/images/fir07.jpg">
+									<img src="__HOME_SC__/images/fir07.jpg">
 								</div>
 								<div class="media-body media-middle">
-									<img src="__PUBLIC__/home/images/fir08.jpg">
+									<img src="__HOME_SC__/images/fir08.jpg">
 								</div>
 							</div>
 						</div>
@@ -646,10 +649,10 @@
 						<div class="content">
 							<div class="media">
 								<div class="media-left">
-									<img src="__PUBLIC__/home/images/fir09.jpg">
+									<img src="__HOME_SC__/images/fir09.jpg">
 								</div>
 								<div class="media-body media-middle">
-									<img src="__PUBLIC__/home/images/fir10.jpg">
+									<img src="__HOME_SC__/images/fir10.jpg">
 								</div>
 							</div>
 						</div>
@@ -699,7 +702,15 @@
 							<input type="text" name="name" class="form-control serv_form" placeholder="姓名 *" required>
 						</div>
 						<div class="form-group col-md-6">
+							<input type="password" name="password" class="form-control serv_form" placeholder="手机 *" required>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-6">
 							<input type="email" name="email" class="form-control serv_form" placeholder="邮箱 *" required>
+						</div>
+						<div class="form-group col-md-6">
+							<input type="fax" name="fax" class="form-control serv_form" placeholder="传真" required>
 						</div>
 					</div>
 
@@ -708,13 +719,11 @@
 							<textarea name="message" class="form-control serv_form" placeholder="内容 *"></textarea>
 						</div>
 					</div>
-
 					<div class="row">
 						<div class="form-group col-md-12 text-center">
 							<button type="submit" class="btn btn-theme"><i class="fa fa-fw fa-paper-plane-o"></i>发送信息</button>
 						</div>
 					</div>
-
 				</form>
 			</div>
 			<!--/Contact Form-->
@@ -733,14 +742,14 @@
 
 	{include file="public/footer"}
 
-<!--SCRIPTS-->
-<script src="__PUBLIC__/home/js/jquery-2.2.0.min.js"></script>
-<script src="__PUBLIC__/home/js/bootstrap.min.js"></script>
-<script src="__PUBLIC__/home/js/owl.carousel.min.js"></script>
-<script src="__PUBLIC__/home/js/jquery.magnific-popup.min.js"></script>
-<script src="__PUBLIC__/home/js/jquery.stellar.min.js"></script>
-<script src="__PUBLIC__/home/js/wow.min.js"></script>
-<script src="__PUBLIC__/home/js/jquery.appear.js"></script>
-<script src="__PUBLIC__/home/js/general.js"></script>
-<!--/SCRIPTS-->
+	<!--SCRIPTS-->
+
+<script src="__HOME_SC__/js/bootstrap.min.js"></script>
+<script src="__HOME_SC__/js/owl.carousel.min.js"></script>
+<script src="__HOME_SC__/js/jquery.magnific-popup.min.js"></script>
+<script src="__HOME_SC__/js/jquery.stellar.min.js"></script>
+<script src="__HOME_SC__/js/wow.min.js"></script>
+<script src="__HOME_SC__/js/jquery.appear.js"></script>
+<script src="__HOME_SC__/js/general.js"></script>
+	<!--/SCRIPTS-->
 </html>

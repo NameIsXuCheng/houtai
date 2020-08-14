@@ -41,6 +41,7 @@ class Info extends Basic {
                 'country'=>$param['country'],
                 'thumbnail'=>$param['thumbnail'],
                 'content'=>$param['content'],
+                'aging'=>$param['aging'],
                 'is_show'=>$param['is_show'],
                 'created_at'=>date('Y-m-d H:i:s')
             ];
@@ -87,6 +88,7 @@ class Info extends Basic {
                 'type'=>$param['type'],
                 'category'=>$param['category'],
                 'country'=>$param['country'],
+                'aging'=>$param['aging'],
                 'thumbnail'=>$param['thumbnail'],
                 'content'=>$param['content'],
                 'is_show'=>$param['is_show'],

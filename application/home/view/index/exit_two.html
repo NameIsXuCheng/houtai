@@ -1,8 +1,8 @@
 {include file="public/header"}
 
-<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/theme.css">
-<link href="__PUBLIC__/home/css/style.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="__PUBLIC__/home/js/jquery-1.11.2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="__HOME_SC__/css/theme.css">
+<link href="__HOME_SC__/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__HOME_SC__/js/jquery-1.11.2.min.js"></script>
 <title>天众国际-欧美专线</title>
 
 
@@ -13,7 +13,7 @@
   <div id="dvContainer">
       {include file="public/navbar"}<!--header结束-->
     
-    <div class="bann"><img src="__PUBLIC__/home/images/exit_banner.jpg" width="100%" /></div>
+    <div class="bann"><img src="__HOME_SC__/images/exit_banner.jpg" width="100%" /></div>
 
     <div id="layerarea">
 
@@ -48,7 +48,7 @@
 		  <p>全程点对点轨迹追踪</p>
 		  <p>7天内妥投率高达90%以上</p>
 	  </div>
-	  <div class="exit_one_map"><img src="__PUBLIC__/home/images/product/map.gif" width="100%"></div>
+	  <div class="exit_one_map"><img src="__HOME_SC__/images/product/map.gif" width="100%"></div>
 	</div>	
 </div>
 
@@ -58,49 +58,29 @@
 		  <h4>我们的路线</h4>
 	  </div>
 	  <div class="row exit_two_main">
-		  <div class="col-lg-3 col-md-3 col-sm-3">
-			  <a href="{{:url('exit_two_xq')}}"><div class="exit_two_country">
-			    <img src="__PUBLIC__/home/images/product/country1.jpg" width="58px">
-				<span>英国专线</span>
-				<p>5~9个工作日</p>
-			  </div></a>
-		  </div>
-		  <div class="col-lg-3 col-md-3 col-sm-3">
-			  <a href="#"><div class="exit_two_country">
-			    <img src="__PUBLIC__/home/images/product/country5.jpg" width="58px">
-				<span>意大利专线</span>
-				<p>5~9个工作日</p>
-			  </div></a>
-		  </div>
-		  <div class="col-lg-3 col-md-3 col-sm-3">
-			  <a href="#"><div class="exit_two_country">
-			    <img src="__PUBLIC__/home/images/product/country6.jpg" width="58px">
-				<span>西班牙专线</span>
-				<p>5~9个工作日</p>
-			  </div></a>
-		  </div>
-		  <div class="col-lg-3 col-md-3 col-sm-3">
-			  <a href="#"><div class="exit_two_country">
-			    <img src="__PUBLIC__/home/images/product/country2.jpg" width="58px">
-				<span>德国专线</span>
-				<p>5~9个工作日</p>
-			  </div></a>
-		  </div>
-		  <div class="col-lg-3 col-md-3 col-sm-3">
-			  <a href="#"><div class="exit_two_country">
-			    <img src="__PUBLIC__/home/images/product/country3.jpg" width="58px">
-				<span>法国专线</span>
-				<p>5~9个工作日</p>
-			  </div></a>
-		  </div>
-		  <div class="col-lg-3 col-md-3 col-sm-3">
-			  <a href="#"><div class="exit_two_country">
-			    <img src="__PUBLIC__/home/images/product/country4.jpg" width="58px">
-				<span>美国专线</span>
-				<p>12~15个工作日</p>
-			  </div></a>
-		  </div>
-		  <div class="col-lg-3 col-md-3 col-sm-3"><p class="exit_slue2">...</p></div>
+		  {volist name="article_info" offset="0" length="16" key="k" id="vo"}
+		  {if condition=" ($k-1)%4==0 && $k!=0"}
+	  		</div>
+			<div class="row exit_two_main">
+				<div class="col-lg-3 col-md-3 col-sm-3">
+					<a href="{{:url('exit_two_xq')}}?id={{$vo.id}}"><div class="exit_two_country">
+						<img src="{{$vo.thumbnail}}" width="58px">
+						<span>{{$vo.title}}</span>
+						<p>{{$vo.aging}}</p>
+					</div></a>
+				</div>
+				{else/}
+				<div class="col-lg-3 col-md-3 col-sm-3">
+					<a href="{{:url('exit_xq')}}?id={{$vo.id}}"><div class="exit_two_country">
+						<img src="{{$vo.thumbnail}}" width="58px">
+						<span>{{$vo.title}}</span>
+						<p>{{$vo.aging}}</p>
+					</div></a>
+				</div>
+				{/if}
+				{/volist}
+			</div>
+			<p class="exit_slue2">...</p>
 	  </div>
 	</div>	
 </div>	 
@@ -110,7 +90,7 @@
 	  <div class="exit_one_title">
 		  <h4>操作流程</h4>
 	  </div>
-	  <div class="exit_one_map"><img src="__PUBLIC__/home/images/exit_liuc.png" width="100%"></div>
+	  <div class="exit_one_map"><img src="__HOME_SC__/images/exit_liuc.png" width="100%"></div>
 	</div>	
 </div>
 	 

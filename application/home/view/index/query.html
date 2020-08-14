@@ -1,7 +1,7 @@
 {include file="public/header"}
 
 
-<link href="__PUBLIC__/home/css/style.css" rel="stylesheet" type="text/css" />
+<link href="__HOME_SC__/css/style.css" rel="stylesheet" type="text/css" />
 <title>天众国际-物流查询</title>
 
 <script>
@@ -26,7 +26,7 @@
                         // layer.msg(data.tip,{time: 2000, icon:1});
                         guiji=""
                         list=data.data.status_list
-                        guiji=data.data.post_country+':'+data.data.post_city+'<i class="aicon-arrow-right"><img src="__PUBLIC__/home/images/jiantou.png"></i>'+data.data.receiving_country+':'+data.data.receiving_city;
+                        guiji=data.data.post_country+':'+data.data.post_city+'<i class="aicon-arrow-right"><img src="__HOME_SC__/images/jiantou.png"></i>'+data.data.receiving_country+':'+data.data.receiving_city;
                         $("#guiji").html("");
                         $("#guiji").append(guiji);
                         html=""
@@ -42,7 +42,7 @@
                                 '<span class="signed">'+val.travel_status+'</span>\n' +
                                 '</li>\n' +
                                 '<li class="route-status-icon">\n' +
-                                '<img src="__PUBLIC__/home/images/status-signed.png">\n' +
+                                '<img src="__HOME_SC__/images/status-signed.png">\n' +
                                 '</li>\n' +
                                 '<li class="route-date-time">\n' +
                                 '<span>'+val.time+'</span>\n' +
@@ -76,7 +76,7 @@
      
       <div class="network_twarp">
          <h3>物流<span>查询</span></h3>
-         <p>Logistics inquiry</p>
+         <p>Logistics Inquiry</p>
        </div>
        
        <div class="query_main">
@@ -85,6 +85,16 @@
 				   <input type="text" placeholder="请输入查询单号..." name="package_no" id="package_no">
 				   <button type="button" name="query" id="query"></button>
 			   </form>
+
+			   <ul class="exit_cx_other exit_cx_other_two">
+				   <li><a href="http://erpexport.mttlm.com/purchasing/base/login.html" target="_blank">我要发货</a><i>|</i></li>
+				   <li><a href="contact.html">个性定制</a></li>
+				   <div class="clear"></div>
+			   </ul>
+			   <div class="query_search_note">
+				   <h4>温馨提示</h4>
+				   <p>亲爱的顾客，现疫情期间，国外受疫情影响程度较为严重，因此我们无法向您保证时效，收货时间可能延长，感谢您的理解。</p>
+			   </div>
 		   </div>
 		   <div class="query_main_content">
 		     <a href="index.html">←&nbsp;&nbsp;返回首页</a>

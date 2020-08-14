@@ -1,10 +1,10 @@
 {include file="public/header"}
 
-<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/theme.css">
-<link href="__PUBLIC__/home/css/style.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="__PUBLIC__/home/js/city.js"></script>
-<script type="text/javascript" src="__PUBLIC__/home/js/countryData_v2.js"></script>
-<script type="text/javascript" src="__PUBLIC__/home/js/layer/layer.js"></script>
+<link rel="stylesheet" type="text/css" href="__HOME_SC__/css/theme.css">
+<link href="__HOME_SC__/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__HOME_SC__/js/city.js"></script>
+<script type="text/javascript" src="__HOME_SC__/js/countryData_v2.js"></script>
+<script type="text/javascript" src="__HOME_SC__/js/layer/layer.js"></script>
 <title>天众国际-运费查询</title>
 
 
@@ -17,7 +17,7 @@
       {include file="public/navbar"}<!--header结束-->
    
    <div class="bann">
-     <img src="__PUBLIC__/home/images/ser_img.jpg" width="100%" />
+     <img src="__HOME_SC__/images/ser_img.jpg" width="100%" />
      
    </div>
    
@@ -193,6 +193,13 @@
 			  </div>
 
 		</div>
+
+		<ul class="exit_cx_other">
+			<li><a href="http://erpexport.mttlm.com/purchasing/base/login.html" target="_blank">我要发货</a><i>|</i></li>
+			<li><a href="{{:url('query')}}">包裹追踪</a><i>|</i></li>
+			<li><a href="{{:url('contact')}}">个性定制</a></li>
+			<div class="clear"></div>
+		</ul>
 		
 		<div class="pricequer_tip">
 		 *寄送<span class="blue">大宗货物</span>或<span class="blue">特别要求的货物</span>，请联系客服<span class="red">0571 88890244</span>咨询定制寄送服务。

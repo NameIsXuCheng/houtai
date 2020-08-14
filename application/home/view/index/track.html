@@ -1,10 +1,10 @@
 {include file="public/header"}
-    <link rel="stylesheet" href="__PUBLIC__/home/js/weui/css/weui.min.css?v=3">
-    <script type="text/javascript" src="__PUBLIC__/home/js/weui/js/weui.min.js"></script>
+    <link rel="stylesheet" href="__HOME_SC__/js/weui/css/weui.min.css?v=3">
+    <script type="text/javascript" src="__HOME_SC__/js/weui/js/weui.min.js"></script>
 
-    <link rel="stylesheet" href="__PUBLIC__/home/css/css/track.css">
+    <link rel="stylesheet" href="__HOME_SC__/css/css/track.css">
 
-    <script  type="text/javascript" src="__PUBLIC__/home/js/layer/mobile/layer.js"></script>
+    <script  type="text/javascript" src="__HOME_SC__/js/layer/mobile/layer.js"></script>
     <!--<link rel="stylesheet" href="js/layer/theme/default/layer.css">-->
 
     <title>天众轨迹查询</title>
@@ -67,7 +67,7 @@
                 <div class="weui-media-box weui-media-box_text" id="dialog_content">
                     <div class="track-box">
                         <div>
-                            <span ><img class="track-img" src="__PUBLIC__/home/images/yuanquan.png" ></span>
+                            <span ><img class="track-img" src="__HOME_SC__/images/yuanquan.png" ></span>
                             <span class="track-status">运输中</span>
                             <span class="track-details">测试信息:正在装车</span>
                             <span class="track-details">2020-07-03 17:57:25</span>
@@ -155,7 +155,7 @@
 
                     html += '<div class="track-box">\n' +
                         '                        <div>\n' +
-                        '                            <span ><img class="track-img" src="__PUBLIC__/home/images/yuanquan.png" ></span>\n' +
+                        '                            <span ><img class="track-img" src="__HOME_SC__/images/yuanquan.png" ></span>\n' +
                         '                            <span class="track-status">'+status+'</span>\n' +
                         '                            <span class="track-details">'+details+'</span>\n' +
                         '                            <div class="track-details" style="margin-left: 30px;">'+time+'</div>\n' +
@@ -226,7 +226,7 @@
                         let package_data = result.package;
                         for(let i in package_data){
                             html += '<section onclick="submitData(\''+ package_data[i].package_no +'\')">\n' +
-                                '            <img src="__PUBLIC__/home/images/order.png" class="img_wuliu">\n' +
+                                '            <img src="__HOME_SC__/images/order.png" class="img_wuliu">\n' +
                                 '            <div>运单号：'+ package_data[i].package_no +'</div>\n' +
                                 '            <div>时间：'+ package_data[i].created_at +'</div>\n' +
                                 '        </section>\n';

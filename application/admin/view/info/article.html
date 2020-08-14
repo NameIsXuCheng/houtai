@@ -63,6 +63,9 @@
                                          缩略图
                                      </th>
                                      <th>
+                                         时效
+                                     </th>
+                                     <th>
                                          添加日期
                                      </th>
                                      <th>
@@ -98,6 +101,9 @@
                                          </td>
                                          <td>
                                              {if condition="empty($vo.thumbnail)"}无{else/}<img src="{{$vo.thumbnail}}" width="60px" height="30px">{/if}
+                                         </td>
+                                         <td>
+                                             {if condition="empty($vo.aging)"}无{else/}{{$vo.aging}}{/if}
                                          </td>
                                          <td>
                                              {{$vo.created_at}}
