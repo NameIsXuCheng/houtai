@@ -185,8 +185,8 @@ class Method extends Controller {
             $app_secret = 'GW0512S027Q9K681';
             $timestamp = time();
 
-            $url = 'http://exporttest.mttlm.com/openapi/package/packageStatus';
-            //$url="http://wmsp.t-cang.com/index.php/OpenApi/Package/PackageStatus";//正式地址
+            //$url = 'http://exporttest.mttlm.com/openapi/package/packageStatus';
+            $url="http://wmsp.t-cang.com/index.php/OpenApi/Package/PackageStatus";//正式地址
 
             $data = [
                 'appkey'=>$app_key,
