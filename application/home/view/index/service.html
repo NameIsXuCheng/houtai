@@ -3,7 +3,7 @@
 <link rel="stylesheet" type="text/css" href="__HOME_SC__/css/theme.css">
 <link href="__HOME_SC__/css/style.css" rel="stylesheet" type="text/css" />
 <!--节点切换-->
-
+<script src="__HOME_SC__/js/history.js"></script>
 <!--节点切换-->
 <title>天众国际-关于天众</title>
 
@@ -693,7 +693,7 @@
 
 			<!--Contact Form-->
 			<div class="col-md-8 col-md-offset-2 contact-form fadeIn wow">
-				<form class="form-ajax" method="post">
+				<form  method="post">
 
 					<input type="hidden" name="form" value="Contact">
 
@@ -702,7 +702,7 @@
 							<input type="text" name="name" class="form-control serv_form" placeholder="姓名 *" required>
 						</div>
 						<div class="form-group col-md-6">
-							<input type="password" name="password" class="form-control serv_form" placeholder="手机 *" required>
+							<input type="text" name="tel" class="form-control serv_form" placeholder="手机 *" required>
 						</div>
 					</div>
 					<div class="row">
@@ -716,12 +716,12 @@
 
 					<div class="row">
 						<div class="form-group col-md-12">
-							<textarea name="message" class="form-control serv_form" placeholder="内容 *"></textarea>
+							<textarea name="content" class="form-control serv_form" placeholder="内容 *" id="content"></textarea>
 						</div>
 					</div>
 					<div class="row">
 						<div class="form-group col-md-12 text-center">
-							<button type="submit" class="btn btn-theme"><i class="fa fa-fw fa-paper-plane-o"></i>发送信息</button>
+							<button type="button" onclick="submitMessage()" class="btn btn-theme" ><i class="fa fa-fw fa-paper-plane-o"></i>发送信息</button>
 						</div>
 					</div>
 				</form>
@@ -752,4 +752,60 @@
 <script src="__HOME_SC__/js/jquery.appear.js"></script>
 <script src="__HOME_SC__/js/general.js"></script>
 	<!--/SCRIPTS-->
+	<script type ="text/javascript">
+        function submitMessage(){
+            var name = $.trim($("input[name='name']").val());
+            var tel = $.trim($("input[name='tel']").val());
+            var email = $.trim($("input[name='email']").val());
+            var fax = $.trim($("input[name='fax']").val());
+            var content = $("#content").val();
+
+            if(name.length == 0){
+                alert('姓名不能为空');
+                return false;
+            }
+            if(tel.length == 0){
+                alert('手机不能为空');
+                return false;
+            }
+            if(email.length == 0){
+                alert('邮箱不能为空');
+                return false;
+            }
+            if (/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(email) == false) {
+                alert('邮箱格式不正确，请重新填写');
+                return false;
+            }
+            if(content.length == 0){
+                alert('内容不能为空');
+                return false;
+            }
+
+            $.ajax({
+                url: "{{:url('method/get_message')}}",
+                type: 'post',
+                data: {name:name,tel:tel,email:email,fax:fax,content:content},
+                dataType: 'JSON',
+                timeOut: 3000,
+                complete: function () {
+                    //$("#nextstep").removeClass("disabled");
+                },
+                success: function (data) {
+                    if (data.code == 1) {
+                        $("input[name='name']").val();
+                        $("input[name='tel']").val();
+                        $("input[name='email']").val();
+                        $("input[name='fax']").val();
+                        $("#content").html();
+                        alert('提交成功，请等待客服回复！');
+                        location.reload();
+                    }else{
+                        alert(data.msg);
+                    }
+                }
+            });
+        }
+
+
+	</script>
 </html>

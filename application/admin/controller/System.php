@@ -13,7 +13,11 @@ use think\Request;
 class System extends Basic {
     public function index()
     {
-        $config = Db::name('system_config')->select();
+       return view();
+    }
+
+    public function setting(){
+        $config = Db::name('setting')->select();
         if($this->request->isAjax())
         {
             Db::startTrans();
@@ -26,19 +30,18 @@ class System extends Basic {
                 $confignames = implode(',',$confignames);
                 $data = $this->request->only($confignames);
                 foreach ($data as $key => $value) {
-                    Db::name('system_config')->where(['config_name'=>$key])->update(['config_value'=>$value]);
+                    Db::name('setting')->where(['config_name'=>$key])->update(['config_value'=>$value]);
                 }
             }catch (\Exception $e){
                 Db::rollback();
-                $this->error(lang('OperationFailed'),'',$data);
+                $this->error('修改失败','',$data);
             }
             Db::commit();
-            $this->success(lang('OperationSuccess'),'',$data);
+            $this->success('修改成功','',$data);
         }
         $this->assign('config',$config);
         return view();
     }
-
     public function role_admin(){
         return view();
     }

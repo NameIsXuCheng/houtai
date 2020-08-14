@@ -1,0 +1,127 @@
+{include file="public/header"}
+
+<!--sidebar start-->
+{include file="public/sidebar"}
+<!--sidebar end-->
+
+<!--main content start-->
+<!--main content start-->
+<div id="content" class="ui-content ui-content-aside-overlay">
+    <!--page header start-->
+    <div class="page-head-wrap">
+        <h4 class="margin0">
+            系统设置
+        </h4>
+        <!-- <div class="breadcrumb-right">
+             <ol class="breadcrumb">
+                 <li><a href="#">Home</a></li>
+                 <li><a href="#">Data Table</a></li>
+                 <li class="active">Dynamic Data Table</li>
+             </ol>
+         </div>-->
+    </div>
+    <!--page header end-->
+
+    <div class="ui-content-body">
+
+        <div class="ui-container">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel">
+                        <header class="panel-heading">
+                            邮箱配置
+                            <span class="tools pull-right">
+                                            <a class="collapse-box fa fa-chevron-down" href="javascript:;"></a>
+                                            <a class="close-box fa fa-times" href="javascript:;"></a>
+                                        </span>
+                        </header>
+                        <div class="panel-body">
+                            <form class="form-horizontal form-variance" method="get">
+                                <!--<div class="form-group">
+                                    <label class="col-sm-3 control-label">Default</label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control" type="text">
+                                    </div>
+                                </div>-->
+                                {volist name="config" id="vo"}
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">{{$vo.cname}}</label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control u-rounded" type="{{$vo.type}}}" value="{{$vo.value}}">
+                                        <span class="help-block">{{$vo.remark}}</span>
+                                    </div>
+                                </div>
+                                {/volist}
+                                <div class="form-group">
+                                    <div class="col-lg-offset-3 col-lg-9">
+                                        <button type="submit" class="btn btn-info">提交</button>
+                                    </div>
+
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+
+        <script src="/layuiadmin/layui/layui.js"></script>
+        <script>
+            layui.use(['jquery','form', 'layedit'], function(){
+                var form = layui.form
+                ,layer = layui.layer
+                var $ = layui.jquery;
+
+                //自定义验证规则
+                days = /^[1-9]\d*$/;
+                form.verify({
+                    days: function(value){
+                        var flag = days.test(value)
+                        if(!flag){
+                            return '{:lang("CustomerToPoolTimeTips")}';
+                        }
+                    }
+                });
+
+                //监听提交
+                form.on('submit(subconfig)', function(data){
+                    var postData = data.field;
+                    $.post({
+                        url:"{:url('system/index')}",
+                        type:'post',
+                        // sync:true,
+                        data:postData,
+                        
+                        error:function(data){
+                            console.log(data)
+                        },
+                        success:function(data){
+                            layer.alert(data.msg, {
+                              title: '{:lang("Tips")}'
+                              ,btn:['{:lang("IMSure")}']
+                            })
+                            if(data.code==0){
+                                location.reload();
+                            }
+                        },
+                        complete: function () {
+                            // layer.close(this.layerIndex);
+                        },
+                    });
+                    // console.log(postData)
+                    return false;
+                });
+            });
+        </script>
+
+<!--main content end-->
+{include file="public/footer"}

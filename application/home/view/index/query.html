@@ -2,10 +2,12 @@
 
 
 <link href="__HOME_SC__/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__HOME_SC__/js/layer/layer.js"></script>
 <title>天众国际-物流查询</title>
 
 <script>
     $(document).ready(function(){
+        $("#package_no").focus();
         $("form").submit(function() {
             $("#query").click();
         })
@@ -17,7 +19,7 @@
 			}
             $.ajax({
                 type: 'POST',
-                url: './ems.php',
+                url: "{{:url('method/get_track')}}",
                 data:{package_no:package_no,type:""},
                 success: function(res) {
                     data=JSON.parse(res);
@@ -27,7 +29,7 @@
                         guiji=""
                         list=data.data.status_list
                         guiji=data.data.post_country+':'+data.data.post_city+'<i class="aicon-arrow-right"><img src="__HOME_SC__/images/jiantou.png"></i>'+data.data.receiving_country+':'+data.data.receiving_city;
-                        $("#guiji").html("");
+                        $("#guiji").empty();
                         $("#guiji").append(guiji);
                         html=""
                         console.log(list)

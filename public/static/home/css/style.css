@@ -1912,7 +1912,7 @@ li span a{
 
 .rightContent{float: left; width: 80%; padding: 0px 50px 80px 50px; background: #fff;}
 .exit_xq_main_title{text-align: center; padding: 30px 0px; position: relative;}
-.exit_xq_main_title_top{width: 200px; margin: 0 auto;}
+/*.exit_xq_main_title_top{width: 200px; margin: 0 auto;}*/
 .exit_xq_main_title:after{content: ""; position: absolute; width: 100%; height: 2px; background: #eee; bottom: 0px; left: 0px; padding: 0 50px;}
 .exit_xq_main_title_top img{display: block; height: 38px; float: left;}
 .exit_xq_main_title_top span{float: left; font-size: 28px; padding-left: 15px; color: #333; line-height: 38px;}

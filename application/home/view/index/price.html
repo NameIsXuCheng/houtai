@@ -742,7 +742,7 @@
         });
 
 
-        $.post('/GetPrice.php', data, function (res) {
+        $.post("{{:url('method/get_price')}}", data, function (res) {
             res = eval('(' + res + ')');
 
             if (res.flag === 1) {

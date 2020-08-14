@@ -23,7 +23,6 @@
    
     <div id="layerarea">
      <div class="cloud_warp">
-     
       <div class="network_twarp">
          <h3>运费<span>查询</span></h3>
          <p>Freight inquiries</p>
@@ -293,7 +292,7 @@
           $("#result").empty();
 
 	      //调用接口
-          $.post('/GetPrice.php', data, function (res) {
+          $.post("{{:url('method/get_price')}}", data, function (res) {
               res = eval('(' + res + ')');
               console.log(res);
 
