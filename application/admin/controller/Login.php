@@ -24,9 +24,9 @@ class Login extends Controller {
         if($username=='' || $password==''){
             return json(['code'=>0,'data'=>'账户或者密码不能为空']);
         }
-//        if(!captcha_check($verify)){
-//            return json(['code'=>0,'data'=>'验证失败']);
-//        }
+        if(!captcha_check($verify)){
+            return json(['code'=>0,'data'=>'验证失败']);
+        }
 
         $UserMessage=Db::name('admin_user');
         $data=$UserMessage->field('role_id,password,salt,user_name,id,parent_id')
@@ -34,7 +34,7 @@ class Login extends Controller {
         if(!$data){
             return json(['code'=>0,'data'=>'用户名或密码错误']);
         }
-        if(1){//md5($password.$data['salt'])==$data['password']
+        if(md5($password.$data['salt'])==$data['password']){
             Session::set('username', $username);
             Session::set('user_name', $data['user_name']);
             Session::set('user_id',$data['parent_id']==0?$data['id']:$data['parent_id']);//标记为某个企业的账户

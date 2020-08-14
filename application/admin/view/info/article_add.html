@@ -159,7 +159,7 @@
                         layer.msg(result.msg,{time:3000},function () {
                             var index = parent.layer.getFrameIndex(window.name);
                             parent.layer.close(index);
-                            parent.window.reload();
+                            parent.window.location.reload();
                         });
                     } else {
                         layer.msg(result.msg);
