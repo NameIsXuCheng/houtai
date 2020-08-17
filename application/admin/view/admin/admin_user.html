@@ -1,0 +1,104 @@
+ {include file="public/header"}
+            <!--sidebar start-->
+            {include file="public/sidebar"}
+            <!--sidebar end-->
+
+            <!--main content start-->
+ <div id="content" class="ui-content ui-content-aside-overlay">
+     <div class="ui-content-body">
+         <div class="row">
+             <div class="col-sm-12">
+                 <section class="panel">
+                     <header class="panel-heading">
+                         <a type="button" name="add_role" class="btn btn-success btn-capsul">新增账户</a>
+                     </header>
+                     <div class="panel-body">
+                         <table class="table convert-data-table table-striped">
+                             <thead>
+                             <tr>
+                                 <th>账户昵称</th>
+                                 <th>联系电话</th>
+                                 <th>性别</th>
+                                 <th>证件号码</th>
+                                 <th>E-Mail</th>
+                                 <th>创建时间</th>
+                                 <th width="120">操作</th>
+                             </tr>
+                             </thead>
+                             <tbody>
+                             {volist name="list" id="item"}
+                             <tr>
+                                 <td>{{$item.user_name}}</td>
+                                 <td>{{$item.phone}}</td>
+                                 <td>{{$item.sex}}</td>
+                                 <td>{{$item.id_card}}</td>
+                                 <td>{{$item.email}}</td>
+                                 <td>{{$item.created_at}}</td>
+                                 <td>
+                                     <a type="button" data-id="{{$item.id}}" name="update" class="btn btn-sm btn-info btn-capsul">修改</a>
+                                     <a type="button" data-id="{{$item.id}}" name="delete" class="btn btn-sm btn-danger btn-capsul">删除</a>
+                                 </td>
+                             </tr>
+                             {/volist}
+                             </tbody>
+                         </table>
+                     </div>
+                 </section>
+             </div>
+         </div>
+     </div>
+ </div>
+ <script type="text/javascript">
+     layui.use(['layer', 'jquery'], function() {
+         var layer = layui.layer, //弹层
+             $ = layui.jquery;
+         /*layer弹出一个示例*/
+         $('a[name=add_role]').click(function () {
+             layer.open({
+                 type: 2,
+                 title: '新增账户',
+                 // closeBtn: true, //不显示关闭按钮
+                 // shade: false,
+                 area: ['800px', '70%'],
+                 // time: 2000, //2秒后自动关闭
+                 // anim: 2,
+                 content: "{{:url('add/admin_user')}}?type=admin", //iframe的url，no代表不显示滚动条
+             });
+         });
+
+         $('a[name=update]').click(function () {
+             var id = $(this).data('id');
+             layer.open({
+                 type: 2,
+                 title: '更新账户',
+                 // closeBtn: true, //不显示关闭按钮
+                 // shade: false,
+                 area: ['800px', '70%'],
+                 // time: 2000, //2秒后自动关闭
+                 // anim: 2,
+                 content: "{{:url('update/admin_user')}}?type=admin&id="+id, //iframe的url，no代表不显示滚动条
+             });
+         });
+
+         $('a[name=delete]').click(function () {
+             var id = $(this).data('id');
+             layer.confirm('确定要删除该账户吗?', {
+                 btn: ['是','否'] //按钮
+             }, function(){
+                 $.post("{{:url('delete/admin_user')}}",{id:id},function (res) {
+                     if(res.code == 1){
+                         layer.msg(res.data,{icon:1});
+                         setTimeout(function (){
+                             parent.location.reload();
+                         },800);
+                     }else{
+                         layer.msg(res.data,{icon:2});
+                     }
+                 });
+             }, function(){
+                 layer.closeAll();
+             });
+         });
+     });
+ </script>
+ {include file="public/footer"}
