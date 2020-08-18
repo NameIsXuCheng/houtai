@@ -13,7 +13,7 @@
 
 	  {include file="public/navbar"}<!--header结束-->
     
-    <div class="bann"><img src="__HOME_SC__/images/exit_banner.jpg" width="100%" /></div>
+    <div class="bann"><img src="{{$article.banner}}" width="100%" /></div>
 
     <div id="layerarea">
 
@@ -38,7 +38,6 @@
 
 		<div class="navContent">
 			<a class="navContent_title" href="{{:url('exit_one')}}">欧美特快专线</a>
-
 			{volist name="article_info" id="vo"}
 			<a class="navContent_title2 {if condition="$vo.id eq $now_id"}navContent_title_active{/if}" href="?id={{$vo.id}}">{{$vo.title}}</a>
 			{/volist}

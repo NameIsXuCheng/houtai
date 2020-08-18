@@ -86,6 +86,19 @@
                         <textarea id="content" style="display: none;"></textarea>
                     </div>
                 </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">Banner图</label>
+                    <div class="layui-input-block">
+                        <input name="banner" type="hidden" >
+                        <button type="button" class="layui-btn" id="article_banner">
+                            <i class="layui-icon">&#xe67c;</i>上传图片
+                        </button>
+                        <span style="color:red"></span>
+                        <div class="layui-collapse" lay-accordion="" style="width: 600px;text-align: center;vertical-align: center;display: none;">
+                            <img id="logo_banner" />
+                        </div>
+                    </div>
+                </div>
 
                 <div class="layui-form-item">
                     <div class="layui-input-block">
@@ -127,6 +140,27 @@
                 layer.msg('上传失败！' + index, {icon: 5});
             }
         });
+        var uploadBanner = upload.render({
+            elem: '#article_banner' //绑定元素
+            ,url: '{{:url("admin/info/pic_upload")}}' //上传接口
+            ,accept:'images'
+            ,size:'5120'//5mb
+            ,number:1
+            ,choose:function(obj){
+
+            }
+            ,done: function(res){
+                //上传完毕回调
+                $('#logo_banner').parent().show();
+                $('#article_banner').next("span").html('成功');
+                $('#article_banner').prev("input").val(res.savename);
+                $('#logo_banner').attr('src',res.savename);
+            }
+            ,error: function(){
+                //请求异常回调
+                layer.msg('上传失败！' + index, {icon: 5});
+            }
+        });
 
         form.on('submit(buttonSubmit)', function (data) {
             form.verify({
@@ -141,6 +175,7 @@
             var country = $("select[name='country']").val();
             var category = $("input[name='category']:checked").val();
             var thumbnail = $("input[name='thumbnail']").val();
+            var banner = $("input[name='banner']").val();
             var content = layedit.getContent(edindex);
 
             $.post('{{:url("admin/info/article_add")}}',
@@ -152,6 +187,7 @@
                     country:country,
                     category:category,
                     thumbnail:thumbnail,
+                    banner:banner,
                     content:content,
                 },
                 function (result) {
