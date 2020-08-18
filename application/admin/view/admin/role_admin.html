@@ -6,8 +6,101 @@
             <!--main content start-->
             <div id="content" class="ui-content ui-content-aside-overlay">
                 <div class="ui-content-body">
-                    role_admin
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <section class="panel">
+                                <header class="panel-heading">
+
+                                    <a type="button" name="add_role" class="btn btn-success btn-capsul">新增角色</a>
+                                    <!--<span class="tools pull-right">-->
+                                    <!--<a class="refresh-box fa fa-repeat" href="javascript:;"></a>-->
+                                    <!--<a class="collapse-box fa fa-chevron-down" href="javascript:;"></a>-->
+                                    <!--<a class="close-box fa fa-times" href="javascript:;"></a>-->
+                                    <!--</span>-->
+
+                                </header>
+                                <div class="panel-body">
+                                    <table class="table convert-data-table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>角色名称</th>
+                                            <th>归属</th>
+                                            <th>创建时间</th>
+                                            <th width="120">操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {volist name="role_list" id="item"}
+                                        <tr>
+                                            <td>{{$item.role_name}}</td>
+                                            <td>{{$item.model}}</td>
+                                            <td>{{$item.created_at}}</td>
+                                            <td>
+                                                <a type="button" data-id="{{$item.id}}" name="update" class="btn btn-sm btn-info btn-capsul">修改</a>
+                                                <a type="button" data-id="{{$item.id}}" name="delete" class="btn btn-sm btn-danger btn-capsul">删除</a>
+                                            </td>
+                                        </tr>
+                                        {/volist}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
                 </div>
             </div>
+ <script type="text/javascript">
+     layui.use(['layer', 'jquery'], function() {
+         var layer = layui.layer, //弹层
+             $ = layui.jquery;
+         /*layer弹出一个示例*/
+         $('a[name=add_role]').click(function () {
+             layer.open({
+                 type: 2,
+                 title: '新增角色',
+                 // closeBtn: true, //不显示关闭按钮
+                 // shade: false,
+                 area: ['800px', '70%'],
+                 // time: 2000, //2秒后自动关闭
+                 // anim: 2,
+                 content: "{{:url('add/role')}}?type=admin", //iframe的url，no代表不显示滚动条
+             });
+         });
+
+         $('a[name=update]').click(function () {
+             var id = $(this).data('id');
+             layer.open({
+                 type: 2,
+                 title: '更新角色',
+                 // closeBtn: true, //不显示关闭按钮
+                 // shade: false,
+                 area: ['800px', '70%'],
+                 // time: 2000, //2秒后自动关闭
+                 // anim: 2,
+                 content: "{{:url('update/role')}}?type=admin&id="+id, //iframe的url，no代表不显示滚动条
+             });
+         });
+
+         $('a[name=delete]').click(function () {
+             var id = $(this).data('id');
+             layer.confirm('确定要删除该角色吗?', {
+                 btn: ['是','否'] //按钮
+             }, function(){
+                 $.post("{{:url('delete/role')}}",{id:id},function (res) {
+                     if(res.code == 1){
+                         layer.msg(res.data,{icon:1});
+                         setTimeout(function (){
+                             parent.location.reload();
+                         },800);
+                     }else{
+                         layer.msg(res.data,{icon:2});
+                     }
+                 });
+             }, function(){
+                 layer.closeAll();
+             });
+         });
+     });
+ </script>
             <!--main content end-->
  {include file="public/footer"}

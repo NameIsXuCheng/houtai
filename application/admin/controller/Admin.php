@@ -9,18 +9,31 @@ namespace app\admin\controller;
 use think\Controller;
 use think\Db;
 use think\Request;
+use think\Session;
 
 class Admin extends Basic {
     public function index(){
-
         return view();
     }
 
     public function role_admin(){
+        $user_id = Session::get('user_id');
+        if($user_id == 136){
+            $where['p_user_id'] = ['in',[0,136]];
+        }else{
+            $where['p_user_id'] = $user_id;
+        }
+        $where['model'] = 'admin';
+        $role = Db::name('role');
+        $role_list = $role->where($where)->select();
+        $this->assign('role_list',$role_list);
         return view();
     }
 
-    public function role_purchasing(){
+    public function admin_user(){
+        $admin_user = Db::name('admin_user');
+        $list = $admin_user->select();
+        $this->assign('list',$list);
         return view();
     }
 

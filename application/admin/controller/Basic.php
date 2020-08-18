@@ -30,6 +30,9 @@ class Basic extends Controller {
         $privilege[$this->model][$controller]['open'] = 1;
         $privilege[$this->model][$controller]['child'][$action]['is_selected'] = 1;
         $this->assign('pri',$privilege[$this->model]);
+
+        $this->assign('user_name',Session::get('user_name'));
+
         //判断logo
         $logo = Session::get("logo");
         $this->assign('logo',$logo);
