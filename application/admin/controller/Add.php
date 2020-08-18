@@ -219,6 +219,33 @@ class Add extends Controller {
 
     public function admin_user_do(Request $request){
         $param = $request->param();
-        return json(['code'=>0,'data'=>'添加失败','info'=>$param]);
+        $admin_user = Db::name('admin_user');
+
+        if($admin_user->where(['user_name'=>$param['username']])->count()>0){
+            return json(['code'=>0,'data'=>'账号已经存在！']);
+        }
+
+        if($admin_user->where(['phone'=>$param['phone']])->count()>0){
+            return json(['code'=>0,'data'=>'手机号已经绑定账号！']);
+        }
+
+        $salt = time();
+        $back = $admin_user->insert([
+            'user_name'=>$param['username'],
+            'username'=>$param['phone'],
+            'salt'=>$salt,
+            'password'=>md5($param['password'].$salt),
+            'sex'=>$param['sex'],
+            'email'=>$param['email'],
+            'phone'=>$param['phone'],
+            'id_card'=>$param['id_card'],
+            'role_id'=>$param['role'],
+            'created_at'=>date('Y-m-d H:i:s',time()),
+        ]);
+
+        if(!$back){
+            return json(['code'=>0,'data'=>'添加失败']);
+        }
+        return json(['code'=>1,'data'=>'添加成功']);
     }
 }

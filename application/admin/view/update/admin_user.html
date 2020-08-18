@@ -9,28 +9,29 @@
         <div class="panel">
             <div class="panel-body">
                 <form class="form-horizontal form-variance" id="step-advanced-form" method="get">
+                    <input class="form-control mb-10 required" id="id" name="id" value="{{$admin_info.id}}" type="hidden">
                     <div class="form-group controller">
                         <label class="col-sm-3 control-label red" for="username">账号</label>
                         <div class="col-sm-6">
-                            <input class="form-control mb-10 required" id="username" name="username" value="" type="text">
+                            <input class="form-control mb-10 required" id="username" name="username" value="{{$admin_info.user_name}}" type="text">
                         </div>
                     </div>
                     <div class="form-group controller">
-                        <label class="col-sm-3 control-label red" for="password">密码</label>
+                        <label class="col-sm-3 control-label" for="password">旧密码</label>
                         <div class="col-sm-6">
-                            <input class="form-control mb-10 required" id="password" name="password" value="" type="password">
+                            <input class="form-control mb-10 required" id="password" name="old_password" value="" type="password">
                         </div>
                     </div>
                     <div class="form-group controller">
-                        <label class="col-sm-3 control-label red">确认密码</label>
+                        <label class="col-sm-3 control-label">新密码</label>
                         <div class="col-sm-6">
-                            <input class="form-control mb-10" name="repassword" value="" type="password">
+                            <input class="form-control mb-10" name="new_password" value="" type="password">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label red">手机号码</label>
                         <div class="col-sm-6">
-                            <input class="form-control mb-10" name="phone" value="" type="text">
+                            <input class="form-control mb-10" name="phone" value="{{$admin_info.phone}}" type="text">
                         </div>
                     </div>
                     <div class="form-group">
@@ -38,10 +39,10 @@
                         <div class="col-sm-6">
                             <div class="radio">
                                 <label>
-                                    <input name="sex" value="1" type="radio" checked>女
+                                    <input name="sex" value="1" type="radio" {if condition="$admin_info.sex eq '1'"} checked {/if} >女
                                 </label>
                                 <label>
-                                    <input name="sex" value="0" type="radio">男
+                                    <input name="sex" value="0" type="radio" {if condition="$admin_info.sex eq '0'"} checked {/if} >男
                                 </label>
                             </div>
                         </div>
@@ -49,13 +50,13 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label red">证件号码</label>
                         <div class="col-sm-6">
-                            <input class="form-control mb-10" name="id_card" value="" type="text">
+                            <input class="form-control mb-10" name="id_card" value="{{$admin_info.id_card}}" type="text">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label">E-Mail</label>
                         <div class="col-sm-6">
-                            <input class="form-control mb-10" name="email" value="" type="email">
+                            <input class="form-control mb-10" name="email" value="{{$admin_info.email}}" type="email">
                         </div>
                     </div>
                     <div class="form-group">
@@ -64,7 +65,7 @@
                             <select name="role" lay-filter="role" class="form-control mb-10">
                                 <option value="">--选择角色--</option>
                                 {volist name="role_info" id="item"}
-                                <option value="{{$item.id}}">{{$item.role_name}}</option>
+                                <option value="{{$item.id}}" {if condition="$admin_info.role_id eq $item.id"} selected {/if} >{{$item.role_name}}</option>
                                 {/volist}
                             </select>
                         </div>
@@ -95,21 +96,17 @@
                 return false;
             }
 
-            if(form.password.value == ''){
-                layer.msg('请输入密码！');
-                form.password.focus();
-                return false;
-            }
-
-            if(form.password.value.length < 8){
-                layer.msg('密码长度不能小于8！');
-                form.password.focus();
-                return false;
-            }
-            if(form.repassword.value != form.password.value){
-                layer.msg('两次输入的密码不一致！');
-                form.repassword.focus();
-                return false;
+            if(form.old_password.value != ''){
+                if(form.new_password.value == ''){
+                    layer.msg('新密码不能为空！');
+                    form.repassword.focus();
+                    return false;
+                }
+                if(form.new_password.value.length < 8){
+                    layer.msg('新密码长度不能小于8！');
+                    form.new_password.focus();
+                    return false;
+                }
             }
 
             if(form.phone.value ==''){
@@ -137,7 +134,7 @@
             }
 
             var post_data = $("#step-advanced-form").serializeArray();
-            $.post("{{:url('add/admin_user_do')}}",post_data,function (msg) {
+            $.post("{{:url('update/admin_user_do')}}",post_data,function (msg) {
                 if(msg.code == 1){
                     layer.msg(msg.data,{icon:1});
                     setTimeout(function (){

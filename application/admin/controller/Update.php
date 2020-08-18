@@ -157,4 +157,67 @@ class Update extends Controller {
             return $this->getRootParent($info['parent_id']);
         }
     }
+
+    public function admin_user(Request $request){
+        $user_id = Session::get('user_id');
+        if(empty($user_id)){
+            $this->redirect('/admin/login');
+        }
+
+        $param = $request->param();
+
+        if($user_id == 136){
+            $where['p_user_id'] = ['in',[0,136]];
+        }else{
+            $where['p_user_id'] = $user_id;
+        }
+        $where['model'] = 'admin';
+        //获取权限表
+        $role_info = Db::name('role')->where($where)->select();
+        $this->assign('role_info',$role_info);
+
+        $admin_user = Db::name('admin_user');
+        $info = $admin_user->where(['id'=>$param['id']])->find();
+        $this->assign('admin_info',$info);
+
+        return view();
+    }
+
+    public function admin_user_do(Request $request){
+        $param = $request->param();
+        $admin_user = Db::name('admin_user');
+
+        if($admin_user->where(['user_name'=>$param['username'],'id'=>['neq',$param['id']]])->count()>0){
+            return json(['code'=>0,'data'=>'账号已经存在！']);
+        }
+        $update['user_name'] = $param['username'];
+
+        if($admin_user->where(['phone'=>$param['phone'],'id'=>['neq',$param['id']]])->count()>0){
+            return json(['code'=>0,'data'=>'手机号已经绑定账号！']);
+        }
+        $update['phone'] = $param['phone'];
+        $update['username'] = $param['phone'];
+        $update['sex'] = $param['sex'];
+        $update['email'] = $param['email'];
+        $update['role_id'] = $param['role'];
+
+        //判断是否修改密码
+        if(!empty($param['old_password'])){
+            $salt = time();
+            //开始判断原密码是否正确
+            $old_info = $admin_user->where(['id'=>$param['id']])->find();
+            if(md5($param['old_password'].$old_info['salt']) == $old_info['password']){
+                $update['salt'] = $salt;
+                $update['password'] = md5($param['new_password'].$salt);
+            }else{
+                return json(['code'=>0,'data'=>'原密码错误！']);
+            }
+        }
+
+        $back = $admin_user->where(['id'=>$param['id']])->setField($update);
+        if($back === false){
+            return json(['code'=>0,'data'=>'更新失败']);
+        }
+        return json(['code'=>1,'data'=>'更新成功']);
+    }
 }

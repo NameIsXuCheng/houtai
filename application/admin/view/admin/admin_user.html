@@ -30,7 +30,12 @@
                              <tr>
                                  <td>{{$item.user_name}}</td>
                                  <td>{{$item.phone}}</td>
-                                 <td>{{$item.sex}}</td>
+                                 <td>
+                                     {switch name="item.sex"}
+                                     {case value="1"}女{/case}
+                                     {case value="0"}男{/case}
+                                     {/switch}
+                                 </td>
                                  <td>{{$item.id_card}}</td>
                                  <td>{{$item.email}}</td>
                                  <td>{{$item.created_at}}</td>
