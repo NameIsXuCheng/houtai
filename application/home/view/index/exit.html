@@ -17,10 +17,10 @@
           <div class="c-banner">
               <div class="banner" id="exit_banner_img">
                   <ul>
-                      <li><img src="__HOME_SC__/images/product/exit_banner1.jpg" width="100%"></li>
-                      <li><img src="__HOME_SC__/images/product/exit_banner2.jpg" width="100%"></li>
-                      <li><img src="__HOME_SC__/images/product/exit_banner3.jpg" width="100%"></li>
-                      <li><img src="__HOME_SC__/images/product/exit_banner4.jpg" width="100%"></li>
+                      <li><img src="__HOME_SC__/images/product/exit_banner1.jpg" width="100%" class="imgheight"></li>
+                      <li><img src="__HOME_SC__/images/product/exit_banner2.jpg" width="100%" class="imgheight"></li>
+                      <li><img src="__HOME_SC__/images/product/exit_banner3.jpg" width="100%" class="imgheight"></li>
+                      <li><img src="__HOME_SC__/images/product/exit_banner4.jpg" width="100%" class="imgheight"></li>
                   </ul>
               </div>
               <!--<div class="nexImg">
@@ -184,19 +184,6 @@
           {include file="public/footer"}
           <!--banner切换-->
           <script type="text/javascript">
-              $(document).ready(function(){
-                  $(window).load(function(){
-                      $("#exit_banner").css("height",$("#exit_banner_img ul li img").height());
-                      $(".c-banner").css("height",$("#exit_banner_img ul li img").height());
-                  })
-
-                  $(window).resize(function(){
-
-                      $("#exit_banner").css("height",$("#exit_banner_img ul li img").height());
-                      $(".c-banner").css("height",$("#exit_banner_img ul li img").height());
-
-                  })
-              })
               //定时器返回值
               var time=null;
               //记录当前位子
@@ -208,11 +195,29 @@
               //设置底部第一个按钮样式
               $(".c-banner .jumpBtn ul li[jumpImg="+nexImg+"]").css("background-color","#fd3c00");
 
-              //页面加载
               $(document).ready(function(){
+                  $(window).load(function(){
+                      $("#exit_banner").css("height",$(".imgheight").height());
+                      $(".c-banner").css("height",$(".imgheight").height());
+                      $("#exit_banner_img").css("height",$(".imgheight").height());
+                      $("#exit_banner_img ul").css("height",$(".imgheight").height());
+                      $("#exit_banner_img ul li").css("height",$(".imgheight").height());
+                  })
+
+                  $(window).resize(function(){
+
+                      $("#exit_banner").css("height",$(".imgheight").height());
+                      $(".c-banner").css("height",$(".imgheight").height());
+                      $("#exit_banner_img").css("height",$(".imgheight").height());
+                      $("#exit_banner_img ul").css("height",$(".imgheight").height());
+                      $("#exit_banner_img ul li").css("height",$(".imgheight").height());
+
+                  })
+
                   // dynamicData();
                   //启动定时器,设置时间为3秒一次
                   time =setInterval(intervalImg,18000);
+
               });
 
               //点击上一张
@@ -248,7 +253,7 @@
               $(".nexImg").click(function(){
                   clearInterval(time);
                   intervalImg();
-                  time =setInterval(intervalImg,3000);
+                  time =setInterval(intervalImg,18000);
               })
 
               //轮播图
@@ -295,7 +300,7 @@
                           });
                           nexImg=jumpImg;
                       }
-                      $(this).css("background-color","black");
+                      $(this).css("background-color","#fd3c00");
                       time =setInterval(intervalImg,18000);
                   });
               });
