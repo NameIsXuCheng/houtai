@@ -1,0 +1,193 @@
+{include file="public/header"}
+
+<link rel="stylesheet" type="text/css" href="__HOME_SC__/css/theme.css">
+<link href="__HOME_SC__/css/style.css" rel="stylesheet" type="text/css" />
+<title>天众国际-欧美专线</title>
+
+</head>
+<body>
+
+<div id="wrap" class="main">
+  <div id="dvContainer">
+
+      {include file="public/navbar"}<!--header结束-->
+    
+     <!--banner-->
+    <div class="bann" > 
+        <img src="__HOME_SC__/images/product/exit_banner.jpg" width="100%">
+	</div><!--banner结束-->
+
+    <div id="layerarea">
+
+<!-- Main -->
+<main class="main-container">
+
+ <div class="warpper">
+<div class="ser hidden-xs">
+  <ul class="ser_title ser_title3">       
+    <li><a href="{{:url('exit_one')}}">欧美快线</a></li>
+    <li><a href="{{:url('exit_two')}}">欧美专线</a></li>
+    <li class="mail_lastchild active"><a href="{{:url('exit_three')}}">铁路小包</a><i class="fa fa-angle-down ser_down"></i></li>
+    <div class="clear"></div>
+  </ul>
+</div> 
+
+<div class="service_liu visible-xs">
+  <ul>
+    <li><i class="fa fa-home"></i>首页</li>
+    <li><i class="fa fa-angle-double-right"></i>出口服务</li>
+    <li class="service_lac"><i class="fa fa-angle-double-right"></i>铁路小包</li>
+  </ul>
+</div> 
+
+<div class="exit_one_wrap">
+	<div class="container">
+	  <div class="exit_one_title">
+		  <h4>铁路小包</h4>
+		  <p>即将上线，敬请期待！</p>
+	  </div>
+	</div>	
+</div>
+
+ 
+	 
+</div>
+
+</main>
+        <!-- /Main -->
+
+        {include file="public/footer"}
+
+
+        </html><!doctype html>
+        <html>
+        <head>
+            <meta charset="utf-8">
+            <title>无标题文档</title>
+        </head>
+        <!--banner切换-->
+        <script type="text/javascript">
+            //定时器返回值
+            var time=null;
+            //记录当前位子
+            var nexImg = 0;
+            //用于获取轮播图图片个数
+            var imgLength = $(".c-banner .banner ul li").length;
+            //当时动态数据的时候使用,上面那个删除
+            // var imgLength =0;
+            //设置底部第一个按钮样式
+            $(".c-banner .jumpBtn ul li[jumpImg="+nexImg+"]").css("background-color","#fd3c00");
+
+            $(document).ready(function(){
+                $(window).load(function(){
+                    $("#exit_banner").css("height",$(".imgheight").height());
+                    $(".c-banner").css("height",$(".imgheight").height());
+                    $("#exit_banner_img").css("height",$(".imgheight").height());
+                    $("#exit_banner_img ul").css("height",$(".imgheight").height());
+                    $("#exit_banner_img ul li").css("height",$(".imgheight").height());
+                })
+
+                $(window).resize(function(){
+
+                    $("#exit_banner").css("height",$(".imgheight").height());
+                    $(".c-banner").css("height",$(".imgheight").height());
+                    $("#exit_banner_img").css("height",$(".imgheight").height());
+                    $("#exit_banner_img ul").css("height",$(".imgheight").height());
+                    $("#exit_banner_img ul li").css("height",$(".imgheight").height());
+
+                })
+
+                // dynamicData();
+                //启动定时器,设置时间为3秒一次
+                time =setInterval(intervalImg,18000);
+
+            });
+
+            //点击上一张
+            $(".preImg").click(function(){
+                //清楚定时器
+                clearInterval(time);
+                var nowImg = nexImg;
+                nexImg = nexImg-1;
+                console.log(nexImg);
+                if(nexImg<0){
+                    nexImg=imgLength-1;
+                }
+                //底部按钮样式设置
+                $(".c-banner .jumpBtn ul li").css("background-color","white");
+                $(".c-banner .jumpBtn ul li[jumpImg="+nexImg+"]").css("background-color","#fd3c00");
+
+                //将当前图片试用绝对定位,下一张图片试用相对定位
+                $(".c-banner .banner ul img").eq(nowImg).css("position","absolute");
+                $(".c-banner .banner ul img").eq(nexImg).css("position","relative");
+
+                //轮播淡入淡出
+                $(".c-banner .banner ul li").eq(nexImg).css("display","block");
+                $(".c-banner .banner ul li").eq(nexImg).stop().animate({"opacity":1},1000);
+                $(".c-banner .banner ul li").eq(nowImg).stop().animate({"opacity":0},1000,function(){
+                    $(".c-banner ul li").eq(nowImg).css("display","none");
+                });
+
+                //启动定时器,设置时间为3秒一次
+                time =setInterval(intervalImg,18000);
+            })
+
+            //点击下一张
+            $(".nexImg").click(function(){
+                clearInterval(time);
+                intervalImg();
+                time =setInterval(intervalImg,18000);
+            })
+
+            //轮播图
+            function intervalImg(){
+                if(nexImg<imgLength-1){
+                    nexImg++;
+                }else{
+                    nexImg=0;
+                }
+
+                //将当前图片试用绝对定位,下一张图片试用相对定位
+                $(".c-banner .banner ul img").eq(nexImg-1).css("position","absolute");
+                $(".c-banner .banner ul img").eq(nexImg).css("position","relative");
+
+                $(".c-banner .banner ul li").eq(nexImg).css("display","block");
+                $(".c-banner .banner ul li").eq(nexImg).stop().animate({"opacity":1},1000);
+                $(".c-banner .banner ul li").eq(nexImg-1).stop().animate({"opacity":0},1000,function(){
+                    $(".c-banner .banner ul li").eq(nexImg-1).css("display","none");
+                });
+                $(".c-banner .jumpBtn ul li").css("background-color","white");
+                $(".c-banner .jumpBtn ul li[jumpImg="+nexImg+"]").css("background-color","#fd3c00");
+            }
+
+            //轮播图底下按钮
+            //动态数据加载的试用应放在请求成功后执行该代码,否则按钮无法使用
+            $(".c-banner .jumpBtn ul li").each(function(){
+                //为每个按钮定义点击事件
+                $(this).click(function(){
+                    clearInterval(time);
+                    $(".c-banner .jumpBtn ul li").css("background-color","white");
+                    jumpImg = $(this).attr("jumpImg");
+                    if(jumpImg!=nexImg){
+                        var after =$(".c-banner .banner ul li").eq(jumpImg);
+                        var befor =$(".c-banner .banner ul li").eq(nexImg);
+
+                        //将当前图片试用绝对定位,下一张图片试用相对定位
+                        $(".c-banner .banner ul img").eq(nexImg).css("position","absolute");
+                        $(".c-banner .banner ul img").eq(jumpImg).css("position","relative");
+
+                        after.css("display","block");
+                        after.stop().animate({"opacity":1},1000);
+                        befor.stop().animate({"opacity":0},1000,function(){
+                            befor.css("display","none");
+                        });
+                        nexImg=jumpImg;
+                    }
+                    $(this).css("background-color","#fd3c00");
+                    time =setInterval(intervalImg,18000);
+                });
+            });
+        </script>
+        <body>
+        </body>
+        </html>

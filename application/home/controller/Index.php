@@ -140,6 +140,14 @@ class Index extends Controller {
 
         return view();
     }
+    //欧美小包专线 type=3
+    public function exit_three(){
+        $type = 1;
+        $article_info = $this->get_article_category($type);
+        $this->assign('article_info',$article_info[$type]);
+
+        return view();
+    }
 
 
     public function contact(){

@@ -94,7 +94,7 @@
 }
 
 /******bann**********/
-.bann{width:100%; position:relative;}
+.bann{width:100%; height: 100%; position:relative;}
 .reg{position: absolute;top:28%;right: 15%; width:300px; height:165px; background:rgba(255,255,255,0.6);}
 .reg .regnow {
     display: block;
@@ -211,7 +211,7 @@
 .ser{width:100%; height:60px; background-color:#dde0e2;}
 .ser_title{display:block; text-align:center; width:356px; margin:0 auto;}
 .ser_title2{width:570px;}
-.ser_title3{width: 400px;}
+.ser_title3{width: 358px;}
 .ser_title li{font-size:18px; height:60px; line-height:54px; float:left;margin-right:70px; position:relative;}
 .ser_title li a {color: #333333;}
 .mail_lastchild{margin-right:0px !important;}
@@ -1387,7 +1387,7 @@ margin-right: 10px;}
 .chxq_box{width:80%; margin:0px auto 80px auto;}
 
 /********报价时效查询*****/
-.price_warp{margin:0 auto; padding:30px;}
+.price_warp{margin:0 auto; padding:60px 30px;}
 .listbd span.price {
     display: block;
     width: 80px;
@@ -1430,6 +1430,47 @@ margin-right: 10px;}
     margin-left: 40px;
 	font-size:14px;
 }
+
+/*.order-button-wrapper {
+    text-align: center;
+    padding: 20px 0;
+}
+.order-button {
+    display: inline-block;
+    height: 60px;
+    line-height: 60px;
+    border: solid 4px #fd3c00;
+    border-radius: 3px;
+    background: url(../images/product/order-button-background.png);
+    font-size: 16px;
+    color: #fd3c00;
+    cursor: pointer;
+    overflow: hidden;
+	ebkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.order-button .order-button-inner {
+    position: relative;
+    padding: 0 30px 0 60px;
+}
+.order-button .icon {
+    height: 28px;
+    width: 25px;
+    position: absolute;
+    top: 16px;
+    left: 25px;
+}
+.order-button .text {
+    display: inline-block;
+	font-size: 16px;
+	font-weight: 400;
+	color: #fd3c00;
+}
+.order-button:hover{padding-left: 15px; padding-right: 15px;}*/
+
 /*********运费估价**********/
 
 /*********快递查询**************/
@@ -1799,7 +1840,7 @@ li span a{
 }
 .exit_cx_other{position: relative; width: 222px; margin: 0 auto;}
 .exit_cx_other_two{ width: 136px;}
-.exit_cx_other li{font-size: 14px;font-weight: 600; letter-spacing: 1px; float: left;color:#444}
+.exit_cx_other li{font-size: 14px;font-weight: 600; letter-spacing: 1px; float: left;}
 .exit_cx_other li:first-child:after{display: block; content: ''; position: absolute; left: 0px; top:20px; width: 60px; height: 1px; background: #333;}
 .exit_cx_other li:nth-child(2):after{display: block; content: ''; position: absolute; left: 76px; top:20px; width: 60px; height: 1px; background: #333;}
 .exit_cx_other li:nth-child(3):after{display: block; content: ''; position: absolute; left: 152px; top:20px; width: 60px; height: 1px; background: #333;}
@@ -1809,7 +1850,7 @@ li span a{
 .exit_cx_other2 span{font-size: 14px;font-weight: 600; letter-spacing: 1px; float: left; text-align: center; display: block;}
 .exit_cx_other2 span:after{display: block; content: ''; position: absolute; left: 0px; top:20px; width: 105px; height: 1px; background: #333;}
 .exit_cx_other2 a:hover{color: #fd3c00;}
-.exit_menu{width:540px; height: 50px; margin: 30px auto 0px auto;}
+.exit_menu{width:630px; height: 50px; margin: 30px auto 0px auto;}
 .exit_menu li{float: left; width:90px;}
 .query_search_note{width: 50%;margin: 40px auto 0px auto; }
 .query_search_note h4{font-size: 15px; font-weight: 600; text-align: center; color: #fd3c00; padding-bottom: 10px;}
@@ -1886,7 +1927,7 @@ li span a{
 .exit_xq_main{width:100%; background: #ffffff; z-index: 99; position:relative; margin-top:0px;}
 
 .navContent{float: left; width: 20%;
-    min-height: 2054px;
+    min-height: 1653px;
     padding-bottom: 300px;
     background-color: #f8f8f8;
     border-left: 1px solid #eee;}
@@ -2274,7 +2315,7 @@ li span a{
 .contact_box1_r img{ padding:70px 0px 0px 15px;}
 .contact_btop{}
 .contact_btop span{font-size: 18px; color: #0059a6; margin: 0px;}
-.contact_btop h3{font-size: 30px; color: #333; letter-spacing: 1px;/* padding-top: 8px; */margin: 0px;font-weight: bold;}
+.contact_btop h3{font-size: 30px; color: #333; letter-spacing: 1px; padding-top: 8px;}
 .contact_btop_wen{font-size: 16px; color: #555; margin: 0px; line-height: 26px;padding-top: 15px;}
 .contact_bcenter{padding-top: 40px;}
 .contact_bcenter h5{font-size: 16px; color: #333; margin: 0px; line-height: 26px;}
@@ -2348,7 +2389,7 @@ li span a{
 .c-banner .jumpBtn{
 	width: 100%;
 	position: absolute;
-	bottom: 20px;
+	bottom: 12px;
 	text-align: center;
 }
 .c-banner .jumpBtn ul{
@@ -2357,13 +2398,14 @@ li span a{
 }
 
 .c-banner .jumpBtn ul li{
-	width: 10px;
-	height: 10px;
+	width: 8px;
+	height: 8px;
 	border-radius: 50%;
 	display: inline-block;
 	background-color: white;
 	opacity: 0.9;
-	margin-left: 10px;
+	margin-left: 8px;
+	cursor: pointer;
 }
 .c-banner .jumpBtn ul li:first-child{
 	margin-left: 0px;

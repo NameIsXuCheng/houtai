@@ -17,8 +17,35 @@
   <div id="dvContainer">
 
       {include file="public/navbar"}<!--header结束-->
-    
-    <div class="bann"><img src="__HOME_SC__/images/exit_banner.jpg" width="100%" /></div>
+
+	  <!--banner开始--> <div class="bann" id="exit_banner">
+		  <div class="c-banner">
+			  <div class="banner" id="exit_banner_img">
+				  <ul>
+					  <li><img src="__HOME_SC__/images/product/exit_banner5.jpg" width="100%" class="imgheight"></li>
+					  <li><img src="__HOME_SC__/images/product/kuai1.jpg" width="100%" class="imgheight"></li>
+					  <li><img src="__HOME_SC__/images/product/kuai2.jpg" width="100%" class="imgheight"></li>
+					  <li><img src="__HOME_SC__/images/product/kuai3.jpg" width="100%" class="imgheight"></li>
+					  <li><img src="__HOME_SC__/images/product/kuai4.jpg" width="100%" class="imgheight"></li>
+				  </ul>
+			  </div>
+			  <!--<div class="nexImg">
+                       <img src="images/product/nexImg.png" />
+                   </div>
+                   <div class="preImg">
+                       <img src="images/product/preImg.png" />
+                   </div>-->
+			  <div class="jumpBtn">
+				  <ul>
+					  <li jumpImg="0"></li>
+					  <li jumpImg="1"></li>
+					  <li jumpImg="2"></li>
+					  <li jumpImg="3"></li>
+					  <li jumpImg="4"></li>
+				  </ul>
+			  </div>
+		  </div>
+	  </div><!--banner结束-->
 
     <div id="layerarea">
 
@@ -30,7 +57,7 @@
   <ul class="ser_title ser_title3">       
     <li class="active"><a href="{{:url('exit_one')}}">欧美快线</a><i class="fa fa-angle-down ser_down"></i></li>
     <li><a href="{{:url('exit_two')}}">欧美专线</a></li>
-    <li class="mail_lastchild"><a href="#">铁路小包</a></li>
+    <li class="mail_lastchild"><a href="{{:url('exit_three')}}">铁路小包</a></li>
     <div class="clear"></div>
   </ul>
 </div> 
@@ -49,7 +76,7 @@
 		  <h4>欧美特快专线</h4>
 		  <p>特别整合特快渠道</p>
 		  <p>英国、法国、德国、美国的空运特快专线</p>
-		  <p>直飞目的国&nbsp;&nbsp;6h快速清关</p>
+		  <p>直飞目的国&nbsp;&nbsp;6h闪电清关</p>
 		  <p>时效快至4天可完成妥投&nbsp;&nbsp;媲美海外仓</p>
 		  <p>全程点对点轨迹追踪</p>
 	  </div>
@@ -111,7 +138,129 @@
 <meta charset="utf-8">
 <title>无标题文档</title>
 </head>
+<!--banner切换-->
+<script type="text/javascript">
+    //定时器返回值
+    var time=null;
+    //记录当前位子
+    var nexImg = 0;
+    //用于获取轮播图图片个数
+    var imgLength = $(".c-banner .banner ul li").length;
+    //当时动态数据的时候使用,上面那个删除
+    // var imgLength =0;
+    //设置底部第一个按钮样式
+    $(".c-banner .jumpBtn ul li[jumpImg="+nexImg+"]").css("background-color","#fd3c00");
 
+    $(document).ready(function(){
+        $(window).load(function(){
+            $("#exit_banner").css("height",$(".imgheight").height());
+            $(".c-banner").css("height",$(".imgheight").height());
+            $("#exit_banner_img").css("height",$(".imgheight").height());
+            $("#exit_banner_img ul").css("height",$(".imgheight").height());
+            $("#exit_banner_img ul li").css("height",$(".imgheight").height());
+        })
+
+        $(window).resize(function(){
+
+            $("#exit_banner").css("height",$(".imgheight").height());
+            $(".c-banner").css("height",$(".imgheight").height());
+            $("#exit_banner_img").css("height",$(".imgheight").height());
+            $("#exit_banner_img ul").css("height",$(".imgheight").height());
+            $("#exit_banner_img ul li").css("height",$(".imgheight").height());
+
+        })
+
+        // dynamicData();
+        //启动定时器,设置时间为3秒一次
+        time =setInterval(intervalImg,18000);
+
+    });
+
+    //点击上一张
+    $(".preImg").click(function(){
+        //清楚定时器
+        clearInterval(time);
+        var nowImg = nexImg;
+        nexImg = nexImg-1;
+        console.log(nexImg);
+        if(nexImg<0){
+            nexImg=imgLength-1;
+        }
+        //底部按钮样式设置
+        $(".c-banner .jumpBtn ul li").css("background-color","white");
+        $(".c-banner .jumpBtn ul li[jumpImg="+nexImg+"]").css("background-color","#fd3c00");
+
+        //将当前图片试用绝对定位,下一张图片试用相对定位
+        $(".c-banner .banner ul img").eq(nowImg).css("position","absolute");
+        $(".c-banner .banner ul img").eq(nexImg).css("position","relative");
+
+        //轮播淡入淡出
+        $(".c-banner .banner ul li").eq(nexImg).css("display","block");
+        $(".c-banner .banner ul li").eq(nexImg).stop().animate({"opacity":1},1000);
+        $(".c-banner .banner ul li").eq(nowImg).stop().animate({"opacity":0},1000,function(){
+            $(".c-banner ul li").eq(nowImg).css("display","none");
+        });
+
+        //启动定时器,设置时间为3秒一次
+        time =setInterval(intervalImg,18000);
+    })
+
+    //点击下一张
+    $(".nexImg").click(function(){
+        clearInterval(time);
+        intervalImg();
+        time =setInterval(intervalImg,18000);
+    })
+
+    //轮播图
+    function intervalImg(){
+        if(nexImg<imgLength-1){
+            nexImg++;
+        }else{
+            nexImg=0;
+        }
+
+        //将当前图片试用绝对定位,下一张图片试用相对定位
+        $(".c-banner .banner ul img").eq(nexImg-1).css("position","absolute");
+        $(".c-banner .banner ul img").eq(nexImg).css("position","relative");
+
+        $(".c-banner .banner ul li").eq(nexImg).css("display","block");
+        $(".c-banner .banner ul li").eq(nexImg).stop().animate({"opacity":1},1000);
+        $(".c-banner .banner ul li").eq(nexImg-1).stop().animate({"opacity":0},1000,function(){
+            $(".c-banner .banner ul li").eq(nexImg-1).css("display","none");
+        });
+        $(".c-banner .jumpBtn ul li").css("background-color","white");
+        $(".c-banner .jumpBtn ul li[jumpImg="+nexImg+"]").css("background-color","#fd3c00");
+    }
+
+    //轮播图底下按钮
+    //动态数据加载的试用应放在请求成功后执行该代码,否则按钮无法使用
+    $(".c-banner .jumpBtn ul li").each(function(){
+        //为每个按钮定义点击事件
+        $(this).click(function(){
+            clearInterval(time);
+            $(".c-banner .jumpBtn ul li").css("background-color","white");
+            jumpImg = $(this).attr("jumpImg");
+            if(jumpImg!=nexImg){
+                var after =$(".c-banner .banner ul li").eq(jumpImg);
+                var befor =$(".c-banner .banner ul li").eq(nexImg);
+
+                //将当前图片试用绝对定位,下一张图片试用相对定位
+                $(".c-banner .banner ul img").eq(nexImg).css("position","absolute");
+                $(".c-banner .banner ul img").eq(jumpImg).css("position","relative");
+
+                after.css("display","block");
+                after.stop().animate({"opacity":1},1000);
+                befor.stop().animate({"opacity":0},1000,function(){
+                    befor.css("display","none");
+                });
+                nexImg=jumpImg;
+            }
+            $(this).css("background-color","#fd3c00");
+            time =setInterval(intervalImg,18000);
+        });
+    });
+</script>
 <body>
 </body>
 </html>

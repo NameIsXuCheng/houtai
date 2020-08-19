@@ -23,12 +23,12 @@
                       <li><img src="__HOME_SC__/images/product/exit_banner4.jpg" width="100%"></li>
                   </ul>
               </div>
-              <div class="nexImg">
+              <!--<div class="nexImg">
                   <img src="__HOME_SC__/images/product/nexImg.png" />
               </div>
               <div class="preImg">
                   <img src="__HOME_SC__/images/product/preImg.png" />
-              </div>
+              </div>-->
               <div class="jumpBtn">
                   <ul>
                       <li jumpImg="0"></li>
@@ -83,18 +83,20 @@
                               </div>
                           </div>
                       </a>
-                      <div class="exit_fuwu_item">
-                          <div class="exit_fuwu_item_icon"></div>
-                          <div class="exit_fuwu_item_main">
-                              <span>欧洲铁路小包</span>
-                              <p>25-30日</p>
+                      <a href="{{:url('exit_three')}}">
+                          <div class="exit_fuwu_item">
+                              <div class="exit_fuwu_item_icon"></div>
+                              <div class="exit_fuwu_item_main">
+                                  <span>欧洲铁路小包</span>
+                                  <p>25-30日</p>
+                              </div>
+                              <div class="exit_fuwu_item_main2">
+                                  {volist name="article[1]" id="vo" offset="0" length='6'}
+                                  <a href="#">{{$vo.country_name}}</a>
+                                  {/volist}
+                              </div>
                           </div>
-                          <div class="exit_fuwu_item_main2">
-                              {volist name="article[1]" id="vo" offset="0" length='6'}
-                              <a href="#">{{$vo.country_name}}</a>
-                              {/volist}
-                          </div>
-                      </div>
+                      </a>
                       <div class="clear"></div>
                   </div>
 
@@ -210,7 +212,7 @@
               $(document).ready(function(){
                   // dynamicData();
                   //启动定时器,设置时间为3秒一次
-                  time =setInterval(intervalImg,3000);
+                  time =setInterval(intervalImg,18000);
               });
 
               //点击上一张
@@ -239,7 +241,7 @@
                   });
 
                   //启动定时器,设置时间为3秒一次
-                  time =setInterval(intervalImg,3000);
+                  time =setInterval(intervalImg,18000);
               })
 
               //点击下一张
@@ -294,7 +296,7 @@
                           nexImg=jumpImg;
                       }
                       $(this).css("background-color","black");
-                      time =setInterval(intervalImg,3000);
+                      time =setInterval(intervalImg,18000);
                   });
               });
           </script>

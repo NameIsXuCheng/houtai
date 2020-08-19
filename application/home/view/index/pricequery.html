@@ -36,14 +36,14 @@
     <div class="listcontent price_warp">
 	  <div class="pricequer_search">
         <ul>
-           <li>
+          <!-- <li>
              <span class="price">始发地：</span>
            <select class="input1 w200 price_sel" id="StartProvince" name="StartProvince" ></select>
            <select class="input1 w200 ml10 price_sel" id="StartCity" name="StartCity"> </select>
 		   <select class="input1 w200 ml10 price_sel" id="StartDistrict" name="StartDistrict"> </select>
                <div id="show"></div>
 
-           </li>
+           </li>-->
             <li>
               <span class="price">目的地：</span>
                 <select class="input1 w200 price_sel" id="TargetCountry" name="TargetCountry">
@@ -203,10 +203,11 @@
 		</ul>
 		
 		<div class="pricequer_tip">
-		 <span class="red" style="font-size: 20px">如需获取更大折扣请联系客户经理，电话13588868260（微信同号）</span>
+		 <span class="red" style="font-size: 20px">获取更多折扣优惠或上门取件服务，请与我们联系，电话13588868260（微信同号）</span>
 		</div>
 
 		<ul class="exit_menu">
+			<li><img src="__HOME_SC__/images/ico_menu_main7.png" alt="" width="90"></li>
 			<li><img src="__HOME_SC__/images/ico_menu_main1.png" alt="" width="90"></li>
 			<li><img src="__HOME_SC__/images/ico_menu_main2.png" alt="" width="90"></li>
 			<li><img src="__HOME_SC__/images/ico_menu_main3.png" alt="" width="90"></li>
@@ -258,9 +259,9 @@
 
           var data = {
               c_country : "CN",
-              c_state :$("#StartProvince").val(),
-              c_city :$("#StartCity").val(),
-              c_area:$("#StartDistrict").val(),
+              //c_state :$("#StartProvince").val(),
+              //c_city :$("#StartCity").val(),
+              //c_area:$("#StartDistrict").val(),
               m_country:$("#TargetCountry").val(),
               // m_state:m_state,
               // m_city:m_city,
@@ -310,7 +311,7 @@
                           '\t\t\t\t\t  <div lass="result-table table-active">\n' +
                           '\t\t\t\t\t\t<a href="javascript:setResultLi(' + i + ')"><div class="e-i-head">\n' +
                           '\t\t\t\t\t\t  <div style="width:20%;">' + list.dline_nick_name + '</div>\n' +
-                          '\t\t\t\t\t\t  <div style="width:20%;">' + data.c_state + '</div>\n' +
+                          '\t\t\t\t\t\t  <div style="width:20%;">' + data.c_country + '</div>\n' +
                           '\t\t\t\t\t\t  <div style="width:20%;">' + $("#TargetCountry").find('option:selected').text() + '</div>\n' +
                           '\t\t\t\t\t\t  <div style="width:20%;">'+list.arrived_time+'</div>\n' +
                           '\t\t\t\t\t\t  <div style="width:20%;">￥' + list.delivery_fee + '</div>\n' +
@@ -350,7 +351,7 @@
                           '\t\t\t\t\t  <div lass="result-table table-active">\n' +
                           '\t\t\t\t\t\t<a href="javascript:setResultLi(' + i + ')"><div class="e-i-head">\n' +
                           '\t\t\t\t\t\t  <div style="width:20%;">' + list.dline_nick_name + '</div>\n' +
-                          '\t\t\t\t\t\t  <div style="width:20%;">' + data.c_state + '</div>\n' +
+                          '\t\t\t\t\t\t  <div style="width:20%;">' + data.c_country + '</div>\n' +
                           '\t\t\t\t\t\t  <div style="width:20%;">' + $("#TargetCountry").find('option:selected').text() + '</div>\n' +
                           '\t\t\t\t\t\t  <div style="width:20%;">'+list.arrived_time+'</div>\n' +
                           '\t\t\t\t\t\t  <div style="width:20%;">￥' + list.delivery_fee + '</div>\n' +
