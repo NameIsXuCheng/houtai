@@ -154,13 +154,18 @@
             <img src="__HOME_SC__/images/float/erweima2.jpg" alt="">
         </p>
     </div>
+    <div class="float_xiadan" style="display: none;">
+        <p>
+            <img src="__HOME_SC__/images/float/xiadan.jpg" alt="">
+        </p>
+    </div>
 
     <ul id="toTopUl">
         <li><a class="flo_1" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=3507245604&site=qq&menu=yes"><span class="ke_tit">QQ</span></a></li>
         <li><a class="flo_2" href="javascript:void(0);" style="font-size: 14px; width: 60px; opacity: 1;"><span class="ke_tit">电话</span><span class="ke_info">0571-88890244</span></a>
         </li>
-
         <li><a class="flo_w" href="javascript:void(0);" onmouseover="showCode();" onmouseout="hideCode();"><span class="ke_tit">公众号</span></a></li>
+        <li><a class="flo_w2" href="javascript:void(0);" onmouseover="showCode2();" onmouseout="hideCode2();"><span class="ke_tit">扫码下单</span></a></li>
     </ul>
 </div>
 <!--右侧浮动样式-->
@@ -170,7 +175,6 @@
 </body>
 <!--右侧浮动js-->
 <script type="text/javascript">
-
     opentop();
     function opentop(){
         var topTop = "<li id = 'addtotop'><a class = 'flo_4' style = 'cursor: pointer;'><span class='ke_tit'>返回</span></a></li>"
@@ -184,13 +188,13 @@
                     return;
                 }
             }else{
-                $("#toTopUl li:eq(3)").remove();
+                $("#toTopUl li:eq(4)").remove();
             }
         });
     }
     function addtotop(){
         $("#addtotop").bind('click',function(){
-            $("#toTopUl li:eq(3)").remove();
+            $("#toTopUl li:eq(4)").remove();
             $(window).unbind();
             $('html, body').animate({scrollTop:0}, '1000');
             setTimeout('opentop()',500);
@@ -203,7 +207,13 @@
     }
     function hideCode(){
         $(".float_erweima").hide();
-        $(".float_erweima").css("background","");
+    }
+    function showCode2(){
+        $(".float_xiadan").show();
+
+    }
+    function hideCode2(){
+        $(".float_xiadan").hide();
     }
 
     $(function () {
