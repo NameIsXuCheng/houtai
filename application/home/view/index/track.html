@@ -122,7 +122,7 @@
         var index = layer.open({type: 2});
 
         // package_no = 'E6200703175724000001';
-        $.post("/Track.php",{package_no:package_no},function(res){
+        $.post("{{:url('method/get_track')}}",{package_no:package_no},function(res){
             res = eval('(' + res + ')');
             var html = '';
 
