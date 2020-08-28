@@ -1,136 +1,759 @@
 {include file="public/header"}
+<link rel="stylesheet" type="text/css" href="__HOME_SC__/css/theme.css">
+<script type="text/javascript" src="__HOME_SC__/js/countryData_v2.js"></script>
 <title>天众国际</title>
 </head>
 <body>
 
- <div id="wrap" class="main">
-  <div id="dvContainer">
+{include file="public/navbar"}<!--header结束-->
+<!--Slider-->
+<div class="slider owl-carousel owl-theme">
 
-      {include file="public/navbar"}
-   
-    <div id="layerarea">
-              <div id="container">
-        <div id="contents"> 
-                  
-          <div class="slide_wrap">
-              <ul class="slide">
-                 <li><span class="hide"></span></li>
-                 <li class="menu2"><span class="hide"></span></li>
-                  <li class="menu3"><span class="hide"></span></li>
-                  <li class="menu4"><span class="hide"></span></li>
-              </ul>
-          </div>
-                  
-                  <div class="slide2">
-            <div class="slide_area">
-                      <ul class="slide">
-                <li> 
-                  <a href="#">  
-                    <img src="__HOME_SC__/images/img_main_slide_banner_20170601.jpg"/>
-                    <div class="ind_one"> 
-                      <h4>更快清关</h4>
-                      <h3>全程电子清关，5分钟即可清关放行</h3>
-                      <p>由于采用与海关系统直接对接的方式处理清关，且清关产品均已先期进行商品备案，故全程采用自动放行，相比以前的传统清关方式效率高出数倍。</p>
-                    </div>
-                  </a> 
-                
-                </li>
-                <li>
-                  <a href="#">
-                    <img src="__HOME_SC__/images/img_main_slide_banner_20170713.jpg"/>
-                    <div class="ind_one"> 
-                      <h4>系统对接</h4>
-                      <h3>全程系统对接及跟踪，高效便于掌控</h3>
-                      <p>天众在提供高效低成本的进口服务的同时，开发了天众跨境电商综合服务平台，通过系统API接口可以实时的将订单指令、清关指令、备货指令等进行传输，且可以实时返回货品及订单状态，便于结算、对接、掌控。</p>
-                    </div>
-                  </a> 
-                
-                </li>
-                <li>
-                  <a href="#">
-                    <img src="__HOME_SC__/images/img_main_slide_banner_20170623.jpg"/>
-                    <div class="ind_one"> 
-                      <h4>更低成本</h4>
-                      <h3>低运费、低操作费、低清关费、低税费</h3>
-                      <p>相比以往通过一般贸易进口的方式，省却了关税及增值税，只交免税额外的行邮税，通过海外空运、中港车等运输方式亦可省却大部分运费，同时操作费及清关费均为最低。</p>
-                    </div>
-                  </a> 
-                
-                </li>
-              </ul>
-                     
-            </div>
-            <!-- //slide_area --> 
-          </div>
-          
-          <div class="widfix split_list_wrap">
-            <ul class="split_list fade_menu banner1 more">
-                <li> <a href="{{:url('service')}}" target="_blank" title=""> <span></span> <span class="over"></span> <i class="more"></i> </a> </li>
-                <li> <a href="{{:url('contact')}}" target="_blank" title=""> <span></span> <span class="over"></span> <i class="more"></i> </a> </li>
-             </ul>
-          </div>
-                  <div class="pension_slider" style="margin-top:120px;">
-            <div class="slide3">
-                      <div class="slide_area">
-                <ul class="slide">
-                          <li><a href="#"><img src="__HOME_SC__/images/img_main_slider_tab_01.jpg" /></a></li>
-                          <li><a href="#"><img src="__HOME_SC__/images/img_main_slider_tab_02.jpg"  /></a></li>
-                          <li><a href="#"><img src="__HOME_SC__/images/img_main_slider_tab_03.jpg" /></a></li>
-                          <li><a href="#"><img src="__HOME_SC__/images/img_main_slider_tab_04.jpg"/></a></li>
-                        </ul>
-              </div>
-                      <!-- //slide_area --> 
-                    </div>
-          </div>
-                  <div class="widfix">
-            <ul class="board_wrap">
-                      <li>
-                <dl>
-                          <dt><img src="__HOME_SC__/images/banner_main3.jpg"/></dt>
-                          <dd> <a href="#" class="btn_banner_more"><img src="__HOME_SC__/images/btn_detail.png"/></a></dd>
-                        </dl>
-              </li>
-                      <li>
-                <dl>
-                          <dt><img src="__HOME_SC__/images/banner_main4.jpg" /></dt>
-                          <dd> <a href="#"  class="btn_banner_more"><img src="__HOME_SC__/images/btn_detail.png" /></a> </dd>
-                        </dl>
-              </li>
-                      <li>
-                <div class="board_list">
-                          <h2>新闻资讯</h2>
-                          <a href="{{:url('newslist_2')}}" class="btn_more"><img src="__HOME_SC__/images/btn_submain_more.png" /></a>
-                             <p class="ind_font3"><a href="{{:url('news_xq_2')}}">法国邮政：DPD今年将在英国投资2亿英镑建15个新仓库</a></p>
-                             <p class="ind_font3"><a href="#">出口美国的清关流程和注意事项</a></p>
-                             <p class="ind_font3"><a href="#">最新研究报告显示欧洲跨境B2C市场规模2022年翻番</a></p>
-                           </div>
-                <div class="board_list event">
-                          <h2>行业知识</h2>
-                            <a href="{{:url('newslist')}}" class="btn_more"><img src="__HOME_SC__/images/btn_submain_more.png"/></a>
-                             <p class="ind_font3"><a href="{{:url('news_xq')}}">亚马逊热销产品如何找寻？打造产品要从哪里开始？</a></p>
-                             <p class="ind_font3"><a href="#">亚马逊卖口罩被关店，卖家应该如何申诉？</a></p>
-                             <p class="ind_font3"><a href="#">跨境电商怎么做产品关键词，掌握这5招产品关键词挑选技巧</a></p>
-                          </div>
-              </li>
-                    </ul>
-          </div>
-          <div class="main_quick_wrap widfix split">
-               <h2 class="title">
-                 <p class="ind_font1">为什么选择天众国际</p>
-                 <p class="ind_font2">天众国际整合国际运输、口岸清关等优势资源，为全球跨境电子商务企业、外贸出口企业提供安全、快速、便捷的一站式全程物流服务</p>
-               </h2>
-            <ul class="quick_menu col6">
-                      <li><img src="__HOME_SC__/images/ico_menu_main1.png" alt="" /></li>
-                      <li><img src="__HOME_SC__/images/ico_menu_main2.png" alt="" /></li>
-                      <li><img src="__HOME_SC__/images/ico_menu_main3.png" alt="" /></li>
-                      <li><img src="__HOME_SC__/images/ico_menu_main4.png" alt="" /></li>
-                      <li><img src="__HOME_SC__/images/ico_menu_main5.png" alt="" /></li>
-                      <li><img src="__HOME_SC__/images/ico_menu_main6.png" alt="" /></li>
-                    </ul>
-          </div>
+    <!--Slide-->
+    <div class="item mask" style="background: url(__HOME_SC__/images/product/ind_banner.jpg) no-repeat center top / cover; position: relative;">
+        <!--运价查询开始-->
+        <div class="ind_query">
+            <div class="ind_query_title">价格查询</div>
+            <div class="listcontent price_warp">
+
+
+                <div class="pricequer_search">
+                    <form id="pricequery" action="{{:url('pricequery')}}" method="post">
+                    <ul>
+                        <li>
+                            <span class="price">目的地：</span>
+                            <select class="input1 w200 price_sel" id="TargetCountry" name="TargetCountry">
+
+                            </select>
+
+                            <input class="input3 w200 price_sel" id="TargetAddress" name="TargetAddress" placeholder="详细地址">
+
+                        </li>
+
+                        <li><span class="price">邮政编码：</span><input id="PostCode" name="post_code" type="text" maxlength="3" autocomplete="off" class="input2 w200 price_inp"></li>
+                        <li>
+                            <span class="price">物品体积：</span>
+                            <input id="chang" name="chang" type="text" maxlength="3" autocomplete="off" class="input2 w100 price_inp"><i class="ind_query_unit">长（CM）</i>
+                            <input id="kuan" name="kuan" type="text" maxlength="3" autocomplete="off" class="input2 w100 ml10 price_inp"><i class="ind_query_unit">宽（CM）</i>
+                            <input id="gao" name="gao" type="text" maxlength="3" autocomplete="off" class="input2 w100 ml10 price_inp"><i class="ind_query_unit">高（CM）</i>
+                        </li>
+                        <li>
+                            <span class="price">物品重量：</span>
+                            <input id="weight" name="weight" type="text" maxlength="3" autocomplete="off" class="input2 w200 price_inp"><i class="ind_query_unit">公斤</i>
+                        </li>
+
+                        <li> <input id="priceSearch" type="button" class="orangebutton" value="开始查询"></li>
+                    </ul></form>
                 </div>
-      </div>
+
+                <ul class="exit_cx_other">
+                    <li><a href="http://erpexport.mttlm.com/purchasing/base/login.html" target="_blank">我要发货</a><i>|</i></li>
+                    <li><a href="query.html">包裹追踪</a><i>|</i></li>
+                    <li><a href="contact.html">业务定制</a></li>
+                    <div class="clear"></div>
+                </ul>
+
+            </div>
 
 
-{include file="public/footer"}
-        </html>
+
+        </div><!--运价查询结束-->
+    </div>
+    <!--/Slide-->
+
+
+
+</div>
+<!--/Slider-->
+
+
+<!--Main-->
+<main class="main-container">
+
+    <!--Section: About-->
+    <section id="about" class="section">
+        <div class="container">
+
+            <!--Section Header-->
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <header class="text-center">
+                        <h2 class="section-title">综合物流服务</h2>
+                        <p class="section-subtitle">Integrated logistics Service</p>
+                        <div class="section-subfonts_wrap">
+                            <p class="section-subfonts">为跨境企业提供海内外一系列</p>
+                            <p class="section-subfonts">提货、仓储、清关、派送等进出口综合物流服务</p>
+                            <p class="section-subfonts">帮助您实现海内外销售，降低物流成本，提升全球竞争力</p>
+                        </div>
+                    </header>
+                </div>
+            </div>
+            <!--/Section Header-->
+
+            <div class="row">
+                <!--Feature Block-->
+                <div class="col-sm-3 feature fadeIn wow" data-wow-duration="1.3s">
+                    <span class="icon_link_alt icon"></span>
+                    <div class="h3 title">跨境进口服务</div>
+                    <p class="description">
+                        B2B2C、B2C进口<br/>9610，1210模式
+                    </p>
+                    <!--<a href="#" class="btn btn-theme">了解更多</a>-->
+                </div>
+                <!--/Feature Block-->
+
+                <!--Feature Block-->
+                <div class="col-sm-3 feature fadeIn wow" data-wow-duration="1.3s" data-wow-delay="0.4s">
+                    <span class="icon_mobile icon"></span>
+                    <div class="h3 title">跨境出口服务</div>
+                    <p class="description">
+                        天众小包 速递全球<br/>9610、9710、9810模式<br/>全球小包专线服务
+                    </p>
+                </div>
+                <!--/Feature Block-->
+
+                <!--Feature Block-->
+                <div class="col-sm-3 feature fadeIn wow" data-wow-duration="1.3s" data-wow-delay="0.6s">
+                    <span class="icon_cloud_alt icon"></span>
+                    <div class="h3 title">天众云仓服务</div>
+                    <p class="description">
+                        全国范围就近入库，<br/>仓仓调拨最优区配送优势
+                    </p>
+                </div>
+                <!--/Feature Block-->
+
+                <!--Feature Block-->
+                <div class="col-sm-3 feature fadeIn wow" data-wow-duration="1.3s" data-wow-delay="1.0s">
+                    <span class="icon_general icon"></span>
+                    <div class="h3 title">个性化定制服务</div>
+                    <p class="description">
+                        为跨境电商、仓储<br/>服务商提供定制化系统<br/>物流、运营解决方案
+                    </p>
+                </div>
+                <!--/Feature Block-->
+
+            </div>
+        </div>
+    </section>
+    <!--/Section: About-->
+
+    <!--Section: Projects-->
+    <section id="projects" class="section-small bg-light-gray">
+        <div class="container">
+
+            <!--Section Header-->
+            <div class="row">
+
+                <div class="col-md-6">
+                    <header>
+                        <h2 class="section-title">我们的<span class="text-theme">服务</span></h2>
+                        <p class="section-subtitle">Our product services</p>
+                    </header>
+                </div>
+
+                <div class="col-md-6">
+
+                </div>
+
+            </div>
+            <!--/Section Header-->
+
+            <!--Section Content-->
+            <div class="row mt">
+                {volist name="article_info" offset="0" length="6" key="k" id="vo"}
+                <div class="col-md-4 col-sm-6 fadeIn wow" data-wow-duration="1.3s" data-wow-delay="0.{{$k*2}}s">
+                    {switch name="vo.category"}
+                    {case value="1"}<a href="{{:url('exit_three')}}?id={{$vo.id}}" class="project-item">{/case}
+                    {case value="2"}<a href="{{:url('exit_xq')}}?id={{$vo.id}}" class="project-item">{/case}
+                    {case value="3"}<a href="{{:url('exit_two_xq')}}?id={{$vo.id}}" class="project-item">{/case}
+                    {/switch}
+                        <div class="gallery-image">
+                            <img src="{{$vo.index_pic}}" alt="">
+                        </div>
+                        <div class="info">
+                            <div class="h4 title">{{$vo.title}}</div>
+                        </div>
+                    </a>
+                </div>
+                {/volist}
+            </div>
+            <!--/Section content-->
+
+        </div>
+    </section>
+
+
+    <!--/Section: Projects-->
+
+
+    <!--Section: Statistics-->
+    <section id="statistics" class="section bg-tuna">
+        <div class="container">
+
+            <div class="row">
+
+                <!--Statistic Block-->
+                <div class="col-sm-3 col-xs-6 stat">
+                    <span class="icon_pens icon zoomIn wow" data-wow-duration="0.7s"></span>
+                    <div class="number animate-number h2" data-value="30,0000+">30,0000+</div>
+                    <h4 class="title bounceInUp wow" data-wow-duration="0.7s">成交量</h4>
+                </div>
+                <!--/Statistic Block-->
+
+                <!--Statistic Block-->
+                <div class="col-sm-3 col-xs-6 stat">
+                    <span class="icon_group icon zoomIn wow" data-wow-duration="0.7s"></span>
+                    <div class="number animate-number h2" data-value="99.7%">99.7%</div>
+                    <h4 class="title bounceInUp wow" data-wow-duration="0.7s">妥投率</h4>
+                </div>
+                <!--/Statistic Block-->
+
+                <!--Statistic Block-->
+                <div class="col-sm-3 col-xs-6 stat">
+                    <span class="icon_mug icon zoomIn wow" data-wow-duration="0.7s"></span>
+                    <div class="number animate-number h2" data-value="50+">50+</div>
+                    <h4 class="title bounceInUp wow" data-wow-duration="0.7s">现有合作</h4>
+                </div>
+                <!--/Statistic Block-->
+
+                <!--Statistic Block-->
+                <div class="col-sm-3 col-xs-6 stat">
+                    <span class="icon_building icon zoomIn wow" data-wow-duration="0.7s"></span>
+                    <div class="number animate-number h2" data-value="99%">99%</div>
+                    <h4 class="title bounceInUp wow" data-wow-duration="0.7s">好评率</h4>
+                </div>
+                <!--/Statistic Block-->
+
+            </div>
+
+        </div>
+    </section>
+    <!--/Section: Statistics-->
+
+    <!--Section: More Features-->
+    <section id="more-features" class="section">
+        <div class="container">
+
+            <!--Section Header-->
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <header class="text-center">
+                        <h2 class="section-title">我们的<span class="text-theme">优势</span></h2>
+                        <p class="section-subtitle">We have the advantage of</p>
+                    </header>
+                </div>
+            </div>
+            <!--/Section Header-->
+
+            <!--Section Content-->
+            <div class="row section-content fadeIn wow" data-wow-duration="1.3s">
+                <div class="col-md-7 col-sm-12">
+                    <div class="k-why-choose-us-main">
+                        <div class="k-why-choose-us margin-bottom"> <img src="__HOME_SC__/images/product/ce-8.jpg" alt="" class="img-responsive"> </div>
+                        <div class="border-box"></div>
+                    </div>
+                </div>
+                <!--end item-->
+                <div class="col-md-5 col-sm-12 padding-left-4">
+                    <div class="col-xs-12 nopadding">
+                        <div class="sec-title-container text-center">
+                            <div class="title-line less-mar"></div>
+                            <h3 class="ce-title"><span>为什么选择天众</span></h3>
+                            <p class="ce-fonts">选择我们，就是选择放心</p>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <!--end title-->
+                    <div class="why-choose-single reveal-right-fade">
+                        <div class="iconbox-smedium"><i class="icon_link_email icon" aria-hidden="true"></i></div>
+                        <div class="text-box-right">
+                            <h3 class="title">多元服务</h3>
+                            <p class="description">为跨境电商企业或个人提供BBC、B2C、全球专线小包、快件小包等一系列进出口综合服务。</p>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="why-choose-single reveal-right-fade">
+                        <div class="iconbox-smedium"><i class="icon_easel icon" aria-hidden="true"></i></div>
+                        <div class="text-box-right">
+                            <h3 class="title">仓配一体</h3>
+                            <p class="description">我们拥有自己的仓储，实行现代化仓库管理，高度自动化，跨境物流仓储配送一体化。</p>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="why-choose-single reveal-right-fade">
+                        <div class="iconbox-smedium"><i class="icon_puzzle icon" aria-hidden="true"></i></div>
+                        <div class="text-box-right">
+                            <h3 class="title">系统对接</h3>
+                            <p class="description">自主研发多功能系统，线上一键下单，即可开启高效运转，并实现全程物流追踪。</p>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="why-choose-single reveal-right-fade">
+                        <div class="iconbox-smedium"><i class="icon_download icon" aria-hidden="true"></i></div>
+                        <div class="text-box-right">
+                            <h3 class="title">闪电清关</h3>
+                            <p class="description">我们采用与海关系统直接对接的方式处理清关，产品均已实现备案，故全程采用自动放行方式，效率相比传统高出数倍。</p>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="why-choose-single reveal-right-fade">
+                        <div class="iconbox-smedium"><i class="icon_heart_alt icon" aria-hidden="true"></i></div>
+                        <div class="text-box-right">
+                            <h3 class="title">专业客服</h3>
+                            <p class="description">随时为您提供符合法规及程序的进出口文件，解答商品税率及税务、进出口限制、汇率等一系列相关问题的咨询。</p>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+
+                </div>
+                <!--end item-->
+
+            </div>
+            <!--/Section Content-->
+
+        </div>
+    </section>
+    <!--/Section: More Features-->
+
+
+    <!-- Section: Testimonials -->
+    <section id="testimonials" class="section-small bg-light-gray inbottom">
+        <div class="container">
+
+            <!--Section Header-->
+            <div class="row">
+
+                <div class="col-md-6">
+                    <header>
+                        <h2 class="section-title">我们的<span class="text-theme">合作</span></h2>
+                        <p class="section-subtitle">Our cooperation with customers</p>
+                    </header>
+                </div>
+
+            </div>
+            <!--/Section Header-->
+
+            <!--Section Content-->
+            <div class="row mt">
+                <div class="col-md-12 zoomIn wow">
+
+                    <!--Testimonials Carousel-->
+                    <div id="testimonials-carousel" class="testimonials-carousel owl-carousel owl-theme">
+
+                        <!--Testimonial-->
+                        <div class="testimonial">
+
+                            <div class="content">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <img src="__HOME_SC__/images/fir01.jpg">
+                                    </div>
+                                    <div class="media-body media-middle">
+                                        <img src="__HOME_SC__/images/fir02.jpg">
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/Testimonial-->
+
+                        <!--Testimonial-->
+                        <div class="testimonial">
+
+                            <div class="content">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <img src="__HOME_SC__/images/fir03.jpg">
+                                    </div>
+                                    <div class="media-body media-middle">
+                                        <img src="__HOME_SC__/images/fir04.jpg">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/Testimonial-->
+
+                        <!--Testimonial-->
+                        <div class="testimonial">
+
+                            <div class="content">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <img src="__HOME_SC__/images/fir05.jpg">
+                                    </div>
+                                    <div class="media-body media-middle">
+                                        <img src="__HOME_SC__/images/fir06.jpg">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/Testimonial-->
+
+                        <!--Testimonial-->
+                        <div class="testimonial">
+
+                            <div class="content">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <img src="__HOME_SC__/images/fir07.jpg">
+                                    </div>
+                                    <div class="media-body media-middle">
+                                        <img src="__HOME_SC__/images/fir08.jpg">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!--/Testimonial-->
+                        <!--Testimonial-->
+                        <div class="testimonial">
+
+                            <div class="content">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <img src="__HOME_SC__/images/fir09.jpg">
+                                    </div>
+                                    <div class="media-body media-middle">
+                                        <img src="__HOME_SC__/images/fir10.jpg">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!--/Testimonial-->
+
+                    </div>
+                    <!--/Testimonials Carousel-->
+
+                </div>
+            </div>
+            <!--/Section Content-->
+
+        </div>
+    </section>
+
+    <!--/Section: Testimonials-->
+
+
+    <!--Section: cegistration-->
+    <section id="cegistration" class="fadeIn wow" data-wow-duration="1.2s">
+        <div class="cegistration_main">
+            <div class="container">
+                <p>立即创建天众账号，即刻体验快线服务</p>
+                <a href="http://erpexport.mttlm.com/purchasing/base/register.html" target="_blank">立即注册</a>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </section>
+    <!--/Section: cegistration-->
+
+
+</main>
+<!--/Main-->
+
+<!--Footer-->
+<div id="footerWrap" style="margin-top: 0px;">
+    <div id="footer">
+        <div class="footer_info_wrap">
+            <ul class="footer_info">
+                <li>地址：<span>杭州市西湖区文二西路1号元茂大厦1402</span></li>
+                <li>电话：<span>0571-88890244</span></li>
+                <li>邮箱：<span>business@easytochina.net</span></li>
+            </ul>
+            <ul class="sns_wrap">
+                <!--<li class="facebook"><a href="#" target="_blank">QQ</a></li>-->
+                <li class="twitter">
+                    <a href="#" target="_blank">Weibo</a>
+                    <img src="__HOME_SC__/images/weibo.png" class="erweima" />
+                </li>
+                <li class="blog">
+                    <a href="#" target="_blank">Weixin</a>
+                    <img src="__HOME_SC__/images/weixin.png" class="erweima2" />
+                </li>
+            </ul>
+            <a href="#" class="btn_layer"><img src="__HOME_SC__/images/btn_footer_layer.jpg"/></a>
+            <div class="family_site">
+                <dl>
+                    <dt>合作伙伴</dt>
+                    <dd>
+                        <ul>
+                            <li><a href="#">天猫</a></li>
+                            <li><a href="#">小红书</a></li>
+                            <li><a href="#">有赞</a></li>
+                            <li><a href="#">点点多</a></li>
+                            <li><a href="http://www.mttlm.cn/" target="_blank">马淘淘海购</a></li>
+                        </ul>
+                    </dd>
+                </dl>
+                <dl class="half">
+                    <dt>旗下事业</dt>
+                    <dd>
+                        <ul>
+                            <li><a href="http://www.euchina.eu" target="_blank">中欧跨境贸易进出口商会</a></li>
+                            <li><a href="http://www.teams-park.net" target="_blank">Teams park(国际化创业团队孵化器)</a></li>
+                        </ul>
+                    </dd>
+                    <dd>
+                    </dd>
+                </dl>
+
+                <dl>
+                    <dt>商城系统</dt>
+                    <dd>
+                        <ul>
+                            <li><a href="http://www.mttlm.com" target="_blank">马淘淘海购</a></li>
+                            <li><a href="http://www.vixshop.cn" target="_blank">城市电商</a></li>
+                            <li><a href="http://debug.t-cang.com/vixmall/cloudwarehouse" target="_blank">天众云仓</a></li>
+                        </ul>
+                    </dd>
+
+                </dl>
+                <a href="#" class="btn_close">关闭</a> </div>
+        </div>
+        <!-- //footer_info_wrap -->
+
+        <div class="footer_quick_menu">
+            <div class="footer_logo"><img src="__HOME_SC__/images/ico_footer_logo.png"/></div>
+            <div class="quick_wrap">
+
+                <ul class="quick_menu2">
+                    <li class="active"><a href="pfcexpress.html">进口服务</a></li>
+                    <li class="active"><a href="exit.html">出口服务</a></li>
+                    <li><a href="http://erpexport.mttlm.com/purchasing/base/login.html" target="_blank">在线下单</a></li>
+                    <li class="active"><a href="query.html">包裹查询</a></li>
+                    <li><a href="pricequery.html">运费查询</a></li>
+                    <li><a href="contact.html">业务定制</a></li>
+                    <li class="active"><a href="service.html">关于天众</a></li>
+                    <li><a href="cloud.html">云仓简介</a></li>
+                </ul>
+                <p class="copyright">Copyright © 天众 All Rights Reserved&nbsp;&nbsp;杭州天众供应链管理有限公司版权所有&nbsp;&nbsp;浙ICP备15042493号-2</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--/Footer-->
+
+<style type="text/css">
+    .info_box {position:fixed;right:20px;bottom:-360px;z-index:10;}
+    .info_box * {line-height:20px;}
+    .info_box.logout #info_footer .today {display:none;}
+    #info_wrap {position:relative;width:326px;}
+    #info_wrap .info_close > a {position:absolute;top:24px;right:28px;display:block;width:16px;height:16px;background:url(__HOME_SC__/images/ico_close.png) no-repeat;font-size:0;line-height:0;}
+    #info_header {background:url(__HOME_SC__/images/img_info_pop01.png) no-repeat;height:59px;}
+    #info_header h3 {padding:23px 28px;font-size:14px;font-weight:bold;color:#fff;}
+    #info_content {padding:30px 0 17px;background:url(__HOME_SC__/images/img_info_pop02.png) repeat-y;}
+    #info_content * {text-align:center;}
+    #info_content .info_title {margin:12px 0 7px;font-size:16px;font-weight:bold;color:#222;line-height:24px;}
+    #info_content .info_btn {margin-top:13px;height:27px;}
+    #info_content .info_btn > a {display:inline-block;height:26px;line-height:26px;padding:0px 14px;border:1px solid #bbb;background:#f9f9f9;color:#444;}
+    .msie #info_content .info_btn > a {line-height:30px;}
+    #info_footer {padding:0 9px; background:url(__HOME_SC__/images/img_info_pop03.png) 0 bottom no-repeat;min-height:25px;}
+    #info_footer .today {position:relative;padding:10px 20px 20px;border-top:1px solid #ebebeb;}
+    #info_footer .today > a {position:absolute;right:20px;font-weight:bold;color:#444;}
+    #footer .footer_quick_menu .quick_wrap ul.quick_menu2 li.active a {font-weight:bold;color:#0059a6;}
+</style>
+
+
+
+
+<!--SCRIPTS-->
+<script src="__HOME_SC__/js/jquery-2.2.0.min.js"></script>
+<script src="__HOME_SC__/js/bootstrap.min.js"></script>
+<script src="__HOME_SC__/js/owl.carousel.min.js"></script>
+<script src="__HOME_SC__/js/jquery.magnific-popup.min.js"></script>
+<script src="__HOME_SC__/js/jquery.validate.min.js"></script>
+<script src="__HOME_SC__/js/jquery.stellar.min.js"></script>
+<script src="__HOME_SC__/js/wow.min.js"></script>
+<script src="__HOME_SC__/js/jquery.appear.js"></script>
+<script src="__HOME_SC__/js/general.js"></script>
+<!--/SCRIPTS-->
+
+
+
+<!--右侧浮动样式-->
+<div class="float">
+    <div class="float_erweima" style="display: none;">
+        <p>
+            <img src="__HOME_SC__/images/float/erweima2.jpg" alt="">
+        </p>
+    </div>
+    <div class="float_xiadan" style="display: none;">
+        <p>
+            <img src="__HOME_SC__/images/float/xiadan.jpg" alt="">
+        </p>
+    </div>
+
+    <ul id="toTopUl">
+        <li><a class="flo_1" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=3507245604&site=qq&menu=yes"><span class="ke_tit">QQ</span></a></li>
+        <li><a class="flo_2" href="javascript:void(0);" style="font-size: 14px; width: 60px; opacity: 1;"><span class="ke_tit">电话</span><span class="ke_info">0571-88890244</span></a>
+        </li>
+        <li><a class="flo_w" href="javascript:void(0);" onmouseover="showCode();" onmouseout="hideCode();"><span class="ke_tit">公众号</span></a></li>
+        <li><a class="flo_w2" href="javascript:void(0);" onmouseover="showCode2();" onmouseout="hideCode2();"><span class="ke_tit">扫码下单</span></a></li>
+    </ul>
+</div>
+<!--右侧浮动样式-->
+
+</body>
+
+<!--友情链接开始-->
+<script type="text/javascript">
+    $(function(){
+        // Focus
+        $(this).on('keydown', '.family_site a:last', function(event){
+            var isShift = window.event.shiftKey ? true : false;
+
+            if( !isShift && event.keyCode == 9){
+                $('.family_site a:first').focus();
+                return false;
+            }
+        });
+
+        $(this).on('keydown', '.family_site a:first', function(event){
+            var isShift = window.event.shiftKey ? true : false;
+            if( isShift && event.keyCode == 9){
+                setTimeout(function(){
+                    $('.family_site a:last').focus();
+                },15);
+                return false;
+            }
+        });
+
+        //
+        $('.footer_info_wrap .btn_layer').on('click', function(e){
+            e.preventDefault();
+            var status = $(this).hasClass('on');
+            if ( !status ){
+                $(this).addClass('on');
+                $(this).next().show();
+            }
+        });
+
+        //
+        $('.family_site .btn_close').on('click', function(e){
+            e.preventDefault();
+
+            $(this).parent().hide();
+            $('.footer_info_wrap .btn_layer').removeClass('on').focus();
+
+        });
+    });
+</script><!--友情链接结束-->
+
+<!--右侧浮动js-->
+<script type="text/javascript">
+    opentop();
+    function opentop(){
+        var topTop = "<li id = 'addtotop'><a class = 'flo_4' style = 'cursor: pointer;'><span class='ke_tit'>返回</span></a></li>"
+        $(window).bind('scroll' ,function(event){
+            var topHeight = $(document).scrollTop();
+            if(topHeight >= 200){
+                if($("#toTopUl").find("#addtotop").length == 0){
+                    $("#toTopUl").append(topTop);
+                    addtotop();
+                }else{
+                    return;
+                }
+            }else{
+                $("#toTopUl li:eq(4)").remove();
+            }
+        });
+    }
+    function addtotop(){
+        $("#addtotop").bind('click',function(){
+            $("#toTopUl li:eq(4)").remove();
+            //$(window).unbind();
+            $('html, body').animate({scrollTop:0}, '1000','linear');
+            setTimeout('opentop()',500);
+        });
+    }
+
+    function showCode(){
+        $(".float_erweima").show();
+
+    }
+    function hideCode(){
+        $(".float_erweima").hide();
+    }
+    function showCode2(){
+        $(".float_xiadan").show();
+
+    }
+    function hideCode2(){
+        $(".float_xiadan").hide();
+    }
+
+    $(function () {
+        $('#toTopUl > li').hover(function () {
+            $(this).find('.flo_2').stop().animate({"width": "180px"}, 200).css({
+                "opacity": "1",
+                "filter": "Alpha(opacity=100)",
+                "background-position": "15px 6px",
+            });
+        }, function () {
+            $(this).find('.flo_2').stop().animate({"width": "60px"}, 200).css({
+                "opacity": "1",
+                "filter": "Alpha(opacity=100)",
+                "background-position": "center 6px",
+            });
+        });
+    });
+</script>
+<!--右侧浮动js-->
+
+<script language="JavaScript">
+    let TargetCountry = $("#TargetCountry");
+    for(var i=0;i < country_data.length;i++){
+        let str = '<option value="'+country_data[i].code+'">'+country_data[i].name+'</option>';
+        TargetCountry.append(str);
+    }
+    $(window).load(function(){
+        //二级导航
+        $('.navright>ul>li').hover(function(){
+            $(this).find('ul').stop(true).slideDown(600);
+        },function(){
+            $(this).find('ul').stop(true).slideUp(600);
+        })
+
+    })
+
+    $(window).ready(function () {
+        $(".orangebutton").click(function() {
+            //获取参数
+
+            var data = {
+                c_country: "CN",
+                //c_state :$("#StartProvince").val(),
+                //c_city :$("#StartCity").val(),
+                //c_area:$("#StartDistrict").val(),
+                m_country: $("#TargetCountry").val(),
+                // m_state:m_state,
+                // m_city:m_city,
+                // m_area:m_area,
+                // amount:amount,
+                // sku:sku,
+                m_address: $("#TargetAddress").val(),
+                post_code: $("#PostCode").val(),
+                length: $("#chang").val(),
+                width: $("#kuan").val(),
+                height: $("#gao").val(),
+                weight: $("#weight").val(),
+            };
+
+            for (let i in data) {
+                if (!data[i]) {
+                    alert('请填写完整参数后，再进行查询！');
+                    return false;
+                }
+            }
+            // console.log(data);
+            $("#result").empty();
+
+            //调用接口
+            $('#pricequery').submit();
+        })
+
+    })
+
+</script>
+</html>

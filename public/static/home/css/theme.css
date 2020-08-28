@@ -70,6 +70,13 @@ body {
 .section-subtitle {
   margin-bottom: 0;font-family:Verdana, Geneva, sans-serif; font-size:15px; color:#BFBFBF;
 }
+.section-subfonts_wrap{margin:10px 0px 60px 0px;}
+.section-subfonts{font-size: 16px;
+    color: #666;
+    text-align: center;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
 .rounded {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -134,20 +141,20 @@ body {
 .btn:focus,
 .btn.focus {
   color: #fff !important;
-  border-color: #dd3333 !important;
-  background-color: #dd3333 !important;
+  border-color: #e65629 !important;
+  background-color: #e65629 !important;
 }
 .btn:hover,
 .btn.hover {
   color: #fff !important;
-  border-color: #ff7777 !important;
-  background-color: #ff7777 !important;
+  border-color: #f1754e !important;
+  background-color: #f1754e !important;
 }
 .btn:active,
 .btn.active {
   color: #fff !important;
-  border-color: #dd3333 !important;
-  background-color: #dd3333 !important;
+  border-color: #e65629 !important;
+  background-color: #e65629 !important;
 }
 /*Inputs**/
 .form-control,
@@ -751,7 +758,7 @@ label.error {
   max-width: 100%;
 }
 .slider .item {
-  height: 540px;
+  height: 610px;
   max-width: 100%;
   overflow: hidden;
 }
@@ -1885,7 +1892,7 @@ label.error {
 .footer .menu li{float:left; margin-right:15px;}
   
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width : 417px ){
   .testimonials-carousel .owl-controls {
     position: static;
   }
@@ -1909,4 +1916,165 @@ label.error {
 }
 
 /******国旗********/
+
+/********banner上运价查询*******/
+.ind_query{position: absolute; bottom:35px; left: 21.5%;}
+.ind_query_title{font-size: 16px; color: #ffffff; font-weight: bold; text-align: center; line-height: 34px; letter-spacing: 2px; background: #fd3c00; border-top-left-radius: 14px; border-top-right-radius: 14px; overflow: hidden;}
+.listcontent{background:#fff; padding:15px; border: 1px solid #d8d8d8;}
+.listcontent ul li{ margin-bottom:15px;font-size:13px;}
+.price_warp span.price {display: block;width: 80px;float: left;text-align: right;font-size:14px;line-height: 26px;}
+.price_sel{width:65px; margin-right:10px; font-size:13px; padding: 0px;}
+.price_inp{width:65px;font-size:13px;}
+.input1{height:26px !important; border:1px solid #ddd; color:#666; line-height:28px; vertical-align:middle;padding-left:5px;}
+.input1 option{ line-height: 180%;padding: 10px;}
+.input2{height:26px; border:1px solid #ddd; color:#666; line-height:28px; vertical-align:middle; padding-left:5px;}
+.input3{height:26px; border:1px solid #ddd; color:#666; line-height:28px; vertical-align:middle; padding-left:5px; width: 130px !important;}
+.ind_query_unit{font-size: 12px !important; color: #999; font-style: normal; padding-left:1px; }
+/*按钮*/
+.orangebutton{width:110px; height:34px; line-height:34px; vertical-align:middle; background:#fd3c00; text-align:center; color:#fff; font-weight:bold; cursor:pointer; border: 0px; font-size: 14px; letter-spacing:2px; display: block; margin: 20px auto;}
+/*其它选项*/
+.exit_cx_other{position: relative; width: 222px; margin: 0 auto;}
+.exit_cx_other li{font-size: 14px;font-weight: 600; letter-spacing: 1px; float: left;}
+.exit_cx_other li:first-child:after{display: block; content: ''; position: absolute; left: 0px; top:20px; width: 58px; height: 1px; background: #333;}
+.exit_cx_other li:nth-child(2):after{display: block; content: ''; position: absolute; left: 70px; top:20px; width: 58px; height: 1px; background: #333;}
+.exit_cx_other li:nth-child(3):after{display: block; content: ''; position: absolute; left: 140px; top:20px; width: 58px; height: 1px; background: #333;}
+.exit_cx_other a:hover{color: #fd3c00;}
+.exit_cx_other i{font-style: normal; padding: 0px 5px;}
+/********banner上运价查询*******/
+
+
+
+/********为什么选择天众**********/
+.k-why-choose-us-main .k-why-choose-us {
+    background-color: #eee;
+    float: left;
+    left: -30px;
+    padding: 25px;
+    position: relative;
+    top: 0px;
+    width: 100%;
+    z-index: 2;
+}
+
+.k-why-choose-us-main .dark-why-choose-us {
+    background-color: #333;
+}
+
+.margin-bottom {
+    margin-bottom: 0px;
+}
+
+.k-why-choose-us-main .border-box {
+    border: 1px solid #0059a6;
+    outline-color: #0059a6;
+    outline-style: double;
+    outline-width: 1px;
+    outline-offset: 7px;
+    float: left;
+    left: 18px;
+    min-height: 580px;
+    position: absolute;
+    top: 4px;
+    width: 94%;
+    z-index: 1;
+	margin-top: 30px;
+}
+
+.padding-left-4 {
+    padding-left: 40px;
+}
+.sec-title-container {
+    width: 100%;
+    float: left;
+    padding-bottom: 20px;
+    text-align: center;
+}
+.title-line {
+    width: 50px;
+    height: 2px;
+    margin: 0px auto 5px auto;
+    background-color: #101010;
+}
+.ce-title {
+    font-size: 24px;
+    line-height: 38px;
+    font-weight: 600;
+	color: #333;
+    margin:0px;
+}
+.ce-fonts{
+	font-size: 14px;
+    color: #666666;
+    line-height: 28px;
+    margin:0px;
+}
+.reveal-right-fade{margin-bottom: 20px;}
+.iconbox-smedium{width: 60px; height: 60px; border: 1px solid #fd3c00; float: left;}
+.iconbox-smedium i {
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	font-size: 26px;
+    background: #fd3c00;
+    text-align: center;
+    display: inline-block;
+	color: #ffffff;
+	position: absolute;
+	margin: 4px 0px 0px 4px;
+	
+}
+.text-box-right {
+	width: 80%;
+    display: block;
+	padding-left: 20px;
+    text-align: left;
+	float: left;
+}
+.text-box-right .title{
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: 400;
+    margin:0px;
+}
+.text-box-right .description{
+	font-size: 14px;
+	line-height: 24px;
+    margin:0px;
+
+}
+/********为什么选择天众**********/
+/******底部账号注册*******/
+.cegistration_main{background: #e13f0d;}
+.cegistration_main p{
+	color: #ffffff;
+    font-size: 26px;
+    padding: 63px 0 64px 70px;
+    letter-spacing: 1.5px;
+	float: left;
+}
+.cegistration_main a{
+	display: block;
+    margin: 52px 150px 55px 0;
+    width: 158px;
+    height: 51px;
+    border-radius: 28px;
+    text-align: center;
+    line-height: 48px;
+    border: 2px solid #fff;
+    color: #fff;
+    font-size: 26px;
+	float: right;
+}
+.cegistration_main a:hover{
+	background: #000;
+	border: 2px solid #000;
+	color: #fff;
+}
+
+
+
+
+
+
+
 

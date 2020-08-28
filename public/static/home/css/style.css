@@ -346,6 +346,7 @@
 }
 .timeline-years__year {
     box-sizing: border-box;
+	font-size: 18px;
     color: #6b6561;
     cursor: pointer;
     display: inline-block;
@@ -379,13 +380,13 @@
 }
 .timeline-years__year:first-child {
     color: #fd3c00;
-    font-size: 22px;
+    font-size: 28px;
     font-style: normal;
     font-weight: 600;
 }
 .timeline-years__year:last-child {
     color: #fd3c00;
-    font-size: 22px;
+    font-size: 28px;
     font-style: normal;
     font-weight: 600;
 }
@@ -504,12 +505,12 @@
 	opacity:1;
 	z-index:100;
 }
-#history{ min-height:420px;}
+#history{ min-height:260px;}
 .slider--timeline .slide__year {
-    font-size: 24px;
-	position:absolute; top:155px; left:45%;
+    font-size: 34px;
+	position:absolute; top:146px; left:47%;
 }
-.history_nianduo{left:42% !important;}
+.history_nianduo{left:45% !important;}
 .orange {
     color: #fd3c00;
 }
@@ -544,8 +545,8 @@
     vertical-align: top;
     float:left; width:100%;
 }
-.slide__bottom--left h2{color:#333; line-height:24px; font-size:20px; text-align:center; margin:0 auto; margin-bottom:20px; }
-.slide__bottom--left p{color:#666; line-height:24px; font-size:14px; margin:0 auto; }
+.slide__bottom--left h2{color:#333; line-height:36px; font-size:26px; text-align:center; margin:0 auto; margin-bottom:20px; }
+.slide__bottom--left p{color:#666; line-height:30px; font-size:18px; margin:0 auto; text-align: center;}
 .slider--timeline .slide__53 {
     font-size: 60px; padding-top:20px;
 }
@@ -2315,11 +2316,10 @@ li span a{
 .contact_box1_r img{ padding:70px 0px 0px 15px;}
 .contact_btop{}
 .contact_btop span{font-size: 18px; color: #0059a6; margin: 0px;}
-.contact_btop h3{font-size: 30px; color: #333; letter-spacing: 1px; /*padding-top: 8px;*/margin:0;
-    font-weight: 600;}
+.contact_btop h3{font-size: 30px; line-height: 1.1;color: #333;letter-spacing: 1px;margin: 0;font-weight: 600;}
 .contact_btop_wen{font-size: 16px; color: #555; margin: 0px; line-height: 26px;padding-top: 15px;}
 .contact_bcenter{padding-top: 40px;}
-.contact_bcenter h5{font-size: 16px; color: #333; margin: 0px; line-height: 26px;font-weight: 600;}
+.contact_bcenter h5{font-size: 16px; color: #333; margin: 0px; line-height: 26px; font-weight: 600;}
 .contact_bcenter ul{padding: 10px 0px 0px 15px;}
 .contact_bcenter ul li {font-size: 14px;line-height: 32px;color: #666;}
 .contact_bcenter ul li i {margin-right: 8px; color: #fd3c00;}
@@ -2428,11 +2428,15 @@ li span a{
 /*********出口服务页面banner切换**********/
 
 /**********公司介绍*********/
-.ser_tianz_main{padding-bottom: 30px;}
+.ser_tianz_main{}
 .ser_tianz_main .title{margin-bottom: 20px;}
-.ser_tianz{font-size: 14px; line-height: 26px; text-indent: 2rem; margin-bottom: 0px;}
-.ser_tianz_pic{padding: 15px; border: 1px solid #fd3c00;}
-
+.ser_tianz{font-size: 16px; line-height: 30px; text-indent: 2rem; margin-bottom: 20px;}
+.ser_tianz_pic{padding: 15px;}
+.index_cht2{
+    font-size: 20px;
+    margin-bottom: 20px;
+	color: #fd3c00;
+}
 
 
 

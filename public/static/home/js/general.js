@@ -133,9 +133,9 @@ $(function($) {
             $animate_number.each(function () {
                 var $this = $(this);
                 if (!$this.hasClass('animate-stop')) {
-                    $this.animateNumber({
+                    /*$this.animateNumber({
                         number: $this.attr("data-value")
-                    }, 750);
+                    }, 750);*/
                     $this.addClass('animate-stop');
                 }
             });

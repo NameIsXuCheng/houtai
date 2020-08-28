@@ -16,6 +16,9 @@ class Index extends Controller {
 
 
     public function index(){
+
+        $article_info = $this->get_article_category(0,0,6);
+        $this->assign('article_info',$article_info);
         return view();
     }
     public function express(){
@@ -94,7 +97,7 @@ class Index extends Controller {
      * 获取文章单个类目下的所有文章基本信息，默认全部 -- 仅限产品
      * return $info[category][]
     */
-    private function get_article_category($category_id=''){
+    private function get_article_category($category_id='',$is_class='1',$number='all'){
         $map = [
             'a.type'=>1,//产品文章
             'a.is_show'=>1,
@@ -106,21 +109,26 @@ class Index extends Controller {
         }
         $articleModel = Db::name('article');
         $article = $articleModel->alias('a')
-            ->field('a.id,a.category,a.title,a.thumbnail,a.aging,c.country_name')
+            ->field('a.id,a.category,a.title,a.thumbnail,a.aging,c.country_name,a.index_pic')
             ->join('__COUNTRY__ c','a.country = c.country_code','left')
-            ->where($map)
-            ->order('.a.id desc')->select();
+            ->where($map)->limit(($number=='all')?:$number)
+            ->order('a.order_all desc,a.order desc,a.id desc')->select();
 
-        $info = ['1'=>[],'2'=>[],'3'=>[]];
-        foreach ($article as $k=>$v){
-            if($flag){
-                $info[$v['category']][] = $v;
-            }else{
-                if($v['category'] == $category_id){
-                    $info[$category_id][] = $v;
+        $info = $article;
+        //如果分类需要
+        if($is_class){
+            $info = ['1'=>[],'2'=>[],'3'=>[]];
+            foreach ($article as $k=>$v){
+                if($flag){
+                    $info[$v['category']][] = $v;
+                }else{
+                    if($v['category'] == $category_id){
+                        $info[$category_id][] = $v;
+                    }
                 }
             }
         }
+
         return $info;
     }
 
@@ -184,6 +192,21 @@ class Index extends Controller {
         return view('price-pingbi');
     }
     public function pricequery(){
+        $param = [
+            'TargetCountry'=>"''",
+            'TargetAddress'=>'',
+            'chang'=>'',
+            'kuan'=>'',
+            'gao'=>'',
+            'weight'=>'',
+            'post_code'=>'',
+        ];
+        if($this->request->isPost()){
+            $param = $this->request->param();
+            $param['TargetCountry'] = "'".$param['TargetCountry']."'";
+
+        }
+        $this->assign('param',$param);
         return view();
     }
     public function query(){

@@ -208,7 +208,7 @@ label.hide ~ input[type=checkbox] {margin-left:0px;}
 #footer .footer_quick_menu .quick_wrap ul.quick_menu2 li a{color:#333;}
 #footer .footer_quick_menu .quick_wrap .copyright {font-size:10px;color:#666; letter-spacing:1px; text-align:center;}
 #footer .footer_quick_menu .footer_mark {position:absolute; top:37px; right:0;}
-#footer .footer_quick_menu .footer_mark span {display::inline-block;}
+#footer .footer_quick_menu .footer_mark span {display:inline-block;}
 #footer .footer_quick_menu .footer_mark span a {display:inline-block; height:100%;}
 #footer .footer_quick_menu .footer_mark span + span {margin-left:6px;}
 
