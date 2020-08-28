@@ -49,18 +49,18 @@
                 <select class="input1 w200 price_sel" id="TargetCountry" name="TargetCountry">
                  </select>
 
-                <input class="input1 w200 ml10 price_sel" id="TargetAddress"  name="TargetAddress"  placeholder="详细地址">
+                <input class="input1 w200 ml10 price_sel" id="TargetAddress"  name="TargetAddress"  placeholder="详细地址" value="{{$param.TargetAddress}}">
 
             </li>
 			
 			<li><span class="price">邮政编码：</span>
-                <input type="text"  autocomplete="off" id="PostCode" class="input2 w200 price_inp"></li>
+                <input type="text"  autocomplete="off" id="PostCode" class="input2 w200 price_inp" value="{{$param.post_code}}"></li>
 			
-            <li><span class="price">物品重量：</span><input id="weight" type="text" maxlength="3" autocomplete="off" class="input2 w200 price_inp">
+            <li><span class="price">物品重量：</span><input id="weight" type="text" maxlength="3" autocomplete="off" class="input2 w200 price_inp" value="{{$param.weight}}">
                 公斤</li>
-            <li><span class="price">物品体积：</span><input id="length" type="text" maxlength="3" autocomplete="off" class="input2 w100 price_inp">
-                长（CM）<input id="width" type="text" maxlength="3" autocomplete="off" class="input2 w100 ml10 price_inp">
-                宽（CM）<input id="height" type="text" maxlength="3" autocomplete="off" class="input2 w100 ml10 price_inp">
+            <li><span class="price">物品体积：</span><input id="length" type="text" maxlength="3" autocomplete="off" class="input2 w100 price_inp" value="{{$param.chang}}">
+                长（CM）<input id="width" type="text" maxlength="3" autocomplete="off" class="input2 w100 ml10 price_inp" value="{{$param.kuan}}">
+                宽（CM）<input id="height" type="text" maxlength="3" autocomplete="off" class="input2 w100 ml10 price_inp" value="{{$param.gao}}">
                 高（CM）
             </li>
             <li> <input id="priceSearch" type="button" class="orangebutton ml80 price_but" value="开始查询"/></li>
@@ -245,18 +245,22 @@
 <!--出现查询结果js-->
 <script  type="text/javascript">
     let TargetCountry = $("#TargetCountry");
+    var nowCountry = {{$param.TargetCountry}};
     for(var i=0;i < country_data.length;i++){
-        let str = '<option value="'+country_data[i].code+'">'+country_data[i].name+'</option>';
+		var is_selected = (nowCountry == country_data[i].code)?' selected':'';
+		let str = '<option value="'+country_data[i].code+'"'+is_selected+'>'+country_data[i].name+'</option>';
         TargetCountry.append(str);
     }
 
-
-
+   function btnClick() {
+       if (nowCountry) {
+           $("#priceSearch").click();
+       }
+   }
 	$(document).ready(function(){
-
+        window.onload = btnClick;
 	  $(".orangebutton").click(function(){
 	      //获取参数
-
           var data = {
               c_country : "CN",
               //c_state :$("#StartProvince").val(),
@@ -394,7 +398,9 @@
 
 	  });
 	});
-	
+
+
+
 	
 	function setResultLi(n)
 		{

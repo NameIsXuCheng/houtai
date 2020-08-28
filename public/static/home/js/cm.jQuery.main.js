@@ -490,7 +490,7 @@ $(function(){
 	
 	
 	function aniThumbOnlyOne(){
-		$('#wrap.main .thumb_slide_wrap li').eq(0).find('a').one().click();
+		$('#wrap.main .thumb_slide_wrap li').eq(0).find('a').click();
 		$('#wrap.main .thumb_layer_wrap thumb_layer li').eq(0).addClass('on');
 	}
 	

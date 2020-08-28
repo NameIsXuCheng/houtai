@@ -68,6 +68,21 @@
                     </div>
                 </div>-->
                 <div class="layui-form-item">
+                    <div class="layui-col-xs2" onmouseenter="layer.tips('越大越靠前，默认0；相等时按添加时间先后', this)">
+                    <label class="layui-form-label">总排序</label>
+                    <div class="layui-input-block">
+                        <input type="number" name="order_all"  required value="0" lay-verify="required" placeholder="越大越靠前，默认0" autocomplete="off" class="layui-input">
+                    </div>
+                    </div>
+                    <div class="layui-col-xs4"><div style="color: #fff">空内容</div></div>
+                    <div class="layui-col-xs2" onmouseenter="layer.tips('越大越靠前，默认0；相等时按添加时间先后', this)">
+                        <label class="layui-form-label">同类排序</label>
+                        <div class="layui-input-block">
+                            <input type="number" name="order"  required value="0" lay-verify="required" placeholder="越大越靠前，默认0" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
                     <label class="layui-form-label">缩略图</label>
                     <div class="layui-input-block">
                         <input name="thumbnail" type="hidden" >
@@ -81,9 +96,16 @@
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">内容</label>
+                    <label class="layui-form-label">首页图</label>
                     <div class="layui-input-block">
-                        <textarea id="content" style="display: none;"></textarea>
+                        <input name="index_pic" type="hidden" >
+                        <button type="button" class="layui-btn" id="article_index_pic">
+                            <i class="layui-icon">&#xe67c;</i>上传图片
+                        </button>
+                        <span style="color:red"></span>
+                        <div class="layui-collapse" lay-accordion="" style="width: 600px;text-align: center;vertical-align: center;display: none;">
+                            <img id="logo_index_pic" />
+                        </div>
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -99,6 +121,13 @@
                         </div>
                     </div>
                 </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">内容</label>
+                    <div class="layui-input-block">
+                        <textarea id="content" style="display: none;"></textarea>
+                    </div>
+                </div>
+
 
                 <div class="layui-form-item">
                     <div class="layui-input-block">
@@ -134,6 +163,27 @@
                 $('#thumbnail').next("span").html('成功');
                 $('#thumbnail').prev("input").val(res.savename);
                 $('#logo').attr('src',res.savename);
+            }
+            ,error: function(){
+                //请求异常回调
+                layer.msg('上传失败！' + index, {icon: 5});
+            }
+        });
+        var uploadInst = upload.render({
+            elem: '#article_index_pic' //绑定元素
+            ,url: '{{:url("admin/info/pic_upload")}}' //上传接口
+            ,accept:'images'
+            ,size:'5120'//5mb
+            ,number:1
+            ,choose:function(obj){
+
+            }
+            ,done: function(res){
+                //上传完毕回调
+                $('#logo_index_pic').parent().show();
+                $('#article_index_pic').next("span").html('成功');
+                $('#article_index_pic').prev("input").val(res.savename);
+                $('#logo_index_pic').attr('src',res.savename);
             }
             ,error: function(){
                 //请求异常回调

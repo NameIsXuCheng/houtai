@@ -43,6 +43,9 @@ class Info extends Basic {
                 'banner'=>$param['banner'],
                 'content'=>$param['content'],
                 'aging'=>$param['aging'],
+                'order'=>$param['order'],
+                'order_all'=>$param['order_all'],
+                'index_pic'=>$param['index_pic'],
                 'is_show'=>$param['is_show'],
                 'created_at'=>date('Y-m-d H:i:s')
             ];
@@ -90,6 +93,9 @@ class Info extends Basic {
                 'category'=>$param['category'],
                 'country'=>$param['country'],
                 'aging'=>$param['aging'],
+                'order'=>$param['order'],
+                'order_all'=>$param['order_all'],
+                'index_pic'=>$param['index_pic'],
                 'thumbnail'=>$param['thumbnail'],
                 'banner'=>$param['banner'],
                 'content'=>$param['content'],

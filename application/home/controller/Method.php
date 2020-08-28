@@ -126,7 +126,7 @@ class Method extends Controller {
 
         if($this->request->isPost()){
 
-            $url="http://wmsp.t-cang.com/index.php/openapi/WxApi/get_product";//测试地址
+            $url="http://wmsp.t-cang.com/index.php/openapi/WxApi/get_product";//正式地址
 
             $post = $this->request->param();
             //发送数据
