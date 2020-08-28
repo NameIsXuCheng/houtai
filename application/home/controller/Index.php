@@ -210,5 +210,9 @@ class Index extends Controller {
     public function track(){
         return view();
     }
+	
+	public function track2(){
+        return view();
+    }
 
 }
