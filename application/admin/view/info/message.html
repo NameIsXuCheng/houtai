@@ -41,7 +41,7 @@
                             </span>-->
                         </header>
                         <div class="panel-body table-responsive">
-                            <table class="table convert-data-table table-striped">
+                            <table class="table-message table convert-data-table table-striped">
                                 <thead>
                                 <tr>
                                     <th>
@@ -113,7 +113,7 @@
                                     <td>
                                        <!-- <button type="button" data-id="{{$vo.id}}" class="edt btn btn-info btn-capsul">修改</button>-->
                                         <button type="button" data-id="{{$vo.id}}" class="content_show btn btn-info btn-capsul" onclick="layer.msg('{{:mb_substr($vo.content,0,60)}}')">查看</button>
-                                    {if condition="$vo.is_send==2"} <button type="button" data-id="{{$vo.id}}" class="del btn btn-info btn-danger btn-capsul" >重推</button>{else/}{{$vo.updated_at}}{/if}
+                                    {if condition="$vo.is_send==2"} <button type="button" data-id="{{$vo.id}}" class="repush btn btn-info btn-danger btn-capsul" >重推</button>{else/}{/if}
 
                                     </td>
                                 </tr>
@@ -133,7 +133,7 @@
 </div>
 <script>
     layui.use(['layer', 'jquery'], function() {
-        $('.del').click(function () {
+        $('.table-message').on('click','.repush',function () {
             var id = $(this).attr('data-id');
             layer.confirm('确定重推吗？',
                 {title: '留言重推', btn: ['确认', '取消'],},

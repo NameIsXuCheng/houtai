@@ -41,7 +41,7 @@
                                     </span>-->
                          </header>
                          <div class="panel-body table-responsive">
-                             <table class="table convert-data-table table-striped">
+                             <table class="table-article table convert-data-table table-striped">
                                  <thead>
                                  <tr>
                                      <th>
@@ -144,7 +144,7 @@
  </div>
  <script>
      layui.use(['layer', 'jquery'], function() {
-         $('.edt').on('click',function () {
+         $('.table-article').on('click','.edt',function () {
              var id = $(this).attr('data-id');
              var url = "{{:url('Info/article_edt')}}"+"?id="+id;
              //open_layer('600px','400px','文章修改',url)
@@ -162,7 +162,7 @@
              })
          })
 
-         $('.add').on('click',function () {
+         $('.table-article').on('click','.add',function () {
              var url = "{{:url('Info/article_add')}}";
              //open_layer('600px','400px','文章修改',url)
              layer.open({
@@ -178,7 +178,7 @@
                  content: url//'{:url("finance/detail_product")}' + "?order_no=" + data.order_no
              })
          })
-         $('.del').on('click',function () {
+         $('.table-article').on('click','.del',function () {
              var id = $(this).attr('data-id');
              layer.confirm('确定删除该文章吗？',
                  {title: '文章删除', btn: ['确认', '取消'],},
