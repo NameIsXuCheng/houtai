@@ -705,7 +705,7 @@
 <script language="JavaScript">
     let TargetCountry = $("#TargetCountry");
     for(var i=0;i < country_data.length;i++){
-        let str = '<option value="'+country_data[i].code+'">'+country_data[i].name+'</option>';
+        let str = '<option value="'+country_data[i].code+'"'+((country_data[i].code=='GB')?' selected':'')+'>'+country_data[i].name+'</option>';
         TargetCountry.append(str);
     }
     $(window).load(function(){
