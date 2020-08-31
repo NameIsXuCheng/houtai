@@ -221,6 +221,7 @@
         $(".order-box").empty();
 
         let code= this.getUrlKey("code");
+		console.log(code)
         if(code){
             //发送code 向服务器换取 openid 保存到本地。
             $.post("http://wmsp.t-cang.com/index.php/openapi/WxApi/getOpenid2",{code:code},function (res) {
@@ -235,7 +236,7 @@
                         let package_data = result.package;
                         for(let i in package_data){
                             html += '<section onclick="submitData(\''+ package_data[i].package_no +'\')">\n' +
-                                <!-- '            <img src="__HOME_SC__/images/order.png" class="img_wuliu">\n' + -->
+                                '            <img src="__HOME_SC__/images/order.png" class="img_wuliu">\n' +
                                 '            <div>运单号：'+ package_data[i].package_no +'</div>\n' +
                                 '            <div>时间：'+ package_data[i].created_at +'</div>\n' +
                                 '        </section>\n';

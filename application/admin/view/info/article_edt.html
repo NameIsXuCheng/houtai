@@ -105,7 +105,7 @@
                 </button>
                 <span style="color:red"></span>
                 <div class="layui-collapse" lay-accordion="" style="width: 600px;text-align: center;vertical-align: center;{if condition="empty($article_info.index_pic)"}display:none;{/if}">
-                <img id="logo_index_pic" />
+                <img id="logo_index_pic" src="{{$article_info.index_pic}}"/>
             </div>
         </div>
     </div>
@@ -118,7 +118,7 @@
             </button>
             <span style="color:red"></span>
             <div class="layui-collapse" lay-accordion="" style="width: 600px;text-align: center;vertical-align: center;{if condition="empty($article_info.banner)"}display:none;{/if}">
-            <img id="logo_banner" />
+            <img id="logo_banner" src="{{$article_info.banner}}"/>
         </div>
     </div>
 </div>
@@ -222,9 +222,12 @@
             var title = $("input[name='title']").val();
             var aging = $("input[name='aging']").val();
             var type = $("select[name='type']").val();
+            var order = $("input[name='order']").val();
+            var order_all = $("input[name='order_all']").val();
             var country = $("select[name='country']").val();
             var category = $("input[name='category']:checked").val();
             var thumbnail = $("input[name='thumbnail']").val();
+            var index_pic = $("input[name='index_pic']").val();
             var banner = $("input[name='banner']").val();
             var content = layedit.getContent(edindex);
 
@@ -235,9 +238,12 @@
                     aging:aging,
                     is_show:1,
                     type:type,
+                    order:order,
+                    order_all:order_all,
                     country:country,
                     category:category,
                     thumbnail:thumbnail,
+                    index_pic:index_pic,
                     banner:banner,
                     content:content,
                 },

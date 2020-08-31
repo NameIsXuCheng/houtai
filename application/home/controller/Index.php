@@ -111,7 +111,7 @@ class Index extends Controller {
         $article = $articleModel->alias('a')
             ->field('a.id,a.category,a.title,a.thumbnail,a.aging,c.country_name,a.index_pic')
             ->join('__COUNTRY__ c','a.country = c.country_code','left')
-            ->where($map)->limit(($number=='all')?:$number)
+            ->where($map)->limit(($number=='all')?false:$number)
             ->order('a.order_all desc,a.order desc,a.id desc')->select();
 
         $info = $article;
@@ -231,6 +231,10 @@ class Index extends Controller {
         return view('e-special_xq');
     }
     public function track(){
+        return view();
+    }
+	
+	public function track2(){
         return view();
     }
 
