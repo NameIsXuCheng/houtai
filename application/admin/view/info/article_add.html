@@ -222,9 +222,12 @@
             var title = $("input[name='title']").val();
             var type = $("select[name='type']").val();
             var aging = $("input[name='aging']").val();
+            var order = $("input[name='order']").val();
+            var order_all = $("input[name='order_all']").val();
             var country = $("select[name='country']").val();
             var category = $("input[name='category']:checked").val();
             var thumbnail = $("input[name='thumbnail']").val();
+            var index_pic = $("input[name='index_pic']").val();
             var banner = $("input[name='banner']").val();
             var content = layedit.getContent(edindex);
 
@@ -234,9 +237,12 @@
                     is_show:1,
                     type:type,
                     aging:aging,
+                    order:order,
+                    order_all:order_all,
                     country:country,
                     category:category,
                     thumbnail:thumbnail,
+                    index_pic:index_pic,
                     banner:banner,
                     content:content,
                 },
