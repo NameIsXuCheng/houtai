@@ -1940,6 +1940,19 @@ label.error {
 .exit_cx_other li:nth-child(3):after{display: block; content: ''; position: absolute; left: 140px; top:20px; width: 58px; height: 1px; background: #333;}
 .exit_cx_other a:hover{color: #fd3c00;}
 .exit_cx_other i{font-style: normal; padding: 0px 5px;}
+.ind_banner_fonts{position: absolute; top: 52px; left: 21.5%;}
+@media (max-width:1500px){
+  .ind_banner_fonts{left: 13%;}
+  .ind_query{left: 13%;}
+}
+@media (max-width:1300px){
+  .ind_banner_fonts{left: 9%;}
+  .ind_query{left: 9%;}
+}
+@media (max-width:1170px){
+  .ind_banner_fonts{left: 7%;}
+  .ind_query{left: 7%;}
+}
 /********banner上运价查询*******/
 
 
@@ -2046,6 +2059,7 @@ label.error {
 /******底部账号注册*******/
 .cegistration_main{background: #e13f0d;}
 .cegistration_main p{
+    margin:0px;
 	color: #ffffff;
     font-size: 26px;
     padding: 63px 0 64px 70px;
