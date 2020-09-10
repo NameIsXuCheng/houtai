@@ -225,7 +225,7 @@
 .mail_main{ padding-top:20px;}
 .mail_main h4{font-size:26px; color:#333; line-height:42px; position:relative; margin-bottom:25px;}
 .mail_main h4:after{ position:absolute; top:45px; left:1px; background-color:#fd3c00; width:55px; height:1px; content:"";}
-.mail_main p{ font-size:18px; line-height:30px; color:#666;}
+.mail_main p{ font-size:18px; line-height:30px; color:#666; margin: 0 0 5px;}
 .mail_top{margin-top:20px;}
 .mail_top li{position:relative; font-size:16px; line-height:32px; color:#666; padding-left:25px;}
 .mail_top li:before{position:absolute; top:11px; left:0px; width:10px; height:10px; background-color:#fd3c00; border-radius:50%; -webkit-border-radius:50%; -moz-border-radius:50%; -ms-border-radius:50%; -o-border-radius:50%; content:"";}
