@@ -17,6 +17,10 @@ class Index extends Controller {
 
     public function index(){
 
+		$country_list=$this->getWxCountry();
+		
+        $this->assign('country_list',$country_list);
+		
         $article_info = $this->get_article_category(0,0,6);
         $this->assign('article_info',$article_info);
         return view();
@@ -186,11 +190,42 @@ class Index extends Controller {
         return view();
     }
     public function price(){
+		$country_list=$this->getWxCountry();
+		
+        $this->assign('country_list',$country_list);
         return view();
     }
     public function price_pingbi(){
         return view('price-pingbi');
     }
+	
+	public function getWxCountry(){
+		$url="http://wmsp.t-cang.com/openapi/WxApi/getWxCountry";
+		$time=time();
+		$param=[
+			"time"=>$time,
+			"sign"=>md5("HZTZWEIXIN".$time),
+			"country_name"=>"",
+		];
+
+		$param=json_encode($param);
+		$data=$this->data_curl($url,$param);
+		// $data=json_decode($data,true);
+		// $data=$data["data"];
+		return $data;
+	}
+	
+	public function data_curl($url,$post_data){
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+		$output = curl_exec($ch);
+		curl_close($ch);
+		return $output;
+	}
+	
     public function pricequery(){
         $param = [
             'TargetCountry'=>"''",
@@ -206,9 +241,13 @@ class Index extends Controller {
             $param['TargetCountry'] = "'".$param['TargetCountry']."'";
 
         }
+		$country_list=$this->getWxCountry();
+		
+        $this->assign('country_list',$country_list);
         $this->assign('param',$param);
         return view();
     }
+	
     public function query(){
         return view();
     }

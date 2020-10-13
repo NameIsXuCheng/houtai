@@ -246,12 +246,22 @@
 <script  type="text/javascript">
     let TargetCountry = $("#TargetCountry");
     var nowCountry = {{$param.TargetCountry}};
-    for(var i=0;i < country_data.length;i++){
-		var is_selected = (nowCountry == country_data[i].code)?' selected':'';
-		let str = '<option value="'+country_data[i].code+'"'+is_selected+'>'+country_data[i].name+'</option>';
+    <!-- for(var i=0;i < country_data.length;i++){ -->
+		<!-- var is_selected = (nowCountry == country_data[i].code)?' selected':''; -->
+		<!-- let str = '<option value="'+country_data[i].code+'"'+is_selected+'>'+country_data[i].name+'</option>'; -->
+        <!-- TargetCountry.append(str); -->
+    <!-- } -->
+
+	country_list={{$country_list}}
+	
+	country_data=country_list.data
+	
+	for(var i=0;i < country_data.length;i++){
+		var is_selected = (nowCountry == country_data[i].two_code)?' selected':'';
+		let str = '<option value="'+country_data[i].two_code+'"'+is_selected+'>'+country_data[i].country_name+'</option>';
         TargetCountry.append(str);
     }
-
+	
    function btnClick() {
        if (nowCountry) {
            $("#priceSearch").click();

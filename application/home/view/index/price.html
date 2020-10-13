@@ -530,9 +530,13 @@
 
     var label = [];
 
+	country_list={{$country_list}}
+	
+	country_data=country_list.data
+	
     for(var i=0;i<country_data.length;i++){
-        if(country_data[i].code){
-            label.push({label:country_data[i].name,value:country_data[i].code});
+        if(country_data[i].two_code){
+            label.push({label:country_data[i].country_name,value:country_data[i].two_code});
         }
     }
 
@@ -893,10 +897,10 @@
                         if(count>4){
                             continue;
                         }
-                        if(country_data[i].name.indexOf(country) !== -1){
+                        if(country_data[i].country_name.indexOf(country) !== -1){
                             html += '<div class="weui-cell weui-cell_active weui-cell_access" onclick="confirmCountry('+i+')">\n' +
                                 '                        <div class="weui-cell__bd weui-cell_primary">\n' +
-                                '                            <p>'+country_data[i].name+'</p>\n' +
+                                '                            <p>'+country_data[i].country_name+'</p>\n' +
                                 '                        </div>\n' +
                                 '                    </div>';
                             count++;
@@ -924,8 +928,8 @@
     });
 
     function confirmCountry(i) {
-        var name = country_data[i].name;
-        var code = country_data[i].code;
+        var name = country_data[i].country_name;
+        var code = country_data[i].two_code;
         $("input[name=m_country]").val(code);
         $("span[tabindex='m_country']").each(function () {
             $(this).html(name);

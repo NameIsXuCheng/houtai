@@ -654,10 +654,23 @@
 
 <script language="JavaScript">
     let TargetCountry = $("#TargetCountry");
-    for(var i=0;i < country_data.length;i++){
-        let str = '<option value="'+country_data[i].code+'"'+((country_data[i].code=='GB')?' selected':'')+'>'+country_data[i].name+'</option>';
+	
+    <!-- for(var i=0;i < country_data.length;i++){ -->
+        <!-- let str = '<option value="'+country_data[i].code+'"'+((country_data[i].code=='GB')?' selected':'')+'>'+country_data[i].name+'</option>'; -->
+        <!-- TargetCountry.append(str); -->
+    <!-- } -->
+	
+	country_list={{$country_list}}
+	
+	country_data=country_list.data
+	
+
+	
+	for(var i=0;i < country_data.length;i++){
+        let str = '<option value="'+country_data[i].two_code+'"'+((country_data[i].two_code=='GB')?' selected':'')+'>'+country_data[i].country_name+'</option>';
         TargetCountry.append(str);
     }
+	
     $(window).load(function(){
         //二级导航
         $('.navright>ul>li').hover(function(){
