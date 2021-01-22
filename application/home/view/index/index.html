@@ -1,7 +1,13 @@
 {include file="public/header"}
 <link rel="stylesheet" type="text/css" href="__HOME_SC__/css/theme.css">
+<link rel="stylesheet" type="text/css" href="/static/assets/css/component-chosen.min.css">
 <script type="text/javascript" src="__HOME_SC__/js/countryData_v2.js"></script>
 <title>天众国际-您身边的跨境进出口物流服务管家</title>
+<style>
+	.chosen-container{
+		width:150px !important;
+	}
+</style>
 </head>
 <body>
 
@@ -21,13 +27,16 @@
                 <div class="pricequer_search">
                     <form id="pricequery" action="{{:url('pricequery')}}" method="post">
                     <ul>
-                        <li>
-                            <span class="price">目的地：</span>
-                            <select class="input1 w200 price_sel" id="TargetCountry" name="TargetCountry">
-
+                        <li style="clear: both;margin-bottom:17px;padding-bottom:28px;">
+              <span class="price" style="float:left">目的地：</span>
+				<div style="float:left" id="thecountry">
+                            <select class="input1 w200 price_sel form-control-chosen" id="TargetCountry" name="TargetCountry">
                             </select>
-
+							</div>
+				 
+				<div style="float:left;margin:3px 0 0 15px;">
                             <input class="input3 w200 price_sel" id="TargetAddress" name="TargetAddress" placeholder="详细地址">
+							</div>
 
                         </li>
 
@@ -40,7 +49,7 @@
                         </li>
                         <li>
                             <span class="price">物品重量：</span>
-                            <input id="weight" name="weight" type="text" maxlength="3" autocomplete="off" class="input2 w200 price_inp"><i class="ind_query_unit">公斤</i>
+                            <input id="weight" name="weight" type="text" maxlength="8" autocomplete="off" class="input2 w200 price_inp"><i class="ind_query_unit">公斤</i>
                         </li>
 
                         <li> <input id="priceSearch" type="button" class="orangebutton" value="开始查询"></li>
@@ -468,8 +477,8 @@
             <div class="quick_wrap">
 
                 <ul class="quick_menu2">
-                    <li class="active"><a href="pfcexpress.html">进口服务</a></li>
-                    <li class="active"><a href="exit.html">出口服务</a></li>
+                    <li class="active"><a href="javascript:void(0)">进口服务</a></li>
+                    <li class="active"><a href="javascript:void(0)">出口服务</a></li>
                     <li><a href="http://erpexport.mttlm.com/purchasing/base/login.html" target="_blank">在线下单</a></li>
                     <li class="active"><a href="{{:url('query')}}">包裹查询</a></li>
                     <li><a href="{{:url('pricequery')}}">运费查询</a></li>
@@ -477,7 +486,9 @@
                     <li class="active"><a href="{{:url('service')}}">关于天众</a></li>
                     <li><a href="{{:url('cloud')}}">云仓简介</a></li>
                 </ul>
-                <p class="copyright">Copyright © 天众 All Rights Reserved&nbsp;&nbsp;杭州天众供应链管理有限公司版权所有&nbsp;&nbsp;浙ICP备15042493号-2</p>
+                <p class="copyright">Copyright © 天众 All Rights Reserved&nbsp;&nbsp;杭州天众供应链管理有限公司版权所有&nbsp;&nbsp;
+				<a href="https://beian.miit.gov.cn/">浙ICP备15042493号-2</a>
+				</p>
             </div>
 
         </div>
@@ -546,10 +557,11 @@
 <!--右侧浮动样式-->
 
 </body>
-
+<script type="text/javascript" src="/static/dist/js/chosen.jquery.js"></script>
 <!--友情链接开始-->
 <script type="text/javascript">
     $(function(){
+		$('.form-control-chosen').chosen();
         // Focus
         $(this).on('keydown', '.family_site a:last', function(event){
             var isShift = window.event.shiftKey ? true : false;
@@ -663,13 +675,37 @@
 	country_list={{$country_list}}
 	
 	country_data=country_list.data
-	
 
 	
 	for(var i=0;i < country_data.length;i++){
         let str = '<option value="'+country_data[i].two_code+'"'+((country_data[i].two_code=='GB')?' selected':'')+'>'+country_data[i].country_name+'</option>';
         TargetCountry.append(str);
     }
+	
+	$("#TargetAddress").change(function(){
+			
+			$("#PostCode").change(function(){
+				selectedcountry=$("#TargetCountry").val();
+				console.log(selectedcountry)
+				
+				$("#thecountry").children().remove();
+
+				selecthtml='<select class="input1 w200 price_sel form-control-chosen" id="TargetCountry" name="TargetCountry">';
+				
+				for(var i=0;i < country_data.length;i++){
+					selecthtml += '<option value="'+country_data[i].two_code+'"'+((country_data[i].two_code==selectedcountry)?' selected':'')+'>'+country_data[i].country_name+'</option>';
+				}
+				
+				selecthtml += '</select>';
+				
+				$("#thecountry").append(selecthtml);
+				
+				$('.form-control-chosen').chosen();
+				console.log(11);
+			})
+			
+			
+		})
 	
     $(window).load(function(){
         //二级导航

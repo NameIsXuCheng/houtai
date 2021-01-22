@@ -1,14 +1,22 @@
 {include file="public/header"}
 <link href="__HOME_SC__/css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="/static/assets/css/component-chosen.min.css">
 
-
-<script type="text/javascript" src="__HOME_SC__/js/city.js"></script>
+<script src="__HOME_SC__/js/jquery-2.2.0.min.js"></script>
+<!-- <script type="text/javascript" src="__HOME_SC__/js/city.js"></script> -->
 <script type="text/javascript" src="__HOME_SC__/js/countryData_v2.js"></script>
 <script type="text/javascript" src="__HOME_SC__/js/layer/layer.js"></script>
 <script type="text/javascript" src="__HOME_SC__/city.js"></script>
 <script type="text/javascript" src="__HOME_SC__/countryData_v2.js"></script>
 <title>天众国际-运费查询</title>
-
+<style>
+	.chosen-container{
+		width:226px !important;
+	}
+	.chosen-container-single .chosen-search{
+		width:185px !important;
+	}
+</style>
 
 </head>
 <body>
@@ -44,19 +52,23 @@
                <div id="show"></div>
 
            </li>-->
-            <li>
-              <span class="price">目的地：</span>
-                <select class="input1 w200 price_sel" id="TargetCountry" name="TargetCountry">
+            <li style="clear: both;margin-bottom:37px;padding-bottom:28px;">
+              <span class="price" style="float:left">目的地：</span>
+				<div style="float:left" id="thecountry">
+					<select class="input1 w200 price_sel form-control-chosen" id="TargetCountry" name="TargetCountry">
                  </select>
-
-                <input class="input1 w200 ml10 price_sel" id="TargetAddress"  name="TargetAddress"  placeholder="详细地址" value="{{$param.TargetAddress}}">
+				</div>
+				 
+				<div style="float:left;margin:3px 0 0 15px;">
+					<input class="input1 w200 ml10 price_sel" id="TargetAddress"  name="TargetAddress"  placeholder="详细地址" value="{{$param.TargetAddress}}">
+				</div>
 
             </li>
 			
-			<li><span class="price">邮政编码：</span>
+			<li style="clear: both;"><span class="price">邮政编码：</span>
                 <input type="text"  autocomplete="off" id="PostCode" class="input2 w200 price_inp" value="{{$param.post_code}}"></li>
 			
-            <li><span class="price">物品重量：</span><input id="weight" type="text" maxlength="3" autocomplete="off" class="input2 w200 price_inp" value="{{$param.weight}}">
+            <li><span class="price">物品重量：</span><input id="weight" type="text" maxlength="20" autocomplete="off" class="input2 w200 price_inp" value="{{$param.weight}}">
                 公斤</li>
             <li><span class="price">物品体积：</span><input id="length" type="text" maxlength="3" autocomplete="off" class="input2 w100 price_inp" value="{{$param.chang}}">
                 长（CM）<input id="width" type="text" maxlength="3" autocomplete="off" class="input2 w100 ml10 price_inp" value="{{$param.kuan}}">
@@ -241,9 +253,11 @@
 	
 </body>
 
-
+<script type="text/javascript" src="/static/dist/js/chosen.jquery.js"></script>
 <!--出现查询结果js-->
 <script  type="text/javascript">
+	
+
     let TargetCountry = $("#TargetCountry");
     var nowCountry = {{$param.TargetCountry}};
     <!-- for(var i=0;i < country_data.length;i++){ -->
@@ -262,6 +276,8 @@
         TargetCountry.append(str);
     }
 	
+	$('.form-control-chosen').chosen();
+	
    function btnClick() {
        if (nowCountry) {
            $("#priceSearch").click();
@@ -269,6 +285,25 @@
    }
 	$(document).ready(function(){
         window.onload = btnClick;
+		
+		$("#TargetAddress").change(function(){
+			
+			$("#thecountry").children().remove();
+			selecthtml='<select class="input1 w200 price_sel form-control-chosen" id="TargetCountry" name="TargetCountry">';
+			
+			for(var i=0;i < country_data.length;i++){
+				var is_selected = (nowCountry == country_data[i].two_code)?' selected':'';
+				selecthtml += '<option value="'+country_data[i].two_code+'"'+is_selected+'>'+country_data[i].country_name+'</option>';
+				
+			}
+			
+			selecthtml += '</select>';
+			
+			$("#thecountry").append(selecthtml);
+			
+			$('.form-control-chosen').chosen();
+		})
+		
 	  $(".orangebutton").click(function(){
 	      //获取参数
           var data = {
@@ -426,6 +461,8 @@
 				$(".result-table-box ul li").eq(n).find(".result-expand").removeClass("table-active");
 			}
 		}
+		
+		
 </script>
 <!--出现查询结果js-->
 {include file="public/footer"}

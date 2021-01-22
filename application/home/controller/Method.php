@@ -138,6 +138,7 @@ class Method extends Controller {
                 'country_from' => $post['c_country'],
                 'country_to' => $post['m_country'],
                 'long' => $post['length'],
+                'use_from' => input('use_from'),
                 'height' => $post['height'],
                 'with' => $post['width'],
                 'sign' => md5('HZTZWEIXIN'.$tiem),

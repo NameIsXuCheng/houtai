@@ -14,7 +14,7 @@
 <script type="text/javascript" src="__HOME_SC__/js/jquery-1.11.2.min.js"></script>
 
 <script  type="text/javascript" src="__HOME_SC__/js/layer/mobile/layer.js"></script>
-<title>天众国际</title>
+<title>{if condition="input('use_from') eq 'JY'"}金元{else /}天众国际{/if}</title>
     <style>
         .weui-picker{
             z-index: 999999999;
@@ -374,7 +374,12 @@
 </div>
 
 <div id="pic" style="display: none">
-    <img src="__HOME_SC__/images/xiaochengxu.jpg">
+{if condition="input('use_from') eq 'JY'"}
+
+<img src="/img/JYxiaochengxu.jpg">
+{else /}
+<img src="__HOME_SC__/images/xiaochengxu.jpg">
+{/if}
 </div>
 
 
@@ -756,7 +761,7 @@
         });
 
 
-        $.post("{{:url('method/get_price')}}", data, function (res) {
+        $.post("{{:url('method/get_price',['use_from'=>input('use_from')?input('use_from'):'TZ'])}}", data, function (res) {
             res = eval('(' + res + ')');
 
             if (res.flag === 1) {
