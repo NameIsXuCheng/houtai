@@ -215,7 +215,7 @@
 		</ul>
 		
 		<div class="pricequer_tip">
-		 <span class="red" style="font-size: 20px">获取更多折扣优惠或上门取件服务，请与我们联系，电话13588868260（微信同号）</span>
+		 <span class="red" style="font-size: 20px">获取更多折扣优惠或上门取件服务，请与我们联系，电话18814881264（微信同号）</span>
 		</div>
 
 		<ul class="exit_menu">
@@ -286,22 +286,41 @@
 	$(document).ready(function(){
         window.onload = btnClick;
 		
+		var selectsss=0;
+		
+		$("#TargetCountry").change(function(){
+				nowCountry=$(this).val();
+				console.log(nowCountry)
+		})
+		
 		$("#TargetAddress").change(function(){
-			
-			$("#thecountry").children().remove();
-			selecthtml='<select class="input1 w200 price_sel form-control-chosen" id="TargetCountry" name="TargetCountry">';
-			
-			for(var i=0;i < country_data.length;i++){
-				var is_selected = (nowCountry == country_data[i].two_code)?' selected':'';
-				selecthtml += '<option value="'+country_data[i].two_code+'"'+is_selected+'>'+country_data[i].country_name+'</option>';
+		
+			$("#PostCode").change(function(){
+				selectedcountry=$("#TargetCountry").val();
+				console.log(selectedcountry)
+					
+				$("#thecountry").children().remove();
+				selecthtml='<select class="input1 w200 price_sel form-control-chosen" id="TargetCountry" name="TargetCountry">';
 				
-			}
-			
-			selecthtml += '</select>';
-			
-			$("#thecountry").append(selecthtml);
-			
-			$('.form-control-chosen').chosen();
+				if(selectsss==0){
+					for(var i=0;i < country_data.length;i++){
+						var is_selected = (nowCountry == country_data[i].two_code)?' selected':'';
+						selecthtml += '<option value="'+country_data[i].two_code+'"'+is_selected+'>'+country_data[i].country_name+'</option>';
+						
+					}
+					selectsss=1;
+				}else{
+					for(var i=0;i < country_data.length;i++){
+						selecthtml += '<option value="'+country_data[i].two_code+'"'+((country_data[i].two_code==selectedcountry)?' selected':'')+'>'+country_data[i].country_name+'</option>';
+					}
+				}
+				
+				selecthtml += '</select>';
+				
+				$("#thecountry").append(selecthtml);
+				
+				$('.form-control-chosen').chosen();
+			})
 		})
 		
 	  $(".orangebutton").click(function(){

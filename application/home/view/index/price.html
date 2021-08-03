@@ -14,7 +14,17 @@
 <script type="text/javascript" src="__HOME_SC__/js/jquery-1.11.2.min.js"></script>
 
 <script  type="text/javascript" src="__HOME_SC__/js/layer/mobile/layer.js"></script>
-<title>{if condition="input('use_from') eq 'JY'"}金元{else /}天众国际{/if}</title>
+<title>
+{if condition="input('use_from') eq 'JY'"}
+金元
+{/if}
+{if condition="input('use_from') eq 'BR'"}
+博荣物流+
+{/if}
+{if condition="input('use_from') eq ''"}
+天众国际
+{/if}
+</title>
     <style>
         .weui-picker{
             z-index: 999999999;
@@ -132,8 +142,36 @@
                     <span style="color: black">中国</span>
                 </div></div>
         </section>
+		{if condition="input('use_from') eq 'BR'"}
+		<section >
+            <div class="form arrow"  onclick="openPicker()">
+                <label>省份</label>
+                <div class="input">
+                    <span tabindex="c_state" style="color: black">湖南</span>
+                    <input type="hidden" value="湖南" name="c_state">
+                </div>
+            </div>
+        </section>
 
-        <section >
+        <section>
+            <div class="form arrow" onclick="openPicker()">
+                <label>市</label>
+                <div class="input">
+                    <span tabindex="c_city" style="color: black">株洲</span>
+                    <input type="hidden" value="株洲" name="c_city">
+                </div></div>
+        </section>
+
+        <section>
+            <div class="form arrow" onclick="openPicker()">
+                <label>区</label>
+                <div class="input">
+                    <span tabindex="c_area" style="color: black">天元区</span>
+                    <input type="hidden" value="天元区" name="c_area">
+                </div></div>
+        </section>
+		{else /}
+		<section >
             <div class="form arrow"  onclick="openPicker()">
                 <label>省份</label>
                 <div class="input">
@@ -160,6 +198,8 @@
                     <input type="hidden" value="西湖区" name="c_area">
                 </div></div>
         </section>
+		{/if}
+        
 
     </div>
 
@@ -377,7 +417,11 @@
 {if condition="input('use_from') eq 'JY'"}
 
 <img src="/img/JYxiaochengxu.jpg">
-{else /}
+{/if}
+{if condition="input('use_from') eq 'BR'"}
+
+{/if}
+{if condition="input('use_from') eq ''"}
 <img src="__HOME_SC__/images/xiaochengxu.jpg">
 {/if}
 </div>
@@ -772,6 +816,7 @@
                 var x = 0; //无效参数
                 if (list) {
                     for (var i in list) {
+						console.log(list)
                         if( list[i].fee_detail ){
                             html += '<div class="weui-panel__bd">\n' +
                                 '<div class="weui-media-box weui-media-box_text">\n' +
@@ -783,6 +828,9 @@
                                 '<div class="weui-media-box__desc">金额：￥' +
                                 list[i].delivery_fee +
                                 '</div>' +
+								'<div class="weui-media-box__desc">时效：' +
+                                list[i].arrived_time +
+                                '天</div>' +
                                 '</div>' +
                                 '</div>';
                         }else{
